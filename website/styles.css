@@ -112,12 +112,12 @@ img {
 }
 
 #intro-screen {
-  background-image: url('assets/intro.png');
+  background-image: url('assets/main_screen.png');
   z-index: 12;
 }
 
 #welcome-screen {
-  background-image: url('assets/welcome.png');
+  background-image: url('assets/welcome_screen.png');
   z-index: 11;
 }
 
