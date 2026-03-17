@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Dikenocracy Protocols — layered, versioned, auditable governance specifications." />
+  <title>Protocols — Dikenocracy</title>
+  <link rel="stylesheet" href="../styles.css" />
+</head>
+<body>
+
+  <!-- ─── Navigation ──────────────────────────────────────────────────────── -->
+  <nav class="site-nav" aria-label="Main navigation">
+    <div class="site-nav__inner">
+      <a class="site-nav__brand" href="../index.html">Dikenocracy</a>
+
+      <button
+        class="site-nav__toggle"
+        aria-label="Toggle navigation"
+        aria-expanded="false"
+        aria-controls="site-nav-links"
+      >
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <ul class="site-nav__links" id="site-nav-links" role="list">
+        <li><a href="about.html">About</a></li>
+        <li><a href="protocols.html" aria-current="page">Protocols</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="converter.html">Converter</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ─── Main Content ─────────────────────────────────────────────────────── -->
+  <main>
+    <div class="page-wrapper">
+
+      <!-- Hero -->
+      <header class="hero">
+        <h1 class="hero__title">Protocols</h1>
+        <p class="hero__sub">Layered · Versioned · Auditable</p>
+      </header>
+
+      <div class="divider"></div>
+
+      <!-- Intro -->
+      <section class="section" aria-labelledby="protocols-intro-heading">
+        <h2 class="section__heading" id="protocols-intro-heading">Protocol architecture</h2>
+        <p class="section__text">
+          The Dikenocracy framework is built through layered protocols. Each protocol
+          defines a bounded part of the system and is designed to be version-aware,
+          testable, and auditable. No higher-layer protocol may violate a lower-layer
+          constraint.
+        </p>
+        <p class="section__text">
+          Protocols are identified by their layer prefix (DKP-0, DKP-1, …) and a
+          functional code. Each document carries a version number and a status flag
+          (Draft, Candidate, Architecture Lock, Freeze).
+        </p>
+      </section>
+
+      <!-- L0 Physical Truth -->
+      <section class="section" aria-labelledby="l0-heading">
+        <h2 class="section__heading" id="l0-heading">L0 — Physical Truth</h2>
+        <p class="section__text">
+          The foundation layer. Defines how observable physical reality is captured,
+          verified, and made available to higher layers. No governance action may
+          depend on data that bypasses this layer.
+        </p>
+
+        <div class="protocol-layer">
+          <div class="protocol-layer__id">DKP-0-ORACLE-001 · v1.1 · Architecture Lock Candidate</div>
+          <div class="protocol-layer__name">Physical Truth Layer Protocol (PTL)</div>
+          <p class="protocol-layer__desc">
+            Defines the sole admissible interface between physical reality and the
+            governance system. Covers oracle admissibility, confidence weighting,
+            divergence detection, and systemic halt conditions.
+          </p>
+        </div>
+
+        <div class="protocol-layer">
+          <div class="protocol-layer__id">DKP-0-TIME-001 · v1.0</div>
+          <div class="protocol-layer__name">Dikenocratic Time &amp; Date Index Protocol (DTI)</div>
+          <p class="protocol-layer__desc">
+            Establishes a non-religious, event-neutral, deterministic day-counting
+            system. Canonical unit: DTI-Day = JDN. Governance year = 360&nbsp;days.
+            Conversion rules to and from Gregorian are normative and machine-verifiable.
+          </p>
+        </div>
+      </section>
+
+      <!-- L1 Core -->
+      <section class="section" aria-labelledby="l1-heading">
+        <h2 class="section__heading" id="l1-heading">L1 — Core</h2>
+        <p class="section__text">
+          Defines foundational axioms, identity attribution, scope boundaries, and
+          system invariants that all higher layers must respect.
+        </p>
+
+        <div class="protocol-layer">
+          <div class="protocol-layer__id">DKP-1-AXIOMS-001 · v1.0</div>
+          <div class="protocol-layer__name">Axioms Protocol</div>
+          <p class="protocol-layer__desc">
+            Non-negotiable invariant constraints that bound all measurement,
+            optimization, and enforcement logic. No calculated benefit overrides an axiom.
+          </p>
+        </div>
+
+        <div class="protocol-layer">
+          <div class="protocol-layer__id">DKP-1-IDENTITY-001 · placeholder</div>
+          <div class="protocol-layer__name">Subject Identity Protocol</div>
+          <p class="protocol-layer__desc">
+            Defines the legal and causal attribution of responsibility to originating
+            Subjects. Full specification to be published.
+          </p>
+        </div>
+      </section>
+
+      <!-- L2 Economic -->
+      <section class="section" aria-labelledby="l2-heading">
+        <h2 class="section__heading" id="l2-heading">L2 — Economic</h2>
+        <p class="section__text">
+          Covers dual-circuit economy rules, tokenized value chains, conditional
+          emission, and stake-based security mechanisms.
+        </p>
+
+        <div class="protocol-layer">
+          <div class="protocol-layer__id">DKP-2 — specifications in preparation</div>
+          <div class="protocol-layer__name">Economic Layer</div>
+          <p class="protocol-layer__desc">
+            Formal economic protocol specifications will be published here as they
+            reach candidate status. Refer to the Code of Planetary Synergy for the
+            current normative text.
+          </p>
+        </div>
+      </section>
+
+      <!-- Future Layers -->
+      <section class="section" aria-labelledby="future-heading">
+        <h2 class="section__heading" id="future-heading">Future layers</h2>
+        <div class="cards">
+          <div class="card">
+            <span class="card__label card__label--placeholder">Planned</span>
+            <h3 class="card__title">L3 — Justice &amp; Liability</h3>
+            <p class="card__text">Automated accountability procedures and damage attribution.</p>
+          </div>
+          <div class="card">
+            <span class="card__label card__label--placeholder">Planned</span>
+            <h3 class="card__title">L4 — Upgrade</h3>
+            <p class="card__text">Controlled protocol versioning and parameter modification procedures.</p>
+          </div>
+          <div class="card">
+            <span class="card__label card__label--placeholder">Planned</span>
+            <h3 class="card__title">L7 — Scope</h3>
+            <p class="card__text">Explicit jurisdictional and domain boundary definitions.</p>
+          </div>
+          <div class="card">
+            <span class="card__label card__label--placeholder">Planned</span>
+            <h3 class="card__title">L8 — Simulation</h3>
+            <p class="card__text">Validation and calibration environment for protocol parameters.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Official Source -->
+      <section class="section" aria-labelledby="source-heading">
+        <h2 class="section__heading" id="source-heading">Official source</h2>
+        <p class="section__text">
+          All protocol specifications are maintained openly. The canonical repository
+          is published on GitHub.
+        </p>
+        <div class="entry-points">
+          <a
+            class="btn"
+            href="https://github.com/anahronic/Dikenocracy"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            View on GitHub
+          </a>
+        </div>
+        <div class="info-note">
+          Protocol files follow the naming convention
+          <code>DKP-&lt;layer&gt;-&lt;domain&gt;-&lt;seq&gt;.md</code>.
+          Specifications are formatted in Markdown and designed to be both
+          human-readable and machine-parseable.
+        </div>
+      </section>
+
+    </div><!-- /.page-wrapper -->
+  </main>
+
+  <!-- ─── Footer ─────────────────────────────────────────────────────────────── -->
+  <footer class="site-footer">
+    <p>Dikenocracy &mdash; public framework. Built openly alongside the old world.</p>
+  </footer>
+
+  <script src="../script.js"></script>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Dikenocracy — a framework for reality-based governance." />
+  <title>Dikenocracy</title>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    /* index.html-specific: body must be overflow-hidden while on this page */
+    body {
+      overflow: hidden;
+    }
+  </style>
+</head>
+<body>
+
+  <!--
+    Stage A — Intro screen.
+    Visible immediately, hidden after INTRO_DURATION_MS via script.js.
+  -->
+  <section
+    id="intro-screen"
+    class="screen"
+    role="img"
+    aria-label="Dikenocracy introductory visual: We don't ask the old world for permission. We build a new world alongside it."
+  >
+    <!-- No interactive content in Stage A; script manages the transition -->
+  </section>
+
+  <!--
+    Stage B — Welcome screen.
+    Initially hidden. Made visible by script.js after the intro fades out.
+  -->
+  <section
+    id="welcome-screen"
+    class="screen screen--hidden"
+    role="region"
+    aria-label="Dikenocracy welcome screen"
+  >
+    <!--
+      Enter button — uses enter_button.png as the visual.
+      Full button area is clickable. Keyboard-accessible via <button> and Enter/Space.
+    -->
+    <button
+      class="enter-btn"
+      onclick="window.location.href='pages/about.html'"
+      onkeydown="if(event.key==='Enter'||event.key===' '){window.location.href='pages/about.html';}"
+      aria-label="Enter the Dikenocracy Framework — navigate to the About page"
+      tabindex="0"
+    >
+      <img
+        src="assets/enter_button.png"
+        alt="Connect to Reality — Enter the Dikenocracy Framework"
+        width="480"
+        height="auto"
+      />
+    </button>
+  </section>
+
+  <script src="script.js"></script>
+</body>
+</html>

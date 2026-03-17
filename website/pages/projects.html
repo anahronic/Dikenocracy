@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Dikenocracy Projects — tools and experiments implementing the framework." />
+  <title>Projects — Dikenocracy</title>
+  <link rel="stylesheet" href="../styles.css" />
+</head>
+<body>
+
+  <!-- ─── Navigation ──────────────────────────────────────────────────────── -->
+  <nav class="site-nav" aria-label="Main navigation">
+    <div class="site-nav__inner">
+      <a class="site-nav__brand" href="../index.html">Dikenocracy</a>
+
+      <button
+        class="site-nav__toggle"
+        aria-label="Toggle navigation"
+        aria-expanded="false"
+        aria-controls="site-nav-links"
+      >
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <ul class="site-nav__links" id="site-nav-links" role="list">
+        <li><a href="about.html">About</a></li>
+        <li><a href="protocols.html">Protocols</a></li>
+        <li><a href="projects.html" aria-current="page">Projects</a></li>
+        <li><a href="converter.html">Converter</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ─── Main Content ─────────────────────────────────────────────────────── -->
+  <main>
+    <div class="page-wrapper">
+
+      <!-- Hero -->
+      <header class="hero">
+        <h1 class="hero__title">Projects</h1>
+        <p class="hero__sub">Engineering the framework into reality</p>
+      </header>
+
+      <div class="divider"></div>
+
+      <!-- Intro -->
+      <section class="section" aria-labelledby="projects-intro-heading">
+        <h2 class="section__heading" id="projects-intro-heading">Overview</h2>
+        <p class="section__text">
+          Dikenocracy is not only a theory. It is also an engineering and
+          public-infrastructure effort expressed through concrete tools and
+          experiments. Each project implements a bounded part of the protocol
+          stack in verifiable, testable software.
+        </p>
+      </section>
+
+      <!-- Project cards -->
+      <section class="section" aria-labelledby="active-heading">
+        <h2 class="section__heading" id="active-heading">Active projects</h2>
+        <div class="cards">
+
+          <div class="card">
+            <span class="card__label">Tool</span>
+            <h3 class="card__title">Converter DTI</h3>
+            <p class="card__text">
+              A deterministic converter between Gregorian, Hebrew, and
+              Dikenocratic Time Interface (DTI) formats. Implements
+              DKP-0-TIME-001 with a canonical JDN-based domain layer, FastAPI
+              service, and Streamlit client.
+            </p>
+            <div style="margin-top:0.8rem;">
+              <a class="btn" href="converter.html">Open Converter</a>
+            </div>
+          </div>
+
+          <div class="card">
+            <span class="card__label">Tool</span>
+            <h3 class="card__title">Market Lens</h3>
+            <p class="card__text">
+              A deterministic price-registry engine with client interpretation
+              protocol. Provides signal classification for consumer-facing
+              comparison without inference or estimation.
+            </p>
+            <div class="info-note" style="margin-top:0.8rem;">
+              Currently internal. Public access will be announced when the
+              client layer reaches protocol compliance.
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <section class="section" aria-labelledby="planned-heading">
+        <h2 class="section__heading" id="planned-heading">Planned</h2>
+        <div class="cards">
+
+          <div class="card">
+            <span class="card__label card__label--placeholder">Future</span>
+            <h3 class="card__title">Public Dashboards</h3>
+            <p class="card__text">
+              Real-time visualization of protocol-level metrics, oracle health,
+              and governance indicators. Details will be published here as the
+              public project layer expands.
+            </p>
+          </div>
+
+          <div class="card">
+            <span class="card__label card__label--placeholder">Future</span>
+            <h3 class="card__title">Governance Simulations</h3>
+            <p class="card__text">
+              Interactive simulation environments for testing protocol parameter
+              changes before deployment. Implementation will follow
+              DKP-8-SIMULATION-001 specification.
+            </p>
+          </div>
+
+        </div>
+      </section>
+
+    </div><!-- /.page-wrapper -->
+  </main>
+
+  <!-- ─── Footer ─────────────────────────────────────────────────────────────── -->
+  <footer class="site-footer">
+    <p>Dikenocracy &mdash; public framework. Built openly alongside the old world.</p>
+  </footer>
+
+  <script src="../script.js"></script>
+</body>
+</html>

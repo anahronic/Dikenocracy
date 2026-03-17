@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="DTI Time Converter — translate between Gregorian, Hebrew, and Dikenocratic dates." />
+  <title>DTI Time Converter — Dikenocracy</title>
+  <link rel="stylesheet" href="../styles.css" />
+</head>
+<body>
+
+  <!-- ─── Navigation ──────────────────────────────────────────────────────── -->
+  <nav class="site-nav" aria-label="Main navigation">
+    <div class="site-nav__inner">
+      <a class="site-nav__brand" href="../index.html">Dikenocracy</a>
+
+      <button
+        class="site-nav__toggle"
+        aria-label="Toggle navigation"
+        aria-expanded="false"
+        aria-controls="site-nav-links"
+      >
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <ul class="site-nav__links" id="site-nav-links" role="list">
+        <li><a href="about.html">About</a></li>
+        <li><a href="protocols.html">Protocols</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="converter.html" aria-current="page">Converter</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ─── Main Content ─────────────────────────────────────────────────────── -->
+  <main>
+    <div class="page-wrapper">
+
+      <!-- Hero -->
+      <header class="hero">
+        <h1 class="hero__title">DTI Time Converter</h1>
+        <p class="hero__sub">Deterministic date conversion for the Dikenocracy framework</p>
+      </header>
+
+      <div class="divider"></div>
+
+      <!-- Explanation -->
+      <section class="section" aria-labelledby="converter-what-heading">
+        <h2 class="section__heading" id="converter-what-heading">What it does</h2>
+        <p class="section__text">
+          The DTI Time Converter translates between Gregorian dates, Hebrew dates,
+          and the Dikenocratic Time Interface (DTI). The DTI model is based on
+          deterministic mapping through JDN and a 360-day derived year
+          representation.
+        </p>
+        <p class="section__text">
+          The canonical rules are: <code>DTI-Day&nbsp;=&nbsp;JDN</code>,
+          <code>DY&nbsp;=&nbsp;floor(JDN&nbsp;/&nbsp;360)</code>,
+          <code>DOY&nbsp;=&nbsp;(JDN&nbsp;mod&nbsp;360)&nbsp;+&nbsp;1</code>.
+          Every conversion is fully reversible and machine-auditable.
+        </p>
+      </section>
+
+      <!-- Launch area -->
+      <section class="section" aria-labelledby="converter-launch-heading">
+        <h2 class="section__heading" id="converter-launch-heading">Open the converter</h2>
+
+        <!--
+          Preferred approach: embed the Streamlit or FastAPI UI when deployed.
+          The iframe URL below should be updated once the converter is served
+          at a known public endpoint.
+        -->
+        <noscript>
+          <p class="section__text">
+            JavaScript is not required for the converter itself, but the
+            embedded view needs it. Use the direct link below instead.
+          </p>
+        </noscript>
+
+        <!--
+          Fallback: link-based launch.
+          When the converter is deployed publicly (e.g. via Nginx proxy),
+          replace the href with the actual endpoint.
+        -->
+        <div class="converter-launch">
+          <div class="converter-launch__text">
+            The converter runs as a standalone service. If it is deployed on
+            this server, use the button below to open the interactive interface.
+            Otherwise, the converter can be started locally by following the
+            instructions in the project README.
+          </div>
+          <a
+            class="btn"
+            href="http://localhost:8501"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Launch the DTI Time Converter UI"
+          >
+            Launch Converter
+          </a>
+        </div>
+
+        <div class="info-note">
+          The converter endpoint path may change once a public deployment is
+          configured. Update the link in this file or set up an Nginx reverse
+          proxy to serve the Streamlit interface under
+          <code>/converter/</code>.
+        </div>
+      </section>
+
+      <!-- Technical details -->
+      <section class="section" aria-labelledby="converter-details-heading">
+        <h2 class="section__heading" id="converter-details-heading">Technical details</h2>
+        <p class="section__text">
+          The converter is a standalone Python package located in
+          <code>Converter&nbsp;DTI/</code>. It includes a deterministic domain
+          layer, a FastAPI HTTP service, and an optional Streamlit client.
+        </p>
+
+        <div class="cards">
+          <div class="card">
+            <span class="card__label">API</span>
+            <h3 class="card__title">REST Endpoints</h3>
+            <p class="card__text">
+              <code>GET /health</code><br />
+              <code>POST /convert/gregorian-to-dti</code><br />
+              <code>POST /convert/dti-to-gregorian</code>
+            </p>
+          </div>
+          <div class="card">
+            <span class="card__label">Protocol</span>
+            <h3 class="card__title">DKP-0-TIME-001</h3>
+            <p class="card__text">
+              Implements all normative test vectors. The 2000-01-01 vector
+              follows canonical formula output (DY6809-306).
+              See PROTOCOL_NOTES.md for the rationale.
+            </p>
+          </div>
+          <div class="card">
+            <span class="card__label">Source</span>
+            <h3 class="card__title">GitHub</h3>
+            <p class="card__text">
+              <a
+                href="https://github.com/anahronic/Dikenocracy/tree/main/Converter%20DTI"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                anahronic/Dikenocracy &rarr; Converter DTI
+              </a>
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Ecosystem note -->
+      <section class="section" aria-labelledby="converter-ecosystem-heading">
+        <h2 class="section__heading" id="converter-ecosystem-heading">Ecosystem context</h2>
+        <p class="section__text">
+          This tool is part of the broader Dikenocracy protocol ecosystem. It
+          serves as the reference implementation for the time layer
+          (DKP-0-TIME-001) and provides a foundation for time-indexed
+          governance records, accountability cycles, and audit trails.
+        </p>
+      </section>
+
+    </div><!-- /.page-wrapper -->
+  </main>
+
+  <!-- ─── Footer ─────────────────────────────────────────────────────────────── -->
+  <footer class="site-footer">
+    <p>Dikenocracy &mdash; public framework. Built openly alongside the old world.</p>
+  </footer>
+
+  <script src="../script.js"></script>
+</body>
+</html>
