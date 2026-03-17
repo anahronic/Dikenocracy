@@ -1,0 +1,34 @@
+dikenocracy	Dikenocracy
+code-of-planetary-synergy	CODE OF PLANETARY SYNERGY
+dkp-0-oracle-001	DKP-0-ORACLE-001
+dkp-0-time-001	DKP-0-TIME-001
+dkp-1-axioms-001	DKP-1-AXIOMS-001
+dkp-1-identity-001	DKP-1-IDENTITY-001
+dkp-1-impact-001	DKP-1-IMPACT-001
+dkp-1-justice-001	DKP-1-JUSTICE-001
+dkp-2-assets-001	DKP-2-ASSETS-001
+dkp-2-finance-001	DKP-2-FINANCE-001
+dkp-2-labor-001	DKP-2-LABOR-001
+dkp-3-antiterror-001	DKP-3-ANTITERROR-001
+dkp-3-defense-001	DKP-3-DEFENSE-001
+dkp-3-internal-sec-001	DKP-3-INTERNAL-SEC-001
+dkp-3-police-001	DKP-3-POLICE-001
+dkp-4-crisis-001	DKP-4-CRISIS-001
+dkp-4-error-001	DKP-4-ERROR-001
+dkp-4-upgrade-001	DKP-4-UPGRADE-001
+dkp-5-culture-001	DKP-5-CULTURE-001
+dkp-5-edu-001	DKP-5-EDU-001
+dkp-5-habitat-001	DKP-5-HABITAT-001
+dkp-5-info-001	DKP-5-INFO-001
+dkp-5-transport-001	DKP-5-TRANSPORT-001
+appendix-a-design-rationale-safeguards-normative	Appendix A — Design Rationale & Safeguards (Normative)
+dkp-5-work-cycle-001	DKP-5-WORK-CYCLE-001
+dkp-6-exit-001	DKP-6-EXIT-001
+dkp-6-integration-001	DKP-6-INTEGRATION-001
+dkp-7-privacy-001	DKP-7-PRIVACY-001
+dkp-7-scope-001	DKP-7-SCOPE-001
+dkp-7-transparency-001	DKP-7-TRANSPARENCY-001
+dkp-8-audit-001	DKP-8-AUDIT-001
+dkp-7-ai-subject-001	DKP-7-AI-SUBJECT-001
+dkp-8-interop-001	DKP-8-INTEROP-001
+dkp-8-simulation-001	DKP-8-SIMULATION-001

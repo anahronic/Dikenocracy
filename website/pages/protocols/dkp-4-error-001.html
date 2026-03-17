@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="DKP-4-ERROR-001 — Dikenocracy Protocol" />
+  <title>DKP-4-ERROR-001 — Dikenocracy</title>
+  <link rel="stylesheet" href="../../styles.css" />
+</head>
+<body>
+
+  <nav class="site-nav" aria-label="Main navigation">
+    <div class="site-nav__inner">
+      <a class="site-nav__brand" href="../../index.html">Dikenocracy</a>
+      <button class="site-nav__toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="site-nav-links">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="site-nav__links" id="site-nav-links" role="list">
+        <li><a href="../about.html">About</a></li>
+        <li><a href="../protocols.html" aria-current="page">Protocols</a></li>
+        <li><a href="../projects.html">Projects</a></li>
+        <li><a href="../converter.html">Converter</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main>
+    <div class="page-wrapper">
+      <p style="margin-bottom:var(--gap-md)"><a href="../protocols.html">&larr; All Protocols</a></p>
+
+      <article class="protocol-article">
+<h2>DKP-4-ERROR-001</h2>
+<p><strong>Errors & Appeals Protocol</strong></p>
+<p>Version: 1.0</p>
+<hr />
+<h3>0\. Preamble</h3>
+<p>DKP-4-ERROR-001 defines how the Dikenocracy system detects, corrects, and resolves <strong>errors</strong>, including erroneous actions, incorrect state transitions, and misapplied protocol outputs.</p>
+<p>This protocol exists to ensure that Dikenocracy remains:</p>
+<ul>
+<li>self-correcting,</li>
+<li>reversible where possible,</li>
+<li>resistant to cascading failure,</li>
+<li>accountable without discretionary power.</li>
+</ul>
+<p>Errors in DKP are treated as <strong>system states</strong>, not as moral failures or intent-based misconduct.</p>
+<hr />
+<h3>1\. Purpose</h3>
+<p>The purpose of this protocol is to:</p>
+<ul>
+<li>provide a formal mechanism for identifying and correcting system errors,</li>
+<li>define appeal pathways for affected Subjects,</li>
+<li>prevent irreversible harm caused by incorrect execution,</li>
+<li>preserve trust in DKP through deterministic correction.</li>
+</ul>
+<p>ERROR handling is strictly procedural and non-punitive.</p>
+<hr />
+<h3>2\. System Position</h3>
+<p>This protocol operates:</p>
+<ul>
+<li>strictly downstream of DKP-0-ORACLE-001 (PTL) and DKP-0-TIME-001,</li>
+<li>downstream of DKP-1-IDENTITY-001, DKP-1-IMPACT-001, DKP-1-JUSTICE-001,</li>
+<li>downstream of all L3 protocols (INTERNAL-SEC, DEFENSE, ANTITERROR),</li>
+<li>upstream of DKP-4-CRISIS-001.</li>
+</ul>
+<p>Hard constraints:</p>
+<ul>
+<li>DKP-4-ERROR-001 SHALL NOT introduce new coercive measures.</li>
+<li>DKP-4-ERROR-001 SHALL NOT reinterpret axioms or Physical Truth.</li>
+<li>DKP-4-ERROR-001 SHALL NOT override Justice outcomes, only request recomputation.</li>
+</ul>
+<hr />
+<h3>3\. Core Definitions</h3>
+<h4>3.1 Error</h4>
+<p>An Error is any PTL-confirmed deviation between:</p>
+<ul>
+<li>intended protocol behavior,</li>
+<li>actual system execution,</li>
+<li>or recorded system state,</li>
+</ul>
+<p>where such deviation results in:</p>
+<ul>
+<li>incorrect restriction or action,</li>
+<li>incorrect attribution,</li>
+<li>incorrect impact calculation,</li>
+<li>incorrect application of protocol rules.</li>
+</ul>
+<hr />
+<h4>3.2 Appealable Decision</h4>
+<p>An Appealable Decision is any DKP action or outcome that:</p>
+<ul>
+<li>affects a Subject’s rights, access, assets, or status,</li>
+<li>is derived from protocol execution,</li>
+<li>is not explicitly marked as irreversible by higher-layer rules.</li>
+</ul>
+<hr />
+<h4>3.3 Appellant</h4>
+<p>An Appellant is any Subject who:</p>
+<ul>
+<li>is directly affected by an Appealable Decision, and</li>
+<li>submits a formal error claim under this protocol.</li>
+</ul>
+<hr />
+<h3>4\. Error Classification</h3>
+<p>Errors are classified functionally:</p>
+<ul>
+<li><strong>E1 – Measurement Error</strong></li>
+<p>PTL sensor, data ingestion, or oracle misreporting.</p>
+<li><strong>E2 – Execution Error</strong></li>
+<p>Protocol logic executed incorrectly or out of order.</p>
+<li><strong>E3 – Attribution Error</strong></li>
+<p>Incorrect Identity binding or responsibility assignment.</p>
+<li><strong>E4 – Impact Computation Error</strong></li>
+<p>Incorrect impact magnitude, scope, or channel mapping.</p>
+<li><strong>E5 – Procedural Error</strong></li>
+<p>Violation of timing (DTI), escalation rules, or isolation constraints.</p>
+</ul>
+<hr />
+<h3>5\. Error State Model (DTI-Governed)</h3>
+<ul>
+<li><strong>R0 – No Error</strong></li>
+<p>* System operating within admissible parameters.</p>
+<li><strong>R1 – Error Suspected</strong></li>
+<p>* Error signal detected; non-coercive verification initiated.</p>
+<li><strong>R2 – Error Confirmed</strong></li>
+<p>* Error validated via PTL and protocol audit.</p>
+<li><strong>R3 – Correction Applied</strong></li>
+<p>* Corrective action executed.</p>
+<li><strong>R4 – Residual Dispute</strong></li>
+<p>* Correction completed, but appeal unresolved.</p>
+</ul>
+<p>All states are indexed by DTI-Day and subject to timeouts.</p>
+<hr />
+<h3>6\. Error Detection and Initiation</h3>
+<p>An error review MAY be initiated by:</p>
+<ul>
+<li>PTL-detected inconsistency,</li>
+<li>internal protocol audit,</li>
+<li>formal appeal submission by an Appellant accompanied by a minimal economic bond.</li>
+</ul>
+<p>The bond SHALL be returned in full if the error is confirmed (R2). If the appeal is rejected as unfounded, the bond SHALL be used to cover system audit costs.</p>
+<p>No prediction or intent inference is permitted.</p>
+<hr />
+<h3>7\. Appeal Submission</h3>
+<p>Appeals MUST:</p>
+<ul>
+<li>reference the specific Appealable Decision,</li>
+<li>include PTL-indexed evidence or pointers,</li>
+<li>be submitted within <strong>30 DTI-Days</strong> from the moment the decision was recorded in PTL,</li>
+<li>specify the alleged error category (E1–E5).</li>
+</ul>
+<p>Errors of category <strong>E1 (Oracle / Physical Truth error)</strong> are not subject to any statute of limitations.</p>
+<p>Upon formal validation of an appeal (state R1), execution of the contested decision, if reversible, MAY be temporarily suspended for up to <strong>7 DTI-Days</strong> (Status Quo Suspension) pending verification.</p>
+<p>Appeals that do not meet formal requirements SHALL be rejected procedurally, without prejudice.</p>
+<hr />
+<h3>8\. Review and Re-computation</h3>
+<p>Upon confirmation of an error:</p>
+<ul>
+<li>affected protocol outputs SHALL be recomputed,</li>
+<li>reversible effects SHALL be rolled back,</li>
+<li>irreversible effects SHALL be logged and compensated where possible,</li>
+<li>Justice MAY be re-invoked using corrected inputs.</li>
+</ul>
+<p>ERROR handling never introduces new penalties.</p>
+<hr />
+<h3>9\. Correction Principles</h3>
+<p>All corrections MUST:</p>
+<ul>
+<li>minimize secondary impact,</li>
+<li>preserve PTL consistency,</li>
+<li>prefer reversibility over compensation,</li>
+<li>avoid cascading changes outside the error scope.</li>
+</ul>
+<p>If a <strong>systemic or cascading error</strong> is detected (impacting more than a protocol-defined threshold of Subjects or cross-layer execution), DKP-4-ERROR-001 SHALL automatically escalate to DKP-4-CRISIS-001 for Systemic Rollback and coordinated recovery.</p>
+<hr />
+<h3>10\. Transparency and Audit</h3>
+<p>All error cases MUST be:</p>
+<ul>
+<li>logged with PTL anchoring,</li>
+<li>indexed by DTI-Day,</li>
+<li>reviewable post-factum,</li>
+<li>included in system reliability metrics.</li>
+</ul>
+<hr />
+<h3>11\. Prohibited Actions</h3>
+<p>This protocol SHALL NOT:</p>
+<ul>
+<li>suppress valid appeals,</li>
+<li>retaliate against Appellants,</li>
+<li>hide error statistics,</li>
+<li>introduce discretionary overrides.</li>
+</ul>
+<hr />
+<h3>12\. Finality Clause</h3>
+<p>Once frozen:</p>
+<ul>
+<li>modifications require a new protocol identifier,</li>
+<li>mandatory simulation under DKP-8-SIMULATION-001,</li>
+<li>explicit compatibility declaration.</li>
+</ul>
+<p>Protocol Hash (SHA-256): \[to be inserted at freeze\]</p>
+<p>END OF PROTOCOL</p>
+      </article>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <p>Dikenocracy &mdash; public framework. Built openly alongside the old world.</p>
+  </footer>
+
+  <script src="../../script.js"></script>
+</body>
+</html>

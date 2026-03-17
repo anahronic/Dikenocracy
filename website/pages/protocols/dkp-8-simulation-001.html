@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="DKP-8-SIMULATION-001 — Dikenocracy Protocol" />
+  <title>DKP-8-SIMULATION-001 — Dikenocracy</title>
+  <link rel="stylesheet" href="../../styles.css" />
+</head>
+<body>
+
+  <nav class="site-nav" aria-label="Main navigation">
+    <div class="site-nav__inner">
+      <a class="site-nav__brand" href="../../index.html">Dikenocracy</a>
+      <button class="site-nav__toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="site-nav-links">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="site-nav__links" id="site-nav-links" role="list">
+        <li><a href="../about.html">About</a></li>
+        <li><a href="../protocols.html" aria-current="page">Protocols</a></li>
+        <li><a href="../projects.html">Projects</a></li>
+        <li><a href="../converter.html">Converter</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main>
+    <div class="page-wrapper">
+      <p style="margin-bottom:var(--gap-md)"><a href="../protocols.html">&larr; All Protocols</a></p>
+
+      <article class="protocol-article">
+<h2>DKP-8-SIMULATION-001</h2>
+<h3>Simulation & Validation Protocol</h3>
+<p><strong>Version: 1.1</strong>  <strong>Status: Architecture Lock Candidate</strong>  <strong>Layer: L8 — Simulation / Calibration / Validation</strong></p>
+<hr />
+<h3>0\. Preamble</h3>
+<p><strong>DKP-8-SIMULATION-001 defines the exclusive and mandatory mechanisms by which proposed changes to the Dikenocracy system are tested, validated, calibrated, and stress-tested prior to any activation or deployment.</strong></p>
+<p><strong>This protocol exists to ensure that no protocol, parameter, threshold, model, or external linkage is applied to the live system without prior verification against:</strong></p>
+<ul>
+<li><strong>physical constraints (DKP-0-ORACLE-001),</strong></li>
+<li><strong>axiomatic invariants (DKP-1-AXIOMS-001),</strong></li>
+<li><strong>scope and conflict rules (DKP-7-SCOPE-001),</strong></li>
+<li><strong>systemic stability and reversibility requirements.</strong></li>
+</ul>
+<p><strong>Simulation under DKP is not forecasting, persuasion, or scenario storytelling.</strong></p>
+<p><strong>Simulation is a deterministic falsification environment designed to reject unsafe or unstable changes.</strong></p>
+<hr />
+<h3>1\. Purpose</h3>
+<p><strong>The purpose of DKP-8-SIMULATION-001 is to:</strong></p>
+<ul>
+<li><strong>provide a mandatory pre-activation validation gate,</strong></li>
+<li><strong>calibrate all enforceable thresholds and composite indices,</strong></li>
+<li><strong>detect axiom and scope violations before execution,</strong></li>
+<li><strong>prevent irreversible harm caused by untested changes,</strong></li>
+<li><strong>ensure reproducible evaluation of protocol interactions,</strong></li>
+<li><strong>decouple experimentation from live system execution.</strong></li>
+</ul>
+<p><strong>Simulation is treated as a hard gate, not an advisory or optimization tool.</strong></p>
+<hr />
+<h3>2\. System Position</h3>
+<p><strong>DKP-8-SIMULATION-001 operates:</strong></p>
+<p><strong>Downstream of:</strong></p>
+<ul>
+<li><strong>DKP-0-ORACLE-001 (Physical Truth Layer),</strong></li>
+<li><strong>DKP-1-AXIOMS-001,</strong></li>
+<li><strong>DKP-7-SCOPE-001.</strong></li>
+</ul>
+<p><strong>Upstream of:</strong></p>
+<ul>
+<li><strong>all enforceable L5 protocols (HABITAT / INFO / EDU / CULTURE),</strong></li>
+<li><strong>DKP-6-INTEGRATION-001,</strong></li>
+<li><strong>DKP-6-EXIT-001,</strong></li>
+<li><strong>DKP-4-UPGRADE-001,</strong></li>
+<li><strong>DKP-8-AUDIT-001,</strong></li>
+<li><strong>DKP-8-INTEROP-001.</strong></li>
+</ul>
+<p><strong>Any protocol or change that introduces:</strong></p>
+<ul>
+<li><strong>thresholds,</strong></li>
+<li><strong>activation conditions,</strong></li>
+<li><strong>composite indices,</strong></li>
+<li><strong>enforcement logic,</strong></li>
+<li><strong>calibration parameters,</strong></li>
+<li><strong>cross-layer dependencies,</strong></li>
+</ul>
+<p><strong>MUST pass DKP-8-SIMULATION-001 prior to activation.</strong></p>
+<p><strong>No exception paths are permitted.</strong></p>
+<hr />
+<h3>3\. Definitions</h3>
+<p><strong>Simulation Environment</strong>  <strong>An isolated execution space that mirrors DKP protocol logic without producing live effects.</strong></p>
+<p><strong>Scenario</strong>  <strong>A bounded set of initial conditions, inputs, and constraints applied to the simulation.</strong></p>
+<p><strong>Invariant</strong>  <strong>A condition derived from DKP-1-AXIOMS-001 and DKP-7-SCOPE-001 that MUST hold under all simulated states.</strong></p>
+<p><strong>Failure State</strong>  <strong>Any simulated outcome that violates an invariant, exceeds declared risk envelopes, or produces irreversible harm.</strong></p>
+<p><strong>Acceptance Criteria</strong>  <strong>Formal conditions that MUST be met for a change to be eligible for activation.</strong></p>
+<p><strong>Calibration Bundle</strong>  <strong>A signed output artifact produced by L8 defining thresholds, models, confidence bounds, and validity windows.</strong></p>
+<hr />
+<h3>4\. Mandatory Simulation Scope</h3>
+<p><strong>The following REQUIRE simulation and calibration under this protocol:</strong></p>
+<ul>
+<li><strong>any DKP protocol modification or introduction,</strong></li>
+<li><strong>any parameter or threshold adjustment,</strong></li>
+<li><strong>any composite index definition (including B(t)),</strong></li>
+<li><strong>any enforcement or activation condition,</strong></li>
+<li><strong>any onboarding, exit, or integration mechanism,</strong></li>
+<li><strong>any interoperability with external systems.</strong></li>
+</ul>
+<p><strong>Protocols lacking an attached and valid L8 Calibration Bundle are NON-ENFORCEABLE by definition.</strong></p>
+<hr />
+<h3>5\. Simulation Inputs</h3>
+<p><strong>Simulations MAY ingest:</strong></p>
+<ul>
+<li><strong>historical PTL data,</strong></li>
+<li><strong>synthetic stress-test data,</strong></li>
+<li><strong>adversarial or worst-case inputs,</strong></li>
+<li><strong>boundary and failure-mode scenarios.</strong></li>
+</ul>
+<p><strong>Simulations SHALL NOT:</strong></p>
+<ul>
+<li><strong>invent unphysical data,</strong></li>
+<li><strong>bypass PTL constraints,</strong></li>
+<li><strong>smooth, normalize, or cherry-pick inputs,</strong></li>
+<li><strong>optimize outcomes by selective sampling.</strong></li>
+</ul>
+<p><strong>All inputs MUST be:</strong></p>
+<ul>
+<li><strong>explicitly declared,</strong></li>
+<li><strong>versioned,</strong></li>
+<li><strong>reproducible.</strong></li>
+</ul>
+<hr />
+<h3>6\. Invariant Enforcement</h3>
+<p><strong>During simulation, the following invariants MUST be enforced:</strong></p>
+<ul>
+<li><strong>all axioms (DKP-1-AXIOMS-001),</strong></li>
+<li><strong>scope and conflict rules (DKP-7-SCOPE-001),</strong></li>
+<li><strong>life-preservation constraints,</strong></li>
+<li><strong>biosphere integrity constraints,</strong></li>
+<li><strong>non-expansion of authority,</strong></li>
+<li><strong>reversibility and rollback requirements.</strong></li>
+</ul>
+<p><strong>Violation of any invariant immediately invalidates the tested change.</strong></p>
+<hr />
+<h3>7\. Failure Classification</h3>
+<p><strong>Simulation failures are classified as:</strong></p>
+<p><strong>F1 — Hard Violation</strong>  <strong>Direct axiom or scope violation.</strong></p>
+<p><strong>F2 — Systemic Instability</strong>  <strong>Runaway dynamics, cascading failures, deadlocks, or collapse conditions.</strong></p>
+<p><strong>F3 — Irreversibility Breach</strong>  <strong>State transitions that cannot be rolled back within declared constraints.</strong></p>
+<p><strong>F4 — Externality Leak</strong>  <strong>Unmeasured or displaced harm outside defined system boundaries.</strong></p>
+<p><strong>Any F1–F3 failure blocks activation.</strong>  <strong>F4 requires explicit redesign and re-simulation.</strong></p>
+<hr />
+<h3>8\. Acceptance Criteria</h3>
+<p><strong>A change is eligible for activation only if:</strong></p>
+<ul>
+<li><strong>no invariant is violated,</strong></li>
+<li><strong>no F1–F3 failures occur,</strong></li>
+<li><strong>risk envelopes remain within declared bounds,</strong></li>
+<li><strong>behavior remains stable under adversarial scenarios,</strong></li>
+<li><strong>results are reproducible by independent nodes.</strong></li>
+</ul>
+<p><strong>Passing simulation does not mandate deployment.</strong>  <strong>It only permits eligibility.</strong></p>
+<hr />
+<h3>9\. Calibration & Output Contract (Mandatory)</h3>
+<p><strong>Each successful simulation MUST produce a signed L8 Calibration Bundle containing:</strong></p>
+<ul>
+<li><strong>defined thresholds,</strong></li>
+<li><strong>model specifications,</strong></li>
+<li><strong>aggregation logic,</strong></li>
+<li><strong>confidence bounds,</strong></li>
+<li><strong>validity window (time-bounded),</strong></li>
+<li><strong>applicable environmental or contextual assumptions.</strong></li>
+</ul>
+<h4>Composite Indices</h4>
+<p><strong>Any composite index (including B(t)):</strong></p>
+<ul>
+<li><strong>MUST have its model fully specified in L8,</strong></li>
+<li><strong>MUST declare all inputs and weights,</strong></li>
+<li><strong>MUST include uncertainty propagation,</strong></li>
+<li><strong>SHALL NOT be modified outside L8.</strong></li>
+</ul>
+<p><strong>PTL emits only raw, model-declared outputs.</strong>  <strong>Interpretation and calibration belong exclusively to L8.</strong></p>
+<hr />
+<h3>10\. Recalibration Triggers</h3>
+<p><strong>A new simulation and calibration are REQUIRED upon:</strong></p>
+<ul>
+<li><strong>environmental drift,</strong></li>
+<li><strong>social or behavioral regime change,</strong></li>
+<li><strong>technology or sensor class change,</strong></li>
+<li><strong>sustained audit divergence,</strong></li>
+<li><strong>protocol dependency update.</strong></li>
+</ul>
+<p><strong>Expired calibration bundles automatically invalidate enforcement.</strong></p>
+<hr />
+<h3>11\. Reproducibility and Transparency</h3>
+<p><strong>All simulations MUST:</strong></p>
+<ul>
+<li><strong>be deterministic given identical inputs,</strong></li>
+<li><strong>expose configuration, assumptions, and parameters,</strong></li>
+<li><strong>publish summary outcomes for audit,</strong></li>
+<li><strong>allow independent re-execution.</strong></li>
+</ul>
+<p><strong>Simulation artifacts MAY be anonymized but SHALL NOT be opaque.</strong></p>
+<hr />
+<h3>12\. Non-Override Rule</h3>
+<p><strong>Simulation outcomes SHALL NOT be overridden by:</strong></p>
+<ul>
+<li><strong>political discretion,</strong></li>
+<li><strong>economic pressure,</strong></li>
+<li><strong>emergency rationale,</strong></li>
+<li><strong>human authority.</strong></li>
+</ul>
+<p><strong>Failure in simulation cannot be appealed.</strong>  <strong>Only redesign and re-simulation are permitted.</strong></p>
+<hr />
+<h3>13\. Relationship to Audit</h3>
+<p><strong>DKP-8-AUDIT-001 SHALL:</strong></p>
+<ul>
+<li><strong>verify deployed behavior against simulated behavior,</strong></li>
+<li><strong>flag divergence beyond tolerance,</strong></li>
+<li><strong>trigger rollback or halt when required.</strong></li>
+</ul>
+<p><strong>Simulation defines the reference reality for audit comparison.</strong></p>
+<hr />
+<h3>14\. Finality Clause</h3>
+<p><strong>Once frozen:</strong></p>
+<ul>
+<li><strong>this protocol is immutable,</strong></li>
+<li><strong>any modification requires a new protocol identifier,</strong></li>
+<li><strong>explicit incompatibility declaration is mandatory,</strong></li>
+<li><strong>full re-simulation of all dependent protocols is required.</strong></li>
+</ul>
+<p><strong>Protocol Hash (SHA-256): <code>[to be inserted at freeze]</code></strong></p>
+<p>: <data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAJBAMAAADnQZCTAAAAMFBMVEX///8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx9fPp3uAAAAD3RSTlMAIpnvzURmVN0QiXYyu6v7l9iSAAAAD0lEQVR4XmP8z8DEgB0BABr0AREmfPr9AAAAAElFTkSuQmCC></p>
+<p>: <data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOAAAAARBAMAAAA2zb1uAAAAMFBMVEX///8fHx/w8PDh4eHS0tK0tLSWlpaHh4dpaWlaWlpLS0stLS3Dw8N4eHg8PDylpaUDQcsiAAAAAXRSTlMAQObYZgAAAaZJREFUeF69lL1OAkEQx/cA+RRyxsRQGp+AxBe4R7CysNpH4AkMj0BprLa0tKS8yprWjpKSYFD5dmZ2bmHnIBwG/SU7u/PfvZvb2dkLLtT/EcWtfk6Kf0NENi50QghY25rIQzvb8gkjhZ1oKSBF7mM0gVrcjSDgZCvCEtp841q0FCRdNAZN1WkVsjOyMFWHbo1jTGkqAoewVqn3RPZpu9EjfLzl02lfbkQvuk0+IThV0RQW1MWRL8MJ4X6q9CWNsd2hoGSkgvk4hI3H1ZFwrjh/9+TewHS+GhsIu+6+Te2a+mz5yssdswZPWsr88sPYIwT6ZIdqAKEiGJVr7TEfwwe0RovXDbgfc18gqWmdTYEI7Nv3kL/ELc+5bngn0yHPUvmp/hO7atXtgWReyEnXGvNM5QhP93ydgKK5HtDIaJZqk2RyD7kVHX/RJewYcpQkSILWiXQgXketIMclpR7kjId2Iz/DwRVmpsk5DEe2L3+7BYQ2vu9TwTvHeRK0Uud5snuYlR33MCOZnoykkO0xCeUp9Y9HQuHHaJL/HvGrlNbxsrbtnTmWH4XFXOR08qM1AAAAAElFTkSuQmCC></p>
+<p>: <data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAQBAMAAACFLmBqAAAAMFBMVEX///8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx9fPp3uAAAAD3RSTlMAMt3vzburZhCJIplEVHbghmtJAAAAEklEQVR4XmP8z4AKmND4I0wAACAQAR8WuYnrAAAAAElFTkSuQmCC></p>
+<p>: <data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAQBAMAAAD34QLcAAAAMFBMVEX///8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx9fPp3uAAAAD3RSTlMAVJmrZrt2RBCJze/dIjJISVHlAAAAEklEQVR4XmP8z4AMmFB4w5ALAP4BAR8nz547AAAAAElFTkSuQmCC></p>
+<p>: <data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAQBAMAAAD34QLcAAAAMFBMVEX///8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx9fPp3uAAAAD3RSTlMAEDKrIkRU77uJZnaZzd0kpKYjAAAAEklEQVR4XmP8z4AMmFB4w5ALAP4BAR8nz547AAAAAElFTkSuQmCC></p>
+<p>: <data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAQBAMAAAD34QLcAAAAMFBMVEX////V1dXKysq/v79ubm5hYWFUVFRGRkY4ODgoKCgYGBgAAAAAAAAAAAAAAAAAAAAmcutGAAAAAXRSTlMAQObYZgAAAJJJREFUeF5Nz80JAjEQhuHXwCIsayHe7MNLwJOuh70KFpMS0oAwYAOWYC8uC7KIzpcomMOXeUgmP4s3/yMoEjw0T5Un4wIDrXNKzNFrIligMZaD9jij88Y5u562qUeNay2+0l3c05nou8QtqKBRBI66Qr2V/oSsqh/FGa4SuRO95VAoWXmk1krGH3eK7xd8rBQtH1E6IB9jxEx9AAAAAElFTkSuQmCC></p>
+<p>: <data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAMBAMAAACtsOGuAAAAMFBMVEX////V1dXKysq/v7+1tbWpqamenp5ubm5hYWFUVFRGRkY4ODgoKCgYGBgAAAAAAACVaI6XAAAAAXRSTlMAQObYZgAAADdJREFUeF5j/L/HhYGJ4QQDkIgBEQog4gGQ+LJBgYGFp6AAyC0AiTUvABK8CUCCgWEB0wOGBQkAWZMLbW+yInUAAAAASUVORK5CYII=></p>
+<p>: <data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAkAAAAHBAMAAAAotXpTAAAAMFBMVEX////Kysq/v79ubm5hYWFUVFRGRkY4ODgoKCgYGBgAAAAAAAAAAAAAAAAAAAAAAACWaMu0AAAAAXRSTlMAQObYZgAAADVJREFUeF4BKgDV/wH/UKYK8QTzsAAAAAINAPVHAAPIXAZd+QKtAACgAAOob/Y1+QLWAAr1ADsXDst/+peoAAAAAElFTkSuQmCC></p>
+<p>: <data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAUwAAAAQBAMAAACPe1tUAAAAMFBMVEX////V1dXKysq/v7+1tbWpqamenp5ubm5hYWFUVFRGRkY4ODgoKCgYGBgAAAAAAACVaI6XAAAAAXRSTlMAQObYZgAAA1RJREFUeF7FVr9rFEEU/rK52yuMIYKIlSyYQuGUKwJGOGSxkCvvD7DYgEWQFIvEzmILC8UrDgWJmOL+gBQHWliITBGIRZATU4psYWmVO4K7t1l9783u7Y+7iI3xg51775vZN9+8eTN7c7/wf3G4WGZmwQAUojL7J9DguEC8L3gnIVLcdoEwwrDzjB2FL8AttoJs3JSa/rghMvdR+VDs0XiBAf8oerqjxoSuyEs5fNQ/qkAWoOg59thy6X0KsPmQHRvXAIe117qTsWU143Z1CZj3sHgBa06+J8ENnKOI4WXK3k3zipWwwW5qpbi0hMhAcM8p8VG6Guky1hJvDqghqKR9TeDiElbFGZmYUjMvK6FQdeBVjs+hRs8deowsl6h6CFTmEizgCfFFEkJqSFd+B0YSucMmG9aExklq5O1wr0xn8NDAcH/opr6hWCn6y2RvxbxjCr1HxHvk2MysUM/yEGjzZo9pgMHFFyHsoaHXu/CN21YSMfKTLPgL8lNUE0prcG5uO/mOIpr4hLMrppRpAlIat7+SsU5R+rQQh1mPV8wMT7Z9hvNiUyapHOlMvMZPYseDJIzBh7COyGbn2BE2UpTIaTVmF3KEKDfv8vwUDBvY81NPtkqfTygDpoqVnJHHQggzpozKDeLL0ebd38APmE41vSIs4VF5y60ul2jXFmdKjRsOWCblRid7Nr7TfPHAnvgtUbrFTeCxzVtKxl1OmmaqwGrItiVHm7ooRxa/nIS5CsOVCpeJC/fGDDWUTz0md23lYEu7QxkxsjLnEm9x29JpWGd1VdWgAbua2aRBwYFJdtTlG9aH1ah5+r56qWN85oYrXA6N3p9KU0ZghhqXZXb46qF4vuxIL+v16DBc51ldOSkZ6jx3XS9xG1sjMhySYWeJqZJ4AxWXwsYWlBeo0LPDLr/Es5icA67wHR7cErGo2AcQzUU1VEFq6Bt4gNjhCSyZw5FXBPepogjqDYzBOD3psXyGcP7Q12nYgNMk0qUt9i3pCqnkj+gjEPHYuPGcqHZNmUNeh7JkJUHnKRduZDgcsp/uskV6p9RU+2ObLtvT/qbHhVJEwBdnilG5LCcovvTv4R8V/eQzqdsTVZ6mzENurO0S2+MmSGvqJJz6ppfxd3/kfgMJ3RTg40eVlQAAAABJRU5ErkJggg==></p>
+<p>: <data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA8AAAAIBAMAAADU/bjBAAAAMFBMVEX///8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx9fPp3uAAAAD3RSTlMAMs3v3Wa7EFSJmSJ2q0T3W+s/AAAAFElEQVR4XmP8zwAGH5kgNAMDeQwAhYECAE0ikyQAAAAASUVORK5CYII=></p>
+<p>: <data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAkAAAAMBAMAAABCcoqQAAAAMFBMVEX///8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx9fPp3uAAAAD3RSTlMARM27VDLdZonvdhAimatx8fy8AAAAE0lEQVR4XmP8z8DA8JGJAQQoIQGJdAIIWmdO+gAAAABJRU5ErkJggg==></p>
+<p>: <data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAJBAMAAAD0ltBnAAAAMFBMVEX////KysphYWE4ODgYGBgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAcF3b3AAAAAXRSTlMAQObYZgAAABVJREFUeF5j/M8AAkxgkjTqiwMDAwBEyAJF8Z/YxAAAAABJRU5ErkJggg==></p>
+<p>: <data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAkAAAAMBAMAAABCcoqQAAAAMFBMVEX///8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx9fPp3uAAAAD3RSTlMAVLvvzURm3SJ2EImZqzIu2C75AAAAE0lEQVR4XmP8z8DA8JGJAQQoIQGJdAIIWmdO+gAAAABJRU5ErkJggg==></p>
+<p>: <data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA8AAAAIBAMAAADU/bjBAAAAMFBMVEX////Kysq/v79hYWFUVFQ4ODgoKCgYGBgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABo0YZdAAAAAXRSTlMAQObYZgAAACdJREFUeF5j/M8ABD84PjKBaAYOBgYIg6EBxqiAMeBSHehqfjAwAAAFqAYA918FqAAAAABJRU5ErkJggg==></p>
+<p>: <data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAHBAMAAAAsQKpuAAAAMFBMVEX///8fHx/w8PC0tLSHh4dpaWlaWlo8PDwtLS1LS0t4eHilpaXS0tLh4eGWlpbDw8McFc5MAAAAAXRSTlMAQObYZgAAADNJREFUeF5jEBRcKCj4gFGQQeADw3+mBIYPDAwMQB4Q/GcCkQwFIJ7Bhf9MCxgYHjAwAAD92Ao/LA842QAAAABJRU5ErkJggg==></p>
+<p>: <data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAkAAAAMBAMAAABCcoqQAAAAMFBMVEX///8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx9fPp3uAAAAD3RSTlMARM27VDLdZonvdhAimatx8fy8AAAAE0lEQVR4XmP8z8DA8JGJAQQoIQGJdAIIWmdO+gAAAABJRU5ErkJggg==></p>
+<p>: <data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAkAAAAMBAMAAABCcoqQAAAAMFBMVEX///8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx9fPp3uAAAAD3RSTlMARM27VDLdZonvdhAimatx8fy8AAAAE0lEQVR4XmP8z8DA8JGJAQQoIQGJdAIIWmdO+gAAAABJRU5ErkJggg==></p>
+<p>: <data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAkAAAAMBAMAAABCcoqQAAAAMFBMVEX///8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx9fPp3uAAAAD3RSTlMARM27VDLdZonvdhAimatx8fy8AAAAE0lEQVR4XmP8z8DA8JGJAQQoIQGJdAIIWmdO+gAAAABJRU5ErkJggg==></p>
+<p>: <data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAkAAAAMBAMAAABCcoqQAAAAMFBMVEX///8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx9fPp3uAAAAD3RSTlMAVLvvzURm3SJ2EImZqzIu2C75AAAAE0lEQVR4XmP8z8DA8JGJAQQoIQGJdAIIWmdO+gAAAABJRU5ErkJggg==></p>
+<p>: <data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFMAAAANBAMAAAAnGE+0AAAAMFBMVEX///8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx9fPp3uAAAAD3RSTlMAZt3vu6uZdjIQzUSJIlS65ysbAAAAF0lEQVR4XmP8z0Ak+MiELoIbjCodpkoBMVUCCkRh06gAAAAASUVORK5CYII=></p>
+<p>: <data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADsAAAANBAMAAADlKAswAAAAMFBMVEX////V1dXKysq/v7+pqalubm5hYWFUVFRGRkY4ODgoKCgYGBgAAAAAAAAAAAAAAAB3TM3pAAAAAXRSTlMAQObYZgAAALVJREFUeF51kDEKwjAUhj8j7eauW8DBtVvXbC7qGbq6dRBnj9ALCB7BIzhI5x7AQ1RaKESkprENNOgXyIP/e8Pjn7ToUOeKnzwFhOb9Q/jBGKtr5aUOq49+6rC68FOH1fltHA7o/jQ1jgdEr1P7RzA3Y+n0+6urjIOxRczDbJ7hQtXla6vrGWzgzt4UlHFFJ3IWm8WE6amrDWQ3StkK6h2tSAlWW8rF0FoGTaV42eUmksigu/gD8SMlw7BswSwAAAAASUVORK5CYII=></p>
+<p>: <data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAANBAMAAAAzjdFVAAAAMFBMVEX////V1dXKysq/v7+pqalubm5hYWFUVFRGRkY4ODgoKCgYGBgAAAAAAAAAAAAAAAB3TM3pAAAAAXRSTlMAQObYZgAAAHlJREFUeF5j/M8wK+37SQcGBGBiYEhj4EQSAAuhA4iQA4ZQDrIIROgCptCRAxhCWMxiKGAQY0j4xsCQwPCFwYDxP1DkBwfDL7bPvAwMCxJ+sYFVfeEAqV77C6LrAEiIB4h/MygA5RIYrBkaYK7nZNjApsD8iSHz+yYArBgbqUXu8pIAAAAASUVORK5CYII=></p>
+      </article>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <p>Dikenocracy &mdash; public framework. Built openly alongside the old world.</p>
+  </footer>
+
+  <script src="../../script.js"></script>
+</body>
+</html>

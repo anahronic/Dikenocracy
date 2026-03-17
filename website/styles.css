@@ -405,11 +405,19 @@ img {
 /* ─── Protocol Layer List ───────────────────────────────────────────────────── */
 
 .protocol-layer {
+  display: block;
+  text-decoration: none;
   background: var(--bg-panel);
   border-left: 3px solid var(--accent-dim);
   border-radius: 0 4px 4px 0;
   padding: var(--gap-sm) var(--gap-md);
   margin-bottom: var(--gap-sm);
+  transition: border-color 0.2s, background 0.2s;
+}
+.protocol-layer:hover,
+.protocol-layer:focus-visible {
+  border-left-color: var(--accent);
+  background: rgba(59, 130, 246, 0.06);
 }
 
 .protocol-layer__id {
@@ -430,6 +438,90 @@ img {
 .protocol-layer__desc {
   font-size: 0.88rem;
   color: var(--text-secondary);
+}
+
+/* ─── Protocol Article (generated pages) ────────────────────────────────────── */
+
+.protocol-article {
+  line-height: 1.7;
+  color: var(--text-primary);
+}
+.protocol-article h2,
+.protocol-article h3,
+.protocol-article h4 {
+  margin-top: 1.6em;
+  margin-bottom: 0.5em;
+  color: var(--text-primary);
+}
+.protocol-article h2 { font-size: 1.4rem; }
+.protocol-article h3 { font-size: 1.15rem; }
+.protocol-article h4 { font-size: 1rem; }
+
+.protocol-article p {
+  margin-bottom: 0.9em;
+}
+.protocol-article ul,
+.protocol-article ol {
+  padding-left: 1.4em;
+  margin-bottom: 0.9em;
+}
+.protocol-article li {
+  margin-bottom: 0.35em;
+}
+.protocol-article hr {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 1.5em 0;
+}
+.protocol-article blockquote {
+  border-left: 3px solid var(--accent-dim);
+  padding: 0.5em 1em;
+  margin: 1em 0;
+  color: var(--text-secondary);
+  background: rgba(59, 130, 246, 0.04);
+  border-radius: 0 4px 4px 0;
+}
+.protocol-article pre {
+  background: var(--bg-panel);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 1em;
+  overflow-x: auto;
+  font-size: 0.85rem;
+  margin-bottom: 0.9em;
+}
+.protocol-article code {
+  font-family: var(--font-mono);
+  font-size: 0.88em;
+  background: var(--bg-panel);
+  padding: 0.15em 0.35em;
+  border-radius: 3px;
+}
+
+/* ─── Protocol Tables ───────────────────────────────────────────────────────── */
+
+.protocol-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1em 0;
+  font-size: 0.88rem;
+}
+.protocol-table th,
+.protocol-table td {
+  border: 1px solid var(--border);
+  padding: 0.5em 0.75em;
+  text-align: left;
+}
+.protocol-table th {
+  background: var(--bg-panel);
+  color: var(--accent);
+  font-weight: 600;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.protocol-table tr:nth-child(even) td {
+  background: rgba(255, 255, 255, 0.02);
 }
 
 /* ─── Converter Page ────────────────────────────────────────────────────────── */

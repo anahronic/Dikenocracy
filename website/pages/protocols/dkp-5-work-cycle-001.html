@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="DKP-5-WORK-CYCLE-001 — Dikenocracy Protocol" />
+  <title>DKP-5-WORK-CYCLE-001 — Dikenocracy</title>
+  <link rel="stylesheet" href="../../styles.css" />
+</head>
+<body>
+
+  <nav class="site-nav" aria-label="Main navigation">
+    <div class="site-nav__inner">
+      <a class="site-nav__brand" href="../../index.html">Dikenocracy</a>
+      <button class="site-nav__toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="site-nav-links">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="site-nav__links" id="site-nav-links" role="list">
+        <li><a href="../about.html">About</a></li>
+        <li><a href="../protocols.html" aria-current="page">Protocols</a></li>
+        <li><a href="../projects.html">Projects</a></li>
+        <li><a href="../converter.html">Converter</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main>
+    <div class="page-wrapper">
+      <p style="margin-bottom:var(--gap-md)"><a href="../protocols.html">&larr; All Protocols</a></p>
+
+      <article class="protocol-article">
+<h2>DKP-5-WORK-CYCLE-001</h2>
+<p><strong>Work Cycle & Recovery Rhythm Protocol</strong></p>
+<p><strong>Version:</strong> 0.3 <strong>Status:</strong> Draft (Architecture-stable) <strong>Layer:</strong> L5 — Human Infrastructure</p>
+<hr />
+<h3>0\. Preamble</h3>
+<p>DKP-5-WORK-CYCLE-001 defines the normative structure of work and recovery within Dikenocracy.</p>
+<p>This protocol treats work cycles as a <strong>physical, cognitive, and safety-critical infrastructure</strong>, not as a cultural habit, moral expectation, or legacy industrial convention. Human fatigue, error accumulation, and burnout are considered <strong>systemic risks</strong>, not individual failures.</p>
+<p>Accordingly, the protocol abandons the culturally inherited 7-day week as a core unit and replaces it with a <strong>physically neutral, mathematically exact, and biologically sustainable cycle</strong>, fully compatible with DTI timekeeping.</p>
+<hr />
+<h3>1\. Purpose</h3>
+<p>The purpose of DKP-5-WORK-CYCLE-001 is to:</p>
+<ul>
+<li>establish a deterministic, culture-neutral work/rest cycle,</li>
+<li>guarantee mandatory intra-day recovery,</li>
+<li>reduce systemic error, injury, and burnout risk,</li>
+<li>ensure compatibility with 24/7 critical infrastructure,</li>
+<li>decouple productivity from continuous human exhaustion,</li>
+<li>provide measurable constraints for workforce planning and simulation.</li>
+</ul>
+<hr />
+<h3>2\. Scope</h3>
+<p>This protocol applies to:</p>
+<ul>
+<li>all standard labor arrangements under DKP,</li>
+<li>public services and private enterprises,</li>
+<li>critical and non-critical sectors.</li>
+</ul>
+<p>Sector-specific adaptations are permitted <strong>only if</strong> all invariants defined herein are preserved.</p>
+<hr />
+<h3>3\. Definitions</h3>
+<ul>
+<li><strong>DTI-Day</strong></li>
+<p>A physical day indexed under DKP-0-TIME-001.</p>
+<li><strong>Cycle6</strong></li>
+<p>A 6-day overlay cycle defined as:   <code>CycleDay = DTI-Day mod 6</code></p>
+<li><strong>Workday (W)</strong></li>
+<p>A day containing a mandatory productive work obligation.</p>
+<li><strong>Restday (R)</strong></li>
+<p>A day containing no productive work obligation.</p>
+<li><strong>Presence Window</strong></li>
+<p>The total time a worker is scheduled to be available on a workday.</p>
+<li><strong>Productive Work Time</strong></li>
+<p>Time spent on direct labor tasks.</p>
+<li><strong>Recovery Block</strong></li>
+<p>Mandatory non-working time within a workday dedicated to recovery.</p>
+</ul>
+<hr />
+<h3>4\. Standard Work Cycle</h3>
+<h4>4.1 Cycle Structure</h4>
+<p>The normative default cycle is a <strong>6-day cycle</strong>:</p>
+<p><code>[W, W, R, W, W, R]</code></p>
+<p>Meaning:</p>
+<ul>
+<li>two consecutive workdays,</li>
+<li>one restday,</li>
+<li>two consecutive workdays,</li>
+<li>one restday.</li>
+</ul>
+<h4>4.2 Properties</h4>
+<ul>
+<li>Maximum consecutive workdays: <strong>2</strong></li>
+<li>Rest frequency: every <strong>≤ 3 days</strong></li>
+<li>Full compatibility with a 360-day DTI year:</li>
+<p>* 360 / 6 \= 60 exact cycles per year</p>
+</ul>
+<p>The 7-day week is explicitly <strong>non-normative</strong> and may exist only as a local cultural overlay without legal or computational authority.</p>
+<hr />
+<h3>5\. Daily Workday Structure</h3>
+<h4>5.1 Normative Time Allocation (Workday)</h4>
+<p>Each workday SHALL be structured as follows:</p>
+<ul>
+<li><strong>Total Presence Window:</strong> 10 hours</li>
+<li><strong>Productive Work Time:</strong> 8 hours</li>
+<li><strong>Mandatory Recovery Block:</strong> 2 hours</li>
+</ul>
+<p>Formally:</p>
+<p>Presence \= 10h Work \= 8h Recovery \= 2h</p>
+<h4>5.2 Recommended Default Layout</h4>
+<p>A recommended (but not mandatory) structure:</p>
+<ul>
+<li>4 hours productive work</li>
+<li>2 hours recovery</li>
+<li>4 hours productive work</li>
+</ul>
+<h4>5.3 Recovery Block Rules</h4>
+<ul>
+<li>The recovery block:</li>
+<p><em> is not counted as work time,   </em> cannot be removed, reduced, or monetized,   * does not require justification.</p>
+<li>Permitted recovery activities include:</li>
+<p><em> meals,   </em> sleep or rest,   <em> personal or family needs,   </em> non-work mobility.</p>
+</ul>
+<p>The recovery block is considered <strong>system-required</strong>, not discretionary.</p>
+<hr />
+<h3>6\. Cycle Accounting</h3>
+<p>Per 6-day cycle:</p>
+<ul>
+<li>Workdays: 4</li>
+<li>Restdays: 2</li>
+<li>Productive work: 32 hours</li>
+<li>Presence: 40 hours</li>
+<li>Recovery: 8 hours</li>
+</ul>
+<p>Per DTI-Year (360 days):</p>
+<ul>
+<li>Workdays: 240</li>
+<li>Productive work: 1,920 hours</li>
+<li>Presence: 2,400 hours</li>
+<li>Mandatory recovery: 480 hours</li>
+</ul>
+<hr />
+<h3>7\. Recovery Invariant (Hard Constraint)</h3>
+<p>Under no circumstances may a system-approved schedule violate the following invariant:</p>
+<ul>
+<li>No worker may be assigned more than <strong>2 consecutive workdays</strong> without a restday</li>
+<p><strong>OR</strong></p>
+<li>An equivalent, demonstrably safe recovery compensation must be provided.</li>
+</ul>
+<p>Violation of this invariant constitutes a <strong>system planning failure</strong>, not individual misconduct.</p>
+<hr />
+<h3>8\. 24/7 and High-Intensity Environments</h3>
+<h4>8.1 Shift-Based Continuity</h4>
+<p>Continuous operation (e.g., hospitals, emergency services, infrastructure control) SHALL be achieved through:</p>
+<ul>
+<li>multiple shifts,</li>
+<li>workforce scaling,</li>
+<li>shift overlap,</li>
+<li>capacity buffering.</li>
+</ul>
+<p>Continuous service SHALL NOT be achieved through exhaustion of individual workers.</p>
+<hr />
+<h4>8.2 Shift Requirements</h4>
+<p>Each shift SHALL preserve:</p>
+<ul>
+<li>a 10-hour presence window,</li>
+<li>8 hours productive work,</li>
+<li><strong>minimum 2 hours recovery</strong> per shift.</li>
+</ul>
+<p>For high-intensity environments:</p>
+<ul>
+<li><strong>3–4 hours recovery per shift is recommended</strong>, potentially fragmented.</li>
+</ul>
+<h4>8.3 Overlaps and Peak Load</h4>
+<ul>
+<li>Overlapping shifts during peak hours are:</li>
+<p><em> explicitly permitted,   </em> treated as capacity design, not inefficiency.</p>
+<li>Simultaneous multi-shift presence during peaks is considered normal and encouraged.</li>
+</ul>
+<hr />
+<h3>9\. Monitoring & KPIs (Minimum Set)</h3>
+<p>Implementations SHALL monitor at least:</p>
+<ul>
+<li>error and incident rates,</li>
+<li>sick leave frequency,</li>
+<li>staff attrition,</li>
+<li>output per productive hour,</li>
+<li>recovery compliance rate.</li>
+</ul>
+<p>Persistent degradation in these metrics SHALL trigger mandatory schedule review.</p>
+<hr />
+<h3>10\. Exceptions</h3>
+<p>Exceptions are permitted only:</p>
+<ul>
+<li>in clearly defined crisis scopes,</li>
+<li>for limited duration,</li>
+<li>with mandatory recovery compensation,</li>
+<li>and with full traceability under DKP crisis protocols.</li>
+</ul>
+<p>No exception may establish precedent.</p>
+<hr />
+<h3>11\. Architectural Principle</h3>
+<p>This protocol establishes a three-layer human time model:</p>
+<ul>
+<li><strong>Productive Work</strong></li>
+<li><strong>Mandatory Recovery</strong></li>
+<li><strong>Full Rest</strong></li>
+</ul>
+<p>Human recovery is treated as <strong>infrastructure</strong>, not as a personal optimization problem.</p>
+<hr />
+<h3>12\. Summary Statement</h3>
+<p>DKP-5-WORK-CYCLE-001 replaces legacy industrial work rhythms with a mathematically exact, biologically sustainable, and governance-compatible cycle.</p>
+<p>It ensures that:</p>
+<ul>
+<li>time is counted deterministically,</li>
+<li>recovery is guaranteed by design,</li>
+<li>productivity is stabilized through prevention of systemic harm,</li>
+<li>and continuous services are achieved through planning, not sacrifice.</li>
+</ul>
+<hr />
+      </article>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <p>Dikenocracy &mdash; public framework. Built openly alongside the old world.</p>
+  </footer>
+
+  <script src="../../script.js"></script>
+</body>
+</html>
