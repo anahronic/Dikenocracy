@@ -1,4 +1,5 @@
 from converter_dti.domain.dti import jdn_to_dti
+from converter_dti.domain.formatting import format_dti_canonical
 from converter_dti.domain.gregorian import gregorian_to_jdn
 
 
@@ -28,3 +29,4 @@ def test_protocol_vector_2000_01_01():
     dti = jdn_to_dti(jdn)
     assert jdn == 2451545
     assert (dti.dy, dti.doy) == (6809, 306)
+    assert format_dti_canonical(dti) == "DY6809-306"

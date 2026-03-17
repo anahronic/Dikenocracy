@@ -15,6 +15,18 @@ Core protocol rules implemented:
 - DOY outside `1..360` is rejected
 - No leap/religious anchoring in DTI logic
 
+## Protocol inconsistency note
+
+For `2000-01-01`, canonical formula output is:
+- `JDN = 2451545`
+- `DY = floor(2451545 / 360) = 6809`
+- `DOY = (2451545 mod 360) + 1 = 306`
+- Canonical DTI: `DY6809-306`
+
+An older table value `DY6815-026` conflicts with the canonical formula above and is not adopted by this implementation.
+
+See `PROTOCOL_NOTES.md` for the same clarification in short form.
+
 ## Architecture
 
 ```text
