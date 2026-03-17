@@ -1,0 +1,15 @@
+[project]
+name = "converter-dti"
+version = "0.1.0"
+description = "Deterministic DTI converter (DKP-0-TIME-001)"
+requires-python = ">=3.10"
+dependencies = [
+  "fastapi==0.115.6",
+  "uvicorn==0.32.1",
+  "pydantic==2.10.3",
+  "streamlit==1.39.0",
+  "pyluach==2.3.0",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["converter_dti/tests"]
