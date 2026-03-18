@@ -107,10 +107,43 @@ def inline(s):
     return s
 
 
+# ── Legacy metadata patterns (to strip from source) ────────────────────────
+# These appear in the source MD as inline version/status/layer blocks that we
+# replace with the standardized protocol-meta div in the template.
+_META_PATTERNS = [
+    # "Version: X.X  Status: ... Layer: ..." (all on one line)
+    re.compile(r'^(?:\*\*)?Version:?\*?\*?\s*:?\s*\d+\.\d+', re.IGNORECASE),
+    # "Status: Architecture Lock ..." standalone line
+    re.compile(r'^\s*\*?\*?Status:?\*?\*?\s*:', re.IGNORECASE),
+    # "Layer: LX ..." standalone line
+    re.compile(r'^\s*\*?\*?Layer:?\*?\*?\s*:', re.IGNORECASE),
+    # "Anchored to: ..." standalone line
+    re.compile(r'^\s*\*?\*?Anchored to:?\*?\*?\s*:', re.IGNORECASE),
+    # "### **Version 1.0**" heading
+    re.compile(r'^#{1,6}\s+\*?\*?Version\s+\d', re.IGNORECASE),
+    # "**Version 1.0**" bold standalone
+    re.compile(r'^\*\*Version\s+\d.*\*\*\s*$', re.IGNORECASE),
+]
+
+def _is_legacy_meta(line):
+    """Return True if line is a legacy metadata block to strip."""
+    s = line.strip()
+    if not s:
+        return False
+    for pat in _META_PATTERNS:
+        if pat.search(s):
+            return True
+    return False
+
+
 # ── Markdown to HTML converter ──────────────────────────────────────────────
 def md_to_html(md_lines):
     """Convert markdown lines to HTML. Returns (html_string, toc_entries).
     toc_entries = [(level, id, text), ...]"""
+
+    # Strip legacy metadata lines before conversion
+    md_lines = [l for l in md_lines if not _is_legacy_meta(l)]
+
     out = []
     toc = []
     in_ul = False
