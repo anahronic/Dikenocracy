@@ -703,8 +703,9 @@ img {
   z-index: 40;
 }
 
-.protocol-side-nav--prev { left: max(0px, calc((100vw - 1400px) / 2 - 2.5rem)); }
-.protocol-side-nav--next { right: max(0px, calc((100vw - 1400px) / 2 - 2.5rem)); }
+/* left: shell-margin + map(200) + toc(260) + 2 gaps(1.5rem each) */
+.protocol-side-nav--prev { left: max(0px, calc(50vw - 240px + 2rem)); }
+.protocol-side-nav--next { right: max(0px, calc(50vw - 700px)); }
 
 .protocol-side-nav__btn {
   display: flex;
@@ -872,6 +873,7 @@ img {
     display: none;
   }
 
+  /* No map at this width: fall back to viewport edges */
   .protocol-side-nav--prev { left: 0; }
   .protocol-side-nav--next { right: 0; }
 }
