@@ -562,6 +562,14 @@ img {
   border-bottom: 1px solid var(--border);
 }
 
+.protocol-meta {
+  font-family: var(--font-ui);
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+  letter-spacing: 0.03em;
+  margin-bottom: 1.5em;
+}
+
 .protocol-article h2 {
   font-family: var(--font-main);
   font-size: 1.3rem;

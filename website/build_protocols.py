@@ -186,12 +186,15 @@ def md_to_html(md_lines):
             continue
 
         # heading
-        m = re.match(r'^(#{1,6})\s+(.*)', line)
+        m = re.match(r'^(#{1,6})\s*(.*)', line)
         if m:
+            text = clean_heading_text(m.group(2))
+            # Skip bare heading markers (e.g. lone "###" with no text)
+            if not text:
+                continue
             flush_para()
             close_list()
             level = len(m.group(1))
-            text = clean_heading_text(m.group(2))
             h = min(level + 1, 4)
             hid = heading_id(text)
             out.append(f'<h{h} id="{hid}">{inline(text)}</h{h}>')
@@ -506,6 +509,7 @@ def page_html(title, body_html, slug, toc_items,
 
         <article class="protocol-article">
           <h1>{esc_title}</h1>
+          <div class="protocol-meta">Version: 1.0 &middot; Status: Freeze</div>
 {body_html}
         </article>
 
@@ -538,7 +542,8 @@ for title, body_lines in blocks:
 # Second pass: generate with prev/next
 for idx, (title, slug, body_lines) in enumerate(valid_blocks):
     _id_counts.clear()
-    body_html, toc_entries = md_to_html(body_lines)
+    # Skip the boundary/title line — it's already used as the page <h1>
+    body_html, toc_entries = md_to_html(body_lines[1:])
     toc_items = toc_html(toc_entries)
 
     prev_slug = valid_blocks[idx - 1][1] if idx > 0 else None

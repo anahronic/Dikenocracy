@@ -149,13 +149,23 @@
         <nav id="toc-list">
           <div class="protocol-toc__heading">On This Page</div>
           <ul class="protocol-toc__list">
-          <li><a href="#dkp-0-oracle-001">DKP-0-ORACLE-001</a></li>
           <li class="toc__sub"><a href="#physical-truth-layer-protocol-ptl">Physical Truth Layer Protocol (PTL)</a></li>
           <li class="toc__sub"><a href="#1-purpose">1. Purpose</a></li>
           <li class="toc__sub"><a href="#2-system-position-and-anchoring">2. System Position and Anchoring</a></li>
           <li class="toc__sub"><a href="#3-scope">3. Scope</a></li>
           <li class="toc__sub"><a href="#4-core-definitions">4. Core Definitions</a></li>
+          <li class="toc__sub"><a href="#41-physical-state-vector-st">4.1 Physical State Vector S(t)</a></li>
+          <li class="toc__sub"><a href="#42-oracle-source">4.2 Oracle Source</a></li>
+          <li class="toc__sub"><a href="#43-oracle-owner">4.3 Oracle Owner</a></li>
+          <li class="toc__sub"><a href="#44-confidence-weight-w">4.4 Confidence Weight wᵢ</a></li>
+          <li class="toc__sub"><a href="#45-coverage">4.5 Coverage</a></li>
+          <li class="toc__sub"><a href="#46-data-staleness-ttl">4.6 Data Staleness (TTL)</a></li>
+          <li class="toc__sub"><a href="#47-independent-oracle-classes">4.7 Independent Oracle Classes</a></li>
+          <li class="toc__sub"><a href="#48-divergence-event">4.8 Divergence Event</a></li>
           <li class="toc__sub"><a href="#5-measurement-classification-mandatory">5. Measurement Classification (Mandatory)</a></li>
+          <li class="toc__sub"><a href="#51-direct-physical-measurements">5.1 Direct Physical Measurements</a></li>
+          <li class="toc__sub"><a href="#52-proxy-based-measurements">5.2 Proxy-Based Measurements</a></li>
+          <li class="toc__sub"><a href="#53-non-measurable-domains-explicitly-excluded">5.3 Non-Measurable Domains (Explicitly Excluded)</a></li>
           <li class="toc__sub"><a href="#6-independent-oracle-classes">6. Independent Oracle Classes</a></li>
           <li class="toc__sub"><a href="#7-data-ingestion-rules">7. Data Ingestion Rules</a></li>
           <li class="toc__sub"><a href="#8-oracle-weighting-and-anti-collusion-constraints">8. Oracle Weighting and Anti-Collusion Constraints</a></li>
@@ -179,7 +189,7 @@
 
         <article class="protocol-article">
           <h1>DKP-0-ORACLE-001</h1>
-<h2 id="dkp-0-oracle-001">DKP-0-ORACLE-001</h2>
+          <div class="protocol-meta">Version: 1.0 &middot; Status: Freeze</div>
 <h3 id="physical-truth-layer-protocol-ptl">Physical Truth Layer Protocol (PTL)</h3>
 <p><strong>Version:</strong> 1.1  <strong>Status:</strong> Architecture Lock Candidate  <strong>Layer:</strong> L0  <strong>Anchored to:</strong> Genesis Block #0 (2025-12-10)</p>
 <hr />
