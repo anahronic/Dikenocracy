@@ -121,37 +121,46 @@ img {
   z-index: 11;
 }
 
-/* Enter button */
-.enter-btn {
+/* Enter CTA (welcome screen) */
+.enter-cta {
   position: relative;
   z-index: 20;
+  text-align: center;
+}
+
+.enter-cta__btn {
+  display: inline-block;
+  padding: 0.85rem 2.4rem;
+  font-family: var(--font-ui);
+  font-size: 1rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  border-radius: 4px;
+  border: 1px solid var(--accent);
+  color: var(--accent);
+  background: rgba(10, 10, 12, 0.65);
   cursor: pointer;
-  border: none;
-  background: none;
-  padding: 0;
-  display: block;
-  transition: transform 0.25s ease, filter 0.25s ease;
+  backdrop-filter: blur(6px);
+  transition: background 0.2s ease, color 0.2s ease, box-shadow 0.25s ease;
+  text-decoration: none;
 }
 
-.enter-btn:hover,
-.enter-btn:focus {
-  transform: translateY(-4px) scale(1.03);
-  filter: brightness(1.15);
+.enter-cta__btn:hover,
+.enter-cta__btn:focus {
+  background: var(--accent);
+  color: var(--bg-deep);
+  text-decoration: none;
   outline: none;
+  box-shadow: 0 0 24px rgba(176, 107, 255, 0.3);
 }
 
-.enter-btn img {
-  width: clamp(140px, 22vw, 260px);
-  height: auto;
-  border-radius: 6px;
-  /* subtle glow on hover, no solid background */
-  filter: drop-shadow(0 0 12px rgba(176, 107, 255, 0.15));
-  transition: filter 0.25s ease;
-}
-
-.enter-btn:hover img,
-.enter-btn:focus img {
-  filter: drop-shadow(0 0 20px rgba(176, 107, 255, 0.35));
+.enter-cta__sub {
+  display: block;
+  margin-top: 0.75rem;
+  font-size: 0.8rem;
+  letter-spacing: 0.06em;
+  color: var(--text-secondary);
+  opacity: 0.85;
 }
 
 /* ─── Site Navigation ────────────────────────────────────────────────────────── */
@@ -450,8 +459,8 @@ img {
 /* Protocol shell: TOC sidebar + content on desktop */
 .protocol-shell {
   display: flex;
-  gap: var(--gap-lg);
-  max-width: 1200px;
+  gap: var(--gap-md);
+  max-width: 1400px;
   margin: 0 auto;
   padding: var(--gap-md) var(--gap-md) var(--gap-lg);
 }
@@ -677,9 +686,74 @@ img {
   background: rgba(255, 255, 255, 0.02);
 }
 
-/* ─── Protocol Previous / Next Navigation ───────────────────────────────────── */
+/* ─── Fixed Side Protocol Navigation (prev / next) ─────────────────────────── */
 
-.protocol-nav {
+.protocol-side-nav {
+  position: fixed;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 40;
+}
+
+.protocol-side-nav--prev { left: 0; }
+.protocol-side-nav--next { right: 0; }
+
+.protocol-side-nav__btn {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.6rem 0.65rem;
+  font-family: var(--font-ui);
+  font-size: 0.72rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  background: rgba(17, 17, 23, 0.85);
+  backdrop-filter: blur(6px);
+  border: 1px solid var(--border);
+  text-decoration: none;
+  transition: color 0.15s, background 0.15s, border-color 0.15s, padding 0.2s;
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  max-height: 220px;
+  overflow: hidden;
+}
+
+.protocol-side-nav--prev .protocol-side-nav__btn {
+  border-radius: 0 4px 4px 0;
+  border-left: none;
+}
+
+.protocol-side-nav--next .protocol-side-nav__btn {
+  border-radius: 4px 0 0 4px;
+  border-right: none;
+}
+
+.protocol-side-nav__btn:hover,
+.protocol-side-nav__btn:focus {
+  color: var(--accent);
+  border-color: var(--accent);
+  background: rgba(17, 17, 23, 0.95);
+  text-decoration: none;
+  outline: none;
+}
+
+.protocol-side-nav__btn .nav-arrow {
+  font-size: 1rem;
+  line-height: 1;
+  writing-mode: horizontal-tb;
+}
+
+.protocol-side-nav__btn .nav-label {
+  white-space: nowrap;
+}
+
+.protocol-side-nav__disabled {
+  display: none;
+}
+
+/* Bottom inline fallback nav (always present for in-flow context) */
+.protocol-nav-bottom {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -689,47 +763,107 @@ img {
   border-top: 1px solid var(--border);
 }
 
-.protocol-nav__link {
-  display: flex;
-  align-items: center;
-  gap: 0.6rem;
-  color: var(--text-secondary);
-  font-size: 0.82rem;
-  text-decoration: none;
-  transition: color 0.15s;
-  max-width: 45%;
+.protocol-nav-bottom .btn {
+  font-size: 0.78rem;
+  padding: 0.5rem 1rem;
 }
 
-.protocol-nav__link:hover {
+.protocol-nav-bottom__spacer {
+  flex: 1;
+}
+
+/* ─── Global Protocol Map (left sidebar) ────────────────────────────────────── */
+
+.protocol-map {
+  flex: 0 0 200px;
+  position: sticky;
+  top: 72px;
+  max-height: calc(100vh - 88px);
+  overflow-y: auto;
+  padding-top: var(--gap-sm);
+  scrollbar-width: thin;
+  scrollbar-color: var(--border) transparent;
+}
+
+.protocol-map__heading {
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 0.5rem;
+  padding-left: 0.5rem;
+}
+
+.protocol-map__layer {
+  margin-bottom: 0.6rem;
+}
+
+.protocol-map__layer-label {
+  display: block;
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  padding: 0.2rem 0.5rem;
+  cursor: default;
+}
+
+.protocol-map__layer-label--active {
+  color: var(--accent);
+}
+
+.protocol-map__links {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 0 0.5rem;
+  border-left: 1px solid var(--border);
+}
+
+.protocol-map__links li {
+  margin: 0;
+}
+
+.protocol-map__links a {
+  display: block;
+  padding: 0.15rem 0.5rem;
+  font-size: 0.72rem;
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: color 0.15s;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.protocol-map__links a:hover {
   color: var(--accent);
   text-decoration: none;
 }
 
-.protocol-nav__link img {
-  flex-shrink: 0;
-  opacity: 0.7;
-  transition: opacity 0.15s;
-  border-radius: 4px;
+.protocol-map__links a.pmap-active {
+  color: var(--accent);
+  font-weight: 600;
+  border-left: 2px solid var(--accent);
+  margin-left: -1px;
 }
 
-.protocol-nav__link:hover img {
-  opacity: 1;
-}
+/* ─── Protocol In-page TOC heading ──────────────────────────────────────────── */
 
-.protocol-nav__prev {
-  text-align: left;
-}
-
-.protocol-nav__next {
-  text-align: right;
-  margin-left: auto;
-}
-
-.protocol-nav__disabled {
-  visibility: hidden;
+.protocol-toc__heading {
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 0.5rem;
 }
 
 /* ─── Protocol page mobile ──────────────────────────────────────────────────── */
+
+@media (max-width: 1100px) {
+  .protocol-map {
+    display: none;
+  }
+}
 
 @media (max-width: 900px) {
   .protocol-shell {
@@ -790,13 +924,47 @@ img {
     max-width: 100%;
   }
 
-  .protocol-nav__link span {
-    display: none;
+  /* Side nav → bottom sticky on mobile */
+  .protocol-side-nav {
+    position: fixed;
+    top: auto;
+    bottom: 0;
+    transform: none;
+    writing-mode: horizontal-tb;
   }
 
-  .protocol-nav__link img {
-    width: 40px;
-    height: auto;
+  .protocol-side-nav--prev {
+    left: 0;
+    right: auto;
+  }
+
+  .protocol-side-nav--next {
+    right: 0;
+    left: auto;
+  }
+
+  .protocol-side-nav__btn {
+    writing-mode: horizontal-tb;
+    padding: 0.55rem 0.75rem;
+    font-size: 0.7rem;
+    max-height: none;
+    border-radius: 4px 4px 0 0;
+  }
+
+  .protocol-side-nav--prev .protocol-side-nav__btn {
+    border-radius: 0 4px 0 0;
+    border-left: none;
+    border-bottom: none;
+  }
+
+  .protocol-side-nav--next .protocol-side-nav__btn {
+    border-radius: 4px 0 0 0;
+    border-right: none;
+    border-bottom: none;
+  }
+
+  .protocol-side-nav__btn .nav-label {
+    display: none;
   }
 }
 

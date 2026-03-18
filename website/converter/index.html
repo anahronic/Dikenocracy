@@ -98,9 +98,9 @@
     }
     .result.visible { display: block; }
     .result h2 { font-size: 1rem; color: var(--accent); margin-bottom: var(--gap-sm); }
-    .result-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--gap-sm) var(--gap-md); }
-    .result-grid dt { color: var(--text-dim); font-size: 0.85rem; }
-    .result-grid dd { font-family: "SF Mono", "Fira Code", monospace; font-size: 1.05rem; }
+    .result-grid { display: grid; grid-template-columns: 1fr; gap: var(--gap-sm); }
+    .result-grid dt { color: var(--text-dim); font-size: 0.8rem; margin-bottom: 0.1rem; }
+    .result-grid dd { font-family: "SF Mono", "Fira Code", monospace; font-size: 1.05rem; margin-bottom: 0.5rem; }
     .error-msg { color: #e74c3c; margin-top: var(--gap-md); font-size: 0.9rem; display: none; }
     .error-msg.visible { display: block; }
 
@@ -341,11 +341,11 @@
       const greg = fmtGreg({ year, month, day });
 
       showResult([
-        ['Gregorian', greg],
-        ['JDN', String(jdn)],
-        ['DTI', fmtDti(dti)],
-        ['DY', String(dti.dy)],
-        ['DOY', String(dti.doy)],
+        ['Gregorian Date', greg],
+        ['Julian Day Number (JDN)', String(jdn)],
+        ['Dikenocratic Time Identifier (DTI)', fmtDti(dti)],
+        ['Dikenocratic Year (DY)', String(dti.dy)],
+        ['Day of Dikenocratic Year (DOY)', String(dti.doy)],
       ]);
     } catch (e) { showError(e.message); }
   });
@@ -361,12 +361,12 @@
       const greg = jdnToGregorian(jdn);
 
       showResult([
-        ['DTI', fmtDti({ dy, doy })],
-        ['JDN', String(jdn)],
-        ['Gregorian', fmtGreg(greg)],
-        ['Year', String(greg.year)],
-        ['Month', String(greg.month)],
-        ['Day', String(greg.day)],
+        ['Dikenocratic Time Identifier (DTI)', fmtDti({ dy, doy })],
+        ['Julian Day Number (JDN)', String(jdn)],
+        ['Gregorian Date', fmtGreg(greg)],
+        ['Gregorian Year', String(greg.year)],
+        ['Gregorian Month', String(greg.month)],
+        ['Gregorian Day', String(greg.day)],
       ]);
     } catch (e) { showError(e.message); }
   });
@@ -374,6 +374,23 @@
   /* ── Pre-fill today ───────────────────────────────────── */
   const today = new Date();
   $('#g-date').value = today.toISOString().slice(0, 10);
+
+  /* ── Enter key support ────────────────────────────────── */
+  function handleEnter(panelId, buttonId) {
+    var panel = document.getElementById(panelId);
+    var btn = document.getElementById(buttonId);
+    if (!panel || !btn) return;
+    panel.querySelectorAll('input').forEach(function (input) {
+      input.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter') {
+          e.preventDefault();
+          btn.click();
+        }
+      });
+    });
+  }
+  handleEnter('panel-g2d', 'btn-g2d');
+  handleEnter('panel-d2g', 'btn-d2g');
   </script>
 </body>
 </html>

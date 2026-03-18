@@ -42,22 +42,17 @@
     aria-label="Dikenocracy welcome screen"
   >
     <!--
-      Enter button — uses enter_button.png as the visual.
-      Full button area is clickable. Keyboard-accessible via <button> and Enter/Space.
+      Enter CTA — clean text button matching site design language.
+      Keyboard-accessible via <a> element.
     -->
-    <button
-      class="enter-btn"
-      onclick="window.location.href='pages/about.html'"
-      onkeydown="if(event.key==='Enter'||event.key===' '){window.location.href='pages/about.html';}"
-      aria-label="Enter the Dikenocracy Framework — navigate to the About page"
-      tabindex="0"
-    >
-      <img
-        src="assets/enter.webp"
-        alt="Connect to Reality — Enter the Dikenocracy Framework"
-        loading="lazy"
-      />
-    </button>
+    <div class="enter-cta">
+      <a
+        class="enter-cta__btn"
+        href="pages/about.html"
+        aria-label="Enter the Dikenocracy Framework — navigate to the About page"
+      >Connect to Reality</a>
+      <span class="enter-cta__sub">Enter the Dikenocracy framework</span>
+    </div>
   </section>
 
   <script src="script.js"></script>

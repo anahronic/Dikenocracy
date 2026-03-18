@@ -315,42 +315,141 @@ def toc_html(entries):
 
 
 # ── Page HTML template ──────────────────────────────────────────────────────
+
+# Protocol layer map for global navigation sidebar
+PROTOCOL_LAYERS = [
+    ("Foundation", [
+        ("code-of-planetary-synergy", "Synergy Code"),
+    ]),
+    ("L0 — Physical Truth", [
+        ("dkp-0-oracle-001", "ORACLE"),
+        ("dkp-0-time-001", "TIME"),
+    ]),
+    ("L1 — Core", [
+        ("dkp-1-axioms-001", "AXIOMS"),
+        ("dkp-1-identity-001", "IDENTITY"),
+        ("dkp-1-impact-001", "IMPACT"),
+        ("dkp-1-justice-001", "JUSTICE"),
+    ]),
+    ("L2 — Economic", [
+        ("dkp-2-assets-001", "ASSETS"),
+        ("dkp-2-finance-001", "FINANCE"),
+        ("dkp-2-labor-001", "LABOR"),
+    ]),
+    ("L3 — Security", [
+        ("dkp-3-antiterror-001", "ANTITERROR"),
+        ("dkp-3-defense-001", "DEFENSE"),
+        ("dkp-3-internal-sec-001", "INTERNAL-SEC"),
+        ("dkp-3-police-001", "POLICE"),
+    ]),
+    ("L4 — Stability", [
+        ("dkp-4-crisis-001", "CRISIS"),
+        ("dkp-4-error-001", "ERROR"),
+        ("dkp-4-upgrade-001", "UPGRADE"),
+    ]),
+    ("L5 — Human Infra", [
+        ("dkp-5-culture-001", "CULTURE"),
+        ("dkp-5-edu-001", "EDU"),
+        ("dkp-5-habitat-001", "HABITAT"),
+        ("dkp-5-info-001", "INFO"),
+        ("dkp-5-transport-001", "TRANSPORT"),
+        ("dkp-5-work-cycle-001", "WORK-CYCLE"),
+    ]),
+    ("L6 — Intersystem", [
+        ("dkp-6-exit-001", "EXIT"),
+        ("dkp-6-integration-001", "INTEGRATION"),
+    ]),
+    ("L7 — Meta / Scope", [
+        ("dkp-7-ai-subject-001", "AI-SUBJECT"),
+        ("dkp-7-privacy-001", "PRIVACY"),
+        ("dkp-7-scope-001", "SCOPE"),
+        ("dkp-7-transparency-001", "TRANSPARENCY"),
+    ]),
+    ("L8 — Infrastructure", [
+        ("dkp-8-audit-001", "AUDIT"),
+        ("dkp-8-interop-001", "INTEROP"),
+        ("dkp-8-simulation-001", "SIMULATION"),
+    ]),
+    ("Appendix", [
+        ("appendix-a-design-rationale-safeguards-normative", "Appendix A"),
+    ]),
+]
+
+def protocol_map_html(current_slug):
+    """Build the global protocol layer navigation sidebar."""
+    parts = []
+    parts.append('      <aside class="protocol-map" aria-label="Protocol map">')
+    parts.append('        <div class="protocol-map__heading">Protocol Map</div>')
+    for layer_name, protocols in PROTOCOL_LAYERS:
+        # Check if current protocol is in this layer
+        layer_active = any(slug == current_slug for slug, _ in protocols)
+        label_cls = ' protocol-map__layer-label--active' if layer_active else ''
+        parts.append(f'        <div class="protocol-map__layer">')
+        parts.append(f'          <span class="protocol-map__layer-label{label_cls}">{html.escape(layer_name)}</span>')
+        parts.append(f'          <ul class="protocol-map__links">')
+        for slug, short_name in protocols:
+            active_cls = ' class="pmap-active"' if slug == current_slug else ''
+            parts.append(f'            <li><a href="{slug}.html"{active_cls}>{html.escape(short_name)}</a></li>')
+        parts.append(f'          </ul>')
+        parts.append(f'        </div>')
+    parts.append('      </aside>')
+    return "\n".join(parts)
+
+
 def page_html(title, body_html, slug, toc_items,
               prev_slug, prev_title, next_slug, next_title):
     esc_title = html.escape(title)
     canon = f"{DOMAIN}/pages/protocols/{slug}.html"
 
-    # prev/next nav
-    nav_parts = []
-    nav_parts.append('        <nav class="protocol-nav" aria-label="Protocol navigation">')
+    # Fixed side prev/next navigation
+    side_nav = []
     if prev_slug:
         esc_prev = html.escape(prev_title or "")
-        nav_parts.append(f'          <a class="protocol-nav__link protocol-nav__prev" href="{prev_slug}.html" aria-label="Previous protocol: {esc_prev}">')
-        nav_parts.append(f'            <img src="../../assets/previous.webp" alt="" width="48" height="32" />')
-        nav_parts.append(f'            <span>{esc_prev}</span>')
-        nav_parts.append(f'          </a>')
-    else:
-        nav_parts.append(f'          <span class="protocol-nav__link protocol-nav__prev protocol-nav__disabled"></span>')
+        side_nav.append(f'  <div class="protocol-side-nav protocol-side-nav--prev">')
+        side_nav.append(f'    <a class="protocol-side-nav__btn" href="{prev_slug}.html" aria-label="Previous protocol: {esc_prev}">')
+        side_nav.append(f'      <span class="nav-arrow">&lsaquo;</span>')
+        side_nav.append(f'      <span class="nav-label">{esc_prev}</span>')
+        side_nav.append(f'    </a>')
+        side_nav.append(f'  </div>')
     if next_slug:
         esc_next = html.escape(next_title or "")
-        nav_parts.append(f'          <a class="protocol-nav__link protocol-nav__next" href="{next_slug}.html" aria-label="Next protocol: {esc_next}">')
-        nav_parts.append(f'            <span>{esc_next}</span>')
-        nav_parts.append(f'            <img src="../../assets/next.webp" alt="" width="48" height="32" />')
-        nav_parts.append(f'          </a>')
+        side_nav.append(f'  <div class="protocol-side-nav protocol-side-nav--next">')
+        side_nav.append(f'    <a class="protocol-side-nav__btn" href="{next_slug}.html" aria-label="Next protocol: {esc_next}">')
+        side_nav.append(f'      <span class="nav-label">{esc_next}</span>')
+        side_nav.append(f'      <span class="nav-arrow">&rsaquo;</span>')
+        side_nav.append(f'    </a>')
+        side_nav.append(f'  </div>')
+    side_nav_html = "\n".join(side_nav)
+
+    # Bottom inline nav (text buttons)
+    bottom_nav = []
+    bottom_nav.append('        <nav class="protocol-nav-bottom" aria-label="Protocol navigation">')
+    if prev_slug:
+        esc_prev = html.escape(prev_title or "")
+        bottom_nav.append(f'          <a class="btn" href="{prev_slug}.html" aria-label="Previous protocol: {esc_prev}">&larr; Previous Protocol</a>')
     else:
-        nav_parts.append(f'          <span class="protocol-nav__link protocol-nav__next protocol-nav__disabled"></span>')
-    nav_parts.append('        </nav>')
-    nav_html = "\n".join(nav_parts)
+        bottom_nav.append(f'          <span class="protocol-nav-bottom__spacer"></span>')
+    if next_slug:
+        esc_next = html.escape(next_title or "")
+        bottom_nav.append(f'          <a class="btn" href="{next_slug}.html" aria-label="Next protocol: {esc_next}">Next Protocol &rarr;</a>')
+    else:
+        bottom_nav.append(f'          <span class="protocol-nav-bottom__spacer"></span>')
+    bottom_nav.append('        </nav>')
+    bottom_nav_html = "\n".join(bottom_nav)
+
+    # Global protocol map
+    pmap_html = protocol_map_html(slug)
 
     # TOC sidebar
     toc_block = ''
     if toc_items:
         toc_block = f'''      <aside class="protocol-toc" aria-label="Table of contents">
         <button class="protocol-toc__toggle" aria-expanded="false" aria-controls="toc-list">
-          <span>Contents</span>
+          <span>On This Page</span>
           <svg width="12" height="8" viewBox="0 0 12 8" fill="none"><path d="M1 1l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
         </button>
         <nav id="toc-list">
+          <div class="protocol-toc__heading">On This Page</div>
           <ul class="protocol-toc__list">
 {toc_items}
           </ul>
@@ -394,8 +493,11 @@ def page_html(title, body_html, slug, toc_items,
     </div>
   </nav>
 
+{side_nav_html}
+
   <main id="main">
     <div class="protocol-shell">
+{pmap_html}
 {toc_block}
       <div class="protocol-content">
         <div class="protocol-toolbar">
@@ -407,7 +509,7 @@ def page_html(title, body_html, slug, toc_items,
 {body_html}
         </article>
 
-{nav_html}
+{bottom_nav_html}
       </div>
     </div>
   </main>
