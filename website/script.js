@@ -92,11 +92,74 @@
     });
   }
 
+  /* ─── Protocol TOC ─────────────────────────────────────────────────────────── */
+
+  /**
+   * On protocol pages:
+   *   1. Mobile TOC toggle (expand/collapse)
+   *   2. Active heading highlighting on scroll
+   */
+  function initProtocolToc() {
+    var tocAside = document.querySelector('.protocol-toc');
+    if (!tocAside) return;
+
+    // Mobile toggle
+    var toggleBtn = tocAside.querySelector('.protocol-toc__toggle');
+    var tocNav    = document.getElementById('toc-list');
+
+    if (toggleBtn && tocNav) {
+      toggleBtn.addEventListener('click', function () {
+        var isOpen = tocNav.classList.toggle('is-open');
+        toggleBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      });
+    }
+
+    // Active heading highlighting via IntersectionObserver
+    var tocLinks = tocAside.querySelectorAll('.protocol-toc__list a');
+    if (!tocLinks.length || !('IntersectionObserver' in window)) return;
+
+    var headingEls = [];
+    var linkMap = {};
+    tocLinks.forEach(function (link) {
+      var id = link.getAttribute('href');
+      if (id && id.startsWith('#')) {
+        var target = document.getElementById(id.slice(1));
+        if (target) {
+          headingEls.push(target);
+          linkMap[id.slice(1)] = link;
+        }
+      }
+    });
+
+    if (!headingEls.length) return;
+
+    var currentActive = null;
+
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          if (currentActive) currentActive.classList.remove('toc-active');
+          var link = linkMap[entry.target.id];
+          if (link) {
+            link.classList.add('toc-active');
+            currentActive = link;
+          }
+        }
+      });
+    }, {
+      rootMargin: '-80px 0px -70% 0px',
+      threshold: 0
+    });
+
+    headingEls.forEach(function (el) { observer.observe(el); });
+  }
+
   /* ─── Init ────────────────────────────────────────────────────────────────── */
 
   document.addEventListener('DOMContentLoaded', function () {
     initIntroSequence();
     initMobileNav();
+    initProtocolToc();
   });
 
 }());

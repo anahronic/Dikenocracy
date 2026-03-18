@@ -36,22 +36,52 @@
   </nav>
 
   <main id="main">
-    <div class="page-wrapper">
-      <p style="margin-bottom:var(--gap-md)"><a href="../protocols.html">&larr; All Protocols</a></p>
+    <div class="protocol-shell">
+      <aside class="protocol-toc" aria-label="Table of contents">
+        <button class="protocol-toc__toggle" aria-expanded="false" aria-controls="toc-list">
+          <span>Contents</span>
+          <svg width="12" height="8" viewBox="0 0 12 8" fill="none"><path d="M1 1l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </button>
+        <nav id="toc-list">
+          <ul class="protocol-toc__list">
+          <li><a href="#0-preamble">0. Preamble</a></li>
+          <li><a href="#1-purpose">1. Purpose</a></li>
+          <li><a href="#2-system-position">2. System Position</a></li>
+          <li><a href="#3-definitions">3. Definitions</a></li>
+          <li><a href="#4-right-to-exit">4. Right to Exit</a></li>
+          <li><a href="#5-exit-initiation">5. Exit Initiation</a></li>
+          <li><a href="#6-cooling-period-and-exit-friction">6. Cooling Period and Exit Friction</a></li>
+          <li><a href="#7-phased-disengagement">7. Phased Disengagement</a></li>
+          <li><a href="#8-consequences-of-exit">8. Consequences of Exit</a></li>
+          <li><a href="#9-restitution-tail">9. Restitution Tail</a></li>
+          <li><a href="#10-system-critical-assets-and-delayed-settlement">10. System-Critical Assets and Delayed Settlement</a></li>
+          <li><a href="#11-exit-during-crisis">11. Exit During Crisis</a></li>
+          <li><a href="#12-asset-and-data-separation">12. Asset and Data Separation</a></li>
+          <li><a href="#13-re-entry">13. Re-Entry</a></li>
+          <li><a href="#14-prohibited-practices">14. Prohibited Practices</a></li>
+          <li><a href="#15-scope-limitations">15. Scope Limitations</a></li>
+          <li><a href="#16-finality-clause">16. Finality Clause</a></li>
+          </ul>
+        </nav>
+      </aside>
+      <div class="protocol-content">
+        <div class="protocol-toolbar">
+          <a href="../protocols.html">&larr; All Protocols</a>
+        </div>
 
-      <article class="protocol-article">
-        <h1>DKP-6-EXIT-001</h1>
+        <article class="protocol-article">
+          <h1>DKP-6-EXIT-001</h1>
 <p>DKP-6-EXIT-001</p>
 <p>Exit Protocol</p>
-<p>Version: 1.1 Status: Architecture Lock Candidate Layer: L6 — Intersystem Level Anchored to: Genesis Block \#0 (2025-12-10)</p>
-<p>\---</p>
-<p>0\. Preamble</p>
+<p>Version: 1.1 Status: Architecture Lock Candidate Layer: L6 — Intersystem Level Anchored to: Genesis Block #0 (2025-12-10)</p>
+<hr />
+<h2 id="0-preamble">0. Preamble</h2>
 <p>DKP-6-EXIT-001 formalizes the unconditional right of any Subject, region, or jurisdiction to exit the Dikenocracy system.</p>
 <p>Exit is treated as a structural safety mechanism, not as defection, hostility, or failure. This protocol exists to prevent coercive lock-in, systemic capture, and irreversible dependency.</p>
 <p>No system claiming legitimacy may deny the right to leave.</p>
 <p>Exit is a right. System stability is a constraint, not a veto.</p>
-<p>\---</p>
-<p>1\. Purpose</p>
+<hr />
+<h2 id="1-purpose">1. Purpose</h2>
 <p>The purpose of DKP-6-EXIT-001 is to:</p>
 <p>ensure voluntary participation in Dikenocracy at all levels,</p>
 <p>prevent enforcement through inescapability,</p>
@@ -59,8 +89,8 @@
 <p>guarantee reversibility of system membership,</p>
 <p>protect overall system stability during disengagement.</p>
 <p>Exit is not a sanction and not a failure signal.</p>
-<p>\---</p>
-<p>2\. System Position</p>
+<hr />
+<h2 id="2-system-position">2. System Position</h2>
 <p>DKP-6-EXIT-001 operates:</p>
 <p>Downstream of:</p>
 <p>DKP-1-IDENTITY-001,</p>
@@ -77,24 +107,24 @@
 <p>criminalize exit decisions,</p>
 <p>convert exit into a coercive tool,</p>
 <p>permit indefinite suspension of exit rights.</p>
-<p>\---</p>
-<p>3\. Definitions</p>
+<hr />
+<h2 id="3-definitions">3. Definitions</h2>
 <p>Exit A formal termination of participation in DKP governance, execution, and incentive mechanisms.</p>
 <p>Exiting Entity An individual, organization, region, or jurisdiction initiating exit.</p>
 <p>Exit Event The time-indexed execution of exit following the declared procedure.</p>
 <p>Cooling Period A bounded, non-punitive delay between exit declaration and execution.</p>
 <p>Restitution Tail Residual obligations arising exclusively from verified past actions under DKP.</p>
 <p>System-Critical Asset An asset or dependency whose abrupt removal would cause measurable systemic instability.</p>
-<p>\---</p>
-<p>4\. Right to Exit</p>
+<hr />
+<h2 id="4-right-to-exit">4. Right to Exit</h2>
 <p>Any Subject or jurisdiction MAY initiate exit at any time.</p>
 <p>Exit:</p>
 <p>SHALL NOT require justification, approval, or vote,</p>
 <p>SHALL NOT be blocked by economic status, political conflict, or crisis conditions,</p>
 <p>SHALL NOT be revoked or suspended.</p>
 <p>Exit becomes valid upon protocol-compliant declaration.</p>
-<p>\---</p>
-<p>5\. Exit Initiation</p>
+<hr />
+<h2 id="5-exit-initiation">5. Exit Initiation</h2>
 <p>Exit initiation requires:</p>
 <p>a cryptographically signed declaration of exit intent,</p>
 <p>explicit declaration of exit scope:</p>
@@ -104,8 +134,8 @@
 <p>jurisdictional,</p>
 <p>PTL-anchored timestamp.</p>
 <p>No additional authorization is permitted.</p>
-<p>\---</p>
-<p>6\. Cooling Period and Exit Friction</p>
+<hr />
+<h2 id="6-cooling-period-and-exit-friction">6. Cooling Period and Exit Friction</h2>
 <p>Exit execution occurs after a fixed cooling period, calibrated exclusively under DKP-8-SIMULATION-001.</p>
 <p>Purpose of Cooling Period</p>
 <p>The cooling period exists to:</p>
@@ -120,8 +150,8 @@
 <p>SHALL NOT escalate obligations,</p>
 <p>SHALL NOT restrict exit eligibility.</p>
 <p>Cooling period parameters MAY vary by exit scope but MUST be declared, simulated, and auditable.</p>
-<p>\---</p>
-<p>7\. Phased Disengagement</p>
+<hr />
+<h2 id="7-phased-disengagement">7. Phased Disengagement</h2>
 <p>Exit SHALL proceed through phased disengagement, not abrupt severance.</p>
 <p>Phases MAY include:</p>
 <p>governance disengagement,</p>
@@ -132,8 +162,8 @@
 <p>be declared at exit initiation,</p>
 <p>be L8-simulated for stability,</p>
 <p>preserve audit continuity.</p>
-<p>\---</p>
-<p>8\. Consequences of Exit</p>
+<hr />
+<h2 id="8-consequences-of-exit">8. Consequences of Exit</h2>
 <p>Upon completion of exit:</p>
 <p>all future DKP obligations cease,</p>
 <p>all future DKP benefits cease,</p>
@@ -142,8 +172,8 @@
 <p>annul historical responsibility,</p>
 <p>erase impact records,</p>
 <p>void verified restitution obligations.</p>
-<p>\---</p>
-<p>9\. Restitution Tail</p>
+<hr />
+<h2 id="9-restitution-tail">9. Restitution Tail</h2>
 <p>Only verified liabilities incurred prior to exit declaration remain enforceable.</p>
 <p>Restitution is limited to:</p>
 <p>physically verified harm,</p>
@@ -154,8 +184,8 @@
 <p>punitive or exemplary damages,</p>
 <p>hypothetical, projected, or speculative losses.</p>
 <p>No new obligations may be generated after exit declaration.</p>
-<p>\---</p>
-<p>10\. System-Critical Assets and Delayed Settlement</p>
+<hr />
+<h2 id="10-system-critical-assets-and-delayed-settlement">10. System-Critical Assets and Delayed Settlement</h2>
 <p>If exit involves system-critical assets:</p>
 <p>immediate severance MAY be delayed,</p>
 <p>delayed settlement MUST be:</p>
@@ -167,8 +197,8 @@
 <p>expand DKP authority,</p>
 <p>create new obligations,</p>
 <p>convert exit into forced participation.</p>
-<p>\---</p>
-<p>11\. Exit During Crisis</p>
+<hr />
+<h2 id="11-exit-during-crisis">11. Exit During Crisis</h2>
 <p>Exit during a declared crisis:</p>
 <p>SHALL remain valid,</p>
 <p>SHALL NOT be nullified or prohibited.</p>
@@ -179,8 +209,8 @@
 <p>SHALL NOT create exit precedent,</p>
 <p>SHALL be strictly scoped under DKP-7-SCOPE-001,</p>
 <p>SHALL NOT redefine exit rights.</p>
-<p>\---</p>
-<p>12\. Asset and Data Separation</p>
+<hr />
+<h2 id="12-asset-and-data-separation">12. Asset and Data Separation</h2>
 <p>Upon exit:</p>
 <p>assets governed by DKP contracts are settled per DKP-2-FINANCE-001,</p>
 <p>personal and operational data are frozen and archived,</p>
@@ -190,37 +220,49 @@
 <p>historical continuity,</p>
 <p>restitution validation.</p>
 <p>Post-exit data use for governance, profiling, or enforcement is prohibited.</p>
-<p>\---</p>
-<p>13\. Re-Entry</p>
+<hr />
+<h2 id="13-re-entry">13. Re-Entry</h2>
 <p>Exited entities MAY reapply under DKP-6-INTEGRATION-001.</p>
 <p>Re-entry:</p>
 <p>SHALL NOT be penalized,</p>
 <p>SHALL NOT be delayed due to prior exit,</p>
 <p>SHALL NOT treat exit history as disqualifying.</p>
 <p>Outstanding restitution obligations MUST be resolved prior to re-entry.</p>
-<p>\---</p>
-<p>14\. Prohibited Practices</p>
+<hr />
+<h2 id="14-prohibited-practices">14. Prohibited Practices</h2>
 <p>The following are explicitly forbidden:</p>
 <p>denial or obstruction of exit rights,</p>
 <p>collective punishment through exit,</p>
 <p>retaliatory sanctions beyond restitution,</p>
 <p>framing exit as treason, hostility, or illegitimacy,</p>
 <p>exit-conditioned coercion, violence, or deprivation.</p>
-<p>\---</p>
-<p>15\. Scope Limitations</p>
+<hr />
+<h2 id="15-scope-limitations">15. Scope Limitations</h2>
 <p>DKP-6-EXIT-001 SHALL NOT:</p>
 <p>regulate non-DKP systems post-exit,</p>
 <p>extend jurisdiction beyond the exit boundary,</p>
 <p>interfere with sovereignty after disengagement.</p>
 <p>DKP authority terminates at exit execution.</p>
-<p>\---</p>
-<p>16\. Finality Clause</p>
+<hr />
+<h2 id="16-finality-clause">16. Finality Clause</h2>
 <p>Once frozen:</p>
 <p>any modification requires a new protocol identifier,</p>
 <p>mandatory simulation under DKP-8-SIMULATION-001,</p>
 <p>explicit compatibility declaration with DKP-7-SCOPE-001.</p>
-<p>Protocol Hash (SHA-256): \[to be inserted at freeze\]</p>
-      </article>
+<p>Protocol Hash (SHA-256): [to be inserted at freeze]</p>
+        </article>
+
+        <nav class="protocol-nav" aria-label="Protocol navigation">
+          <a class="protocol-nav__link protocol-nav__prev" href="dkp-5-work-cycle-001.html" aria-label="Previous protocol: DKP-5-WORK-CYCLE-001">
+            <img src="../../assets/previous.webp" alt="" width="48" height="32" />
+            <span>DKP-5-WORK-CYCLE-001</span>
+          </a>
+          <a class="protocol-nav__link protocol-nav__next" href="dkp-6-integration-001.html" aria-label="Next protocol: DKP-6-INTEGRATION-001">
+            <span>DKP-6-INTEGRATION-001</span>
+            <img src="../../assets/next.webp" alt="" width="48" height="32" />
+          </a>
+        </nav>
+      </div>
     </div>
   </main>
 

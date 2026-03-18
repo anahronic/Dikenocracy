@@ -36,16 +36,44 @@
   </nav>
 
   <main id="main">
-    <div class="page-wrapper">
-      <p style="margin-bottom:var(--gap-md)"><a href="../protocols.html">&larr; All Protocols</a></p>
+    <div class="protocol-shell">
+      <aside class="protocol-toc" aria-label="Table of contents">
+        <button class="protocol-toc__toggle" aria-expanded="false" aria-controls="toc-list">
+          <span>Contents</span>
+          <svg width="12" height="8" viewBox="0 0 12 8" fill="none"><path d="M1 1l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </button>
+        <nav id="toc-list">
+          <ul class="protocol-toc__list">
+          <li><a href="#0-preamble">0. Preamble</a></li>
+          <li><a href="#1-purpose">1. Purpose</a></li>
+          <li><a href="#2-system-position">2. System Position</a></li>
+          <li><a href="#3-definition-of-police-authority">3. Definition of Police Authority</a></li>
+          <li><a href="#4-trigger-conditions-for-police-action">4. Trigger Conditions for Police Action</a></li>
+          <li><a href="#1-active-physical-harm">1. Active Physical Harm</a></li>
+          <li><a href="#2-system-execution-order">2. System Execution Order</a></li>
+          <li><a href="#3-critical-infrastructure-protection">3. Critical Infrastructure Protection</a></li>
+          <li><a href="#5-detention-and-use-of-force">5. Detention and Use of Force</a></li>
+          <li><a href="#6-accountability-and-attribution">6. Accountability and Attribution</a></li>
+          <li><a href="#7-prohibited-policing-functions">7. Prohibited Policing Functions</a></li>
+          <li><a href="#8-crisis-interaction">8. Crisis Interaction</a></li>
+          <li><a href="#9-transparency-and-review">9. Transparency and Review</a></li>
+          <li><a href="#10-scope-limitations">10. Scope Limitations</a></li>
+          <li><a href="#11-finality-clause">11. Finality Clause</a></li>
+          </ul>
+        </nav>
+      </aside>
+      <div class="protocol-content">
+        <div class="protocol-toolbar">
+          <a href="../protocols.html">&larr; All Protocols</a>
+        </div>
 
-      <article class="protocol-article">
-        <h1>DKP-3-POLICE-001</h1>
+        <article class="protocol-article">
+          <h1>DKP-3-POLICE-001</h1>
 <p>DKP-3-POLICE-001</p>
 <p>Public Order & Physical Enforcement Protocol</p>
 <p>Version: 1.0 Status: Draft Layer: L3 — Security / Enforcement</p>
-<p>\---</p>
-<p>0\. Preamble</p>
+<hr />
+<h2 id="0-preamble">0. Preamble</h2>
 <p>DKP-3-POLICE-001 defines the strictly limited role, authority, and constraints of policing within Dikenocracy.</p>
 <p>Policing is treated as a physical enforcement interface, not as a moral authority, investigative ideology, or discretionary power structure.</p>
 <p>The sole function of police within DKP is to:</p>
@@ -54,16 +82,16 @@
 <p>execute system decisions already determined by higher layers,</p>
 <p>preserve public order without interpretation of intent, belief, or ideology.</p>
 <p>Police do not define law, policy, justice, guilt, or truth.</p>
-<p>\---</p>
-<p>1\. Purpose</p>
+<hr />
+<h2 id="1-purpose">1. Purpose</h2>
 <p>The purpose of DKP-3-POLICE-001 is to:</p>
 <p>formalize policing as a bounded execution layer,</p>
 <p>prevent discretionary or ideological policing,</p>
 <p>eliminate predictive, pre-emptive, or belief-based enforcement,</p>
 <p>ensure physical enforcement is always causally attributable,</p>
 <p>protect Subjects from abuse of coercive power.</p>
-<p>\---</p>
-<p>2\. System Position</p>
+<hr />
+<h2 id="2-system-position">2. System Position</h2>
 <p>DKP-3-POLICE-001 operates:</p>
 <p>downstream of DKP-0-ORACLE-001 (Physical Truth Layer),</p>
 <p>downstream of DKP-1-AXIOMS-001,</p>
@@ -76,8 +104,8 @@
 <p>reinterpret axioms,</p>
 <p>define guilt or liability,</p>
 <p>operate outside PTL-confirmed conditions.</p>
-<p>\---</p>
-<p>3\. Definition of Police Authority</p>
+<hr />
+<h2 id="3-definition-of-police-authority">3. Definition of Police Authority</h2>
 <p>Police authority is defined as temporary, localized, and execution-only.</p>
 <p>Police MAY:</p>
 <p>physically intervene to stop ongoing or imminent PTL-verified harm,</p>
@@ -89,18 +117,18 @@
 <p>act on suspicion, profiling, or predictive scoring,</p>
 <p>interpret intent, belief, loyalty, or motivation,</p>
 <p>issue binding judgments.</p>
-<p>\---</p>
-<p>4\. Trigger Conditions for Police Action</p>
+<hr />
+<h2 id="4-trigger-conditions-for-police-action">4. Trigger Conditions for Police Action</h2>
 <p>Police action is permitted only when at least one of the following holds:</p>
-<p>1\. Active Physical Harm</p>
+<h2 id="1-active-physical-harm">1. Active Physical Harm</h2>
 <p>Ongoing or imminent physical harm verified by PTL inputs.</p>
-<p>2\. System Execution Order</p>
+<h2 id="2-system-execution-order">2. System Execution Order</h2>
 <p>A valid enforcement order produced by L2 or L4 protocols.</p>
-<p>3\. Critical Infrastructure Protection</p>
+<h2 id="3-critical-infrastructure-protection">3. Critical Infrastructure Protection</h2>
 <p>Immediate threat to PTL infrastructure, identity continuity, or essential biospheric systems.</p>
 <p>Absence of PTL confirmation SHALL default to non-intervention.</p>
-<p>\---</p>
-<p>5\. Detention and Use of Force</p>
+<hr />
+<h2 id="5-detention-and-use-of-force">5. Detention and Use of Force</h2>
 <p>5.1 Detention</p>
 <p>Temporary detention is permitted only to:</p>
 <p>stop active harm,</p>
@@ -117,8 +145,8 @@
 <p>force is proportional to the verified physical threat,</p>
 <p>action minimizes irreversible harm (Axiom A4).</p>
 <p>Lethal force is permitted only under Axiom A1 minimum-required conditions, as defined exclusively by DKP-4-CRISIS-001.</p>
-<p>\---</p>
-<p>6\. Accountability and Attribution</p>
+<hr />
+<h2 id="6-accountability-and-attribution">6. Accountability and Attribution</h2>
 <p>All police actions:</p>
 <p>MUST be identity-attributed under DKP-1-IDENTITY-001,</p>
 <p>MUST be PTL-logged,</p>
@@ -127,8 +155,8 @@
 <p>the executing officer,</p>
 <p>the issuing protocol or authority,</p>
 <p>the originating Subject where applicable.</p>
-<p>\---</p>
-<p>7\. Prohibited Policing Functions</p>
+<hr />
+<h2 id="7-prohibited-policing-functions">7. Prohibited Policing Functions</h2>
 <p>The following are explicitly forbidden:</p>
 <p>predictive policing,</p>
 <p>profiling based on ideology, religion, culture, or belief,</p>
@@ -136,35 +164,47 @@
 <p>surveillance not anchored in PTL necessity,</p>
 <p>discretionary expansion of authority.</p>
 <p>Violation constitutes a critical integrity breach.</p>
-<p>\---</p>
-<p>8\. Crisis Interaction</p>
+<hr />
+<h2 id="8-crisis-interaction">8. Crisis Interaction</h2>
 <p>During a formally declared Crisis under DKP-4-CRISIS-001:</p>
 <p>police authority MAY be temporarily extended,</p>
 <p>such extension MUST be explicitly scoped,</p>
 <p>no crisis action creates precedent.</p>
 <p>All crisis policing actions remain constrained by DKP-7-SCOPE-001.</p>
-<p>\---</p>
-<p>9\. Transparency and Review</p>
+<hr />
+<h2 id="9-transparency-and-review">9. Transparency and Review</h2>
 <p>All policing statistics:</p>
 <p>SHALL be publicly auditable in aggregated form,</p>
 <p>SHALL preserve individual privacy,</p>
 <p>SHALL support post-incident causal reconstruction.</p>
 <p>No secret policing authority is permitted.</p>
-<p>\---</p>
-<p>10\. Scope Limitations</p>
+<hr />
+<h2 id="10-scope-limitations">10. Scope Limitations</h2>
 <p>DKP-3-POLICE-001 SHALL NOT:</p>
 <p>regulate belief, speech, or culture,</p>
 <p>substitute judicial or justice protocols,</p>
 <p>define long-term punishment or rehabilitation,</p>
 <p>override exit rights or identity continuity.</p>
-<p>\---</p>
-<p>11\. Finality Clause</p>
+<hr />
+<h2 id="11-finality-clause">11. Finality Clause</h2>
 <p>Once frozen:</p>
 <p>any modification requires a new protocol identifier,</p>
 <p>mandatory simulation under DKP-8-SIMULATION-001,</p>
 <p>explicit compatibility declaration with DKP-1-AXIOMS-001 and DKP-7-SCOPE-001.</p>
 <p>END OF PROTOCOL</p>
-      </article>
+        </article>
+
+        <nav class="protocol-nav" aria-label="Protocol navigation">
+          <a class="protocol-nav__link protocol-nav__prev" href="dkp-3-internal-sec-001.html" aria-label="Previous protocol: DKP-3-INTERNAL-SEC-001">
+            <img src="../../assets/previous.webp" alt="" width="48" height="32" />
+            <span>DKP-3-INTERNAL-SEC-001</span>
+          </a>
+          <a class="protocol-nav__link protocol-nav__next" href="dkp-4-crisis-001.html" aria-label="Next protocol: DKP-4-CRISIS-001">
+            <span>DKP-4-CRISIS-001</span>
+            <img src="../../assets/next.webp" alt="" width="48" height="32" />
+          </a>
+        </nav>
+      </div>
     </div>
   </main>
 

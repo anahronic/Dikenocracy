@@ -36,21 +36,48 @@
   </nav>
 
   <main id="main">
-    <div class="page-wrapper">
-      <p style="margin-bottom:var(--gap-md)"><a href="../protocols.html">&larr; All Protocols</a></p>
+    <div class="protocol-shell">
+      <aside class="protocol-toc" aria-label="Table of contents">
+        <button class="protocol-toc__toggle" aria-expanded="false" aria-controls="toc-list">
+          <span>Contents</span>
+          <svg width="12" height="8" viewBox="0 0 12 8" fill="none"><path d="M1 1l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </button>
+        <nav id="toc-list">
+          <ul class="protocol-toc__list">
+          <li><a href="#dkp-5-work-cycle-001">DKP-5-WORK-CYCLE-001</a></li>
+          <li class="toc__sub"><a href="#0-preamble">0. Preamble</a></li>
+          <li class="toc__sub"><a href="#1-purpose">1. Purpose</a></li>
+          <li class="toc__sub"><a href="#2-scope">2. Scope</a></li>
+          <li class="toc__sub"><a href="#3-definitions">3. Definitions</a></li>
+          <li class="toc__sub"><a href="#4-standard-work-cycle">4. Standard Work Cycle</a></li>
+          <li class="toc__sub"><a href="#5-daily-workday-structure">5. Daily Workday Structure</a></li>
+          <li class="toc__sub"><a href="#6-cycle-accounting">6. Cycle Accounting</a></li>
+          <li class="toc__sub"><a href="#7-recovery-invariant-hard-constraint">7. Recovery Invariant (Hard Constraint)</a></li>
+          <li class="toc__sub"><a href="#8-247-and-high-intensity-environments">8. 24/7 and High-Intensity Environments</a></li>
+          <li class="toc__sub"><a href="#9-monitoring-kpis-minimum-set">9. Monitoring &amp; KPIs (Minimum Set)</a></li>
+          <li class="toc__sub"><a href="#10-exceptions">10. Exceptions</a></li>
+          <li class="toc__sub"><a href="#11-architectural-principle">11. Architectural Principle</a></li>
+          <li class="toc__sub"><a href="#12-summary-statement">12. Summary Statement</a></li>
+          </ul>
+        </nav>
+      </aside>
+      <div class="protocol-content">
+        <div class="protocol-toolbar">
+          <a href="../protocols.html">&larr; All Protocols</a>
+        </div>
 
-      <article class="protocol-article">
-        <h1>DKP-5-WORK-CYCLE-001</h1>
-<h2>DKP-5-WORK-CYCLE-001</h2>
+        <article class="protocol-article">
+          <h1>DKP-5-WORK-CYCLE-001</h1>
+<h2 id="dkp-5-work-cycle-001">DKP-5-WORK-CYCLE-001</h2>
 <p><strong>Work Cycle & Recovery Rhythm Protocol</strong></p>
 <p><strong>Version:</strong> 0.3 <strong>Status:</strong> Draft (Architecture-stable) <strong>Layer:</strong> L5 — Human Infrastructure</p>
 <hr />
-<h3>0\. Preamble</h3>
+<h3 id="0-preamble">0. Preamble</h3>
 <p>DKP-5-WORK-CYCLE-001 defines the normative structure of work and recovery within Dikenocracy.</p>
 <p>This protocol treats work cycles as a <strong>physical, cognitive, and safety-critical infrastructure</strong>, not as a cultural habit, moral expectation, or legacy industrial convention. Human fatigue, error accumulation, and burnout are considered <strong>systemic risks</strong>, not individual failures.</p>
 <p>Accordingly, the protocol abandons the culturally inherited 7-day week as a core unit and replaces it with a <strong>physically neutral, mathematically exact, and biologically sustainable cycle</strong>, fully compatible with DTI timekeeping.</p>
 <hr />
-<h3>1\. Purpose</h3>
+<h3 id="1-purpose">1. Purpose</h3>
 <p>The purpose of DKP-5-WORK-CYCLE-001 is to:</p>
 <ul>
 <li>establish a deterministic, culture-neutral work/rest cycle,</li>
@@ -61,7 +88,7 @@
 <li>provide measurable constraints for workforce planning and simulation.</li>
 </ul>
 <hr />
-<h3>2\. Scope</h3>
+<h3 id="2-scope">2. Scope</h3>
 <p>This protocol applies to:</p>
 <ul>
 <li>all standard labor arrangements under DKP,</li>
@@ -70,7 +97,7 @@
 </ul>
 <p>Sector-specific adaptations are permitted <strong>only if</strong> all invariants defined herein are preserved.</p>
 <hr />
-<h3>3\. Definitions</h3>
+<h3 id="3-definitions">3. Definitions</h3>
 <ul>
 <li><strong>DTI-Day</strong></li>
 <p>A physical day indexed under DKP-0-TIME-001.</p>
@@ -88,8 +115,8 @@
 <p>Mandatory non-working time within a workday dedicated to recovery.</p>
 </ul>
 <hr />
-<h3>4\. Standard Work Cycle</h3>
-<h4>4.1 Cycle Structure</h4>
+<h3 id="4-standard-work-cycle">4. Standard Work Cycle</h3>
+<h4 id="41-cycle-structure">4.1 Cycle Structure</h4>
 <p>The normative default cycle is a <strong>6-day cycle</strong>:</p>
 <p><code>[W, W, R, W, W, R]</code></p>
 <p>Meaning:</p>
@@ -99,17 +126,17 @@
 <li>two consecutive workdays,</li>
 <li>one restday.</li>
 </ul>
-<h4>4.2 Properties</h4>
+<h4 id="42-properties">4.2 Properties</h4>
 <ul>
 <li>Maximum consecutive workdays: <strong>2</strong></li>
 <li>Rest frequency: every <strong>≤ 3 days</strong></li>
 <li>Full compatibility with a 360-day DTI year:</li>
-<p>* 360 / 6 \= 60 exact cycles per year</p>
+<p>* 360 / 6 = 60 exact cycles per year</p>
 </ul>
 <p>The 7-day week is explicitly <strong>non-normative</strong> and may exist only as a local cultural overlay without legal or computational authority.</p>
 <hr />
-<h3>5\. Daily Workday Structure</h3>
-<h4>5.1 Normative Time Allocation (Workday)</h4>
+<h3 id="5-daily-workday-structure">5. Daily Workday Structure</h3>
+<h4 id="51-normative-time-allocation-workday">5.1 Normative Time Allocation (Workday)</h4>
 <p>Each workday SHALL be structured as follows:</p>
 <ul>
 <li><strong>Total Presence Window:</strong> 10 hours</li>
@@ -117,15 +144,15 @@
 <li><strong>Mandatory Recovery Block:</strong> 2 hours</li>
 </ul>
 <p>Formally:</p>
-<p>Presence \= 10h Work \= 8h Recovery \= 2h</p>
-<h4>5.2 Recommended Default Layout</h4>
+<p>Presence = 10h Work = 8h Recovery = 2h</p>
+<h4 id="52-recommended-default-layout">5.2 Recommended Default Layout</h4>
 <p>A recommended (but not mandatory) structure:</p>
 <ul>
 <li>4 hours productive work</li>
 <li>2 hours recovery</li>
 <li>4 hours productive work</li>
 </ul>
-<h4>5.3 Recovery Block Rules</h4>
+<h4 id="53-recovery-block-rules">5.3 Recovery Block Rules</h4>
 <ul>
 <li>The recovery block:</li>
 <p><em> is not counted as work time,   </em> cannot be removed, reduced, or monetized,   * does not require justification.</p>
@@ -134,7 +161,7 @@
 </ul>
 <p>The recovery block is considered <strong>system-required</strong>, not discretionary.</p>
 <hr />
-<h3>6\. Cycle Accounting</h3>
+<h3 id="6-cycle-accounting">6. Cycle Accounting</h3>
 <p>Per 6-day cycle:</p>
 <ul>
 <li>Workdays: 4</li>
@@ -151,7 +178,7 @@
 <li>Mandatory recovery: 480 hours</li>
 </ul>
 <hr />
-<h3>7\. Recovery Invariant (Hard Constraint)</h3>
+<h3 id="7-recovery-invariant-hard-constraint">7. Recovery Invariant (Hard Constraint)</h3>
 <p>Under no circumstances may a system-approved schedule violate the following invariant:</p>
 <ul>
 <li>No worker may be assigned more than <strong>2 consecutive workdays</strong> without a restday</li>
@@ -160,8 +187,8 @@
 </ul>
 <p>Violation of this invariant constitutes a <strong>system planning failure</strong>, not individual misconduct.</p>
 <hr />
-<h3>8\. 24/7 and High-Intensity Environments</h3>
-<h4>8.1 Shift-Based Continuity</h4>
+<h3 id="8-247-and-high-intensity-environments">8. 24/7 and High-Intensity Environments</h3>
+<h4 id="81-shift-based-continuity">8.1 Shift-Based Continuity</h4>
 <p>Continuous operation (e.g., hospitals, emergency services, infrastructure control) SHALL be achieved through:</p>
 <ul>
 <li>multiple shifts,</li>
@@ -171,7 +198,7 @@
 </ul>
 <p>Continuous service SHALL NOT be achieved through exhaustion of individual workers.</p>
 <hr />
-<h4>8.2 Shift Requirements</h4>
+<h4 id="82-shift-requirements">8.2 Shift Requirements</h4>
 <p>Each shift SHALL preserve:</p>
 <ul>
 <li>a 10-hour presence window,</li>
@@ -182,14 +209,14 @@
 <ul>
 <li><strong>3–4 hours recovery per shift is recommended</strong>, potentially fragmented.</li>
 </ul>
-<h4>8.3 Overlaps and Peak Load</h4>
+<h4 id="83-overlaps-and-peak-load">8.3 Overlaps and Peak Load</h4>
 <ul>
 <li>Overlapping shifts during peak hours are:</li>
 <p><em> explicitly permitted,   </em> treated as capacity design, not inefficiency.</p>
 <li>Simultaneous multi-shift presence during peaks is considered normal and encouraged.</li>
 </ul>
 <hr />
-<h3>9\. Monitoring & KPIs (Minimum Set)</h3>
+<h3 id="9-monitoring-kpis-minimum-set">9. Monitoring & KPIs (Minimum Set)</h3>
 <p>Implementations SHALL monitor at least:</p>
 <ul>
 <li>error and incident rates,</li>
@@ -200,7 +227,7 @@
 </ul>
 <p>Persistent degradation in these metrics SHALL trigger mandatory schedule review.</p>
 <hr />
-<h3>10\. Exceptions</h3>
+<h3 id="10-exceptions">10. Exceptions</h3>
 <p>Exceptions are permitted only:</p>
 <ul>
 <li>in clearly defined crisis scopes,</li>
@@ -210,16 +237,16 @@
 </ul>
 <p>No exception may establish precedent.</p>
 <hr />
-<h3>11\. Architectural Principle</h3>
+<h3 id="11-architectural-principle">11. Architectural Principle</h3>
 <p>This protocol establishes a three-layer human time model:</p>
-<ul>
+<ol>
 <li><strong>Productive Work</strong></li>
 <li><strong>Mandatory Recovery</strong></li>
 <li><strong>Full Rest</strong></li>
-</ul>
+</ol>
 <p>Human recovery is treated as <strong>infrastructure</strong>, not as a personal optimization problem.</p>
 <hr />
-<h3>12\. Summary Statement</h3>
+<h3 id="12-summary-statement">12. Summary Statement</h3>
 <p>DKP-5-WORK-CYCLE-001 replaces legacy industrial work rhythms with a mathematically exact, biologically sustainable, and governance-compatible cycle.</p>
 <p>It ensures that:</p>
 <ul>
@@ -229,7 +256,19 @@
 <li>and continuous services are achieved through planning, not sacrifice.</li>
 </ul>
 <hr />
-      </article>
+        </article>
+
+        <nav class="protocol-nav" aria-label="Protocol navigation">
+          <a class="protocol-nav__link protocol-nav__prev" href="appendix-a-design-rationale-safeguards-normative.html" aria-label="Previous protocol: Appendix A — Design Rationale &amp; Safeguards (Normative)">
+            <img src="../../assets/previous.webp" alt="" width="48" height="32" />
+            <span>Appendix A — Design Rationale &amp; Safeguards (Normative)</span>
+          </a>
+          <a class="protocol-nav__link protocol-nav__next" href="dkp-6-exit-001.html" aria-label="Next protocol: DKP-6-EXIT-001">
+            <span>DKP-6-EXIT-001</span>
+            <img src="../../assets/next.webp" alt="" width="48" height="32" />
+          </a>
+        </nav>
+      </div>
     </div>
   </main>
 

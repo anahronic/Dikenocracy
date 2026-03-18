@@ -36,16 +36,42 @@
   </nav>
 
   <main id="main">
-    <div class="page-wrapper">
-      <p style="margin-bottom:var(--gap-md)"><a href="../protocols.html">&larr; All Protocols</a></p>
+    <div class="protocol-shell">
+      <aside class="protocol-toc" aria-label="Table of contents">
+        <button class="protocol-toc__toggle" aria-expanded="false" aria-controls="toc-list">
+          <span>Contents</span>
+          <svg width="12" height="8" viewBox="0 0 12 8" fill="none"><path d="M1 1l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </button>
+        <nav id="toc-list">
+          <ul class="protocol-toc__list">
+          <li><a href="#dkp-4-crisis-001">DKP-4-CRISIS-001</a></li>
+          <li class="toc__sub"><a href="#0-preamble">0. Preamble</a></li>
+          <li class="toc__sub"><a href="#1-purpose">1. Purpose</a></li>
+          <li class="toc__sub"><a href="#2-system-position">2. System Position</a></li>
+          <li class="toc__sub"><a href="#3-crisis-definition">3. Crisis Definition</a></li>
+          <li class="toc__sub"><a href="#4-crisis-triggers-ptl-anchored">4. Crisis Triggers (PTL-Anchored)</a></li>
+          <li class="toc__sub"><a href="#5-crisis-state-model-dti-governed">5. Crisis State Model (DTI-Governed)</a></li>
+          <li class="toc__sub"><a href="#6-crisis-actions-allowed">6. Crisis Actions (Allowed)</a></li>
+          <li class="toc__sub"><a href="#7-crisis-prohibitions-hard-bans">7. Crisis Prohibitions (Hard Bans)</a></li>
+          <li class="toc__sub"><a href="#8-governance-during-crisis">8. Governance During Crisis</a></li>
+          <li class="toc__sub"><a href="#9-exit-conditions">9. Exit Conditions</a></li>
+          <li class="toc__sub"><a href="#10-transparency-and-audit">10. Transparency and Audit</a></li>
+          <li class="toc__sub"><a href="#11-finality-clause">11. Finality Clause</a></li>
+          </ul>
+        </nav>
+      </aside>
+      <div class="protocol-content">
+        <div class="protocol-toolbar">
+          <a href="../protocols.html">&larr; All Protocols</a>
+        </div>
 
-      <article class="protocol-article">
-        <h1>DKP-4-CRISIS-001</h1>
-<h2>DKP-4-CRISIS-001</h2>
+        <article class="protocol-article">
+          <h1>DKP-4-CRISIS-001</h1>
+<h2 id="dkp-4-crisis-001">DKP-4-CRISIS-001</h2>
 <p><strong>Crisis & Fail-Safe Protocol</strong></p>
 <p>Version: 1.1 Status: Architecture Lock (Defense-Aligned Rewrite) Layer: L4 – Crisis / Fail-Safe</p>
 <hr />
-<h3>0\. Preamble</h3>
+<h3 id="0-preamble">0. Preamble</h3>
 <p>DKP-4-CRISIS-001 defines the system-wide fail-safe mode of Dikenocracy.</p>
 <p>Crisis mode is invoked exclusively when normal protocol execution is insufficient to preserve axiomatic integrity, system survival, or admissible physical states, <strong>as confirmed by Physical Truth Layer (PTL) evidence and downstream L3 escalation</strong>.</p>
 <p>This protocol governs exceptional conditions, not routine governance. It exists to prevent irreversible collapse, uncontrolled escalation, or loss of Physical Truth. Crisis handling in DKP is algorithmic, time-bounded, scope-limited, and authority-minimized.</p>
@@ -54,7 +80,7 @@
 <p>Any action, restriction, suspension, or authority exercised under this protocol SHALL NOT create precedent, custom, interpretation rule, or future authorization outside an explicitly declared Crisis Scope.</p>
 <p>Crisis actions SHALL NOT be interpreted post-factum as evidence of normal system capability, acceptable governance practice, or latent authority. Post-crisis normalization by interpretation is explicitly forbidden.</p>
 <hr />
-<h3>1\. Purpose</h3>
+<h3 id="1-purpose">1. Purpose</h3>
 <p>The purpose of this protocol is to:</p>
 <ul>
 <li>preserve Axiom A1 (Preservation of Life) and Axiom A2 (Systemic Sustainability) under extreme conditions,</li>
@@ -69,7 +95,7 @@
 <p>The Crisis Scope Envelope exists exclusively within S1 (Conditionally Applicable Domain) as defined in DKP-7-SCOPE-001.</p>
 <p>Entry into Crisis Scope SHALL NOT elevate system applicability beyond S1 under any conditions.</p>
 <hr />
-<h3>2\. System Position</h3>
+<h3 id="2-system-position">2. System Position</h3>
 <p>This protocol operates:</p>
 <ul>
 <li>strictly downstream of DKP-0-ORACLE-001 (PTL) and DKP-0-TIME-001,</li>
@@ -89,7 +115,7 @@
 <p><strong>Scope Constraint:</strong> All actions executed under DKP-4-CRISIS-001 SHALL be strictly limited by the applicability boundaries defined in DKP-7-SCOPE-001.</p>
 <p>No crisis condition, trigger, state, or action SHALL be extrapolated, generalized, or reused outside the explicitly declared Crisis Scope.</p>
 <hr />
-<h3>3\. Crisis Definition</h3>
+<h3 id="3-crisis-definition">3. Crisis Definition</h3>
 <p>A Crisis is a PTL-confirmed system state in which <strong>L3 containment and correction mechanisms are insufficient</strong> to prevent imminent or ongoing violation of Axiom A1 or Axiom A2.</p>
 <p>Crisis conditions include:</p>
 <ul>
@@ -101,7 +127,7 @@
 </ul>
 <p>Crisis is a system condition, not a political declaration, emergency order, or discretionary judgment.</p>
 <hr />
-<h3>4\. Crisis Triggers (PTL-Anchored)</h3>
+<h3 id="4-crisis-triggers-ptl-anchored">4. Crisis Triggers (PTL-Anchored)</h3>
 <p>Crisis mode SHALL be entered when one or more of the following conditions are PTL-confirmed:</p>
 <ul>
 <li>sustained D3 state escalation from DKP-3-DEFENSE-001,</li>
@@ -112,7 +138,7 @@
 </ul>
 <p>Crisis SHALL NOT be initiated by forecast, policy decision, political authority, or human discretion.</p>
 <hr />
-<h3>5\. Crisis State Model (DTI-Governed)</h3>
+<h3 id="5-crisis-state-model-dti-governed">5. Crisis State Model (DTI-Governed)</h3>
 <p>Crisis operates as a finite-state system indexed by DKP time:</p>
 <p><strong>C0 – Normal Operation</strong> No crisis conditions present.</p>
 <p><strong>C1 – Emergency Containment</strong> Immediate life-preserving actions activated. Strict prioritization of survival-critical resources.</p>
@@ -121,7 +147,7 @@
 <p><strong>C4 – Terminal Resolution</strong> Controlled shutdown, irreversible isolation, or system partition executed to preserve Physical Truth and prevent uncontrolled collapse.</p>
 <p>State persistence in C1–C4 requires continuous PTL confirmation and periodic revalidation.</p>
 <hr />
-<h3>6\. Crisis Actions (Allowed)</h3>
+<h3 id="6-crisis-actions-allowed">6. Crisis Actions (Allowed)</h3>
 <p>During Crisis mode, the system MAY:</p>
 <ul>
 <li>suspend non-essential economic, informational, and optimization functions,</li>
@@ -139,7 +165,7 @@
 <li>fully auditable,</li>
 <li>reversible where physically and logically possible.</li>
 </ul>
-<h4>Non-Precedent Rule:</h4>
+<h4 id="non-precedent-rule">Non-Precedent Rule:</h4>
 <p>Any action executed under Crisis mode SHALL NOT create normative precedent.</p>
 <p>Such actions SHALL NOT be cited, reused, generalized, or referenced as justification for:</p>
 <ul>
@@ -152,7 +178,7 @@
 <p>No numerical values, thresholds, coefficients, timers, decay curves, or quantitative authority limits MAY be defined in this protocol.</p>
 <p>All numerical parameters governing Crisis authority duration, decay behavior, revalidation cadence, or exit sensitivity SHALL be defined, tested, and validated exclusively under DKP-8-SIMULATION-001.</p>
 <hr />
-<h3>7\. Crisis Prohibitions (Hard Bans)</h3>
+<h3 id="7-crisis-prohibitions-hard-bans">7. Crisis Prohibitions (Hard Bans)</h3>
 <p>Even during Crisis, the system SHALL NOT:</p>
 <ul>
 <li>suspend Physical Truth Layer logging,</li>
@@ -168,17 +194,17 @@
 <li>egalitarian (baseline survival minimum), or</li>
 <li>strictly determined by physical proximity and feasibility of survival resources.</li>
 </ul>
-<h4>Axiom A1 Interpretation Constraint</h4>
+<h4 id="axiom-a1-interpretation-constraint">Axiom A1 Interpretation Constraint</h4>
 <p>Interpretation of “minimum required conditions” under Axiom A1 SHALL NOT be inferred, extended, or operationalized by Crisis execution logic or by any operational, economic, or enforcement mechanism.</p>
 <p>Such interpretation is permitted <strong>only</strong> within the Crisis Scope explicitly defined in DKP-7-SCOPE-001.</p>
 <hr />
-<h3>8\. Governance During Crisis</h3>
+<h3 id="8-governance-during-crisis">8. Governance During Crisis</h3>
 <p>Crisis governance is algorithmic only.</p>
 <p>No emergency human authority is created.</p>
 <p>All Crisis actions derive from pre-defined protocol logic.</p>
 <p>Any human intervention SHALL be logged and treated as an external perturbation subject to post-crisis audit.</p>
 <hr />
-<h3>9\. Exit Conditions</h3>
+<h3 id="9-exit-conditions">9. Exit Conditions</h3>
 <p>Crisis mode MUST terminate automatically when PTL confirms that:</p>
 <ul>
 <li>admissible physical and system states are restored,</li>
@@ -195,7 +221,7 @@
 <p>Crisis state persistence beyond validated PTL windows SHALL constitute a protocol violation. Upon satisfaction of Crisis exit conditions, all Crisis-specific authorities, interpretations, and execution paths SHALL collapse immediately.</p>
 <p>Delayed collapse, phased normalization, or post-hoc interpretive continuation of Crisis logic is forbidden.</p>
 <hr />
-<h3>10\. Transparency and Audit</h3>
+<h3 id="10-transparency-and-audit">10. Transparency and Audit</h3>
 <p>All Crisis actions MUST be:</p>
 <ul>
 <li>PTL-anchored,</li>
@@ -205,16 +231,28 @@
 </ul>
 <p>In states C3 and C4, the system SHALL initiate Final State Vector Broadcast, transmitting complete audit logs and system state snapshots to physically isolated external archives to preserve Physical Truth beyond system termination.</p>
 <hr />
-<h3>11\. Finality Clause</h3>
+<h3 id="11-finality-clause">11. Finality Clause</h3>
 <p>Once frozen:</p>
 <ul>
 <li>any modification requires a new protocol identifier,</li>
 <li>mandatory full-system simulation under DKP-8-SIMULATION-001,</li>
 <li>explicit compatibility declaration.</li>
 </ul>
-<p>Protocol Hash (SHA-256): \[to be inserted at freeze\]</p>
+<p>Protocol Hash (SHA-256): [to be inserted at freeze]</p>
 <p>END OF PROTOCOL</p>
-      </article>
+        </article>
+
+        <nav class="protocol-nav" aria-label="Protocol navigation">
+          <a class="protocol-nav__link protocol-nav__prev" href="dkp-3-police-001.html" aria-label="Previous protocol: DKP-3-POLICE-001">
+            <img src="../../assets/previous.webp" alt="" width="48" height="32" />
+            <span>DKP-3-POLICE-001</span>
+          </a>
+          <a class="protocol-nav__link protocol-nav__next" href="dkp-4-error-001.html" aria-label="Next protocol: DKP-4-ERROR-001">
+            <span>DKP-4-ERROR-001</span>
+            <img src="../../assets/next.webp" alt="" width="48" height="32" />
+          </a>
+        </nav>
+      </div>
     </div>
   </main>
 

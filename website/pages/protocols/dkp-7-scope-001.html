@@ -36,16 +36,42 @@
   </nav>
 
   <main id="main">
-    <div class="page-wrapper">
-      <p style="margin-bottom:var(--gap-md)"><a href="../protocols.html">&larr; All Protocols</a></p>
+    <div class="protocol-shell">
+      <aside class="protocol-toc" aria-label="Table of contents">
+        <button class="protocol-toc__toggle" aria-expanded="false" aria-controls="toc-list">
+          <span>Contents</span>
+          <svg width="12" height="8" viewBox="0 0 12 8" fill="none"><path d="M1 1l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </button>
+        <nav id="toc-list">
+          <ul class="protocol-toc__list">
+          <li><a href="#0-preamble">0. Preamble</a></li>
+          <li><a href="#1-purpose">1. Purpose</a></li>
+          <li><a href="#2-system-position">2. System Position</a></li>
+          <li><a href="#3-scope-categories">3. Scope Categories</a></li>
+          <li><a href="#4-axiom-interpretation-constraint">4. Axiom Interpretation Constraint</a></li>
+          <li><a href="#5-crisis-scope">5. Crisis Scope</a></li>
+          <li><a href="#6-authority-decay-principle">6. Authority Decay Principle</a></li>
+          <li><a href="#7-defense-neutralization-boundary">7. Defense Neutralization Boundary</a></li>
+          <li><a href="#8-non-expansion-and-anti-gaslighting-safeguards">8. Non-Expansion and Anti-Gaslighting Safeguards</a></li>
+          <li><a href="#9-exit-and-non-capture-guarantee">9. Exit and Non-Capture Guarantee</a></li>
+          <li><a href="#10-transparency-boundary">10. Transparency Boundary</a></li>
+          <li><a href="#11-enforcement">11. Enforcement</a></li>
+          <li><a href="#12-finality-clause">12. Finality Clause</a></li>
+          </ul>
+        </nav>
+      </aside>
+      <div class="protocol-content">
+        <div class="protocol-toolbar">
+          <a href="../protocols.html">&larr; All Protocols</a>
+        </div>
 
-      <article class="protocol-article">
-        <h1>DKP-7-SCOPE-001</h1>
+        <article class="protocol-article">
+          <h1>DKP-7-SCOPE-001</h1>
 <p>DKP-7-SCOPE-001</p>
 <p>Scope & Limits Protocol</p>
-<p>Version: 1.2 Status: Architecture Lock Candidate (Defense / Crisis / Upgrade Aligned) Layer: L7 — Scope / Limits Anchored to: Genesis Block \#0 (2025-12-10)</p>
-<p>\---</p>
-<p>0\. Preamble</p>
+<p>Version: 1.2 Status: Architecture Lock Candidate (Defense / Crisis / Upgrade Aligned) Layer: L7 — Scope / Limits Anchored to: Genesis Block #0 (2025-12-10)</p>
+<hr />
+<h2 id="0-preamble">0. Preamble</h2>
 <p>DKP-7-SCOPE-001 defines the strict applicability boundaries of the Dikenocracy system.</p>
 <p>If L0–L4 describe how the system operates, DKP-7-SCOPE-001 defines where the system is allowed to operate — and where it is explicitly forbidden.</p>
 <p>This protocol exists to prevent:</p>
@@ -55,8 +81,8 @@
 <p>conversion of technical capability into implicit normative power.</p>
 <p>Scope in DKP is not advisory. It is a hard boundary layer.</p>
 <p>Any protocol, execution logic, crisis mechanism, defensive action, or economic process operating outside the boundaries defined herein is invalid by definition, regardless of claimed benefit, efficiency, emergency justification, or net-positive utility.</p>
-<p>\---</p>
-<p>1\. Purpose</p>
+<hr />
+<h2 id="1-purpose">1. Purpose</h2>
 <p>The purpose of DKP-7-SCOPE-001 is to:</p>
 <p>define the maximal and minimal domains of DKP applicability,</p>
 <p>prohibit algorithmic governance in domains where formalization causes irreversible harm,</p>
@@ -64,8 +90,8 @@
 <p>prevent exceptional execution from producing permanent authority,</p>
 <p>guarantee exit, reversibility, and non-capture of the system.</p>
 <p>This protocol does not optimize outcomes. It limits power.</p>
-<p>\---</p>
-<p>2\. System Position</p>
+<hr />
+<h2 id="2-system-position">2. System Position</h2>
 <p>DKP-7-SCOPE-001 operates:</p>
 <p>Downstream of:</p>
 <p>DKP-0-ORACLE-001 (Physical Truth Layer),</p>
@@ -81,10 +107,10 @@
 <p>DKP-8-AUDIT-001.</p>
 <p>In case of conflict, DKP-7-SCOPE-001 prevails.</p>
 <p>Absence of explicit permission in this protocol SHALL be interpreted as prohibition.</p>
-<p>\---</p>
-<p>3\. Scope Categories</p>
+<hr />
+<h2 id="3-scope-categories">3. Scope Categories</h2>
 <p>System applicability is classified into four mutually exclusive domains.</p>
-<p>\---</p>
+<hr />
 <p>S0 — Fully Applicable Domain</p>
 <p>Algorithmic governance is permitted and enforceable.</p>
 <p>Includes:</p>
@@ -93,7 +119,7 @@
 <p>economic settlement and accounting mechanisms,</p>
 <p>identity continuity and audit logging,</p>
 <p>non-discretionary execution of axioms.</p>
-<p>\---</p>
+<hr />
 <p>S1 — Conditionally Applicable Domain</p>
 <p>Algorithmic governance is permitted only under strict constraints.</p>
 <p>Includes:</p>
@@ -113,7 +139,7 @@
 <p>expand DKP applicability into new domains,</p>
 <p>justify persistent S1 execution,</p>
 <p>trigger automatic scope elevation beyond an explicitly declared Crisis Scope.</p>
-<p>\---</p>
+<hr />
 <p>S2 — Restricted Domain</p>
 <p>Algorithmic governance is partially prohibited.</p>
 <p>Includes:</p>
@@ -127,7 +153,7 @@
 <p>DKP SHALL NOT define curricula or learning objectives,</p>
 <p>DKP SHALL NOT rank, normalize, or optimize cultural or ideological content,</p>
 <p>DKP SHALL NOT enforce behavioral or cognitive conformity.</p>
-<p>\---</p>
+<hr />
 <p>S3 — Prohibited Domain</p>
 <p>Algorithmic governance is explicitly forbidden.</p>
 <p>Includes:</p>
@@ -139,8 +165,8 @@
 <p>formalization, optimization, ranking, enforcement, or algorithmic adjudication of private personal relationships, including friendship, love, family bonds, intimate relations, consent, and matters of conscience or faith,</p>
 <p>creation of discretionary emergency authorities.</p>
 <p>Any attempt to execute DKP logic within S3 constitutes a critical system violation.</p>
-<p>\---</p>
-<p>4\. Axiom Interpretation Constraint</p>
+<hr />
+<h2 id="4-axiom-interpretation-constraint">4. Axiom Interpretation Constraint</h2>
 <p>Axioms define absolute boundaries.</p>
 <p>Accordingly:</p>
 <p>axioms SHALL NOT be interpreted by operational, economic, enforcement, Defense, Crisis, or optimization protocols,</p>
@@ -152,8 +178,8 @@
 <p>no other protocol may invoke, extend, simulate, or analogize “minimum required conditions” logic outside that bounded Crisis Scope.</p>
 <p>Outside Crisis Scope:</p>
 <p>axioms are executed, not interpreted.</p>
-<p>\---</p>
-<p>5\. Crisis Scope</p>
+<hr />
+<h2 id="5-crisis-scope">5. Crisis Scope</h2>
 <p>Crisis Scope is a bounded sub-domain of S1.</p>
 <p>Crisis Scope SHALL be entered only through the state machine and entry conditions of DKP-4-CRISIS-001.</p>
 <p>Any attempt to enter Crisis Scope by inference, repetition, ambiguity, or downstream protocol logic constitutes a Scope violation.</p>
@@ -171,8 +197,8 @@
 <p>Post-Crisis Collapse Requirement</p>
 <p>Upon PTL-confirmed satisfaction of DKP-4-CRISIS-001 exit conditions, Crisis Scope SHALL automatically collapse to S0.</p>
 <p>Persistence of S1 execution beyond validated Crisis exit conditions constitutes a Scope violation.</p>
-<p>\---</p>
-<p>6\. Authority Decay Principle</p>
+<hr />
+<h2 id="6-authority-decay-principle">6. Authority Decay Principle</h2>
 <p>Any temporary authority, elevated control surface, or exceptional execution path:</p>
 <p>MUST be explicitly scoped,</p>
 <p>MUST be time-bounded,</p>
@@ -182,16 +208,16 @@
 <p>Persistence of authority requires:</p>
 <p>renewed PTL-anchored justification,</p>
 <p>mandatory validation under DKP-8-SIMULATION-001.</p>
-<p>\---</p>
-<p>7\. Defense Neutralization Boundary</p>
+<hr />
+<h2 id="7-defense-neutralization-boundary">7. Defense Neutralization Boundary</h2>
 <p>Physical neutralization of a harm source performed under DKP-3-DEFENSE-001 or DKP-4-CRISIS-001:</p>
 <p>SHALL be treated strictly as a physical harm-interruption action,</p>
 <p>SHALL NOT expand DKP jurisdiction or applicability,</p>
 <p>SHALL NOT convert the neutralized location, system, or territory into S0 or S1,</p>
 <p>SHALL NOT create implicit governance, control, or normative authority.</p>
 <p>Neutralization terminates harm. It does not extend scope.</p>
-<p>\---</p>
-<p>8\. Non-Expansion and Anti-Gaslighting Safeguards</p>
+<hr />
+<h2 id="8-non-expansion-and-anti-gaslighting-safeguards">8. Non-Expansion and Anti-Gaslighting Safeguards</h2>
 <p>DKP execution SHALL NOT expand its scope by:</p>
 <p>repeated crisis activation,</p>
 <p>cumulative temporary measures,</p>
@@ -204,8 +230,8 @@
 <p>SHALL block transition from S0 to S1,</p>
 <p>SHALL require confirmation by independent PTL nodes,</p>
 <p>SHALL reject escalation based on single-sensor classes, isolated regions, or non-reproducible signals.</p>
-<p>\---</p>
-<p>9\. Exit and Non-Capture Guarantee</p>
+<hr />
+<h2 id="9-exit-and-non-capture-guarantee">9. Exit and Non-Capture Guarantee</h2>
 <p>The right of exit is fundamental.</p>
 <p>Accordingly:</p>
 <p>exit SHALL NOT be conditioned on compliance,</p>
@@ -219,8 +245,8 @@
 <p>SHALL be deliverable in non-protocol-bound form.</p>
 <p>Economic friction SHALL NOT be used as a de facto restriction of exit.</p>
 <p>Permanent restriction of exit constitutes system capture.</p>
-<p>\---</p>
-<p>10\. Transparency Boundary</p>
+<hr />
+<h2 id="10-transparency-boundary">10. Transparency Boundary</h2>
 <p>Transparency obligations are scoped.</p>
 <p>DKP guarantees:</p>
 <p>access to verification mechanisms,</p>
@@ -231,22 +257,34 @@
 <p>pedagogical simplification of algorithms,</p>
 <p>normative justification beyond axiomatic execution.</p>
 <p>Verification, not comprehension, is the basis of legitimacy.</p>
-<p>\---</p>
-<p>11\. Enforcement</p>
+<hr />
+<h2 id="11-enforcement">11. Enforcement</h2>
 <p>Any execution exceeding the limits defined in DKP-7-SCOPE-001:</p>
 <p>is invalid by definition,</p>
 <p>MUST be flagged by audit systems,</p>
 <p>MUST trigger containment and review.</p>
 <p>Repeated violations constitute a critical system fault.</p>
-<p>\---</p>
-<p>12\. Finality Clause</p>
+<hr />
+<h2 id="12-finality-clause">12. Finality Clause</h2>
 <p>DKP-7-SCOPE-001 is immutable once frozen.</p>
 <p>Any modification requires:</p>
 <p>a new protocol identifier,</p>
 <p>mandatory simulation under DKP-8-SIMULATION-001,</p>
 <p>explicit compatibility declaration across all dependent protocols.</p>
-<p>Protocol Hash (SHA-256): \[to be inserted at freeze\]</p>
-      </article>
+<p>Protocol Hash (SHA-256): [to be inserted at freeze]</p>
+        </article>
+
+        <nav class="protocol-nav" aria-label="Protocol navigation">
+          <a class="protocol-nav__link protocol-nav__prev" href="dkp-7-privacy-001.html" aria-label="Previous protocol: DKP-7-PRIVACY-001">
+            <img src="../../assets/previous.webp" alt="" width="48" height="32" />
+            <span>DKP-7-PRIVACY-001</span>
+          </a>
+          <a class="protocol-nav__link protocol-nav__next" href="dkp-7-transparency-001.html" aria-label="Next protocol: DKP-7-TRANSPARENCY-001">
+            <span>DKP-7-TRANSPARENCY-001</span>
+            <img src="../../assets/next.webp" alt="" width="48" height="32" />
+          </a>
+        </nav>
+      </div>
     </div>
   </main>
 

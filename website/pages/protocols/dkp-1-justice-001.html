@@ -36,325 +36,263 @@
   </nav>
 
   <main id="main">
-    <div class="page-wrapper">
-      <p style="margin-bottom:var(--gap-md)"><a href="../protocols.html">&larr; All Protocols</a></p>
+    <div class="protocol-shell">
+      <aside class="protocol-toc" aria-label="Table of contents">
+        <button class="protocol-toc__toggle" aria-expanded="false" aria-controls="toc-list">
+          <span>Contents</span>
+          <svg width="12" height="8" viewBox="0 0 12 8" fill="none"><path d="M1 1l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </button>
+        <nav id="toc-list">
+          <ul class="protocol-toc__list">
+          <li><a href="#dkp-1-justice-001">DKP-1-JUSTICE-001</a></li>
+          <li class="toc__sub"><a href="#justice-function-protocol">Justice Function Protocol (δίκη)</a></li>
+          <li class="toc__sub"><a href="#1-purpose">1. Purpose</a></li>
+          <li class="toc__sub"><a href="#2-system-position">2. System Position</a></li>
+          <li class="toc__sub"><a href="#3-core-inputs">3. Core Inputs</a></li>
+          <li class="toc__sub"><a href="#4-justice-definition">4. Justice Definition</a></li>
+          <li class="toc__sub"><a href="#5-justice-evaluation-domains">5. Justice Evaluation Domains</a></li>
+          <li class="toc__sub"><a href="#6-restitution-domain">6. Restitution Domain</a></li>
+          <li class="toc__sub"><a href="#7-restriction-domain">7. Restriction Domain</a></li>
+          <li class="toc__sub"><a href="#8-isolation-domain">8. Isolation Domain</a></li>
+          <li class="toc__sub"><a href="#9-exclusion-domain">9. Exclusion Domain</a></li>
+          <li class="toc__sub"><a href="#10-proportionality-and-distribution">10. Proportionality and Distribution</a></li>
+          <li class="toc__sub"><a href="#11-temporal-re-evaluation">11. Temporal Re-evaluation</a></li>
+          <li class="toc__sub"><a href="#12-no-exemption-invariant">12. No-Exemption Invariant</a></li>
+          <li class="toc__sub"><a href="#13-cross-layer-isolation">13. Cross-Layer Isolation</a></li>
+          <li class="toc__sub"><a href="#14-transparency-and-auditability">14. Transparency and Auditability</a></li>
+          <li class="toc__sub"><a href="#15-protocol-finality">15. Protocol Finality</a></li>
+          </ul>
+        </nav>
+      </aside>
+      <div class="protocol-content">
+        <div class="protocol-toolbar">
+          <a href="../protocols.html">&larr; All Protocols</a>
+        </div>
 
-      <article class="protocol-article">
-        <h1>DKP-1-JUSTICE-001</h1>
-<h2>DKP-1-JUSTICE-001</h2>
-<h3>Justice Function Protocol (δίκη)</h3>
-<h4>Version 1.0</h4>
-<h4>---</h4>
-<h3>1\. Purpose</h3>
-<h4>The Justice Function Protocol defines how measured impact and attributed responsibility are transformed into deterministic justice outcomes within the Dikenocracy system.</h4>
-<h4>Justice is defined here as a function, not an institution, authority, ideology, or moral judgment.</h4>
-<h4>This protocol computes consequences, not punishment.<strong>  </strong>It produces binding justice outputs, not discretionary decisions.</h4>
-<h4>---</h4>
-<h3>2\. System Position</h3>
-<h4>This protocol operates:</h4>
+        <article class="protocol-article">
+          <h1>DKP-1-JUSTICE-001</h1>
+<h2 id="dkp-1-justice-001">DKP-1-JUSTICE-001</h2>
+<h3 id="justice-function-protocol">Justice Function Protocol (δίκη)</h3>
+<h4 id="version-10">Version 1.0</h4>
+<h4 id="section">---</h4>
+<h3 id="1-purpose">1. Purpose</h3>
+<h4 id="the-justice-function-protocol-defines-how-measured-impact-an">The Justice Function Protocol defines how measured impact and attributed responsibility are transformed into deterministic justice outcomes within the Dikenocracy system.</h4>
+<h4 id="justice-is-defined-here-as-a-function-not-an-institution-aut">Justice is defined here as a function, not an institution, authority, ideology, or moral judgment.</h4>
+<h4 id="this-protocol-computes-consequences-not-punishment-it-produc">This protocol computes consequences, not punishment.<strong>  </strong>It produces binding justice outputs, not discretionary decisions.</h4>
+<h4 id="section-1">---</h4>
+<h3 id="2-system-position">2. System Position</h3>
+<h4 id="this-protocol-operates">This protocol operates:</h4>
 <ul>
 <li>### <strong>above DKP-1-IMPACT-001 (Impact Measurement Protocol),</strong></li>
-</ul>
-<ul>
 <li>### <strong>above DKP-1-IDENTITY-001 (Identity & Subject Protocol),</strong></li>
-</ul>
-<ul>
 <li>### <strong>below all economic, governance, security, and enforcement protocols.</strong></li>
 </ul>
-<h4>This protocol SHALL NOT access raw Physical Truth Layer data directly.</h4>
-<h4>All inputs MUST be imported exclusively from:</h4>
+<h4 id="this-protocol-shall-not-access-raw-physical-truth-layer-data">This protocol SHALL NOT access raw Physical Truth Layer data directly.</h4>
+<h4 id="all-inputs-must-be-imported-exclusively-from">All inputs MUST be imported exclusively from:</h4>
 <ul>
 <li>### <strong>DKP-1-IMPACT-001 outputs, and</strong></li>
-</ul>
-<ul>
 <li>### <strong>DKP-1-IDENTITY-001 attribution bindings.</strong></li>
 </ul>
-<h4>---</h4>
-<h3>3\. Core Inputs</h3>
-<h4>For each evaluated action instance A, the protocol receives:</h4>
-<h4>3.1 Impact Set</h4>
-<h4>A channel-separated, unaggregated set of impact outputs produced by DKP-1-IMPACT-001:</h4>
+<h4 id="section-2">---</h4>
+<h3 id="3-core-inputs">3. Core Inputs</h3>
+<h4 id="for-each-evaluated-action-instance-a-the-protocol-receives">For each evaluated action instance A, the protocol receives:</h4>
+<h4 id="31-impact-set">3.1 Impact Set</h4>
+<h4 id="a-channel-separated-unaggregated-set-of-impact-outputs-produ">A channel-separated, unaggregated set of impact outputs produced by DKP-1-IMPACT-001:</h4>
 <ul>
 <li>### <strong>Iᵢ — impact magnitude per channel,</strong></li>
-</ul>
-<ul>
 <li>### <strong>Bᵢ — reference bounds,</strong></li>
-</ul>
-<ul>
 <li>### <strong>Rᵢ — reversibility flags,</strong></li>
-</ul>
-<ul>
 <li>### <strong>Xᵢ — externality flags,</strong></li>
-</ul>
-<ul>
 <li>### <strong>Uᵢ — uncertainty envelopes.</strong></li>
 </ul>
-<h4>---</h4>
-<h4>3.2 Responsibility Binding</h4>
-<h4>From DKP-1-IDENTITY-001:</h4>
+<h4 id="section-3">---</h4>
+<h4 id="32-responsibility-binding">3.2 Responsibility Binding</h4>
+<h4 id="from-dkp-1-identity-001">From DKP-1-IDENTITY-001:</h4>
 <ul>
 <li>### <strong>identified Subject(s),</strong></li>
-</ul>
-<ul>
 <li>### <strong>responsibility weights per Subject,</strong></li>
-</ul>
-<ul>
 <li>### <strong>temporal persistence indicators,</strong></li>
-</ul>
-<ul>
 <li>### <strong>cascading and higher-order attribution flags.</strong></li>
 </ul>
-<h4>---</h4>
-<h4>3.3 Normative Constraints</h4>
-<h4>From DKP-1-AXIOMS-001:</h4>
+<h4 id="section-4">---</h4>
+<h4 id="33-normative-constraints">3.3 Normative Constraints</h4>
+<h4 id="from-dkp-1-axioms-001">From DKP-1-AXIOMS-001:</h4>
 <ul>
 <li>### <strong>priority ordering of protected domains,</strong></li>
-</ul>
-<ul>
 <li>### <strong>absolute prohibitions,</strong></li>
-</ul>
-<ul>
 <li>### <strong>minimum survival and stability thresholds,</strong></li>
-</ul>
-<ul>
 <li>### <strong>non-negotiable axiom-defined bounds.</strong></li>
 </ul>
-<h4>---</h4>
-<h3>4\. Justice Definition</h3>
-<h4>Justice (δίκη) is defined as a deterministic mapping:</h4>
-<h4>δίκη : (Impact, Responsibility, Axioms) → Consequence Vector C</h4>
-<h4>The output vector C SHALL contain no:</h4>
+<h4 id="section-5">---</h4>
+<h3 id="4-justice-definition">4. Justice Definition</h3>
+<h4 id="justice-is-defined-as-a-deterministic-mapping">Justice (δίκη) is defined as a deterministic mapping:</h4>
+<h4 id="impact-responsibility-axioms-consequence-vector-c">δίκη : (Impact, Responsibility, Axioms) → Consequence Vector C</h4>
+<h4 id="the-output-vector-c-shall-contain-no">The output vector C SHALL contain no:</h4>
 <ul>
 <li>### <strong>moral language,</strong></li>
-</ul>
-<ul>
 <li>### <strong>intent interpretation,</strong></li>
-</ul>
-<ul>
 <li>### <strong>discretionary adjustment,</strong></li>
-</ul>
-<ul>
 <li>### <strong>subjective weighting.</strong></li>
 </ul>
-<h4>Justice outcomes are computed, not interpreted.</h4>
-<h4>---</h4>
-<h3>5\. Justice Evaluation Domains</h3>
-<h4>Justice SHALL be evaluated independently across the following domains:</h4>
-<ul>
+<h4 id="justice-outcomes-are-computed-not-interpreted">Justice outcomes are computed, not interpreted.</h4>
+<h4 id="section-6">---</h4>
+<h3 id="5-justice-evaluation-domains">5. Justice Evaluation Domains</h3>
+<h4 id="justice-shall-be-evaluated-independently-across-the-followin">Justice SHALL be evaluated independently across the following domains:</h4>
+<ol>
 <li>### <strong>Restitution Domain</strong></li>
-</ul>
-<ul>
 <li>### <strong>Restriction Domain</strong></li>
-</ul>
-<ul>
 <li>### <strong>Isolation Domain</strong></li>
-</ul>
-<ul>
 <li>### <strong>Exclusion Domain</strong></li>
-</ul>
-<h4>No domain SHALL be skipped if its triggering conditions are met.</h4>
-<h4>---</h4>
-<h3>6\. Restitution Domain</h3>
-<h4>Restitution applies when:</h4>
+</ol>
+<h4 id="no-domain-shall-be-skipped-if-its-triggering-conditions-are">No domain SHALL be skipped if its triggering conditions are met.</h4>
+<h4 id="section-7">---</h4>
+<h3 id="6-restitution-domain">6. Restitution Domain</h3>
+<h4 id="restitution-applies-when">Restitution applies when:</h4>
 <ul>
-<li>### <strong>impact is reversible (Rᵢ \= True), and</strong></li>
-</ul>
-<ul>
+<li>### <strong>impact is reversible (Rᵢ = True), and</strong></li>
 <li>### <strong>mitigation or repair is physically possible.</strong></li>
 </ul>
-<h4>The protocol SHALL compute:</h4>
+<h4 id="the-protocol-shall-compute">The protocol SHALL compute:</h4>
 <ul>
 <li>### <strong>required mitigation scope,</strong></li>
-</ul>
-<ul>
 <li>### <strong>proportional restitution obligations per Subject,</strong></li>
-</ul>
-<ul>
 <li>### <strong>time constraints for restitution completion.</strong></li>
 </ul>
-<h4>Restitution SHALL NOT exceed the measurable impact.</h4>
-<h4>---</h4>
-<h3>7\. Restriction Domain</h3>
-<h4>Restriction applies when:</h4>
+<h4 id="restitution-shall-not-exceed-the-measurable-impact">Restitution SHALL NOT exceed the measurable impact.</h4>
+<h4 id="section-8">---</h4>
+<h3 id="7-restriction-domain">7. Restriction Domain</h3>
+<h4 id="restriction-applies-when">Restriction applies when:</h4>
 <ul>
 <li>### <strong>impact exceeds axiom-defined safe margins, or</strong></li>
-</ul>
-<ul>
 <li>### <strong>repeated harmful behavior is detected, or</strong></li>
-</ul>
-<ul>
 <li>### <strong>mitigation capacity is insufficient.</strong></li>
 </ul>
-<h4>Restrictions MAY include:</h4>
+<h4 id="restrictions-may-include">Restrictions MAY include:</h4>
 <ul>
 <li>### <strong>limitation of action scope,</strong></li>
-</ul>
-<ul>
 <li>### <strong>throttling of resource access,</strong></li>
-</ul>
-<ul>
 <li>### <strong>enforced participation constraints.</strong></li>
 </ul>
-<h4>Restrictions MUST be:</h4>
+<h4 id="restrictions-must-be">Restrictions MUST be:</h4>
 <ul>
 <li>### <strong>proportional,</strong></li>
-</ul>
-<ul>
 <li>### <strong>reversible where physically possible,</strong></li>
-</ul>
-<ul>
 <li>### <strong>continuously re-evaluated.</strong></li>
 </ul>
-<h4>Restrictions SHALL NOT be used as punitive measures<strong>  </strong>and SHALL exist solely to prevent further harm.</h4>
-<h4>---</h4>
-<h3>8\. Isolation Domain</h3>
-<h4>Isolation applies when:</h4>
+<h4 id="restrictions-shall-not-be-used-as-punitive-measures-and-shal">Restrictions SHALL NOT be used as punitive measures<strong>  </strong>and SHALL exist solely to prevent further harm.</h4>
+<h4 id="section-9">---</h4>
+<h3 id="8-isolation-domain">8. Isolation Domain</h3>
+<h4 id="isolation-applies-when">Isolation applies when:</h4>
 <ul>
-<li>### <strong>impact is irreversible (Rᵢ \= False), or</strong></li>
-</ul>
-<ul>
-<li>### <strong>externality exposure is critical (Xᵢ \= True), or</strong></li>
-</ul>
-<ul>
+<li>### <strong>impact is irreversible (Rᵢ = False), or</strong></li>
+<li>### <strong>externality exposure is critical (Xᵢ = True), or</strong></li>
 <li>### <strong>Subject behavior presents systemic risk.</strong></li>
 </ul>
-<h4>Isolation SHALL be:</h4>
+<h4 id="isolation-shall-be">Isolation SHALL be:</h4>
 <ul>
 <li>### <strong>functional, not punitive,</strong></li>
-</ul>
-<ul>
 <li>### <strong>targeted strictly at harm prevention,</strong></li>
-</ul>
-<ul>
 <li>### <strong>minimal in scope.</strong></li>
 </ul>
-<h4>Physical isolation SHALL be treated as a last-resort measure.</h4>
-<h4>Isolation SHALL prioritize functional separation over physical confinement<strong>  </strong>whenever technically feasible.</h4>
-<h4>---</h4>
-<h3>9\. Exclusion Domain</h3>
-<h4>Exclusion applies when:</h4>
+<h4 id="physical-isolation-shall-be-treated-as-a-last-resort-measure">Physical isolation SHALL be treated as a last-resort measure.</h4>
+<h4 id="isolation-shall-prioritize-functional-separation-over-physic">Isolation SHALL prioritize functional separation over physical confinement<strong>  </strong>whenever technically feasible.</h4>
+<h4 id="section-10">---</h4>
+<h3 id="9-exclusion-domain">9. Exclusion Domain</h3>
+<h4 id="exclusion-applies-when">Exclusion applies when:</h4>
 <ul>
 <li>### <strong>a Subject persistently violates non-negotiable axioms, or</strong></li>
-</ul>
-<ul>
 <li>### <strong>mitigation and isolation fail to contain harm, or</strong></li>
-</ul>
-<ul>
 <li>### <strong>the Subject refuses or is incapable of compliance.</strong></li>
 </ul>
-<h4>Exclusion SHALL result in:</h4>
+<h4 id="exclusion-shall-result-in">Exclusion SHALL result in:</h4>
 <ul>
 <li>### <strong>removal from system participation,</strong></li>
-</ul>
-<ul>
 <li>### <strong>loss of system-provided privileges,</strong></li>
-</ul>
-<ul>
 <li>### <strong>persistence of historical attribution.</strong></li>
 </ul>
-<h4>Exclusion SHALL NOT entail physical harm, lethal deprivation,<strong>  </strong>or conditions leading to loss of life.</h4>
-<h4>All exclusion outcomes MUST remain consistent with<strong>  </strong>Axiom A1 (Preservation of Life) as defined in DKP-1-AXIOMS-001.</h4>
-<h4>Exclusion terminates system participation and access to system-provided<strong>  </strong>privileges only. It SHALL NOT authorize annihilation, abandonment,<strong>  </strong>or indirect lethal exposure.</h4>
-<h4>Exclusion is not annihilation and does not imply moral condemnation.</h4>
-<h4>---</h4>
-<h3>10\. Proportionality and Distribution</h3>
-<h4>Where multiple Subjects are responsible:</h4>
+<h4 id="exclusion-shall-not-entail-physical-harm-lethal-deprivation">Exclusion SHALL NOT entail physical harm, lethal deprivation,<strong>  </strong>or conditions leading to loss of life.</h4>
+<h4 id="all-exclusion-outcomes-must-remain-consistent-with-axiom-a1">All exclusion outcomes MUST remain consistent with<strong>  </strong>Axiom A1 (Preservation of Life) as defined in DKP-1-AXIOMS-001.</h4>
+<h4 id="exclusion-terminates-system-participation-and-access-to-syst">Exclusion terminates system participation and access to system-provided<strong>  </strong>privileges only. It SHALL NOT authorize annihilation, abandonment,<strong>  </strong>or indirect lethal exposure.</h4>
+<h4 id="exclusion-is-not-annihilation-and-does-not-imply-moral-conde">Exclusion is not annihilation and does not imply moral condemnation.</h4>
+<h4 id="section-11">---</h4>
+<h3 id="10-proportionality-and-distribution">10. Proportionality and Distribution</h3>
+<h4 id="where-multiple-subjects-are-responsible">Where multiple Subjects are responsible:</h4>
 <ul>
 <li>### <strong>consequences SHALL be distributed proportionally to responsibility weights,</strong></li>
-</ul>
-<ul>
 <li>### <strong>no Subject SHALL absorb consequences exceeding its attributable contribution.</strong></li>
 </ul>
-<h4>Collective responsibility SHALL NOT nullify individual accountability.</h4>
-<h4>---</h4>
-<h3>11\. Temporal Re-evaluation</h3>
-<h4>Justice outputs SHALL be re-evaluated when:</h4>
+<h4 id="collective-responsibility-shall-not-nullify-individual-accou">Collective responsibility SHALL NOT nullify individual accountability.</h4>
+<h4 id="section-12">---</h4>
+<h3 id="11-temporal-re-evaluation">11. Temporal Re-evaluation</h3>
+<h4 id="justice-outputs-shall-be-re-evaluated-when">Justice outputs SHALL be re-evaluated when:</h4>
 <ul>
 <li>### <strong>impact metrics change,</strong></li>
-</ul>
-<ul>
 <li>### <strong>mitigation occurs,</strong></li>
-</ul>
-<ul>
 <li>### <strong>new data reduces uncertainty,</strong></li>
-</ul>
-<ul>
 <li>### <strong>system boundary conditions shift.</strong></li>
 </ul>
-<h4>Justice is adaptive but not discretionary.</h4>
-<h4>Re-evaluation frequency SHALL be bounded by<strong>  </strong>Physical Truth Layer temporal guarantees.</h4>
-<h4>Justice outputs MAY NOT be re-evaluated more frequently than the minimum<strong>  </strong>TTL (Time-To-Live) of the underlying Physical Truth Layer data<strong>  </strong>that produced the original impact measurements.</h4>
-<h4>Any attempt to trigger re-evaluation using incomplete, stale,<strong>  </strong>or selectively withheld data SHALL be treated as continued exposure<strong>  </strong>to prior justice outcomes.</h4>
-<h4>Adaptive justice SHALL NOT permit oscillatory relief,<strong>  </strong>temporary concealment, or strategic delay of mitigation.</h4>
-<h4>---</h4>
-<h3>12\. No-Exemption Invariant</h3>
-<h4>No Subject SHALL be exempt from justice outcomes based on:</h4>
+<h4 id="justice-is-adaptive-but-not-discretionary">Justice is adaptive but not discretionary.</h4>
+<h4 id="re-evaluation-frequency-shall-be-bounded-by-physical-truth-l">Re-evaluation frequency SHALL be bounded by<strong>  </strong>Physical Truth Layer temporal guarantees.</h4>
+<h4 id="justice-outputs-may-not-be-re-evaluated-more-frequently-than">Justice outputs MAY NOT be re-evaluated more frequently than the minimum<strong>  </strong>TTL (Time-To-Live) of the underlying Physical Truth Layer data<strong>  </strong>that produced the original impact measurements.</h4>
+<h4 id="any-attempt-to-trigger-re-evaluation-using-incomplete-stale">Any attempt to trigger re-evaluation using incomplete, stale,<strong>  </strong>or selectively withheld data SHALL be treated as continued exposure<strong>  </strong>to prior justice outcomes.</h4>
+<h4 id="adaptive-justice-shall-not-permit-oscillatory-relief-tempora">Adaptive justice SHALL NOT permit oscillatory relief,<strong>  </strong>temporary concealment, or strategic delay of mitigation.</h4>
+<h4 id="section-13">---</h4>
+<h3 id="12-no-exemption-invariant">12. No-Exemption Invariant</h3>
+<h4 id="no-subject-shall-be-exempt-from-justice-outcomes-based-on">No Subject SHALL be exempt from justice outcomes based on:</h4>
 <ul>
 <li>### <strong>status,</strong></li>
-</ul>
-<ul>
 <li>### <strong>authority,</strong></li>
-</ul>
-<ul>
 <li>### <strong>jurisdiction,</strong></li>
-</ul>
-<ul>
 <li>### <strong>ideology,</strong></li>
-</ul>
-<ul>
 <li>### <strong>cultural justification.</strong></li>
 </ul>
-<h4>Justice follows causality, not hierarchy.</h4>
-<h4>---</h4>
-<h3>13\. Cross-Layer Isolation</h3>
-<h4>This protocol SHALL NOT:</h4>
+<h4 id="justice-follows-causality-not-hierarchy">Justice follows causality, not hierarchy.</h4>
+<h4 id="section-14">---</h4>
+<h3 id="13-cross-layer-isolation">13. Cross-Layer Isolation</h3>
+<h4 id="this-protocol-shall-not">This protocol SHALL NOT:</h4>
 <ul>
 <li>### <strong>reinterpret impact metrics,</strong></li>
-</ul>
-<ul>
 <li>### <strong>alter identity attribution,</strong></li>
-</ul>
-<ul>
 <li>### <strong>override axiom-defined bounds,</strong></li>
-</ul>
-<ul>
 <li>### <strong>inject policy, governance, or moral reasoning.</strong></li>
 </ul>
-<h4>Violation constitutes a critical architectural breach.</h4>
-<h4>---</h4>
-<h3>14\. Transparency and Auditability</h3>
-<h4>All justice computations MUST be:</h4>
+<h4 id="violation-constitutes-a-critical-architectural-breach">Violation constitutes a critical architectural breach.</h4>
+<h4 id="section-15">---</h4>
+<h3 id="14-transparency-and-auditability">14. Transparency and Auditability</h3>
+<h4 id="all-justice-computations-must-be">All justice computations MUST be:</h4>
 <ul>
 <li>### <strong>deterministic,</strong></li>
-</ul>
-<ul>
 <li>### <strong>reproducible,</strong></li>
-</ul>
-<ul>
 <li>### <strong>fully auditable,</strong></li>
-</ul>
-<ul>
 <li>### <strong>traceable to protocol inputs.</strong></li>
 </ul>
-<h4>Opaque, discretionary, or non-reproducible justice mechanisms are forbidden.</h4>
-<h4>---</h4>
-<h3>15\. Protocol Finality</h3>
-<h4>Once finalized, this protocol is immutable.</h4>
-<h4>Any modification requires:</h4>
+<h4 id="opaque-discretionary-or-non-reproducible-justice-mechanisms">Opaque, discretionary, or non-reproducible justice mechanisms are forbidden.</h4>
+<h4 id="section-16">---</h4>
+<h3 id="15-protocol-finality">15. Protocol Finality</h3>
+<h4 id="once-finalized-this-protocol-is-immutable">Once finalized, this protocol is immutable.</h4>
+<h4 id="any-modification-requires">Any modification requires:</h4>
 <ul>
 <li>### <strong>a new protocol identifier,</strong></li>
-</ul>
-<ul>
 <li>### <strong>explicit incompatibility declaration,</strong></li>
-</ul>
-<ul>
 <li>### <strong>full-system simulation under DKP-8-SIMULATION.</strong></li>
 </ul>
-<h4>Protocol Hash (SHA-256): \[to be inserted at freeze\]</h4>
-<h4>---</h4>
-<h4>END OF PROTOCOL</h4>
+<h4 id="protocol-hash-sha-256-to-be-inserted-at-freeze">Protocol Hash (SHA-256): [to be inserted at freeze]</h4>
+<h4 id="section-17">---</h4>
+<h4 id="end-of-protocol">END OF PROTOCOL</h4>
 <p>###</p>
-      </article>
+        </article>
+
+        <nav class="protocol-nav" aria-label="Protocol navigation">
+          <a class="protocol-nav__link protocol-nav__prev" href="dkp-1-impact-001.html" aria-label="Previous protocol: DKP-1-IMPACT-001">
+            <img src="../../assets/previous.webp" alt="" width="48" height="32" />
+            <span>DKP-1-IMPACT-001</span>
+          </a>
+          <a class="protocol-nav__link protocol-nav__next" href="dkp-2-assets-001.html" aria-label="Next protocol: DKP-2-ASSETS-001">
+            <span>DKP-2-ASSETS-001</span>
+            <img src="../../assets/next.webp" alt="" width="48" height="32" />
+          </a>
+        </nav>
+      </div>
     </div>
   </main>
 

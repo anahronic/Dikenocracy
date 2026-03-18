@@ -36,61 +36,80 @@
   </nav>
 
   <main id="main">
-    <div class="page-wrapper">
-      <p style="margin-bottom:var(--gap-md)"><a href="../protocols.html">&larr; All Protocols</a></p>
+    <div class="protocol-shell">
+      <aside class="protocol-toc" aria-label="Table of contents">
+        <button class="protocol-toc__toggle" aria-expanded="false" aria-controls="toc-list">
+          <span>Contents</span>
+          <svg width="12" height="8" viewBox="0 0 12 8" fill="none"><path d="M1 1l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </button>
+        <nav id="toc-list">
+          <ul class="protocol-toc__list">
+          <li><a href="#appendix-a-design-rationale-safeguards-normative">Appendix A — Design Rationale &amp; Safeguards (Normative)</a></li>
+          <li class="toc__sub"><a href="#a1-non-overlap-with-justice-l1">A.1 Non-Overlap with Justice (L1)</a></li>
+          <li class="toc__sub"><a href="#a2-non-overlap-with-defense-l3">A.2 Non-Overlap with Defense (L3)</a></li>
+          <li class="toc__sub"><a href="#a3-autonomy-future-transport-modes">A.3 Autonomy &amp; Future Transport Modes</a></li>
+          <li class="toc__sub"><a href="#a4-axiom-compatibility">A.4 Axiom Compatibility</a></li>
+          <li class="toc__sub"><a href="#a5-finality">A.5 Finality</a></li>
+          </ul>
+        </nav>
+      </aside>
+      <div class="protocol-content">
+        <div class="protocol-toolbar">
+          <a href="../protocols.html">&larr; All Protocols</a>
+        </div>
 
-      <article class="protocol-article">
-        <h1>Appendix A — Design Rationale &amp; Safeguards (Normative)</h1>
-<h2>Appendix A — Design Rationale & Safeguards (Normative)</h2>
-<h3>A.1 Non-Overlap with Justice (L1)</h3>
+        <article class="protocol-article">
+          <h1>Appendix A — Design Rationale &amp; Safeguards (Normative)</h1>
+<h2 id="appendix-a-design-rationale-safeguards-normative">Appendix A — Design Rationale & Safeguards (Normative)</h2>
+<h3 id="a1-non-overlap-with-justice-l1">A.1 Non-Overlap with Justice (L1)</h3>
 <p>Low PPDI or high RED SHALL NOT automatically trigger Justice outcomes.</p>
 <p>They are treated as <strong>system degradation signals</strong>, not violations by Subjects.</p>
 <p>Justice consequences may only arise through DKP-1-JUSTICE-001 using proper attribution and thresholds.</p>
 <hr />
-<h3>A.2 Non-Overlap with Defense (L3)</h3>
+<h3 id="a2-non-overlap-with-defense-l3">A.2 Non-Overlap with Defense (L3)</h3>
 <p>This protocol does not address active harm or hostile events.</p>
 <p>Defense remains responsible for real-time containment of physical threats.</p>
 <p>Transport redesign addresses <strong>structural risk generation</strong>, not attacks.</p>
 <hr />
-<h3>A.3 Autonomy & Future Transport Modes</h3>
+<h3 id="a3-autonomy-future-transport-modes">A.3 Autonomy & Future Transport Modes</h3>
 <p>Autonomous or assisted transport systems are evaluated identically:</p>
 <ul>
 <li>if RED approaches zero, economic pressure shifts to PPDI competition,</li>
-</ul>
-<ul>
 <li>ownership form is irrelevant,</li>
-</ul>
-<ul>
 <li>physical impact remains the sole criterion.</li>
 </ul>
 <hr />
-<h3>A.4 Axiom Compatibility</h3>
+<h3 id="a4-axiom-compatibility">A.4 Axiom Compatibility</h3>
 <p>This protocol is compatible with:</p>
 <ul>
 <li>A1 (Preservation of Life),</li>
-</ul>
-<ul>
 <li>A5 (Externality Accountability),</li>
-</ul>
-<ul>
 <li>A7 (Minimum Suffering Constraint),</li>
 </ul>
 <p>without encoding axioms as direct enforcement triggers.</p>
 <hr />
-<h3>A.5 Finality</h3>
+<h3 id="a5-finality">A.5 Finality</h3>
 <p>Upon freeze:</p>
 <ul>
 <li>any modification requires a new protocol identifier,</li>
-</ul>
-<ul>
 <li>explicit incompatibility declaration,</li>
-</ul>
-<ul>
 <li>full-system simulation under DKP-8-SIMULATION.</li>
 </ul>
 <hr />
 <p><strong>END OF PROTOCOL</strong></p>
-      </article>
+        </article>
+
+        <nav class="protocol-nav" aria-label="Protocol navigation">
+          <a class="protocol-nav__link protocol-nav__prev" href="dkp-5-transport-001.html" aria-label="Previous protocol: DKP-5-TRANSPORT-001">
+            <img src="../../assets/previous.webp" alt="" width="48" height="32" />
+            <span>DKP-5-TRANSPORT-001</span>
+          </a>
+          <a class="protocol-nav__link protocol-nav__next" href="dkp-5-work-cycle-001.html" aria-label="Next protocol: DKP-5-WORK-CYCLE-001">
+            <span>DKP-5-WORK-CYCLE-001</span>
+            <img src="../../assets/next.webp" alt="" width="48" height="32" />
+          </a>
+        </nav>
+      </div>
     </div>
   </main>
 

@@ -36,16 +36,43 @@
   </nav>
 
   <main id="main">
-    <div class="page-wrapper">
-      <p style="margin-bottom:var(--gap-md)"><a href="../protocols.html">&larr; All Protocols</a></p>
+    <div class="protocol-shell">
+      <aside class="protocol-toc" aria-label="Table of contents">
+        <button class="protocol-toc__toggle" aria-expanded="false" aria-controls="toc-list">
+          <span>Contents</span>
+          <svg width="12" height="8" viewBox="0 0 12 8" fill="none"><path d="M1 1l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </button>
+        <nav id="toc-list">
+          <ul class="protocol-toc__list">
+          <li><a href="#dkp-4-upgrade-001">DKP-4-UPGRADE-001</a></li>
+          <li class="toc__sub"><a href="#0-preamble">0. Preamble</a></li>
+          <li class="toc__sub"><a href="#1-purpose">1. Purpose</a></li>
+          <li class="toc__sub"><a href="#2-system-position">2. System Position</a></li>
+          <li class="toc__sub"><a href="#3-upgrade-definition">3. Upgrade Definition</a></li>
+          <li class="toc__sub"><a href="#4-upgrade-invariants-hard">4. Upgrade Invariants (Hard)</a></li>
+          <li class="toc__sub"><a href="#5-upgrade-proposal-requirements">5. Upgrade Proposal Requirements</a></li>
+          <li class="toc__sub"><a href="#6-simulation-and-proof-phase">6. Simulation and Proof Phase</a></li>
+          <li class="toc__sub"><a href="#7-anti-capture-safeguards">7. Anti-Capture Safeguards</a></li>
+          <li class="toc__sub"><a href="#8-approval-and-activation">8. Approval and Activation</a></li>
+          <li class="toc__sub"><a href="#9-rollback-and-reversion">9. Rollback and Reversion</a></li>
+          <li class="toc__sub"><a href="#10-transparency-and-audit">10. Transparency and Audit</a></li>
+          <li class="toc__sub"><a href="#11-prohibited-actions">11. Prohibited Actions</a></li>
+          <li class="toc__sub"><a href="#12-finality-clause">12. Finality Clause</a></li>
+          </ul>
+        </nav>
+      </aside>
+      <div class="protocol-content">
+        <div class="protocol-toolbar">
+          <a href="../protocols.html">&larr; All Protocols</a>
+        </div>
 
-      <article class="protocol-article">
-        <h1>DKP-4-UPGRADE-001</h1>
-<h2>DKP-4-UPGRADE-001</h2>
+        <article class="protocol-article">
+          <h1>DKP-4-UPGRADE-001</h1>
+<h2 id="dkp-4-upgrade-001">DKP-4-UPGRADE-001</h2>
 <p><strong>System Upgrade & Anti-Capture Protocol</strong></p>
 <p>Version: 1.1 Status: Architecture Lock (Defense & Crisis Aligned) Layer: L4 – Upgrade / Anti-Capture</p>
 <hr />
-<h3>0\. Preamble</h3>
+<h3 id="0-preamble">0. Preamble</h3>
 <p>DKP-4-UPGRADE-001 defines the only lawful mechanism by which the Dikenocracy system may be modified after deployment.</p>
 <p>In DKP, upgrades are treated as high-risk system events. Any change to formulas, thresholds, weights, or protocol logic may alter power balance, incentives, and survival guarantees.</p>
 <p>This protocol exists to ensure that:</p>
@@ -56,7 +83,7 @@
 </ul>
 <p>UPGRADE is not governance-by-vote; it is <strong>governance-by-proof</strong>.</p>
 <hr />
-<h3>1\. Purpose</h3>
+<h3 id="1-purpose">1. Purpose</h3>
 <p>The purpose of this protocol is to:</p>
 <ul>
 <li>regulate changes to DKP formulas, parameters, and protocol logic,</li>
@@ -65,7 +92,7 @@
 <li>provide deterministic rollback and recovery paths.</li>
 </ul>
 <hr />
-<h3>2\. System Position</h3>
+<h3 id="2-system-position">2. System Position</h3>
 <p>This protocol operates:</p>
 <ul>
 <li>strictly downstream of DKP-0-ORACLE-001 (PTL) and DKP-0-TIME-001,</li>
@@ -81,7 +108,7 @@
 </ul>
 <p>Any modification of DKP-4-UPGRADE-001 itself SHALL require the highest security threshold and MUST demonstrably preserve or strengthen anti-capture guarantees relative to the current version.</p>
 <hr />
-<h3>3\. Upgrade Definition</h3>
+<h3 id="3-upgrade-definition">3. Upgrade Definition</h3>
 <p>An Upgrade is any proposed change that affects:</p>
 <ul>
 <li>mathematical formulas, coefficients, or transformations,</li>
@@ -91,16 +118,16 @@
 </ul>
 <p>Cosmetic, UI, documentation, or presentation changes are not considered upgrades under this protocol.</p>
 <hr />
-<h3>4\. Upgrade Invariants (Hard)</h3>
-<h4>4.1 Axiom Preservation</h4>
+<h3 id="4-upgrade-invariants-hard">4. Upgrade Invariants (Hard)</h3>
+<h4 id="41-axiom-preservation">4.1 Axiom Preservation</h4>
 <p>No upgrade SHALL weaken, reinterpret, or condition Axiom A1 (Preservation of Life) or Axiom A2 (Systemic Sustainability).</p>
-<h4>4.2 PTL Anchoring</h4>
+<h4 id="42-ptl-anchoring">4.2 PTL Anchoring</h4>
 <p>All upgrade evaluation, validation, and acceptance MUST rely exclusively on PTL-verifiable data and simulations.</p>
-<h4>4.3 Non-Emergency Rule</h4>
+<h4 id="43-non-emergency-rule">4.3 Non-Emergency Rule</h4>
 <p>Upgrades SHALL NOT be executed under urgency, fear, or crisis conditions.</p>
-<h4>4.4 No Silent Change</h4>
+<h4 id="44-no-silent-change">4.4 No Silent Change</h4>
 <p>Every upgrade MUST be publicly visible, formally specified, and fully auditable.</p>
-<h4>4.5 Non-Degradation Invariant (Defense & Crisis)</h4>
+<h4 id="45-non-degradation-invariant-defense-crisis">4.5 Non-Degradation Invariant (Defense & Crisis)</h4>
 <p>No upgrade SHALL reduce, weaken, delay, condition, or probabilistically dilute the effectiveness, trigger sensitivity, execution scope, or response latency of:</p>
 <ul>
 <li>DKP-3-DEFENSE-001, or</li>
@@ -108,11 +135,11 @@
 </ul>
 <p>relative to the currently deployed version.</p>
 <p>Any modification affecting L3 or L4 protocols MUST demonstrably preserve or strengthen survival guarantees under worst-case PTL-confirmed scenarios.</p>
-<h4>4.6 Physical Inevitability Preservation</h4>
+<h4 id="46-physical-inevitability-preservation">4.6 Physical Inevitability Preservation</h4>
 <p>Any upgrade affecting threat detection, Defense triggers, Crisis escalation logic, or containment boundaries MUST preserve the system’s ability to respond to PTL-confirmed <strong>Vectors of Physical Inevitability</strong>.</p>
 <p>Removal, weakening, probabilistic reinterpretation, or indirect delay of inevitability-based triggers is forbidden.</p>
 <hr />
-<h3>5\. Upgrade Proposal Requirements</h3>
+<h3 id="5-upgrade-proposal-requirements">5. Upgrade Proposal Requirements</h3>
 <p>Any Upgrade Proposal MUST include:</p>
 <ul>
 <li>formal specification of all proposed changes,</li>
@@ -123,7 +150,7 @@
 </ul>
 <p>Incomplete proposals SHALL be rejected procedurally.</p>
 <hr />
-<h3>6\. Simulation and Proof Phase</h3>
+<h3 id="6-simulation-and-proof-phase">6. Simulation and Proof Phase</h3>
 <p>Before approval, every upgrade MUST undergo:</p>
 <ul>
 <li>mandatory simulation under DKP-8-SIMULATION-001,</li>
@@ -133,7 +160,7 @@
 </ul>
 <p>No simulation → no upgrade.</p>
 <hr />
-<h3>7\. Anti-Capture Safeguards</h3>
+<h3 id="7-anti-capture-safeguards">7. Anti-Capture Safeguards</h3>
 <p>The protocol SHALL enforce:</p>
 <ul>
 <li>caps on influence over upgrade initiation,</li>
@@ -142,14 +169,14 @@
 <li>historical traceability of proposal lineage.</li>
 </ul>
 <hr />
-<h3>8\. Approval and Activation</h3>
+<h3 id="8-approval-and-activation">8. Approval and Activation</h3>
 <p>An upgrade MAY be activated only if:</p>
 <ul>
 <li>all simulations pass predefined safety and stability thresholds,</li>
 <li>no unresolved ERROR or Justice appeals remain,</li>
 <li>the activation window is publicly announced in advance.</li>
 </ul>
-<h4>Post-Crisis Cooldown Rule</h4>
+<h4 id="post-crisis-cooldown-rule">Post-Crisis Cooldown Rule</h4>
 <p>Any upgrade affecting Defense, Crisis, Identity, or Justice layers SHALL NOT be proposed or activated until a full post-crisis audit and stabilization period has completed, as defined by DKP-8-AUDIT-001.</p>
 <p>A mandatory Cooling-off Period SHALL apply:</p>
 <ul>
@@ -163,7 +190,7 @@
 <li>be automatically logged and committed.</li>
 </ul>
 <hr />
-<h3>9\. Rollback and Reversion</h3>
+<h3 id="9-rollback-and-reversion">9. Rollback and Reversion</h3>
 <p>If post-activation monitoring detects:</p>
 <ul>
 <li>unexpected Impact deviation,</li>
@@ -174,7 +201,7 @@
 <p>Critical errors SHALL NOT be corrected by stacking new upgrades on top of a faulty version.</p>
 <p>Rollback priority is higher than optimization or feature progression.</p>
 <hr />
-<h3>10\. Transparency and Audit</h3>
+<h3 id="10-transparency-and-audit">10. Transparency and Audit</h3>
 <p>All upgrade-related artifacts MUST be:</p>
 <ul>
 <li>publicly accessible,</li>
@@ -183,7 +210,7 @@
 <li>auditable under DKP-8-AUDIT-001.</li>
 </ul>
 <hr />
-<h3>11\. Prohibited Actions</h3>
+<h3 id="11-prohibited-actions">11. Prohibited Actions</h3>
 <p>This protocol SHALL NOT:</p>
 <ul>
 <li>allow emergency or crisis-time upgrades,</li>
@@ -192,16 +219,28 @@
 <li>privilege specific Subjects, groups, or interests.</li>
 </ul>
 <hr />
-<h3>12\. Finality Clause</h3>
+<h3 id="12-finality-clause">12. Finality Clause</h3>
 <p>Once frozen:</p>
 <ul>
 <li>any modification requires a new protocol identifier,</li>
 <li>mandatory simulation and audit,</li>
 <li>explicit compatibility declaration.</li>
 </ul>
-<p>Protocol Hash (SHA-256): \[to be inserted at freeze\]</p>
+<p>Protocol Hash (SHA-256): [to be inserted at freeze]</p>
 <p>END OF PROTOCOL</p>
-      </article>
+        </article>
+
+        <nav class="protocol-nav" aria-label="Protocol navigation">
+          <a class="protocol-nav__link protocol-nav__prev" href="dkp-4-error-001.html" aria-label="Previous protocol: DKP-4-ERROR-001">
+            <img src="../../assets/previous.webp" alt="" width="48" height="32" />
+            <span>DKP-4-ERROR-001</span>
+          </a>
+          <a class="protocol-nav__link protocol-nav__next" href="dkp-5-culture-001.html" aria-label="Next protocol: DKP-5-CULTURE-001">
+            <span>DKP-5-CULTURE-001</span>
+            <img src="../../assets/next.webp" alt="" width="48" height="32" />
+          </a>
+        </nav>
+      </div>
     </div>
   </main>
 

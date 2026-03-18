@@ -36,303 +36,251 @@
   </nav>
 
   <main id="main">
-    <div class="page-wrapper">
-      <p style="margin-bottom:var(--gap-md)"><a href="../protocols.html">&larr; All Protocols</a></p>
+    <div class="protocol-shell">
+      <aside class="protocol-toc" aria-label="Table of contents">
+        <button class="protocol-toc__toggle" aria-expanded="false" aria-controls="toc-list">
+          <span>Contents</span>
+          <svg width="12" height="8" viewBox="0 0 12 8" fill="none"><path d="M1 1l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </button>
+        <nav id="toc-list">
+          <ul class="protocol-toc__list">
+          <li><a href="#dkp-1-impact-001">DKP-1-IMPACT-001</a></li>
+          <li class="toc__sub"><a href="#impact-measurement-protocol">Impact Measurement Protocol</a></li>
+          <li class="toc__sub"><a href="#1-purpose">1. Purpose</a></li>
+          <li class="toc__sub"><a href="#2-system-position-and-anchoring">2. System Position and Anchoring</a></li>
+          <li class="toc__sub"><a href="#3-scope">3. Scope</a></li>
+          <li class="toc__sub"><a href="#4-core-definitions">4. Core Definitions</a></li>
+          <li class="toc__sub"><a href="#5-measurement-principle">5. Measurement Principle</a></li>
+          <li class="toc__sub"><a href="#6-reference-bounds-and-boundary-detection">6. Reference Bounds and Boundary Detection</a></li>
+          <li class="toc__sub"><a href="#7-reversibility-classification">7. Reversibility Classification</a></li>
+          <li class="toc__sub"><a href="#8-externality-detection">8. Externality Detection</a></li>
+          <li class="toc__sub"><a href="#9-uncertainty-propagation">9. Uncertainty Propagation</a></li>
+          <li class="toc__sub"><a href="#10-outputs">10. Outputs</a></li>
+          <li class="toc__sub"><a href="#11-cross-layer-isolation-invariant">11. Cross-Layer Isolation Invariant</a></li>
+          <li class="toc__sub"><a href="#12-protocol-finality">12. Protocol Finality</a></li>
+          <li class="toc__sub"><a href="#13-illustrative-example-non-normative">13. Illustrative Example (Non-Normative)</a></li>
+          </ul>
+        </nav>
+      </aside>
+      <div class="protocol-content">
+        <div class="protocol-toolbar">
+          <a href="../protocols.html">&larr; All Protocols</a>
+        </div>
 
-      <article class="protocol-article">
-        <h1>DKP-1-IMPACT-001</h1>
-<h2>DKP-1-IMPACT-001</h2>
-<h3>Impact Measurement Protocol</h3>
-<h4>Version 1.0</h4>
+        <article class="protocol-article">
+          <h1>DKP-1-IMPACT-001</h1>
+<h2 id="dkp-1-impact-001">DKP-1-IMPACT-001</h2>
+<h3 id="impact-measurement-protocol">Impact Measurement Protocol</h3>
+<h4 id="version-10">Version 1.0</h4>
 <hr />
-<h3>1\. Purpose</h3>
+<h3 id="1-purpose">1. Purpose</h3>
 <p>The Impact Measurement Protocol defines how changes in the <strong>Physical State Vector S(t)</strong> are transformed into <strong>time-indexed, bounded, and auditable impact metrics</strong>.</p>
 <p>This protocol performs <strong>measurement only</strong>.  It does <strong>not</strong> interpret value, intent, utility, justice, responsibility, or policy.</p>
 <hr />
-<h3>2\. System Position and Anchoring</h3>
+<h3 id="2-system-position-and-anchoring">2. System Position and Anchoring</h3>
 <p>This protocol operates:</p>
 <ul>
 <li>above DKP-0-ORACLE-001 (Physical Truth Layer),</li>
-</ul>
-<ul>
 <li>below DKP-1-IDENTITY-001 (Identity & Subject Protocol),</li>
-</ul>
-<ul>
 <li>below DKP-1-JUSTICE-001 (Justice Function Protocol),</li>
-</ul>
-<ul>
 <li>below all governance, economic, and enforcement protocols.</li>
 </ul>
 <p>All inputs to this protocol MUST originate exclusively from <strong>Physical Truth Layer outputs</strong>.</p>
 <p>All reference bounds <strong>Bᵢ</strong> MUST be explicitly imported from:</p>
 <ul>
 <li>DKP-1-AXIOMS-001, or</li>
-</ul>
-<ul>
 <li>normatively defined Physical Truth Layer indices</li>
 <p>(e.g., biosphere survival thresholds anchored in Genesis Block constants).</p>
 </ul>
-<p>This protocol is bound to <strong>Genesis Block \#0 (2025-12-10)</strong>.</p>
+<p>This protocol is bound to <strong>Genesis Block #0 (2025-12-10)</strong>.</p>
 <hr />
-<h3>3\. Scope</h3>
+<h3 id="3-scope">3. Scope</h3>
 <p>This protocol governs:</p>
 <ul>
 <li>measurement of state change between two physical states,</li>
-</ul>
-<ul>
 <li>time-indexed impact evaluation over an externally supplied horizon Δt,</li>
-</ul>
-<ul>
 <li>detection of boundary approach and boundary crossing,</li>
-</ul>
-<ul>
 <li>classification of reversibility and externality,</li>
-</ul>
-<ul>
 <li>production of structured, channel-separated impact outputs.</li>
 </ul>
 <p>This protocol explicitly excludes:</p>
 <ul>
 <li>optimization, scoring, or weighting,</li>
-</ul>
-<ul>
 <li>aggregation across channels,</li>
-</ul>
-<ul>
 <li>decision-making or enforcement,</li>
-</ul>
-<ul>
 <li>attribution of responsibility,</li>
-</ul>
-<ul>
 <li>compensation logic,</li>
-</ul>
-<ul>
 <li>any form of utility or justice calculation.</li>
 </ul>
 <hr />
-<h3>4\. Core Definitions</h3>
-<h4>Physical State Vector S(t)</h4>
+<h3 id="4-core-definitions">4. Core Definitions</h3>
+<h4 id="physical-state-vector-st">Physical State Vector S(t)</h4>
 <p>An immutable, time-indexed vector of measured physical variables produced by DKP-0-ORACLE-001.</p>
 <hr />
-<h4>Baseline State S(t₀)</h4>
+<h4 id="baseline-state-st">Baseline State S(t₀)</h4>
 <p>The reference physical state prior to an evaluated change.</p>
 <hr />
-<h4>Observed State S(t₁)</h4>
+<h4 id="observed-state-st">Observed State S(t₁)</h4>
 <p>The measured physical state after the evaluated change.</p>
 <hr />
-<h4>Impact Horizon Δt</h4>
+<h4 id="impact-horizon-t">Impact Horizon Δt</h4>
 <p>A time interval supplied as an external parameter defining the evaluation window.</p>
 <hr />
-<h4>Impact Channel</h4>
+<h4 id="impact-channel">Impact Channel</h4>
 <p>A logically independent dimension of physical or informational impact.</p>
 <p>Normatively declared impact channels include, but are not limited to:</p>
 <ul>
 <li>Biosphere Integrity</li>
-</ul>
-<ul>
 <li>Atmospheric Composition</li>
-</ul>
-<ul>
 <li>Human Health Proxies</li>
-</ul>
-<ul>
 <li>Resource Depletion</li>
-</ul>
-<ul>
 <li>Energy Balance</li>
-</ul>
-<ul>
 <li>Cognitive Integrity Proxies</li>
-</ul>
-<ul>
 <li>Cultural Continuity Indicators</li>
 </ul>
 <hr />
-<h4>Impact Vector Iᵢ(t₀ → t₁, Δt)</h4>
+<h4 id="impact-vector-it-t-t">Impact Vector Iᵢ(t₀ → t₁, Δt)</h4>
 <p>A channel-specific, bounded impact metric defined as normalized physical change.</p>
 <hr />
-<h4>Reference Bounds Bᵢ</h4>
+<h4 id="reference-bounds-b">Reference Bounds Bᵢ</h4>
 <p>Invariant physical limits imported from DKP-1-AXIOMS-001 or Physical Truth Layer indices.</p>
 <hr />
-<h4>Reversibility Flag Rᵢ</h4>
+<h4 id="reversibility-flag-r">Reversibility Flag Rᵢ</h4>
 <p>A boolean indicator of physical or informational irreversibility.</p>
 <hr />
-<h4>Externality Flag Xᵢ</h4>
+<h4 id="externality-flag-x">Externality Flag Xᵢ</h4>
 <p>A boolean indicator of boundary-crossing impact.</p>
 <hr />
-<h4>Uncertainty Envelope Uᵢ</h4>
+<h4 id="uncertainty-envelope-u">Uncertainty Envelope Uᵢ</h4>
 <p>A bounded confidence interval propagated from Physical Truth Layer uncertainty.</p>
 <hr />
-<h3>5\. Measurement Principle</h3>
+<h3 id="5-measurement-principle">5. Measurement Principle</h3>
 <p>Impact is defined strictly as the <strong>difference between two physical states</strong>:</p>
 <p><strong>S(t₀) → S(t₁)</strong> over <strong>Δt</strong></p>
 <p>For each impact channel <em>i</em>, let <em>Sᵢ(t)</em> denote the projection of <em>S(t)</em> onto channel <em>i</em>.</p>
 <p>The protocol computes:</p>
-<p><strong>Iᵢ \= ( Sᵢ(t₁) − Sᵢ(t₀) ) / Bᵢ</strong></p>
+<p><strong>Iᵢ = ( Sᵢ(t₁) − Sᵢ(t₀) ) / Bᵢ</strong></p>
 <p>The resulting value is:</p>
 <ul>
 <li>unaggregated,</li>
-</ul>
-<ul>
 <li>dimensionless,</li>
-</ul>
-<ul>
 <li>auditable.</li>
 </ul>
 <p>If <strong>|Iᵢ| ≥ 1</strong>, a boundary crossing SHALL be flagged.</p>
 <p>No aggregation across channels is permitted.</p>
 <hr />
-<h3>6\. Reference Bounds and Boundary Detection</h3>
+<h3 id="6-reference-bounds-and-boundary-detection">6. Reference Bounds and Boundary Detection</h3>
 <p>Each impact channel SHALL declare its applicable reference bounds <strong>Bᵢ</strong>.</p>
 <p>Bounds MUST be:</p>
 <ul>
 <li>physically or informationally defined,</li>
-</ul>
-<ul>
 <li>immutable within this protocol,</li>
-</ul>
-<ul>
 <li>traceable to DKP-1-AXIOMS-001 or Physical Truth Layer indices.</li>
 </ul>
 <p>The protocol SHALL detect:</p>
 <ul>
 <li>boundary approach,</li>
-</ul>
-<ul>
 <li>boundary crossing.</li>
 </ul>
 <p>Bounds SHALL NOT be modified, normalized, or reinterpreted.</p>
 <hr />
-<h3>7\. Reversibility Classification</h3>
+<h3 id="7-reversibility-classification">7. Reversibility Classification</h3>
 <p>For each impact channel, the protocol SHALL evaluate reversibility using formal criteria.</p>
 <p>Criteria MUST be:</p>
 <ul>
 <li>explicit,</li>
-</ul>
-<ul>
 <li>physically or informationally grounded,</li>
-</ul>
-<ul>
 <li>binary in output.</li>
 </ul>
 <p>Illustrative criteria MAY include:</p>
 <ul>
 <li>entropy increase beyond reversible regimes,</li>
-</ul>
-<ul>
 <li>irrecoverable loss of biospheric structures,</li>
-</ul>
-<ul>
 <li>irreversible phase transitions,</li>
-</ul>
-<ul>
 <li>permanent loss of cognitive or cultural capacity</li>
 <p>as verified via Physical Truth Layer data.</p>
 </ul>
 <p>Subjective or intent-based assessments are forbidden.</p>
 <hr />
-<h3>8\. Externality Detection</h3>
+<h3 id="8-externality-detection">8. Externality Detection</h3>
 <p>The protocol SHALL distinguish between <strong>internal</strong> and <strong>external</strong> impact.</p>
 <p>System boundary SHALL default to <strong>planetary scale</strong> unless explicitly narrowed by higher-layer protocols.</p>
-<p>Any detected boundary crossing SHALL set <strong>Xᵢ \= True</strong>.</p>
+<p>Any detected boundary crossing SHALL set <strong>Xᵢ = True</strong>.</p>
 <p>Absence of an explicit boundary definition SHALL be treated as <strong>full externality exposure</strong>.</p>
 <hr />
-<h3>9\. Uncertainty Propagation</h3>
+<h3 id="9-uncertainty-propagation">9. Uncertainty Propagation</h3>
 <p>Measurement uncertainty from Physical Truth Layer inputs SHALL be propagated into each impact channel.</p>
 <p>Propagation SHALL be deterministic.</p>
 <p>Illustrative methods MAY include:</p>
 <ul>
 <li>Bayesian ensembles,</li>
-</ul>
-<ul>
 <li>posterior confidence bands (e.g., ±3σ).</li>
 </ul>
 <p>Uncertainty SHALL NOT be used to suppress, downgrade, or invalidate detected impact.</p>
 <hr />
-<h3>10\. Outputs</h3>
+<h3 id="10-outputs">10. Outputs</h3>
 <p>For each impact channel <em>i</em>, the protocol outputs:</p>
 <ul>
 <li><strong>Iᵢ</strong> — impact vector,</li>
-</ul>
-<ul>
 <li><strong>Bᵢ</strong> — reference bound,</li>
-</ul>
-<ul>
 <li><strong>Rᵢ</strong> — reversibility flag,</li>
-</ul>
-<ul>
 <li><strong>Xᵢ</strong> — externality flag,</li>
-</ul>
-<ul>
 <li><strong>Uᵢ</strong> — uncertainty envelope.</li>
 </ul>
 <p>No aggregated impact score SHALL be produced.</p>
 <hr />
-<h3>11\. Cross-Layer Isolation Invariant</h3>
+<h3 id="11-cross-layer-isolation-invariant">11. Cross-Layer Isolation Invariant</h3>
 <p>No higher-layer protocol may:</p>
 <ul>
 <li>alter reference bounds,</li>
-</ul>
-<ul>
 <li>suppress impact channels,</li>
-</ul>
-<ul>
 <li>override reversibility or externality flags,</li>
-</ul>
-<ul>
 <li>inject valuation, weighting, responsibility, or optimization logic.</li>
 </ul>
 <p>Violation constitutes a <strong>critical architectural breach</strong>.</p>
 <hr />
-<h3>12\. Protocol Finality</h3>
+<h3 id="12-protocol-finality">12. Protocol Finality</h3>
 <p>Once finalized, this protocol is immutable.</p>
 <p>Any modification requires:</p>
 <ul>
 <li>a new protocol identifier,</li>
-</ul>
-<ul>
 <li>explicit declaration of incompatibility,</li>
-</ul>
-<ul>
 <li>full-system revalidation under DKP-8-SIMULATION.</li>
 </ul>
-<p>Protocol Hash (SHA-256): <strong>\[to be inserted at freeze\]</strong></p>
+<p>Protocol Hash (SHA-256): <strong>[to be inserted at freeze]</strong></p>
 <hr />
-<h3>13\. Illustrative Example (Non-Normative)</h3>
+<h3 id="13-illustrative-example-non-normative">13. Illustrative Example (Non-Normative)</h3>
 <p><strong>Input</strong></p>
 <ul>
 <li>Channel: Atmospheric Composition</li>
-</ul>
-<ul>
-<li>S(t₀): CO₂ \= 426.91 ppm</li>
-</ul>
-<ul>
-<li>S(t₁): CO₂ \= 427.00 ppm</li>
-</ul>
-<ul>
+<li>S(t₀): CO₂ = 426.91 ppm</li>
+<li>S(t₁): CO₂ = 427.00 ppm</li>
 <li>Δt: 1 hour</li>
-</ul>
-<ul>
 <li>Bᵢ: 450 ppm</li>
 </ul>
 <p><strong>Output</strong></p>
 <ul>
 <li>Iᵢ ≈ 0.004</li>
-</ul>
-<ul>
-<li>Rᵢ \= False</li>
-</ul>
-<ul>
-<li>Xᵢ \= False</li>
-</ul>
-<ul>
-<li>Uᵢ \= ±0.01 ppm</li>
+<li>Rᵢ = False</li>
+<li>Xᵢ = False</li>
+<li>Uᵢ = ±0.01 ppm</li>
 </ul>
 <p>This example is illustrative only and not normative.</p>
 <hr />
-<h4>END OF PROTOCOL</h4>
-      </article>
+<h4 id="end-of-protocol">END OF PROTOCOL</h4>
+        </article>
+
+        <nav class="protocol-nav" aria-label="Protocol navigation">
+          <a class="protocol-nav__link protocol-nav__prev" href="dkp-1-identity-001.html" aria-label="Previous protocol: DKP-1-IDENTITY-001">
+            <img src="../../assets/previous.webp" alt="" width="48" height="32" />
+            <span>DKP-1-IDENTITY-001</span>
+          </a>
+          <a class="protocol-nav__link protocol-nav__next" href="dkp-1-justice-001.html" aria-label="Next protocol: DKP-1-JUSTICE-001">
+            <span>DKP-1-JUSTICE-001</span>
+            <img src="../../assets/next.webp" alt="" width="48" height="32" />
+          </a>
+        </nav>
+      </div>
     </div>
   </main>
 

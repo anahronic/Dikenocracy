@@ -1,61 +1,61 @@
 #!/usr/bin/env python3
 """
 Convert the protocols source markdown into individual HTML pages.
-Reads: website/assets/Dikenocracy SYNERGY and 31 PROTOCOLS .md
+Reads:  website/assets/Dikenocracy SYNERGY and 31 PROTOCOLS .md
 Writes: website/pages/protocols/*.html
 
-Splits on EVERY protocol boundary:
-  - H1 headings  (^# )
-  - H2 DKP headings  (^## **DKP-…)
-  - Bare DKP protocol ID lines  (^DKP-N-NAME-NNN\s*$)
-  - Bold DKP protocol ID lines  (^**DKP-N-NAME-NNN**\s*$)
+Features:
+  - Splits on protocol boundaries (H1, H2-DKP, bare DKP, bold DKP)
+  - Cleans markdown artifacts (escaped heading numbers, stray markers)
+  - Generates heading IDs for table-of-contents anchoring
+  - Adds left-side TOC sidebar per protocol page
+  - Adds Previous / Next protocol navigation with image buttons
+  - Proper heading hierarchy (h1 = page title, h2+ = content)
 """
-import re, html, textwrap, pathlib
+import re, html, pathlib
 
 BASE_DIR = pathlib.Path(__file__).resolve().parent
 SRC = BASE_DIR / "assets" / "Dikenocracy SYNERGY and 31 PROTOCOLS .md"
 OUT = BASE_DIR / "pages" / "protocols"
 OUT.mkdir(parents=True, exist_ok=True)
 
+DOMAIN = "https://dikenocracy.com"
+
 lines = SRC.read_text(encoding="utf-8").splitlines()
 
-# ── Pattern for DKP protocol identifiers (handles multi-word names) ─────────
+# ── Pattern for DKP protocol identifiers ────────────────────────────────────
 DKP_PAT = r'DKP-\d+(?:-[A-Z]+)+-\d+'
 
 def is_boundary(line: str) -> bool:
-    """Return True if *line* starts a new protocol / top-level section."""
-    # Any H1 heading
     if re.match(r'^# ', line):
         return True
-    # H2 heading that contains a DKP id  (e.g.  ## **DKP-8-INTEROP-001**)
     if re.match(rf'^##\s+\**{DKP_PAT}', line):
         return True
-    # Bare protocol id on its own line  (e.g.  DKP-5-CULTURE-001)
     if re.match(rf'^{DKP_PAT}\s*$', line):
         return True
-    # Bold protocol id on its own line  (e.g.  **DKP-7-AI-SUBJECT-001**)
     if re.match(rf'^\*\*{DKP_PAT}\*\*\s*$', line):
         return True
     return False
 
 def extract_title(line: str) -> str:
-    """Pull a clean title string from a boundary line."""
     s = line.strip()
-    # strip leading markdown heading markers
     s = re.sub(r'^#{1,6}\s+', '', s)
-    # strip bold markers
     s = s.strip('*').strip()
-    # strip surrounding whitespace
     return s
 
-# ── Identify ALL protocol boundaries ────────────────────────────────────────
+def make_slug(title: str) -> str:
+    s = title.lower()
+    s = re.sub(r'[^a-z0-9]+', '-', s)
+    s = s.strip('-')
+    return s or 'index'
+
+# ── Identify protocol boundaries ────────────────────────────────────────────
 boundaries = []
 for i, line in enumerate(lines):
     if is_boundary(line):
         boundaries.append(i)
 boundaries.append(len(lines))
 
-# ── Build protocol blocks ───────────────────────────────────────────────────
 blocks = []
 for j in range(len(boundaries) - 1):
     start = boundaries[j]
@@ -64,45 +64,82 @@ for j in range(len(boundaries) - 1):
     body_lines = lines[start:end]
     blocks.append((title_raw, body_lines))
 
-# ── Markdown → HTML (lightweight, no dependencies) ──────────────────────────
-def md_to_html(md_lines: list[str]) -> str:
-    """Very simple markdown to HTML converter — handles headings, paragraphs,
-    lists, bold/italic, code, tables, and blockquotes."""
+
+# ── Heading ID generator ───────────────────────────────────────────────────
+_id_counts = {}
+
+def heading_id(text):
+    """Generate a unique slug from heading text for anchor linking."""
+    s = re.sub(r'<[^>]+>', '', text)  # strip HTML tags
+    s = re.sub(r'[^a-z0-9\s-]', '', s.lower())
+    s = re.sub(r'[\s]+', '-', s.strip())
+    s = s[:60].rstrip('-') or 'section'
+    if s in _id_counts:
+        _id_counts[s] += 1
+        s = f"{s}-{_id_counts[s]}"
+    else:
+        _id_counts[s] = 0
+    return s
+
+
+# ── Clean text helpers ──────────────────────────────────────────────────────
+def clean_heading_text(s):
+    """Remove markdown artifacts from heading text."""
+    s = re.sub(r'(\d+)\\\.', r'\1.', s)
+    s = s.strip('*').strip()
+    s = s.replace('\\', '')
+    return s
+
+def inline(s):
+    """Convert inline markdown to HTML."""
+    s = re.sub(r'\*\*\*(.+?)\*\*\*', r'<strong><em>\1</em></strong>', s)
+    s = re.sub(r'\*\*(.+?)\*\*', r'<strong>\1</strong>', s)
+    s = re.sub(r'(?<!\*)\*(?!\*)(.+?)(?<!\*)\*(?!\*)', r'<em>\1</em>', s)
+    s = re.sub(r'`([^`]+)`', r'<code>\1</code>', s)
+    s = re.sub(r'\[!\[.*?\]\(.*?\)\]\(.*?\)', '', s)
+    s = re.sub(r'!\[.*?\]\(.*?\)', '', s)
+    s = re.sub(r'\[([^\]]+)\]\(([^)]+)\)', r'<a href="\2">\1</a>', s)
+    s = re.sub(r'\[image\d+\]', '', s)
+    s = re.sub(r'(\d+)\\\.', r'\1.', s)
+    s = s.replace('\\', '')
+    if s.strip() == '*':
+        return ''
+    return s
+
+
+# ── Markdown to HTML converter ──────────────────────────────────────────────
+def md_to_html(md_lines):
+    """Convert markdown lines to HTML. Returns (html_string, toc_entries).
+    toc_entries = [(level, id, text), ...]"""
     out = []
-    in_list = False
+    toc = []
+    in_ul = False
+    in_ol = False
     in_table = False
     in_code = False
     buffer = []
+    prev_was_hr = False
 
     def flush_para():
         nonlocal buffer
         if buffer:
             text = " ".join(buffer).strip()
-            if text:
-                out.append(f"<p>{inline(text)}</p>")
+            text = inline(text)
+            if text and text.strip():
+                out.append(f"<p>{text}</p>")
             buffer = []
 
-    def inline(s):
-        # escape first, then apply inline formatting
-        # bold+italic
-        s = re.sub(r'\*\*\*(.+?)\*\*\*', r'<strong><em>\1</em></strong>', s)
-        # bold
-        s = re.sub(r'\*\*(.+?)\*\*', r'<strong>\1</strong>', s)
-        # italic
-        s = re.sub(r'\*(.+?)\*', r'<em>\1</em>', s)
-        # inline code
-        s = re.sub(r'`([^`]+)`', r'<code>\1</code>', s)
-        # images (linked)
-        s = re.sub(r'\[!\[.*?\]\(.*?\)\]\(.*?\)', '', s)  # remove equation images
-        # remaining image refs
-        s = re.sub(r'!\[.*?\]\(.*?\)', '', s)
-        # links
-        s = re.sub(r'\[([^\]]+)\]\(([^)]+)\)', r'<a href="\2">\1</a>', s)
-        # image placeholders like [image1]
-        s = re.sub(r'\[image\d+\]', '', s)
-        return s
+    def close_list():
+        nonlocal in_ul, in_ol
+        if in_ul:
+            out.append("</ul>")
+            in_ul = False
+        if in_ol:
+            out.append("</ol>")
+            in_ol = False
 
-    for raw in md_lines:
+    total_lines = len(md_lines)
+    for idx, raw in enumerate(md_lines):
         line = raw.rstrip()
 
         # code fence
@@ -112,8 +149,8 @@ def md_to_html(md_lines: list[str]) -> str:
                 in_code = False
             else:
                 flush_para()
-                lang = line[3:].strip()
-                out.append(f"<pre>")
+                close_list()
+                out.append("<pre>")
                 in_code = True
             continue
         if in_code:
@@ -123,9 +160,6 @@ def md_to_html(md_lines: list[str]) -> str:
         # blank line
         if not line.strip():
             flush_para()
-            if in_list:
-                out.append("</ul>")
-                in_list = False
             if in_table:
                 out.append("</tbody></table>")
                 in_table = False
@@ -134,12 +168,12 @@ def md_to_html(md_lines: list[str]) -> str:
         # table row
         if '|' in line and line.strip().startswith('|'):
             cells = [c.strip() for c in line.strip().strip('|').split('|')]
-            # separator row (---|---|---)
             if all(re.match(r'^[-: ]+$', c) for c in cells):
                 continue
             flush_para()
+            close_list()
             if not in_table:
-                out.append('<table class="protocol-table"><thead><tr>')
+                out.append('<div class="table-wrap"><table class="protocol-table"><thead><tr>')
                 for c in cells:
                     out.append(f"<th>{inline(c)}</th>")
                 out.append("</tr></thead><tbody>")
@@ -155,66 +189,174 @@ def md_to_html(md_lines: list[str]) -> str:
         m = re.match(r'^(#{1,6})\s+(.*)', line)
         if m:
             flush_para()
-            if in_list:
-                out.append("</ul>")
-                in_list = False
+            close_list()
             level = len(m.group(1))
-            text = m.group(2).strip().strip("*")
-            # keep headings at h2-h4 range for page hierarchy
+            text = clean_heading_text(m.group(2))
             h = min(level + 1, 4)
-            out.append(f"<h{h}>{inline(text)}</h{h}>")
+            hid = heading_id(text)
+            out.append(f'<h{h} id="{hid}">{inline(text)}</h{h}>')
+            toc.append((h, hid, re.sub(r'<[^>]+>', '', inline(text))))
+            prev_was_hr = False
             continue
 
-        # horizontal rule
-        if re.match(r'^---+$', line.strip()):
+        # horizontal rule — skip duplicates (handles both --- and \---)
+        if re.match(r'^\\?---+$', line.strip()):
             flush_para()
-            out.append("<hr />")
+            close_list()
+            if not prev_was_hr:
+                out.append('<hr />')
+                prev_was_hr = True
+            continue
+        prev_was_hr = False
+
+        # Standalone numbered section heading: "0\. Preamble", "1\. Purpose", etc.
+        # These are on their own line in the source — not part of ordered lists
+        m_sec = re.match(r'^(\d+)\\\. (.+)$', line)
+        if m_sec:
+            flush_para()
+            close_list()
+            num = m_sec.group(1)
+            text = clean_heading_text(m_sec.group(2))
+            hid = heading_id(f'{num}. {text}')
+            out.append(f'<h2 id="{hid}">{inline(f"{num}. {text}")}</h2>')
+            toc.append((2, hid, f'{num}. ' + re.sub(r'<[^>]+>', '', inline(text))))
+            prev_was_hr = False
             continue
 
         # unordered list
-        m = re.match(r'^[\*\-]\s+(.*)', line)
-        if m:
+        m_ul = re.match(r'^[\*\-]\s+(.*)', line)
+        if m_ul:
             flush_para()
-            if not in_list:
+            if in_ol:
+                out.append("</ol>")
+                in_ol = False
+            if not in_ul:
                 out.append("<ul>")
-                in_list = True
-            out.append(f"<li>{inline(m.group(1))}</li>")
+                in_ul = True
+            out.append(f"<li>{inline(m_ul.group(1))}</li>")
             continue
 
-        # ordered list
-        m = re.match(r'^\d+[\.\)]\s+(.*)', line)
-        if m:
+        # ordered list — but detect standalone section headings first
+        m_ol = re.match(r'^(\d+)[\.\)]\s+(.*)', line)
+        if m_ol:
+            num_text = m_ol.group(2).strip()
+            word_count = len(num_text.split())
+            # Heuristic: a numbered line is a section heading if:
+            #  - short (1-6 words), starts uppercase, no markdown formatting
+            #  - AND followed by blank line or indented body (standalone heading)
+            #  - AND we're not already inside an ordered list
+            next_line = md_lines[idx + 1].rstrip() if idx + 1 < total_lines else ''
+            next_is_body = (idx + 1 >= total_lines
+                           or next_line.strip() == ''
+                           or next_line.startswith('   '))
+            no_formatting = not re.search(r'[*#\[\]`]', num_text)
+            if (word_count <= 6 and num_text[:1].isupper()
+                    and no_formatting and next_is_body and not in_ol):
+                flush_para()
+                close_list()
+                num = m_ol.group(1)
+                text = clean_heading_text(num_text)
+                hid = heading_id(f'{num}. {text}')
+                out.append(f'<h2 id="{hid}">{inline(f"{num}. {text}")}</h2>')
+                toc.append((2, hid, f'{num}. ' + re.sub(r'<[^>]+>', '', inline(text))))
+                prev_was_hr = False
+                continue
             flush_para()
-            if not in_list:
-                out.append("<ul>")
-                in_list = True
-            out.append(f"<li>{inline(m.group(1))}</li>")
+            if in_ul:
+                out.append("</ul>")
+                in_ul = False
+            if not in_ol:
+                out.append("<ol>")
+                in_ol = True
+            out.append(f"<li>{inline(m_ol.group(2))}</li>")
             continue
+
+        # Close list if current line is not a list item
+        if (in_ul or in_ol) and not line.startswith(' '):
+            close_list()
 
         # blockquote
         if line.startswith('>'):
             flush_para()
+            close_list()
             out.append(f"<blockquote>{inline(line[1:].strip())}</blockquote>")
+            continue
+
+        # Skip stray lone asterisks
+        if line.strip() in ('*', '**'):
             continue
 
         # paragraph continuation
         buffer.append(line)
 
     flush_para()
-    if in_list:
-        out.append("</ul>")
+    close_list()
     if in_table:
-        out.append("</tbody></table>")
+        out.append("</tbody></table></div>")
 
-    return "\n".join(out)
+    # Post-process TOC: only include h4 entries if no h2 entries exist
+    # (meaning ### is the top-level heading for this protocol)
+    has_h2 = any(level == 2 for level, _, _ in toc)
+    if has_h2:
+        toc = [(level, hid, text) for level, hid, text in toc if level <= 3]
+
+    return "\n".join(out), toc
 
 
-# ── HTML template ───────────────────────────────────────────────────────────
-DOMAIN = "https://dikenocracy.com"
+# ── Build TOC sidebar HTML ──────────────────────────────────────────────────
+def toc_html(entries):
+    if not entries:
+        return ''
+    items = []
+    for level, hid, text in entries:
+        indent_cls = ' class="toc__sub"' if level >= 3 else ''
+        items.append(f'          <li{indent_cls}><a href="#{hid}">{html.escape(text)}</a></li>')
+    return "\n".join(items)
 
-def page_html(title: str, body_html: str, slug: str) -> str:
+
+# ── Page HTML template ──────────────────────────────────────────────────────
+def page_html(title, body_html, slug, toc_items,
+              prev_slug, prev_title, next_slug, next_title):
     esc_title = html.escape(title)
     canon = f"{DOMAIN}/pages/protocols/{slug}.html"
+
+    # prev/next nav
+    nav_parts = []
+    nav_parts.append('        <nav class="protocol-nav" aria-label="Protocol navigation">')
+    if prev_slug:
+        esc_prev = html.escape(prev_title or "")
+        nav_parts.append(f'          <a class="protocol-nav__link protocol-nav__prev" href="{prev_slug}.html" aria-label="Previous protocol: {esc_prev}">')
+        nav_parts.append(f'            <img src="../../assets/previous.webp" alt="" width="48" height="32" />')
+        nav_parts.append(f'            <span>{esc_prev}</span>')
+        nav_parts.append(f'          </a>')
+    else:
+        nav_parts.append(f'          <span class="protocol-nav__link protocol-nav__prev protocol-nav__disabled"></span>')
+    if next_slug:
+        esc_next = html.escape(next_title or "")
+        nav_parts.append(f'          <a class="protocol-nav__link protocol-nav__next" href="{next_slug}.html" aria-label="Next protocol: {esc_next}">')
+        nav_parts.append(f'            <span>{esc_next}</span>')
+        nav_parts.append(f'            <img src="../../assets/next.webp" alt="" width="48" height="32" />')
+        nav_parts.append(f'          </a>')
+    else:
+        nav_parts.append(f'          <span class="protocol-nav__link protocol-nav__next protocol-nav__disabled"></span>')
+    nav_parts.append('        </nav>')
+    nav_html = "\n".join(nav_parts)
+
+    # TOC sidebar
+    toc_block = ''
+    if toc_items:
+        toc_block = f'''      <aside class="protocol-toc" aria-label="Table of contents">
+        <button class="protocol-toc__toggle" aria-expanded="false" aria-controls="toc-list">
+          <span>Contents</span>
+          <svg width="12" height="8" viewBox="0 0 12 8" fill="none"><path d="M1 1l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </button>
+        <nav id="toc-list">
+          <ul class="protocol-toc__list">
+{toc_items}
+          </ul>
+        </nav>
+      </aside>'''
+
     return f'''<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -253,13 +395,20 @@ def page_html(title: str, body_html: str, slug: str) -> str:
   </nav>
 
   <main id="main">
-    <div class="page-wrapper">
-      <p style="margin-bottom:var(--gap-md)"><a href="../protocols.html">&larr; All Protocols</a></p>
+    <div class="protocol-shell">
+{toc_block}
+      <div class="protocol-content">
+        <div class="protocol-toolbar">
+          <a href="../protocols.html">&larr; All Protocols</a>
+        </div>
 
-      <article class="protocol-article">
-        <h1>{esc_title}</h1>
+        <article class="protocol-article">
+          <h1>{esc_title}</h1>
 {body_html}
-      </article>
+        </article>
+
+{nav_html}
+      </div>
     </div>
   </main>
 
@@ -271,30 +420,38 @@ def page_html(title: str, body_html: str, slug: str) -> str:
 </body>
 </html>'''
 
-# ── Slug mapping ────────────────────────────────────────────────────────────
-def make_slug(title: str) -> str:
-    s = title.lower()
-    s = re.sub(r'[^a-z0-9]+', '-', s)
-    s = s.strip('-')
-    return s or 'index'
 
 # ── Generate pages ──────────────────────────────────────────────────────────
-manifest = []  # (slug, title) for index page
+manifest = []
 
+# First pass: collect valid blocks
+valid_blocks = []
 for title, body_lines in blocks:
     slug = make_slug(title)
-    # Skip the title-only stub ("Dikenocracy" — 2 lines, no real content)
     if slug == 'dikenocracy' and len(body_lines) < 5:
         print(f"  skipped {slug} (title-only stub)")
         continue
-    body_html = md_to_html(body_lines)
-    page = page_html(title, body_html, slug)
+    valid_blocks.append((title, slug, body_lines))
+
+# Second pass: generate with prev/next
+for idx, (title, slug, body_lines) in enumerate(valid_blocks):
+    _id_counts.clear()
+    body_html, toc_entries = md_to_html(body_lines)
+    toc_items = toc_html(toc_entries)
+
+    prev_slug = valid_blocks[idx - 1][1] if idx > 0 else None
+    prev_title = valid_blocks[idx - 1][0] if idx > 0 else None
+    next_slug = valid_blocks[idx + 1][1] if idx < len(valid_blocks) - 1 else None
+    next_title = valid_blocks[idx + 1][0] if idx < len(valid_blocks) - 1 else None
+
+    page = page_html(title, body_html, slug, toc_items,
+                     prev_slug, prev_title, next_slug, next_title)
     outfile = OUT / f"{slug}.html"
     outfile.write_text(page, encoding="utf-8")
     manifest.append((slug, title))
-    print(f"  wrote {outfile.name} ({len(body_lines)} lines)")
+    print(f"  wrote {outfile.name} ({len(body_lines)} lines, {len(toc_entries)} TOC entries)")
 
-# ── Write manifest for the index page ──────────────────────────────────────
+# ── Write manifest ──────────────────────────────────────────────────────────
 manifest_path = OUT / "manifest.txt"
 with open(manifest_path, "w") as f:
     for slug, title in manifest:

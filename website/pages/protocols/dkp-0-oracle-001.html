@@ -36,16 +36,49 @@
   </nav>
 
   <main id="main">
-    <div class="page-wrapper">
-      <p style="margin-bottom:var(--gap-md)"><a href="../protocols.html">&larr; All Protocols</a></p>
+    <div class="protocol-shell">
+      <aside class="protocol-toc" aria-label="Table of contents">
+        <button class="protocol-toc__toggle" aria-expanded="false" aria-controls="toc-list">
+          <span>Contents</span>
+          <svg width="12" height="8" viewBox="0 0 12 8" fill="none"><path d="M1 1l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </button>
+        <nav id="toc-list">
+          <ul class="protocol-toc__list">
+          <li><a href="#dkp-0-oracle-001">DKP-0-ORACLE-001</a></li>
+          <li class="toc__sub"><a href="#physical-truth-layer-protocol-ptl">Physical Truth Layer Protocol (PTL)</a></li>
+          <li class="toc__sub"><a href="#1-purpose">1. Purpose</a></li>
+          <li class="toc__sub"><a href="#2-system-position-and-anchoring">2. System Position and Anchoring</a></li>
+          <li class="toc__sub"><a href="#3-scope">3. Scope</a></li>
+          <li class="toc__sub"><a href="#4-core-definitions">4. Core Definitions</a></li>
+          <li class="toc__sub"><a href="#5-measurement-classification-mandatory">5. Measurement Classification (Mandatory)</a></li>
+          <li class="toc__sub"><a href="#6-independent-oracle-classes">6. Independent Oracle Classes</a></li>
+          <li class="toc__sub"><a href="#7-data-ingestion-rules">7. Data Ingestion Rules</a></li>
+          <li class="toc__sub"><a href="#8-oracle-weighting-and-anti-collusion-constraints">8. Oracle Weighting and Anti-Collusion Constraints</a></li>
+          <li class="toc__sub"><a href="#9-temporal-validity-and-data-staleness">9. Temporal Validity and Data Staleness</a></li>
+          <li class="toc__sub"><a href="#10-data-aggregation-method">10. Data Aggregation Method</a></li>
+          <li class="toc__sub"><a href="#11-divergence-detection-and-arbitration">11. Divergence Detection and Arbitration</a></li>
+          <li class="toc__sub"><a href="#12-outputs">12. Outputs</a></li>
+          <li class="toc__sub"><a href="#13-systemic-halt-conditions">13. Systemic Halt Conditions</a></li>
+          <li class="toc__sub"><a href="#14-crisis-mercy-exception">14. Crisis Mercy Exception</a></li>
+          <li class="toc__sub"><a href="#15-cross-layer-isolation-invariant">15. Cross-Layer Isolation Invariant</a></li>
+          <li class="toc__sub"><a href="#16-table-of-constants">16. Table of Constants</a></li>
+          <li class="toc__sub"><a href="#17-ttl-registry-normative">17. TTL Registry (Normative)</a></li>
+          <li class="toc__sub"><a href="#18-non-override-and-finality">18. Non-Override and Finality</a></li>
+          </ul>
+        </nav>
+      </aside>
+      <div class="protocol-content">
+        <div class="protocol-toolbar">
+          <a href="../protocols.html">&larr; All Protocols</a>
+        </div>
 
-      <article class="protocol-article">
-        <h1>DKP-0-ORACLE-001</h1>
-<h2>DKP-0-ORACLE-001</h2>
-<h3>Physical Truth Layer Protocol (PTL)</h3>
-<p><strong>Version:</strong> 1.1  <strong>Status:</strong> Architecture Lock Candidate  <strong>Layer:</strong> L0  <strong>Anchored to:</strong> Genesis Block \#0 (2025-12-10)</p>
+        <article class="protocol-article">
+          <h1>DKP-0-ORACLE-001</h1>
+<h2 id="dkp-0-oracle-001">DKP-0-ORACLE-001</h2>
+<h3 id="physical-truth-layer-protocol-ptl">Physical Truth Layer Protocol (PTL)</h3>
+<p><strong>Version:</strong> 1.1  <strong>Status:</strong> Architecture Lock Candidate  <strong>Layer:</strong> L0  <strong>Anchored to:</strong> Genesis Block #0 (2025-12-10)</p>
 <hr />
-<h3>1\. Purpose</h3>
+<h3 id="1-purpose">1. Purpose</h3>
 <p>The Physical Truth Layer (PTL) defines the <strong>sole admissible interface between physical reality and the Dikenocracy governance system</strong>.</p>
 <p>Its function is to produce a <strong>bounded, physically grounded, cryptographically verifiable representation of observable reality</strong>, independent of political, economic, or human discretion.</p>
 <p>The PTL produces <strong>physical state only</strong>.</p>
@@ -58,12 +91,12 @@
 <li>infer subjective or semantic states.</li>
 </ul>
 <hr />
-<h3>2\. System Position and Anchoring</h3>
-<p>This protocol is an integral extension of Appendix A.2 of the Code of Planetary Synergy and is anchored to <strong>Genesis Block \#0 (2025-12-10)</strong>.</p>
+<h3 id="2-system-position-and-anchoring">2. System Position and Anchoring</h3>
+<p>This protocol is an integral extension of Appendix A.2 of the Code of Planetary Synergy and is anchored to <strong>Genesis Block #0 (2025-12-10)</strong>.</p>
 <p>Compatibility with Genesis Block physical anchors and parameters is a <strong>mandatory validity condition</strong> for any PTL implementation.</p>
 <p>PTL outputs are <strong>non-normative</strong> and may only be consumed by higher layers under explicitly defined activation and scope rules.</p>
 <hr />
-<h3>3\. Scope</h3>
+<h3 id="3-scope">3. Scope</h3>
 <p>This protocol governs:</p>
 <ul>
 <li>oracle admissibility,</li>
@@ -84,38 +117,38 @@
 <li>cross-layer feedback or parameter adjustment.</li>
 </ul>
 <hr />
-<h3>4\. Core Definitions</h3>
-<h4>4.1 Physical State Vector S(t)</h4>
+<h3 id="4-core-definitions">4. Core Definitions</h3>
+<h4 id="41-physical-state-vector-st">4.1 Physical State Vector S(t)</h4>
 <p>A time-indexed vector of <strong>physically measurable variables</strong>, derived exclusively from admissible oracle inputs.</p>
 <hr />
-<h4>4.2 Oracle Source</h4>
+<h4 id="42-oracle-source">4.2 Oracle Source</h4>
 <p>A hardware-bound system producing <strong>cryptographically signed physical measurements</strong>, traceable to a registered oracle identity.</p>
 <hr />
-<h4>4.3 Oracle Owner</h4>
+<h4 id="43-oracle-owner">4.3 Oracle Owner</h4>
 <p>A natural or legal person controlling one or more oracle sources.</p>
 <hr />
-<h4>4.4 Confidence Weight wᵢ</h4>
+<h4 id="44-confidence-weight-w">4.4 Confidence Weight wᵢ</h4>
 <p>A normalized reliability contribution of an oracle source, bounded and capped by protocol constraints.</p>
 <hr />
-<h4>4.5 Coverage</h4>
+<h4 id="45-coverage">4.5 Coverage</h4>
 <p>The fraction of the target physical domain that is actively observed by valid oracle sources with non-zero confidence.</p>
 <hr />
-<h4>4.6 Data Staleness (TTL)</h4>
+<h4 id="46-data-staleness-ttl">4.6 Data Staleness (TTL)</h4>
 <p>The maximum admissible age of a datum before its confidence weight is <strong>forced to zero</strong>.</p>
 <hr />
-<h4>4.7 Independent Oracle Classes</h4>
+<h4 id="47-independent-oracle-classes">4.7 Independent Oracle Classes</h4>
 <p>Distinct measurement modalities defined by <strong>physical separation of sensing mechanisms</strong>.</p>
 <hr />
-<h4>4.8 Divergence Event</h4>
+<h4 id="48-divergence-event">4.8 Divergence Event</h4>
 <p>A statistically significant disagreement between posterior distributions produced by <strong>independent oracle classes</strong>.</p>
 <hr />
-<h3>5\. Measurement Classification (Mandatory)</h3>
+<h3 id="5-measurement-classification-mandatory">5. Measurement Classification (Mandatory)</h3>
 <p>All PTL outputs MUST be explicitly classified as one of the following:</p>
-<h4>5.1 Direct Physical Measurements</h4>
+<h4 id="51-direct-physical-measurements">5.1 Direct Physical Measurements</h4>
 <p>Directly observable quantities requiring no semantic interpretation.</p>
 <p>Examples include: position, speed, acceleration, mass, temperature, radiation, pressure, noise level, duration, exposure.</p>
 <hr />
-<h4>5.2 Proxy-Based Measurements</h4>
+<h4 id="52-proxy-based-measurements">5.2 Proxy-Based Measurements</h4>
 <p>Derived indicators correlating with physical processes but <strong>not equivalent to subjective, semantic, or normative states</strong>.</p>
 <p>Examples include: load indices, stress proxies, fatigue indicators, environmental risk proxies.</p>
 <p>Proxy-based outputs MUST:</p>
@@ -125,7 +158,7 @@
 <li>explicitly state that the result is not a subjective state.</li>
 </ul>
 <hr />
-<h4>5.3 Non-Measurable Domains (Explicitly Excluded)</h4>
+<h4 id="53-non-measurable-domains-explicitly-excluded">5.3 Non-Measurable Domains (Explicitly Excluded)</h4>
 <p>The PTL SHALL NOT emit outputs concerning:</p>
 <ul>
 <li>intent,</li>
@@ -136,7 +169,7 @@
 <li>moral, cultural, or social harm.</li>
 </ul>
 <hr />
-<h3>6\. Independent Oracle Classes</h3>
+<h3 id="6-independent-oracle-classes">6. Independent Oracle Classes</h3>
 <p>The PTL defines the following independent oracle classes:</p>
 <ul>
 <li>Orbital (satellite-based remote sensing),</li>
@@ -145,7 +178,7 @@
 </ul>
 <p>Divergence detection applies <strong>exclusively across classes</strong>, not within a single class.</p>
 <hr />
-<h3>7\. Data Ingestion Rules</h3>
+<h3 id="7-data-ingestion-rules">7. Data Ingestion Rules</h3>
 <p>All data MUST:</p>
 <ul>
 <li>be cryptographically signed at the source,</li>
@@ -157,7 +190,7 @@
 <p>Zero-knowledge proofs MAY be used to verify authenticity without revealing proprietary sensor internals.</p>
 <p>No data may be modified, normalized, aggregated, or interpreted at ingestion time.</p>
 <hr />
-<h3>8\. Oracle Weighting and Anti-Collusion Constraints</h3>
+<h3 id="8-oracle-weighting-and-anti-collusion-constraints">8. Oracle Weighting and Anti-Collusion Constraints</h3>
 <ul>
 <li>Maximum confidence weight per oracle source: <strong>4%</strong></li>
 <li>Maximum combined confidence weight per oracle owner: <strong>4%</strong></li>
@@ -169,7 +202,7 @@
 <li>slashing of the violating owner’s remaining stake, where applicable.</li>
 </ul>
 <hr />
-<h3>9\. Temporal Validity and Data Staleness</h3>
+<h3 id="9-temporal-validity-and-data-staleness">9. Temporal Validity and Data Staleness</h3>
 <p>All data types SHALL have an explicit TTL.</p>
 <p>Data exceeding its TTL SHALL have its confidence weight set to zero.</p>
 <p>Stale data MUST NOT be:</p>
@@ -185,7 +218,7 @@
 <li>MUST propagate upward as <strong>explicit uncertainty, degradation, or halt signals</strong>.</li>
 </ul>
 <hr />
-<h3>10\. Data Aggregation Method</h3>
+<h3 id="10-data-aggregation-method">10. Data Aggregation Method</h3>
 <p>The PTL aggregates admissible data using a <strong>deterministic Bayesian ensemble</strong>.</p>
 <ul>
 <li>Oracle inputs act as likelihood updates, not votes.</li>
@@ -195,7 +228,7 @@
 <p>Given identical inputs, aggregation MUST be reproducible.</p>
 <p>All aggregation pipelines MUST be auditable and explainable.</p>
 <hr />
-<h3>11\. Divergence Detection and Arbitration</h3>
+<h3 id="11-divergence-detection-and-arbitration">11. Divergence Detection and Arbitration</h3>
 <p>A Divergence Event is triggered when posterior distributions across independent oracle classes differ by more than <strong>7%</strong>.</p>
 <p>Upon a Divergence Event:</p>
 <ul>
@@ -209,14 +242,14 @@
 <li>exclusion of faulty or compromised sources.</li>
 </ul>
 <hr />
-<h3>12\. Outputs</h3>
+<h3 id="12-outputs">12. Outputs</h3>
 <p>The PTL produces the following immutable outputs:</p>
 <ul>
 <li>Signed Physical State Vector S(t)</li>
 <li>Oracle confidence weights</li>
 <li>Coverage metrics</li>
 <li>Divergence flags</li>
-<li>Confidence envelope for each output ∈ \[0,1\]</li>
+<li>Confidence envelope for each output ∈ [0,1]</li>
 <li>Raw Biosphere Integrity Index B(t)</li>
 </ul>
 <p>B(t) is a <strong>composite physical index</strong>, constructed exclusively from PTL-admissible measurements.</p>
@@ -224,7 +257,7 @@
 <p>PTL SHALL NOT modify, tune, normalize, or reinterpret B(t) beyond emitting its raw, model-declared output.</p>
 <p>Until an attached and valid L8 calibration bundle exists, B(t) SHALL be treated as <strong>informational only</strong> and SHALL NOT trigger enforcement.</p>
 <hr />
-<h3>13\. Systemic Halt Conditions</h3>
+<h3 id="13-systemic-halt-conditions">13. Systemic Halt Conditions</h3>
 <p>All dependent governance execution layers MUST halt if any of the following conditions occur:</p>
 <ul>
 <li>aggregate confidence falls below <strong>60%</strong>,</li>
@@ -238,7 +271,7 @@
 <li>preserves identity attribution, impact records, and subject continuity.</li>
 </ul>
 <hr />
-<h3>14\. Crisis Mercy Exception</h3>
+<h3 id="14-crisis-mercy-exception">14. Crisis Mercy Exception</h3>
 <p>If a Crisis Mercy status is formally activated under Appendix A.4 of the Code of Planetary Synergy, and the PTL confirms that oracle degradation is caused by <strong>non-anthropogenic global physical events</strong>, enforcement of Systemic Halt MAY be temporarily deferred.</p>
 <p>For avoidance of doubt:</p>
 <p>Events resulting from <strong>human action, negligence, sabotage, coordinated sensor manipulation, or deliberate oracle interference</strong> SHALL NOT be classified as non-anthropogenic.</p>
@@ -251,7 +284,7 @@
 <li>DOES NOT create normative or precedential authority (see DKP-7-SCOPE-001).</li>
 </ul>
 <hr />
-<h3>15\. Cross-Layer Isolation Invariant</h3>
+<h3 id="15-cross-layer-isolation-invariant">15. Cross-Layer Isolation Invariant</h3>
 <p>No higher-layer protocol may:</p>
 <ul>
 <li>influence oracle weights,</li>
@@ -262,8 +295,8 @@
 </ul>
 <p>Violation constitutes a <strong>critical system integrity breach</strong>.</p>
 <hr />
-<h3>16\. Table of Constants</h3>
-<table class="protocol-table"><thead><tr>
+<h3 id="16-table-of-constants">16. Table of Constants</h3>
+<div class="table-wrap"><table class="protocol-table"><thead><tr>
 <th>Parameter</th>
 <th>Value</th>
 </tr></thead><tbody>
@@ -285,7 +318,7 @@
 </tr>
 <tr>
 <td>Systemic confidence halt</td>
-<td>\< 60%</td>
+<td>< 60%</td>
 </tr>
 <tr>
 <td>Minimum global coverage</td>
@@ -293,8 +326,8 @@
 </tr>
 </tbody></table>
 <hr />
-<h3>17\. TTL Registry (Normative)</h3>
-<table class="protocol-table"><thead><tr>
+<h3 id="17-ttl-registry-normative">17. TTL Registry (Normative)</h3>
+<div class="table-wrap"><table class="protocol-table"><thead><tr>
 <th>Data Type</th>
 <th>Maximum TTL</th>
 </tr></thead><tbody>
@@ -320,16 +353,28 @@
 </tr>
 </tbody></table>
 <hr />
-<h3>18\. Non-Override and Finality</h3>
+<h3 id="18-non-override-and-finality">18. Non-Override and Finality</h3>
 <p>This protocol is immutable once deployed.</p>
 <p>Any modification requires:</p>
 <ul>
 <li>a new protocol identifier,</li>
 <li>an explicit incompatibility declaration,</li>
-<li>re-anchoring assessment against Genesis Block \#0.</li>
+<li>re-anchoring assessment against Genesis Block #0.</li>
 </ul>
 <hr />
-      </article>
+        </article>
+
+        <nav class="protocol-nav" aria-label="Protocol navigation">
+          <a class="protocol-nav__link protocol-nav__prev" href="code-of-planetary-synergy.html" aria-label="Previous protocol: CODE OF PLANETARY SYNERGY">
+            <img src="../../assets/previous.webp" alt="" width="48" height="32" />
+            <span>CODE OF PLANETARY SYNERGY</span>
+          </a>
+          <a class="protocol-nav__link protocol-nav__next" href="dkp-0-time-001.html" aria-label="Next protocol: DKP-0-TIME-001">
+            <span>DKP-0-TIME-001</span>
+            <img src="../../assets/next.webp" alt="" width="48" height="32" />
+          </a>
+        </nav>
+      </div>
     </div>
   </main>
 

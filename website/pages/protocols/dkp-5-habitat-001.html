@@ -36,16 +36,43 @@
   </nav>
 
   <main id="main">
-    <div class="page-wrapper">
-      <p style="margin-bottom:var(--gap-md)"><a href="../protocols.html">&larr; All Protocols</a></p>
+    <div class="protocol-shell">
+      <aside class="protocol-toc" aria-label="Table of contents">
+        <button class="protocol-toc__toggle" aria-expanded="false" aria-controls="toc-list">
+          <span>Contents</span>
+          <svg width="12" height="8" viewBox="0 0 12 8" fill="none"><path d="M1 1l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </button>
+        <nav id="toc-list">
+          <ul class="protocol-toc__list">
+          <li><a href="#0-preamble">0. Preamble</a></li>
+          <li><a href="#1-purpose">1. Purpose</a></li>
+          <li><a href="#2-system-position">2. System Position</a></li>
+          <li><a href="#3-definitions">3. Definitions</a></li>
+          <li><a href="#4-spdi-spatial-physical-dignity-index">4. SPDI — Spatial Physical Dignity Index</a></li>
+          <li><a href="#5-minimum-habitat-thresholds">5. Minimum Habitat Thresholds</a></li>
+          <li><a href="#6-activation-gate-mandatory">6. Activation Gate (Mandatory)</a></li>
+          <li><a href="#7-density-and-enclosure-constraints">7. Density and Enclosure Constraints</a></li>
+          <li><a href="#8-prohibited-conditions">8. Prohibited Conditions</a></li>
+          <li><a href="#9-ptl-anchoring-and-verification">9. PTL Anchoring and Verification</a></li>
+          <li><a href="#10-remediation-and-compliance">10. Remediation and Compliance</a></li>
+          <li><a href="#11-scope-limitations">11. Scope Limitations</a></li>
+          <li><a href="#12-transparency-and-audit-hooks">12. Transparency and Audit Hooks</a></li>
+          <li><a href="#13-finality-clause">13. Finality Clause</a></li>
+          </ul>
+        </nav>
+      </aside>
+      <div class="protocol-content">
+        <div class="protocol-toolbar">
+          <a href="../protocols.html">&larr; All Protocols</a>
+        </div>
 
-      <article class="protocol-article">
-        <h1>DKP-5-HABITAT-001</h1>
+        <article class="protocol-article">
+          <h1>DKP-5-HABITAT-001</h1>
 <p>DKP-5-HABITAT-001</p>
 <p>Living Space & Environmental Dignity Protocol</p>
-<p>Version: 1.1 Status: Architecture Lock Candidate Layer: L5 — Habitat Anchored to: Genesis Block \#0 (2025-12-10)</p>
-<p>\---</p>
-<p>0\. Preamble</p>
+<p>Version: 1.1 Status: Architecture Lock Candidate Layer: L5 — Habitat Anchored to: Genesis Block #0 (2025-12-10)</p>
+<hr />
+<h2 id="0-preamble">0. Preamble</h2>
 <p>DKP-5-HABITAT-001 defines the minimum physical standards of living space and environmental conditions under which Subjects exist within Dikenocracy.</p>
 <p>This protocol treats habitat not as comfort, preference, or aesthetics, but as a matter of physical dignity.</p>
 <p>Where DKP-5-TRANSPORT-001 protects dignity in motion, DKP-5-HABITAT-001 protects dignity in statics — the spatial and environmental conditions of everyday life.</p>
@@ -54,8 +81,8 @@
 <p>ghettoization through density and isolation,</p>
 <p>biophysical stress as an invisible form of coercion,</p>
 <p>erosion of human agency through hostile spatial design.</p>
-<p>\---</p>
-<p>1\. Purpose</p>
+<hr />
+<h2 id="1-purpose">1. Purpose</h2>
 <p>The purpose of DKP-5-HABITAT-001 is to:</p>
 <p>define a non-negotiable baseline of spatial dignity,</p>
 <p>limit destructive population density and enclosure,</p>
@@ -63,8 +90,8 @@
 <p>prevent long-term environmental harm to Subjects,</p>
 <p>anchor habitat evaluation strictly in the Physical Truth Layer (PTL).</p>
 <p>This protocol does not optimize urban form. It establishes hard lower bounds below which habitat conditions are unacceptable.</p>
-<p>\---</p>
-<p>2\. System Position</p>
+<hr />
+<h2 id="2-system-position">2. System Position</h2>
 <p>DKP-5-HABITAT-001 operates:</p>
 <p>Downstream of:</p>
 <p>DKP-0-ORACLE-001 (Physical Truth Layer),</p>
@@ -83,15 +110,15 @@
 <p>impose cultural or aesthetic norms,</p>
 <p>override local climatic or cultural adaptations,</p>
 <p>activate enforcement without valid L8 calibration.</p>
-<p>\---</p>
-<p>3\. Definitions</p>
+<hr />
+<h2 id="3-definitions">3. Definitions</h2>
 <p>Habitat The physical environment in which a Subject resides for a sustained duration, including living space, immediate surroundings, and access paths to essential resources.</p>
 <p>Living Space An enclosed or semi-enclosed area intended for rest, shelter, and daily life.</p>
 <p>Environmental Dignity A state in which physical conditions do not impose chronic physiological stress beyond adaptive human capacity.</p>
 <p>SPDI (Spatial Physical Dignity Index) A composite, PTL-anchored physical index describing the adequacy of habitat conditions.</p>
-<p>\---</p>
-<p>4\. SPDI — Spatial Physical Dignity Index</p>
-<p>SPDI is a normalized index in the range \[0,1\].</p>
+<hr />
+<h2 id="4-spdi-spatial-physical-dignity-index">4. SPDI — Spatial Physical Dignity Index</h2>
+<p>SPDI is a normalized index in the range [0,1].</p>
 <p>SPDI is derived exclusively from PTL-verified physical measurements, including but not limited to:</p>
 <p>effective living space per Subject,</p>
 <p>chronic ambient noise exposure,</p>
@@ -106,20 +133,20 @@
 <p>social or economic status indicators,</p>
 <p>cultural or aesthetic metrics.</p>
 <p>SPDI is a descriptive index, not a policy judgment.</p>
-<p>\---</p>
-<p>5\. Minimum Habitat Thresholds</p>
+<hr />
+<h2 id="5-minimum-habitat-thresholds">5. Minimum Habitat Thresholds</h2>
 <p>A habitat is considered admissible only if all of the following hold:</p>
-<p>SPDI ≥ SPDI\_min,</p>
+<p>SPDI ≥ SPDI_min,</p>
 <p>no individual SPDI component falls below its critical survivability threshold,</p>
 <p>chronic exposure parameters remain within PTL-confirmed safe limits.</p>
 <p>Threshold Governance</p>
-<p>SPDI\_min and all component thresholds:</p>
+<p>SPDI_min and all component thresholds:</p>
 <p>SHALL NOT be defined numerically within this protocol,</p>
 <p>SHALL be specified, calibrated, and validated exclusively under DKP-8-SIMULATION-001,</p>
 <p>SHALL be derived from biophysical research and PTL-confirmed survivability bounds,</p>
 <p>SHALL NOT be lowered, overridden, or parameterized by economic, operational, or governance protocols.</p>
-<p>\---</p>
-<p>6\. Activation Gate (Mandatory)</p>
+<hr />
+<h2 id="6-activation-gate-mandatory">6. Activation Gate (Mandatory)</h2>
 <p>DKP-5-HABITAT-001 is NON-ENFORCEABLE unless all of the following exist:</p>
 <p>a valid L8 Calibration Bundle explicitly covering SPDI,</p>
 <p>declared thresholds and confidence bounds,</p>
@@ -129,16 +156,16 @@
 <p>SPDI outputs are informational only,</p>
 <p>no enforcement, restriction, or remediation may be triggered.</p>
 <p>Manual interpretation of SPDI values is explicitly prohibited.</p>
-<p>\---</p>
-<p>7\. Density and Enclosure Constraints</p>
+<hr />
+<h2 id="7-density-and-enclosure-constraints">7. Density and Enclosure Constraints</h2>
 <p>Habitat design and allocation SHALL NOT:</p>
 <p>exceed population density levels known to induce chronic biophysical stress,</p>
 <p>create permanent enclosure without access to open environments,</p>
 <p>rely on vertical compression as the primary solution to scarcity,</p>
 <p>isolate populations from biospheric interaction.</p>
 <p>Density and enclosure are evaluated indirectly via SPDI components, not via fixed architectural prescriptions.</p>
-<p>\---</p>
-<p>8\. Prohibited Conditions</p>
+<hr />
+<h2 id="8-prohibited-conditions">8. Prohibited Conditions</h2>
 <p>The following constitute habitat violations:</p>
 <p>persistent SPDI below minimum threshold,</p>
 <p>deliberate creation of high-density containment zones,</p>
@@ -146,8 +173,8 @@
 <p>environmental degradation used as an economic or political lever,</p>
 <p>spatial configurations designed to suppress autonomy or mobility.</p>
 <p>Such conditions trigger mandatory remediation pathways.</p>
-<p>\---</p>
-<p>9\. PTL Anchoring and Verification</p>
+<hr />
+<h2 id="9-ptl-anchoring-and-verification">9. PTL Anchoring and Verification</h2>
 <p>All SPDI measurements:</p>
 <p>MUST be PTL-anchored,</p>
 <p>MUST rely on physically verifiable data,</p>
@@ -159,7 +186,7 @@
 <p>DKP-8-AUDIT-001.</p>
 <p>DKP-5-HABITAT-001 SHALL NOT define independent investigative or punitive mechanisms.</p>
 <p>—</p>
-<p>10\. Remediation and Compliance</p>
+<h2 id="10-remediation-and-compliance">10. Remediation and Compliance</h2>
 <p>When admissibility violations are confirmed:</p>
 <p>remediation plans MUST be initiated,</p>
 <p>relocation assistance MAY be provided,</p>
@@ -167,7 +194,7 @@
 <p>forced displacement SHALL NOT be used as a default remedy.</p>
 <p>Persistent or systemic violations escalate to system-level review under DKP-7-SCOPE-001.</p>
 <p>—</p>
-<p>11\. Scope Limitations</p>
+<h2 id="11-scope-limitations">11. Scope Limitations</h2>
 <p>DKP-5-HABITAT-001 SHALL NOT:</p>
 <p>rank habitats beyond minimum compliance,</p>
 <p>enforce uniform living standards globally,</p>
@@ -175,20 +202,32 @@
 <p>override cultural or climatic adaptations.</p>
 <p>This protocol enforces dignity floors, not optimization ceilings.</p>
 <p>—</p>
-<p>12\. Transparency and Audit Hooks</p>
+<h2 id="12-transparency-and-audit-hooks">12. Transparency and Audit Hooks</h2>
 <p>SPDI values and violation flags:</p>
 <p>MUST be available for audit,</p>
 <p>MAY be aggregated to protect individual privacy,</p>
 <p>SHALL be reviewable post-facto.</p>
 <p>Individual-level exposure data SHALL be protected under DKP-7-SCOPE-001.</p>
 <p>—</p>
-<p>13\. Finality Clause</p>
+<h2 id="13-finality-clause">13. Finality Clause</h2>
 <p>Once frozen:</p>
 <p>any modification requires a new protocol identifier,</p>
 <p>mandatory simulation under DKP-8-SIMULATION-001,</p>
 <p>explicit compatibility declaration with DKP-5-TRANSPORT-001 and DKP-7-SCOPE-001.</p>
-<p>Protocol Hash (SHA-256): \[to be inserted at freeze\]</p>
-      </article>
+<p>Protocol Hash (SHA-256): [to be inserted at freeze]</p>
+        </article>
+
+        <nav class="protocol-nav" aria-label="Protocol navigation">
+          <a class="protocol-nav__link protocol-nav__prev" href="dkp-5-edu-001.html" aria-label="Previous protocol: DKP-5-EDU-001">
+            <img src="../../assets/previous.webp" alt="" width="48" height="32" />
+            <span>DKP-5-EDU-001</span>
+          </a>
+          <a class="protocol-nav__link protocol-nav__next" href="dkp-5-info-001.html" aria-label="Next protocol: DKP-5-INFO-001">
+            <span>DKP-5-INFO-001</span>
+            <img src="../../assets/next.webp" alt="" width="48" height="32" />
+          </a>
+        </nav>
+      </div>
     </div>
   </main>
 

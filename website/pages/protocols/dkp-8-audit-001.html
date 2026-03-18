@@ -36,81 +36,95 @@
   </nav>
 
   <main id="main">
-    <div class="page-wrapper">
-      <p style="margin-bottom:var(--gap-md)"><a href="../protocols.html">&larr; All Protocols</a></p>
+    <div class="protocol-shell">
+      <aside class="protocol-toc" aria-label="Table of contents">
+        <button class="protocol-toc__toggle" aria-expanded="false" aria-controls="toc-list">
+          <span>Contents</span>
+          <svg width="12" height="8" viewBox="0 0 12 8" fill="none"><path d="M1 1l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </button>
+        <nav id="toc-list">
+          <ul class="protocol-toc__list">
+          <li><a href="#1-preamble">1. Preamble</a></li>
+          <li><a href="#1-purpose">1. Purpose</a></li>
+          <li><a href="#2-system-position">2. System Position</a></li>
+          <li><a href="#3-definitions">3. Definitions</a></li>
+          <li><a href="#4-audit-scope">4. Audit Scope</a></li>
+          <li><a href="#5-audit-invariants">5. Audit Invariants</a></li>
+          <li><a href="#6-audit-mechanisms">6. Audit Mechanisms</a></li>
+          <li><a href="#7-deviation-classification">7. Deviation Classification</a></li>
+          <li><a href="#8-response-and-escalation">8. Response and Escalation</a></li>
+          <li><a href="#9-transparency-and-access">9. Transparency and Access</a></li>
+          <li><a href="#10-non-interference-principle">10. Non-Interference Principle</a></li>
+          <li><a href="#11-interaction-with-crisis-and-mercy">11. Interaction with Crisis and Mercy</a></li>
+          <li><a href="#12-finality-clause">12. Finality Clause</a></li>
+          </ul>
+        </nav>
+      </aside>
+      <div class="protocol-content">
+        <div class="protocol-toolbar">
+          <a href="../protocols.html">&larr; All Protocols</a>
+        </div>
 
-      <article class="protocol-article">
-        <h1>DKP-8-AUDIT-001</h1>
+        <article class="protocol-article">
+          <h1>DKP-8-AUDIT-001</h1>
 <p>DKP-8-AUDIT-001 Continuous Audit Protocol Version: 1.0 Status: Draft Layer: L8 — Infrastructural Linkages / Integrity</p>
-<ul>
-<li>Preamble</li>
+<h2 id="1-preamble">1. Preamble</h2>
 <p>DKP-8-AUDIT-001 defines the continuous, real-time audit framework of the Dikenocracy system.    This protocol ensures that all protocol execution, data flows, parameter usage, and cross-layer interactions remain compliant with declared specifications, axioms, and scope limits.    Audit in DKP is not retrospective inspection.    It is a permanent structural condition of system operation.</p>
-</ul>
 <p>Audit exists to: detect protocol drift, prevent silent capture or erosion of constraints, expose unauthorized parameter influence, ensure reproducibility of system behavior.</p>
-<ul>
-<li>Purpose</li>
+<h2 id="1-purpose">1. Purpose</h2>
 <p>The purpose of DKP-8-AUDIT-001 is to:    provide continuous verification of protocol compliance,    ensure that all execution paths remain within declared bounds,    detect deviations before they propagate into systemic harm,    guarantee that no protocol operates outside its authorized scope,    preserve trust through verifiable integrity rather than authority.</p>
-</ul>
 <p>This protocol does not judge outcomes. It verifies correctness of execution.</p>
-<ul>
-<li>System Position</li>
+<h2 id="2-system-position">2. System Position</h2>
 <p>DKP-8-AUDIT-001 operates:    downstream of DKP-0-ORACLE-001 (Physical Truth Layer),    downstream of DKP-8-SIMULATION-001,    parallel to DKP-4-UPGRADE-001,    upstream of enforcement, remediation, and halt mechanisms,    constrained by DKP-7-SCOPE-001.</p>
-</ul>
 <p>Audit outputs SHALL NOT: override protocol logic, introduce new rules, modify parameters, substitute for governance or justice decisions.</p>
-<ul>
-<li>Definitions</li>
+<h2 id="3-definitions">3. Definitions</h2>
 <p>Audit Event — a verifiable record of protocol execution state.    Audit Trace — an immutable sequence of Audit Events covering an execution interval.    Audit Invariant — a condition that MUST hold true at all times.    Deviation — any detected violation of protocol constraints, invariants, or declared interfaces.    Silent Failure — deviation without explicit error or halt signal.</p>
-<li>Audit Scope</li>
+<h2 id="4-audit-scope">4. Audit Scope</h2>
 <p>Continuous audit applies to:    all protocol executions (L1–L8),    all parameter accesses and updates,    all oracle inputs and aggregation outputs,    all cross-layer calls,    all upgrade, crisis, and mercy invocations.</p>
-</ul>
 <p>The following are explicitly excluded: private beliefs, non-system cultural expression, off-chain activity without system effect.</p>
-<ul>
-<li>Audit Invariants</li>
+<h2 id="5-audit-invariants">5. Audit Invariants</h2>
 <p>The following invariants MUST be continuously verified:</p>
-</ul>
 <p>5.1 Axiom Compliance No execution path SHALL violate DKP-1-AXIOMS-001. Any detected axiom violation triggers immediate escalation.</p>
 <p>5.2 Scope Compliance No protocol SHALL operate outside its declared scope under DKP-7-SCOPE-001. Scope expansion without formal upgrade constitutes a critical breach.</p>
 <p>5.3 Parameter Integrity No parameter MAY be modified outside DKP-4-UPGRADE-001. Runtime tuning, adaptive optimization, or silent calibration are forbidden.</p>
 <p>5.4 Determinism and Reproducibility Given identical inputs, protocol execution MUST produce identical outputs. Non-deterministic behavior constitutes an audit failure.</p>
 <p>5.5 Attribution Integrity All actions MUST remain traceable to valid Subjects per DKP-1-IDENTITY-001. Loss of attribution is treated as systemic fault.</p>
-<ul>
-<li>Audit Mechanisms</li>
+<h2 id="6-audit-mechanisms">6. Audit Mechanisms</h2>
 <p>Audit is implemented via:    cryptographically signed execution traces,    state transition hashing,    cross-node replay verification,    independent recomputation by audit nodes,    continuous consistency checks across replicas.</p>
-</ul>
 <p>Audit data MUST be: immutable, time-indexed, publicly verifiable in aggregate, selectively anonymized under DKP-7-SCOPE-001.</p>
-<ul>
-<li>Deviation Classification</li>
+<h2 id="7-deviation-classification">7. Deviation Classification</h2>
 <p>Detected deviations are classified as:</p>
-</ul>
 <p>D1 — Benign Anomaly (no systemic impact) D2 — Constraint Violation (bounded, reversible) D3 — Structural Breach (scope, axiom, or parameter integrity) D4 — Capture Attempt (systematic, concealed, or coordinated)</p>
 <p>Classification determines escalation pathway.</p>
-<ul>
-<li>Response and Escalation</li>
+<h2 id="8-response-and-escalation">8. Response and Escalation</h2>
 <p>Upon deviation detection:    D1 events trigger logging and monitoring,    D2 events trigger remediation protocols,    D3 events trigger partial or full Systemic Halt,    D4 events trigger immediate halt and mandatory upgrade review.</p>
-</ul>
 <p>Audit SHALL NOT apply punishment. Responses are procedural, not punitive.</p>
-<ul>
-<li>Transparency and Access</li>
+<h2 id="9-transparency-and-access">9. Transparency and Access</h2>
 <p>Audit outputs:    MUST be accessible for independent verification,    MAY be aggregated to protect individual privacy,    SHALL expose methodology and invariants checked.</p>
-</ul>
 <p>No audit process may be proprietary, closed, or authority-gated.</p>
-<ul>
-<li>Non-Interference Principle</li>
+<h2 id="10-non-interference-principle">10. Non-Interference Principle</h2>
 <p>Audit mechanisms SHALL NOT:     modify live execution,     inject corrective logic,     mask failures,     delay halt signals.</p>
-</ul>
 <p>Audit observes and reports only.</p>
-<ul>
-<li>Interaction with Crisis and Mercy</li>
+<h2 id="11-interaction-with-crisis-and-mercy">11. Interaction with Crisis and Mercy</h2>
 <p>During Crisis Mercy conditions:     audit continues uninterrupted,     all deviations remain recorded,     no audit suspension is permitted.</p>
-</ul>
 <p>Mercy affects response severity, not audit visibility.</p>
-<ul>
-<li>Finality Clause</li>
+<h2 id="12-finality-clause">12. Finality Clause</h2>
 <p>Once frozen:     this protocol is immutable,     any modification requires a new protocol identifier,     mandatory simulation under DKP-8-SIMULATION-001,     explicit compatibility declaration with DKP-7-SCOPE-001.</p>
-</ul>
-<p>Protocol Hash (SHA-256): \[to be inserted at freeze\]</p>
+<p>Protocol Hash (SHA-256): [to be inserted at freeze]</p>
 <p>END OF PROTOCOL</p>
-      </article>
+        </article>
+
+        <nav class="protocol-nav" aria-label="Protocol navigation">
+          <a class="protocol-nav__link protocol-nav__prev" href="dkp-7-transparency-001.html" aria-label="Previous protocol: DKP-7-TRANSPARENCY-001">
+            <img src="../../assets/previous.webp" alt="" width="48" height="32" />
+            <span>DKP-7-TRANSPARENCY-001</span>
+          </a>
+          <a class="protocol-nav__link protocol-nav__next" href="dkp-7-ai-subject-001.html" aria-label="Next protocol: DKP-7-AI-SUBJECT-001">
+            <span>DKP-7-AI-SUBJECT-001</span>
+            <img src="../../assets/next.webp" alt="" width="48" height="32" />
+          </a>
+        </nav>
+      </div>
     </div>
   </main>
 

@@ -36,172 +36,157 @@
   </nav>
 
   <main id="main">
-    <div class="page-wrapper">
-      <p style="margin-bottom:var(--gap-md)"><a href="../protocols.html">&larr; All Protocols</a></p>
+    <div class="protocol-shell">
+      <aside class="protocol-toc" aria-label="Table of contents">
+        <button class="protocol-toc__toggle" aria-expanded="false" aria-controls="toc-list">
+          <span>Contents</span>
+          <svg width="12" height="8" viewBox="0 0 12 8" fill="none"><path d="M1 1l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </button>
+        <nav id="toc-list">
+          <ul class="protocol-toc__list">
+          <li><a href="#dkp-0-time-001">DKP-0-TIME-001</a></li>
+          <li class="toc__sub"><a href="#dikenocratic-time-date-index-protocol-dti">Dikenocratic Time &amp; Date Index Protocol (DTI)</a></li>
+          <li class="toc__sub"><a href="#1-purpose">1. Purpose</a></li>
+          <li class="toc__sub"><a href="#2-design-principles">2. Design Principles</a></li>
+          <li class="toc__sub"><a href="#3-definitions">3. Definitions</a></li>
+          <li class="toc__sub"><a href="#4-normative-time-units">4. Normative Time Units</a></li>
+          <li class="toc__sub"><a href="#5-canonical-date-representation">5. Canonical Date Representation</a></li>
+          <li class="toc__sub"><a href="#6-conversion-rules-normative">6. Conversion Rules (Normative)</a></li>
+          <li class="toc__sub"><a href="#7-interoperability">7. Interoperability</a></li>
+          <li class="toc__sub"><a href="#8-storage-signing-and-audit">8. Storage, Signing, and Audit</a></li>
+          <li class="toc__sub"><a href="#9-normative-test-vectors">9. Normative Test Vectors</a></li>
+          <li class="toc__sub"><a href="#10-reference-implementation-canonical">10. Reference Implementation (Canonical)</a></li>
+          <li class="toc__sub"><a href="#11-rationale-non-normative">11. Rationale (Non-Normative)</a></li>
+          </ul>
+        </nav>
+      </aside>
+      <div class="protocol-content">
+        <div class="protocol-toolbar">
+          <a href="../protocols.html">&larr; All Protocols</a>
+        </div>
 
-      <article class="protocol-article">
-        <h1>DKP-0-TIME-001</h1>
-<h2>DKP-0-TIME-001</h2>
-<h3>Dikenocratic Time & Date Index Protocol (DTI)</h3>
+        <article class="protocol-article">
+          <h1>DKP-0-TIME-001</h1>
+<h2 id="dkp-0-time-001">DKP-0-TIME-001</h2>
+<h3 id="dikenocratic-time-date-index-protocol-dti">Dikenocratic Time & Date Index Protocol (DTI)</h3>
 <p><strong>Version:</strong> 1.0</p>
 <hr />
-<h3>1\. Purpose</h3>
+<h3 id="1-purpose">1. Purpose</h3>
 <p>DKP-0-TIME-001 defines a <strong>non-religious, event-neutral, deterministic system for counting days and years</strong> within the Dikenocracy framework.</p>
 <p>The protocol establishes:</p>
 <ul>
 <li>a canonical <strong>absolute civil day index</strong>,</li>
-</ul>
-<ul>
 <li>a <strong>fixed-length governance year</strong> for accountability and reporting,</li>
-</ul>
-<ul>
 <li>precise and auditable <strong>conversion rules</strong> to and from the Gregorian calendar when external interoperability is required.</li>
 </ul>
 <p>This protocol explicitly avoids:</p>
 <ul>
 <li>religious eras or holidays,</li>
-</ul>
-<ul>
 <li>historical or mythological reference events,</li>
-</ul>
-<ul>
 <li>variable or exception-based calendar logic.</li>
 </ul>
 <hr />
-<h3>2\. Design Principles</h3>
-<ul>
+<h3 id="2-design-principles">2. Design Principles</h3>
+<ol>
 <li><strong>Neutrality</strong></li>
 <p>Time MUST NOT be anchored to religious, cultural, political, or personal events.</p>
-</ul>
-<ul>
 <li><strong>Determinism</strong></li>
 <p>Any date MUST be uniquely computable from its canonical representation.</p>
-</ul>
-<ul>
 <li><strong>Auditability</strong></li>
 <p>Any record MUST allow independent recomputation of its time index.</p>
-</ul>
-<ul>
 <li><strong>Governance Fitness</strong></li>
 <p>Time units MUST be simple, fixed-length, and suitable for legal, financial, and KPI logic.</p>
-</ul>
-<ul>
 <li><strong>Interoperability</strong></li>
 <p>Explicit conversion rules to and from civil calendars MUST be provided.</p>
-</ul>
+</ol>
 <hr />
-<h3>3\. Definitions</h3>
+<h3 id="3-definitions">3. Definitions</h3>
 <ul>
 <li><strong>JDN (Julian Day Number)</strong></li>
 <p>An integer count of civil days (midnight-to-midnight) in the proleptic Gregorian calendar.</p>
 </ul>
 <p><strong>DTI-Day</strong>  The canonical absolute civil day index used by Dikenocracy.  <strong>Definition:</strong></p>
 <p><code>DTI-Day = JDN</code></p>
-<p>*</p>
 <ul>
 <li><strong>DTI-Year (DY)</strong></li>
 <p>A governance year consisting of exactly <strong>360 consecutive DTI-Days</strong>.</p>
-</ul>
-<ul>
 <li><strong>Day-of-Year (DOY)</strong></li>
 <p>A 1-based index of a day within a DTI-Year, in the range <strong>1…360</strong>.</p>
 </ul>
 <hr />
-<h3>4\. Normative Time Units</h3>
-<h4>4.1 Base Unit</h4>
+<h3 id="4-normative-time-units">4. Normative Time Units</h3>
+<h4 id="41-base-unit">4.1 Base Unit</h4>
 <ul>
 <li>The base temporal unit of DKP-TIME-001 MUST be the <strong>civil day</strong>.</li>
-</ul>
-<ul>
 <li>Sub-day units (hours, minutes, seconds) MUST NOT be required by this protocol.</li>
 </ul>
-<h4>4.2 Governance Year</h4>
+<h4 id="42-governance-year">4.2 Governance Year</h4>
 <ul>
 <li>A DTI-Year MUST contain exactly <strong>360 DTI-Days</strong>.</li>
-</ul>
-<ul>
 <li>Leap days, leap years, or corrective rules MUST NOT exist.</li>
-</ul>
-<ul>
 <li>Year boundaries MUST be defined purely arithmetically.</li>
 </ul>
 <hr />
-<h3>5\. Canonical Date Representation</h3>
-<h4>5.1 Numeric Form</h4>
+<h3 id="5-canonical-date-representation">5. Canonical Date Representation</h3>
+<h4 id="51-numeric-form">5.1 Numeric Form</h4>
 <p>Given a canonical <code>DTI-Day</code>:</p>
 <p><code>DY  = floor(DTI-Day / 360)</code> <code>DOY = (DTI-Day mod 360) + 1</code></p>
-<h4>5.2 String Form</h4>
+<h4 id="52-string-form">5.2 String Form</h4>
 <p><code>DY<dy>-<doy></code></p>
 <p>Where:</p>
 <ul>
 <li><code><dy></code> is a signed integer year index,</li>
-</ul>
-<ul>
 <li><code><doy></code> is a zero-padded three-digit day index (001–360).</li>
 </ul>
 <p><strong>Example:</strong></p>
 <p><code>DY6836-084</code></p>
 <hr />
-<h3>6\. Conversion Rules (Normative)</h3>
-<h4>6.1 Gregorian → Dikenocratic</h4>
+<h3 id="6-conversion-rules-normative">6. Conversion Rules (Normative)</h3>
+<h4 id="61-gregorian-dikenocratic">6.1 Gregorian → Dikenocratic</h4>
 <p>Given a Gregorian civil date <code>(year, month, day)</code>:</p>
-<ul>
+<ol>
 <li>Compute the <strong>JDN</strong> using a standard astronomical algorithm.</li>
-</ul>
-<ul>
 <li>Set <code>DTI-Day = JDN</code>.</li>
-</ul>
-<ul>
-<li>Compute <code>(DY, DOY)</code> using Section 5\.</li>
-</ul>
-<h4>6.2 Dikenocratic → Gregorian</h4>
+<li>Compute <code>(DY, DOY)</code> using Section 5.</li>
+</ol>
+<h4 id="62-dikenocratic-gregorian">6.2 Dikenocratic → Gregorian</h4>
 <p>Given <code>(DY, DOY)</code>:</p>
-<ul>
+<ol>
 <li>Validate <code>DOY ∈ [1, 360]</code>.</li>
-</ul>
+</ol>
 <p>Compute:</p>
 <p><code>DTI-Day = DY × 360 + (DOY − 1)</code></p>
 <p>2.</p>
-<ul>
+<ol>
 <li>Convert <code>DTI-Day (JDN)</code> to Gregorian <code>(year, month, day)</code>.</li>
-</ul>
-<h4>6.3 Validation</h4>
+</ol>
+<h4 id="63-validation">6.3 Validation</h4>
 <ul>
 <li>Invalid <code>DOY</code> values MUST be rejected.</li>
-</ul>
-<ul>
 <li><code>DY</code> MAY be negative.</li>
-</ul>
-<ul>
 <li>Derived fields MUST NOT override <code>DTI-Day</code>.</li>
 </ul>
 <hr />
-<h3>7\. Interoperability</h3>
+<h3 id="7-interoperability">7. Interoperability</h3>
 <ul>
 <li>Gregorian dates MAY be shown for human readability.</li>
-</ul>
-<ul>
 <li>Any authoritative record MUST include:</li>
-</ul>
 <p>* <code>DTI-Day</code>, or</p>
 <p>* canonical <code>(DY, DOY)</code>.</p>
-<ul>
 <li>In case of conflict, <strong>DTI-Day is authoritative</strong>.</li>
 </ul>
 <hr />
-<h3>8\. Storage, Signing, and Audit</h3>
+<h3 id="8-storage-signing-and-audit">8. Storage, Signing, and Audit</h3>
 <ul>
 <li>Signed records SHOULD store:</li>
-</ul>
 <p>* <code>DTI-Day</code> (authoritative),</p>
 <p>* optionally <code>(DY, DOY)</code> as derived fields.</p>
-<ul>
 <li>Audits and dispute resolution MUST reference <code>DTI-Day</code>.</li>
 </ul>
 <hr />
-<h3>9\. Normative Test Vectors</h3>
+<h3 id="9-normative-test-vectors">9. Normative Test Vectors</h3>
 <p>Implementations MUST reproduce these values exactly.</p>
-<table class="protocol-table"><thead><tr>
+<div class="table-wrap"><table class="protocol-table"><thead><tr>
 <th>Gregorian Date</th>
 <th>JDN (DTI-Day)</th>
 <th>DY</th>
@@ -239,7 +224,7 @@
 </tbody></table>
 <p>Failure to match these vectors constitutes a protocol violation.</p>
 <hr />
-<h3>10\. Reference Implementation (Canonical)</h3>
+<h3 id="10-reference-implementation-canonical">10. Reference Implementation (Canonical)</h3>
 <p><code>from __future__ import annotations</code> <code>from dataclasses import dataclass</code></p>
 <p><code># Gregorian <-> JDN (Fliegel–Van Flandern)</code></p>
 <p><code>def gregorian_to_jdn(year: int, month: int, day: int) -> int:</code>     <code>a = (14 - month) // 12</code>     <code>y = year + 4800 - a</code>     <code>m = month + 12 <em> a - 3</code>     <code>return (</code>         <code>day</code>         <code>+ (153 </em> m + 2) // 5</code>         <code>+ 365 * y</code>         <code>+ y // 4</code>         <code>- y // 100</code>         <code>+ y // 400</code>         <code>- 32045</code>     <code>)</code></p>
@@ -251,9 +236,21 @@
 <p><code>def gregorian_to_dikenocratic(y: int, m: int, d: int) -> DikenocraticDate:</code>     <code>return jdn_to_dikenocratic(gregorian_to_jdn(y, m, d))</code></p>
 <p><code>def dikenocratic_to_gregorian(dy: int, doy: int) -> tuple[int, int, int]:</code>     <code>return jdn_to_gregorian(dikenocratic_to_jdn(DikenocraticDate(dy, doy)))</code></p>
 <hr />
-<h3>11\. Rationale (Non-Normative)</h3>
+<h3 id="11-rationale-non-normative">11. Rationale (Non-Normative)</h3>
 <p>Time in Dikenocracy is treated as an <strong>operational index</strong>, not as a cultural narrative.  <code>DTI-Day</code> provides a continuous, neutral axis.  <code>DTI-Year</code> provides a stable governance cycle.</p>
-      </article>
+        </article>
+
+        <nav class="protocol-nav" aria-label="Protocol navigation">
+          <a class="protocol-nav__link protocol-nav__prev" href="dkp-0-oracle-001.html" aria-label="Previous protocol: DKP-0-ORACLE-001">
+            <img src="../../assets/previous.webp" alt="" width="48" height="32" />
+            <span>DKP-0-ORACLE-001</span>
+          </a>
+          <a class="protocol-nav__link protocol-nav__next" href="dkp-1-axioms-001.html" aria-label="Next protocol: DKP-1-AXIOMS-001">
+            <span>DKP-1-AXIOMS-001</span>
+            <img src="../../assets/next.webp" alt="" width="48" height="32" />
+          </a>
+        </nav>
+      </div>
     </div>
   </main>
 

@@ -36,69 +36,80 @@
   </nav>
 
   <main id="main">
-    <div class="page-wrapper">
-      <p style="margin-bottom:var(--gap-md)"><a href="../protocols.html">&larr; All Protocols</a></p>
+    <div class="protocol-shell">
+      <aside class="protocol-toc" aria-label="Table of contents">
+        <button class="protocol-toc__toggle" aria-expanded="false" aria-controls="toc-list">
+          <span>Contents</span>
+          <svg width="12" height="8" viewBox="0 0 12 8" fill="none"><path d="M1 1l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </button>
+        <nav id="toc-list">
+          <ul class="protocol-toc__list">
+          <li><a href="#1-preamble">1. Preamble</a></li>
+          <li><a href="#2-purpose">2. Purpose</a></li>
+          <li><a href="#3-system-position">3. System Position</a></li>
+          <li><a href="#4-definitions">4. Definitions</a></li>
+          <li><a href="#5-core-privacy-principles">5. Core Privacy Principles</a></li>
+          <li><a href="#6-absolute-privacy-domains">6. Absolute Privacy Domains</a></li>
+          <li><a href="#7-conditional-transparency-domains">7. Conditional Transparency Domains</a></li>
+          <li><a href="#8-anonymity-guarantees">8. Anonymity Guarantees</a></li>
+          <li><a href="#9-audit-compatibility">9. Audit Compatibility</a></li>
+          <li><a href="#10-prohibited-practices">10. Prohibited Practices</a></li>
+          <li><a href="#11-crisis-and-exception-handling">11. Crisis and Exception Handling</a></li>
+          <li><a href="#12-transparency-about-privacy">12. Transparency about Privacy</a></li>
+          <li><a href="#13-scope-limitations">13. Scope Limitations</a></li>
+          <li><a href="#14-finality-clause">14. Finality Clause</a></li>
+          </ul>
+        </nav>
+      </aside>
+      <div class="protocol-content">
+        <div class="protocol-toolbar">
+          <a href="../protocols.html">&larr; All Protocols</a>
+        </div>
 
-      <article class="protocol-article">
-        <h1>DKP-7-PRIVACY-001</h1>
+        <article class="protocol-article">
+          <h1>DKP-7-PRIVACY-001</h1>
 <p>DKP-7-PRIVACY-001 Data Privacy Protocol Version: 1.0 Status: Draft Layer: L7 — Meta / Scope / Transparency / Privacy</p>
-<ul>
-<li>Preamble</li>
-</ul>
+<h2 id="1-preamble">1. Preamble</h2>
 <p>DKP-7-PRIVACY-001 defines privacy as a structural constraint of Dikenocracy, not as an individual privilege or moral claim.    Privacy exists to prevent concentration of power through total visibility, to preserve subject autonomy, and to ensure that transparency mechanisms do not become instruments of coercion, surveillance, or behavioral control.    This protocol does not negate transparency.    It defines its hard limits.</p>
-<ul>
-<li>Purpose</li>
-</ul>
+<h2 id="2-purpose">2. Purpose</h2>
 <p>The purpose of DKP-7-PRIVACY-001 is to:    protect subjects from total observability,    define which data may never be made public,    formalize anonymity as a system invariant,    prevent re-identification through data correlation,    balance auditability with non-extractability of personal life.    Privacy under DKP is a stability requirement, not a personal entitlement.</p>
-<ul>
-<li>System Position</li>
-</ul>
+<h2 id="3-system-position">3. System Position</h2>
 <p>DKP-7-PRIVACY-001 operates:    parallel to DKP-7-SCOPE-001,    parallel to DKP-7-TRANSPARENCY-001,    downstream of DKP-1-AXIOMS-001,    upstream of all audit, identity, and information protocols.    This protocol constrains:    DKP-7-TRANSPARENCY-001,    DKP-8-AUDIT-001,    DKP-5-INFO-001,    DKP-5-EDU-001.    No protocol may override privacy constraints except where explicitly permitted herein.</p>
-<ul>
-<li>Definitions</li>
-</ul>
+<h2 id="4-definitions">4. Definitions</h2>
 <p>Personal Data — any data that can be causally linked to a specific Subject across time.    Identifying Data — data that directly reveals subject identity.    Quasi-Identifying Data — data that enables re-identification via correlation.    Anonymous Data — data provably non-linkable to a Subject.    Privacy Breach — any condition enabling identity reconstruction beyond defined thresholds.</p>
-<ul>
-<li>Core Privacy Principles</li>
-</ul>
+<h2 id="5-core-privacy-principles">5. Core Privacy Principles</h2>
 <p>4.1 Non-Total Visibility    No Subject SHALL be fully observable across all system layers.    Total data aggregation across domains is forbidden.    4.2 Minimum Exposure    Only the minimum data required for protocol execution may be processed.    4.3 Non-Reidentification    The system MUST prevent identity reconstruction through data linkage.    4.4 Privacy over Convenience    Efficiency, optimization, or analytical value SHALL NOT justify privacy erosion.</p>
-<ul>
-<li>Absolute Privacy Domains</li>
-</ul>
+<h2 id="6-absolute-privacy-domains">6. Absolute Privacy Domains</h2>
 <p>The following domains SHALL ALWAYS remain private and non-public:    medical and biological data,    mental and psychological states,    intimate relationships,    beliefs, conscience, and inner conviction,    private communications not producing externalized impact.    These domains are non-extractable and non-auditable at the individual level.</p>
-<ul>
-<li>Conditional Transparency Domains</li>
-</ul>
+<h2 id="7-conditional-transparency-domains">7. Conditional Transparency Domains</h2>
 <p>The following MAY be exposed only in anonymized or aggregated form:    economic activity,    resource consumption,    mobility patterns,    educational interaction,    platform usage metrics.    Individual-level disclosure is forbidden unless explicitly triggered by higher-layer enforcement protocols within Scope.</p>
-<ul>
-<li>Anonymity Guarantees</li>
-</ul>
+<h2 id="8-anonymity-guarantees">8. Anonymity Guarantees</h2>
 <p>Subjects SHALL have the right to act anonymously wherever identity is not required for:    liability attribution,    risk allocation,    resource transfer.    Anonymous participation SHALL NOT reduce rights or access to system functions.</p>
-<ul>
-<li>Audit Compatibility</li>
-</ul>
+<h2 id="9-audit-compatibility">9. Audit Compatibility</h2>
 <p>Audit processes:    MUST operate on anonymized datasets where possible,    MUST use zero-knowledge proofs for verification,    SHALL NOT access raw personal data.    Auditability applies to system behavior, not personal life.</p>
-<ul>
-<li>Prohibited Practices</li>
-</ul>
+<h2 id="10-prohibited-practices">10. Prohibited Practices</h2>
 <p>The following are explicitly forbidden:     mass surveillance,     behavioral profiling,     predictive policing,     social credit scoring,     cross-domain identity correlation.     Violation constitutes a critical system integrity breach.</p>
-<ul>
-<li>Crisis and Exception Handling</li>
-</ul>
+<h2 id="11-crisis-and-exception-handling">11. Crisis and Exception Handling</h2>
 <p>Privacy SHALL NOT be suspended during crisis.     Crisis protocols MAY:     reduce anonymity only within explicitly bounded Crisis Scope,     ONLY for direct life-preservation purposes.     Any reduction:     MUST be temporary,     MUST be logged,     MUST be reversible,     SHALL NOT persist beyond Crisis Scope.</p>
-<ul>
-<li>Transparency about Privacy</li>
-</ul>
+<h2 id="12-transparency-about-privacy">12. Transparency about Privacy</h2>
 <p>All privacy rules, thresholds, and guarantees:     MUST be public,     MUST be auditable,     MUST be verifiable by Subjects.     Subjects must be able to verify what the system cannot see.</p>
-<ul>
-<li>Scope Limitations</li>
-</ul>
+<h2 id="13-scope-limitations">13. Scope Limitations</h2>
 <p>DKP-7-PRIVACY-001 SHALL NOT:     shield criminal liability,     prevent impact attribution,     override DKP-1-AXIOMS-001,     justify harm concealment.     Privacy is not immunity.</p>
-<ul>
-<li>Finality Clause</li>
-</ul>
-<p>Once frozen:     this protocol is immutable,     any modification requires a new protocol identifier,     mandatory simulation under DKP-8-SIMULATION-001,     explicit compatibility declaration with DKP-7-SCOPE-001 and DKP-7-TRANSPARENCY-001.     Protocol Hash (SHA-256): \[to be inserted at freeze\]     END OF PROTOCOL</p>
-      </article>
+<h2 id="14-finality-clause">14. Finality Clause</h2>
+<p>Once frozen:     this protocol is immutable,     any modification requires a new protocol identifier,     mandatory simulation under DKP-8-SIMULATION-001,     explicit compatibility declaration with DKP-7-SCOPE-001 and DKP-7-TRANSPARENCY-001.     Protocol Hash (SHA-256): [to be inserted at freeze]     END OF PROTOCOL</p>
+        </article>
+
+        <nav class="protocol-nav" aria-label="Protocol navigation">
+          <a class="protocol-nav__link protocol-nav__prev" href="dkp-6-integration-001.html" aria-label="Previous protocol: DKP-6-INTEGRATION-001">
+            <img src="../../assets/previous.webp" alt="" width="48" height="32" />
+            <span>DKP-6-INTEGRATION-001</span>
+          </a>
+          <a class="protocol-nav__link protocol-nav__next" href="dkp-7-scope-001.html" aria-label="Next protocol: DKP-7-SCOPE-001">
+            <span>DKP-7-SCOPE-001</span>
+            <img src="../../assets/next.webp" alt="" width="48" height="32" />
+          </a>
+        </nav>
+      </div>
     </div>
   </main>
 
