@@ -12,8 +12,9 @@ Splits on EVERY protocol boundary:
 """
 import re, html, textwrap, pathlib
 
-SRC = pathlib.Path("/home/anahronic/diken_cal/website/assets/Dikenocracy SYNERGY and 31 PROTOCOLS .md")
-OUT = pathlib.Path("/home/anahronic/diken_cal/website/pages/protocols")
+BASE_DIR = pathlib.Path(__file__).resolve().parent
+SRC = BASE_DIR / "assets" / "Dikenocracy SYNERGY and 31 PROTOCOLS .md"
+OUT = BASE_DIR / "pages" / "protocols"
 OUT.mkdir(parents=True, exist_ok=True)
 
 lines = SRC.read_text(encoding="utf-8").splitlines()
@@ -209,17 +210,32 @@ def md_to_html(md_lines: list[str]) -> str:
 
 
 # ── HTML template ───────────────────────────────────────────────────────────
+DOMAIN = "https://dikenocracy.com"
+
 def page_html(title: str, body_html: str, slug: str) -> str:
+    esc_title = html.escape(title)
+    canon = f"{DOMAIN}/pages/protocols/{slug}.html"
     return f'''<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="{html.escape(title)} — Dikenocracy Protocol" />
-  <title>{html.escape(title)} — Dikenocracy</title>
+  <meta name="description" content="{esc_title} — Dikenocracy Protocol" />
+  <title>{esc_title} — Dikenocracy</title>
+  <link rel="canonical" href="{canon}" />
+  <link rel="icon" href="../../assets/favicon.ico" />
+  <link rel="apple-touch-icon" href="../../assets/apple-touch-icon.png" />
+  <meta property="og:title" content="{esc_title} — Dikenocracy" />
+  <meta property="og:description" content="{esc_title} — Dikenocracy Protocol specification." />
+  <meta property="og:image" content="{DOMAIN}/assets/main_screen.webp" />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="{canon}" />
+  <meta name="twitter:card" content="summary_large_image" />
   <link rel="stylesheet" href="../../styles.css" />
 </head>
 <body>
+
+  <a href="#main" class="skip-link">Skip to content</a>
 
   <nav class="site-nav" aria-label="Main navigation">
     <div class="site-nav__inner">
@@ -236,11 +252,12 @@ def page_html(title: str, body_html: str, slug: str) -> str:
     </div>
   </nav>
 
-  <main>
+  <main id="main">
     <div class="page-wrapper">
       <p style="margin-bottom:var(--gap-md)"><a href="../protocols.html">&larr; All Protocols</a></p>
 
       <article class="protocol-article">
+        <h1>{esc_title}</h1>
 {body_html}
       </article>
     </div>
@@ -266,6 +283,10 @@ manifest = []  # (slug, title) for index page
 
 for title, body_lines in blocks:
     slug = make_slug(title)
+    # Skip the title-only stub ("Dikenocracy" — 2 lines, no real content)
+    if slug == 'dikenocracy' and len(body_lines) < 5:
+        print(f"  skipped {slug} (title-only stub)")
+        continue
     body_html = md_to_html(body_lines)
     page = page_html(title, body_html, slug)
     outfile = OUT / f"{slug}.html"

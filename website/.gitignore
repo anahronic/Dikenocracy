@@ -1,0 +1,6 @@
+__pycache__/
+*.pyc
+Images/
+.DS_Store
+*.png
+!assets/apple-touch-icon.png

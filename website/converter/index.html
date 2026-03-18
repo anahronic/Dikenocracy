@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="DTI Time Converter — deterministic Gregorian ↔ DTI date conversion per DKP-0-TIME-001." />
+  <title>DTI Time Converter — Dikenocracy</title>
+  <link rel="canonical" href="https://dikenocracy.com/converter/" />
+  <link rel="icon" href="../assets/favicon.ico" />
+  <link rel="apple-touch-icon" href="../assets/apple-touch-icon.png" />
+  <meta property="og:title" content="DTI Time Converter — Dikenocracy" />
+  <meta property="og:description" content="Deterministic Gregorian ↔ DTI date conversion per DKP-0-TIME-001." />
+  <meta property="og:image" content="https://dikenocracy.com/assets/main_screen.webp" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://dikenocracy.com/converter/" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <style>
+    /* ── Reset & base ──────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg-deep:  #0a0a0f;
+      --bg-card:  #14141e;
+      --border:   #2a2a3e;
+      --text:     #e0e0e8;
+      --text-dim: #888899;
+      --accent:   #b06bff;
+      --accent-h: #c899ff;
+      --gap-sm:   0.5rem;
+      --gap-md:   1rem;
+      --gap-lg:   2rem;
+      --radius:   0.5rem;
+    }
+    html { font-size: 16px; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background: var(--bg-deep);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      line-height: 1.6;
+    }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { color: var(--accent-h); }
+    code { font-family: "SF Mono", "Fira Code", "Cascadia Code", monospace; background: #1e1e2e; padding: 0.15em 0.4em; border-radius: 3px; font-size: 0.9em; }
+
+    /* ── Skip link ─────────────────────────────────────── */
+    .skip-link { position: absolute; left: -9999px; top: 0; background: var(--accent); color: #fff; padding: 0.5rem 1rem; z-index: 100; border-radius: 0 0 var(--radius) var(--radius); }
+    .skip-link:focus { left: 50%; transform: translateX(-50%); }
+
+    /* ── Nav ────────────────────────────────────────────── */
+    .site-nav { background: rgba(10,10,15,0.92); border-bottom: 1px solid var(--border); padding: 0.75rem var(--gap-lg); position: sticky; top: 0; z-index: 50; backdrop-filter: blur(6px); }
+    .site-nav__inner { max-width: 1100px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; }
+    .site-nav__brand { font-weight: 700; font-size: 1.1rem; letter-spacing: 0.04em; color: var(--text); }
+    .site-nav__links { list-style: none; display: flex; gap: var(--gap-md); }
+    .site-nav__links a { color: var(--text-dim); font-size: 0.9rem; transition: color 0.15s; }
+    .site-nav__links a:hover, .site-nav__links a[aria-current] { color: var(--accent); }
+
+    /* ── Layout ─────────────────────────────────────────── */
+    .wrapper { max-width: 720px; margin: 0 auto; padding: var(--gap-lg); flex: 1; width: 100%; }
+    h1 { font-size: 1.75rem; margin-bottom: var(--gap-sm); }
+    .subtitle { color: var(--text-dim); margin-bottom: var(--gap-lg); }
+
+    /* ── Tabs ───────────────────────────────────────────── */
+    .tabs { display: flex; gap: var(--gap-sm); margin-bottom: var(--gap-lg); }
+    .tab-btn {
+      background: var(--bg-card); border: 1px solid var(--border); color: var(--text-dim);
+      padding: 0.5rem 1.25rem; border-radius: var(--radius); cursor: pointer; font-size: 0.9rem;
+      transition: background 0.15s, color 0.15s, border-color 0.15s;
+    }
+    .tab-btn:hover { color: var(--text); border-color: var(--accent); }
+    .tab-btn.active { background: var(--accent); color: #fff; border-color: var(--accent); }
+
+    /* ── Form ───────────────────────────────────────────── */
+    .panel { display: none; }
+    .panel.active { display: block; }
+    .field { margin-bottom: var(--gap-md); }
+    label { display: block; font-size: 0.85rem; color: var(--text-dim); margin-bottom: 0.25rem; }
+    input[type="number"], input[type="date"] {
+      width: 100%; padding: 0.6rem 0.8rem; font-size: 1rem; font-family: inherit;
+      background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); color: var(--text);
+      transition: border-color 0.15s;
+    }
+    input:focus { outline: none; border-color: var(--accent); }
+    .row { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: var(--gap-sm); }
+    .btn-convert {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      background: var(--accent); color: #fff; border: none; padding: 0.65rem 1.5rem;
+      border-radius: var(--radius); font-size: 1rem; cursor: pointer; margin-top: var(--gap-sm);
+      transition: background 0.15s;
+    }
+    .btn-convert:hover { background: var(--accent-h); }
+
+    /* ── Result ─────────────────────────────────────────── */
+    .result {
+      margin-top: var(--gap-lg); padding: var(--gap-md); background: var(--bg-card);
+      border: 1px solid var(--border); border-radius: var(--radius); display: none;
+    }
+    .result.visible { display: block; }
+    .result h2 { font-size: 1rem; color: var(--accent); margin-bottom: var(--gap-sm); }
+    .result-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--gap-sm) var(--gap-md); }
+    .result-grid dt { color: var(--text-dim); font-size: 0.85rem; }
+    .result-grid dd { font-family: "SF Mono", "Fira Code", monospace; font-size: 1.05rem; }
+    .error-msg { color: #e74c3c; margin-top: var(--gap-md); font-size: 0.9rem; display: none; }
+    .error-msg.visible { display: block; }
+
+    /* ── Info section ───────────────────────────────────── */
+    .info { margin-top: var(--gap-lg); padding-top: var(--gap-lg); border-top: 1px solid var(--border); }
+    .info h2 { font-size: 1.1rem; margin-bottom: var(--gap-sm); }
+    .info p { color: var(--text-dim); font-size: 0.9rem; margin-bottom: var(--gap-sm); }
+
+    /* ── Footer ─────────────────────────────────────────── */
+    .site-footer { text-align: center; padding: var(--gap-lg); color: var(--text-dim); font-size: 0.8rem; border-top: 1px solid var(--border); }
+
+    @media (max-width: 500px) {
+      .result-grid { grid-template-columns: 1fr; }
+      .tabs { flex-wrap: wrap; }
+    }
+  </style>
+</head>
+<body>
+
+  <a href="#main" class="skip-link">Skip to content</a>
+
+  <nav class="site-nav" aria-label="Main navigation">
+    <div class="site-nav__inner">
+      <a class="site-nav__brand" href="../index.html">Dikenocracy</a>
+      <ul class="site-nav__links" role="list">
+        <li><a href="../pages/about.html">About</a></li>
+        <li><a href="../pages/protocols.html">Protocols</a></li>
+        <li><a href="../pages/projects.html">Projects</a></li>
+        <li><a href="../pages/converter.html" aria-current="page">Converter</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="wrapper" id="main" role="main">
+    <h1>DTI Time Converter</h1>
+    <p class="subtitle">Deterministic date conversion per <a href="../pages/protocols/dkp-0-time-001.html">DKP-0-TIME-001</a></p>
+
+    <!-- Tabs -->
+    <div class="tabs" role="tablist">
+      <button class="tab-btn active" role="tab" aria-selected="true" aria-controls="panel-g2d" id="tab-g2d">Gregorian → DTI</button>
+      <button class="tab-btn" role="tab" aria-selected="false" aria-controls="panel-d2g" id="tab-d2g">DTI → Gregorian</button>
+    </div>
+
+    <!-- Panel: Gregorian → DTI -->
+    <div class="panel active" id="panel-g2d" role="tabpanel" aria-labelledby="tab-g2d">
+      <div class="field">
+        <label for="g-date">Gregorian date</label>
+        <input type="date" id="g-date" />
+      </div>
+      <p style="color:var(--text-dim);font-size:0.8rem;margin-bottom:var(--gap-sm)">or enter manually:</p>
+      <div class="row">
+        <div class="field">
+          <label for="g-year">Year</label>
+          <input type="number" id="g-year" placeholder="2026" />
+        </div>
+        <div class="field">
+          <label for="g-month">Month</label>
+          <input type="number" id="g-month" placeholder="3" min="1" max="12" />
+        </div>
+        <div class="field">
+          <label for="g-day">Day</label>
+          <input type="number" id="g-day" placeholder="18" min="1" max="31" />
+        </div>
+      </div>
+      <button class="btn-convert" id="btn-g2d">Convert →</button>
+    </div>
+
+    <!-- Panel: DTI → Gregorian -->
+    <div class="panel" id="panel-d2g" role="tabpanel" aria-labelledby="tab-d2g">
+      <div class="row">
+        <div class="field">
+          <label for="d-dy">DY (Dikenocratic Year)</label>
+          <input type="number" id="d-dy" placeholder="6818" />
+        </div>
+        <div class="field">
+          <label for="d-doy">DOY (Day of Year, 1–360)</label>
+          <input type="number" id="d-doy" placeholder="196" min="1" max="360" />
+        </div>
+      </div>
+      <button class="btn-convert" id="btn-d2g">Convert →</button>
+    </div>
+
+    <!-- Result -->
+    <div class="result" id="result" aria-live="polite">
+      <h2>Result</h2>
+      <dl class="result-grid" id="result-grid"></dl>
+    </div>
+    <p class="error-msg" id="error" aria-live="assertive"></p>
+
+    <!-- Info -->
+    <section class="info">
+      <h2>How it works</h2>
+      <p>
+        Every conversion passes through the <strong>Julian Day Number (JDN)</strong>,
+        which serves as the single authoritative time scalar. The DTI layer is a
+        deterministic 360-day derived representation:
+      </p>
+      <p>
+        <code>DTI‑Day = JDN</code> ·
+        <code>DY = floor(JDN / 360)</code> ·
+        <code>DOY = (JDN mod 360) + 1</code>
+      </p>
+      <p>
+        This conversion is fully reversible: <code>JDN = DY × 360 + (DOY − 1)</code>.
+        No floating-point arithmetic is used. All operations are integer-only and
+        machine-auditable, as required by DKP-0-TIME-001.
+      </p>
+      <p>
+        Hebrew date conversion requires the <code>pyluach</code> library and is
+        available only through the <a href="https://github.com/anahronic/Dikenocracy/tree/main/Converter%20DTI">Python API</a>.
+      </p>
+    </section>
+  </div>
+
+  <footer class="site-footer">
+    <p>Dikenocracy &mdash; public framework. Built openly alongside the old world.</p>
+  </footer>
+
+  <script>
+  /* ═══════════════════════════════════════════════════════
+   *  DKP-0-TIME-001 — Pure JS implementation
+   *  Canonical formulae (integer-only, deterministic)
+   * ═══════════════════════════════════════════════════════ */
+  'use strict';
+
+  const DTI_YEAR_DAYS = 360;
+
+  /* ── Gregorian → JDN ──────────────────────────────────── */
+  function gregorianToJdn(year, month, day) {
+    if (year === 0) throw new Error('Year 0 is not allowed');
+    if (month < 1 || month > 12) throw new Error('Month must be in 1..12');
+    if (day < 1 || day > 31) throw new Error('Day must be in 1..31');
+
+    let y = year;
+    if (y < 0) y += 1; // astronomical year for BC
+
+    const a = Math.floor((14 - month) / 12);
+    const y2 = y + 4800 - a;
+    const m2 = month + 12 * a - 3;
+    return day + Math.floor((153 * m2 + 2) / 5) +
+           365 * y2 + Math.floor(y2 / 4) -
+           Math.floor(y2 / 100) + Math.floor(y2 / 400) - 32045;
+  }
+
+  /* ── JDN → Gregorian ──────────────────────────────────── */
+  function jdnToGregorian(jdn) {
+    const a = jdn + 32044;
+    const b = Math.floor((4 * a + 3) / 146097);
+    const c = a - Math.floor((146097 * b) / 4);
+    const d = Math.floor((4 * c + 3) / 1461);
+    const e = c - Math.floor((1461 * d) / 4);
+    const m = Math.floor((5 * e + 2) / 153);
+    const day = e - Math.floor((153 * m + 2) / 5) + 1;
+    const month = m + 3 - 12 * Math.floor(m / 10);
+    let year = 100 * b + d - 4800 + Math.floor(m / 10);
+    if (year <= 0) year -= 1;
+    return { year, month, day };
+  }
+
+  /* ── JDN ↔ DTI ────────────────────────────────────────── */
+  function jdnToDti(jdn) {
+    const dy = Math.floor(jdn / DTI_YEAR_DAYS);
+    const doy = (jdn % DTI_YEAR_DAYS) + 1;
+    return { dy, doy };
+  }
+
+  function dtiToJdn(dy, doy) {
+    if (doy < 1 || doy > 360) throw new Error('DOY must be in 1..360');
+    return dy * DTI_YEAR_DAYS + (doy - 1);
+  }
+
+  /* ── Formatting helpers ───────────────────────────────── */
+  function fmtDti(d) { return `DY${d.dy}-${String(d.doy).padStart(3, '0')}`; }
+  function fmtGreg(g) {
+    if (g.year <= 0) return `${Math.abs(g.year)} BC-${String(g.month).padStart(2,'0')}-${String(g.day).padStart(2,'0')}`;
+    return `${String(g.year).padStart(4,'0')}-${String(g.month).padStart(2,'0')}-${String(g.day).padStart(2,'0')}`;
+  }
+
+  /* ═══════════════════════════════════════════════════════
+   *  UI logic
+   * ═══════════════════════════════════════════════════════ */
+  const $ = (sel) => document.querySelector(sel);
+  const resultEl = $('#result');
+  const gridEl = $('#result-grid');
+  const errEl = $('#error');
+
+  function showError(msg) {
+    errEl.textContent = msg;
+    errEl.classList.add('visible');
+    resultEl.classList.remove('visible');
+  }
+
+  function showResult(pairs) {
+    errEl.classList.remove('visible');
+    let html = '';
+    for (const [label, value] of pairs) {
+      html += `<dt>${label}</dt><dd>${value}</dd>`;
+    }
+    gridEl.innerHTML = html;
+    resultEl.classList.add('visible');
+  }
+
+  /* ── Tabs ─────────────────────────────────────────────── */
+  document.querySelectorAll('.tab-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.tab-btn').forEach(b => { b.classList.remove('active'); b.setAttribute('aria-selected', 'false'); });
+      document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+      btn.classList.add('active');
+      btn.setAttribute('aria-selected', 'true');
+      $('#' + btn.getAttribute('aria-controls')).classList.add('active');
+      resultEl.classList.remove('visible');
+      errEl.classList.remove('visible');
+    });
+  });
+
+  /* ── Gregorian → DTI ──────────────────────────────────── */
+  $('#btn-g2d').addEventListener('click', () => {
+    try {
+      let year, month, day;
+      const dateInput = $('#g-date').value;
+      const yInput = $('#g-year').value;
+
+      if (yInput) {
+        year = parseInt(yInput, 10);
+        month = parseInt($('#g-month').value, 10);
+        day = parseInt($('#g-day').value, 10);
+      } else if (dateInput) {
+        const [y, m, d] = dateInput.split('-').map(Number);
+        year = y; month = m; day = d;
+      } else {
+        throw new Error('Enter a date (picker or manual fields)');
+      }
+
+      if (isNaN(year) || isNaN(month) || isNaN(day)) throw new Error('All fields are required');
+
+      const jdn = gregorianToJdn(year, month, day);
+      const dti = jdnToDti(jdn);
+      const greg = fmtGreg({ year, month, day });
+
+      showResult([
+        ['Gregorian', greg],
+        ['JDN', String(jdn)],
+        ['DTI', fmtDti(dti)],
+        ['DY', String(dti.dy)],
+        ['DOY', String(dti.doy)],
+      ]);
+    } catch (e) { showError(e.message); }
+  });
+
+  /* ── DTI → Gregorian ──────────────────────────────────── */
+  $('#btn-d2g').addEventListener('click', () => {
+    try {
+      const dy = parseInt($('#d-dy').value, 10);
+      const doy = parseInt($('#d-doy').value, 10);
+      if (isNaN(dy) || isNaN(doy)) throw new Error('Both DY and DOY are required');
+
+      const jdn = dtiToJdn(dy, doy);
+      const greg = jdnToGregorian(jdn);
+
+      showResult([
+        ['DTI', fmtDti({ dy, doy })],
+        ['JDN', String(jdn)],
+        ['Gregorian', fmtGreg(greg)],
+        ['Year', String(greg.year)],
+        ['Month', String(greg.month)],
+        ['Day', String(greg.day)],
+      ]);
+    } catch (e) { showError(e.message); }
+  });
+
+  /* ── Pre-fill today ───────────────────────────────────── */
+  const today = new Date();
+  $('#g-date').value = today.toISOString().slice(0, 10);
+  </script>
+</body>
+</html>

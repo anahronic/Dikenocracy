@@ -112,12 +112,12 @@ img {
 }
 
 #intro-screen {
-  background-image: url('assets/main_screen.png');
+  background-image: url('assets/main_screen.webp');
   z-index: 12;
 }
 
 #welcome-screen {
-  background-image: url('assets/welcome_screen.png');
+  background-image: url('assets/welcome_screen.webp');
   z-index: 11;
 }
 
@@ -599,4 +599,42 @@ img {
   overflow: hidden;
   clip: rect(0 0 0 0);
   white-space: nowrap;
+}
+
+/* ─── Skip to content link ───────────────────────────────────────────────────── */
+
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 0;
+  background: var(--accent);
+  color: var(--bg-deep);
+  padding: 0.5rem 1.2rem;
+  font-size: 0.85rem;
+  z-index: 200;
+  border-radius: 0 0 4px 0;
+  transition: top 0.2s ease;
+}
+.skip-link:focus {
+  top: 0;
+  text-decoration: none;
+  outline: 2px solid var(--white);
+  outline-offset: 2px;
+}
+
+/* ─── Index page (splash): hide overflow ─────────────────────────────────────── */
+
+.page-index {
+  overflow: hidden;
+}
+
+/* ─── Print ──────────────────────────────────────────────────────────────────── */
+
+@media print {
+  .site-nav, .site-footer, .skip-link, .enter-btn { display: none; }
+  body { background: #fff; color: #111; }
+  .protocol-article { line-height: 1.5; }
+  .protocol-table th { background: #eee; color: #111; }
+  a { color: #111; text-decoration: underline; }
+  a::after { content: " (" attr(href) ")"; font-size: 0.75em; color: #666; }
 }

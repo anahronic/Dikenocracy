@@ -5,9 +5,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="DTI Time Converter — translate between Gregorian, Hebrew, and Dikenocratic dates." />
   <title>DTI Time Converter — Dikenocracy</title>
+  <link rel="canonical" href="https://dikenocracy.com/pages/converter.html" />
+  <link rel="icon" href="../assets/favicon.ico" />
+  <link rel="apple-touch-icon" href="../assets/apple-touch-icon.png" />
+  <meta property="og:title" content="DTI Time Converter — Dikenocracy" />
+  <meta property="og:description" content="Deterministic date conversion between Gregorian, Hebrew, and DTI formats." />
+  <meta property="og:image" content="https://dikenocracy.com/assets/main_screen.webp" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://dikenocracy.com/pages/converter.html" />
+  <meta name="twitter:card" content="summary_large_image" />
   <link rel="stylesheet" href="../styles.css" />
 </head>
 <body>
+
+  <a href="#main" class="skip-link">Skip to content</a>
 
   <!-- ─── Navigation ──────────────────────────────────────────────────────── -->
   <nav class="site-nav" aria-label="Main navigation">
@@ -35,7 +46,7 @@
   </nav>
 
   <!-- ─── Main Content ─────────────────────────────────────────────────────── -->
-  <main>
+  <main id="main">
     <div class="page-wrapper">
 
       <!-- Hero -->
@@ -86,27 +97,24 @@
         -->
         <div class="converter-launch">
           <div class="converter-launch__text">
-            The converter runs as a standalone service. If it is deployed on
-            this server, use the button below to open the interactive interface.
-            Otherwise, the converter can be started locally by following the
-            instructions in the project README.
+            The standalone client-side converter runs directly in your browser —
+            no server required. All conversion logic follows DKP-0-TIME-001 and
+            uses integer-only arithmetic.
           </div>
           <a
             class="btn"
-            href="http://localhost:8501"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Launch the DTI Time Converter UI"
+            href="../converter/index.html"
+            aria-label="Open the DTI Time Converter"
           >
-            Launch Converter
+            Open Converter
           </a>
         </div>
 
         <div class="info-note">
-          The converter endpoint path may change once a public deployment is
-          configured. Update the link in this file or set up an Nginx reverse
-          proxy to serve the Streamlit interface under
-          <code>/converter/</code>.
+          The converter is a zero-dependency HTML page. For Hebrew date support,
+          use the Python API via the
+          <a href="https://github.com/anahronic/Dikenocracy/tree/main/Converter%20DTI">Converter DTI</a>
+          package.
         </div>
       </section>
 
