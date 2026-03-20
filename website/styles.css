@@ -520,6 +520,7 @@ img {
   flex: 1;
   min-width: 0;
   max-width: 820px;
+  padding-left: 2.5rem;  /* gutter for vertical side-nav prev button */
 }
 
 /* ── Protocol Toolbar ─────────────────────────────────────────────────────── */
@@ -703,9 +704,14 @@ img {
   z-index: 40;
 }
 
-/* left: shell-margin + map(200) + toc(260) + 2 gaps(1.5rem each) */
-.protocol-side-nav--prev { left: max(0px, calc(50vw - 240px + 2rem)); }
-.protocol-side-nav--next { right: max(0px, calc(50vw - 700px)); }
+/* Position prev button in the gutter between TOC and content text.
+   Formula: shell-inner-left + map(200) + gap(1.5rem) + toc(260) + offset */
+.protocol-side-nav--prev {
+  left: calc(max(1.5rem, (100vw - 1400px) / 2 + 1.5rem) + 484px + 0.35rem);
+}
+.protocol-side-nav--next {
+  right: max(0px, calc((100vw - 1400px) / 2));
+}
 
 .protocol-side-nav__btn {
   display: flex;
@@ -873,8 +879,10 @@ img {
     display: none;
   }
 
-  /* No map at this width: fall back to viewport edges */
-  .protocol-side-nav--prev { left: 0; }
+  /* No map: prev gutter after TOC only */
+  .protocol-side-nav--prev {
+    left: calc(1.5rem + 260px + 1.5rem + 0.35rem);
+  }
   .protocol-side-nav--next { right: 0; }
 }
 
@@ -935,6 +943,7 @@ img {
 
   .protocol-content {
     max-width: 100%;
+    padding-left: 0;  /* remove gutter on mobile */
   }
 
   /* Side nav → bottom sticky on mobile */
