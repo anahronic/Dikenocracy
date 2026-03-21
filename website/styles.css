@@ -732,6 +732,7 @@ img {
 .protocol-side-nav__btn {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 0.4rem;
   padding: 0.6rem 0.65rem;
   font-family: var(--font-ui);
@@ -746,7 +747,7 @@ img {
   transition: color 0.15s, background 0.15s, border-color 0.15s;
   writing-mode: vertical-rl;
   text-orientation: mixed;
-  max-height: 220px;
+  height: 200px;          /* fixed height so both buttons match exactly */
   overflow: hidden;
 }
 
@@ -994,7 +995,7 @@ img {
     writing-mode: horizontal-tb;
     padding: 0.55rem 0.75rem;
     font-size: 0.7rem;
-    max-height: none;
+    height: auto;
     border-radius: 4px 4px 0 0;
   }
 
