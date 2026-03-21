@@ -438,23 +438,27 @@ def page_html(title, body_html, slug, toc_items,
     canon = f"{DOMAIN}/pages/protocols/{slug}.html"
 
     # Fixed side prev/next navigation
+    # Both buttons live inside one shared fixed-position layer so they
+    # share the exact same containing block for vertical centering.
     side_nav = []
+    side_nav.append('  <div class="protocol-side-nav-layer" aria-hidden="true">')
     if prev_slug:
         esc_prev = html.escape(prev_title or "")
-        side_nav.append(f'  <div class="protocol-side-nav protocol-side-nav--prev">')
-        side_nav.append(f'    <a class="protocol-side-nav__btn" href="{prev_slug}.html" aria-label="Previous protocol: {esc_prev}">')
-        side_nav.append(f'      <span class="nav-arrow">&lsaquo;</span>')
-        side_nav.append(f'      <span class="nav-label">{esc_prev}</span>')
-        side_nav.append(f'    </a>')
-        side_nav.append(f'  </div>')
+        side_nav.append(f'    <div class="protocol-side-nav protocol-side-nav--prev">')
+        side_nav.append(f'      <a class="protocol-side-nav__btn" href="{prev_slug}.html" aria-label="Previous protocol: {esc_prev}">')
+        side_nav.append(f'        <span class="nav-arrow">&lsaquo;</span>')
+        side_nav.append(f'        <span class="nav-label">{esc_prev}</span>')
+        side_nav.append(f'      </a>')
+        side_nav.append(f'    </div>')
     if next_slug:
         esc_next = html.escape(next_title or "")
-        side_nav.append(f'  <div class="protocol-side-nav protocol-side-nav--next">')
-        side_nav.append(f'    <a class="protocol-side-nav__btn" href="{next_slug}.html" aria-label="Next protocol: {esc_next}">')
-        side_nav.append(f'      <span class="nav-label">{esc_next}</span>')
-        side_nav.append(f'      <span class="nav-arrow">&rsaquo;</span>')
-        side_nav.append(f'    </a>')
-        side_nav.append(f'  </div>')
+        side_nav.append(f'    <div class="protocol-side-nav protocol-side-nav--next">')
+        side_nav.append(f'      <a class="protocol-side-nav__btn" href="{next_slug}.html" aria-label="Next protocol: {esc_next}">')
+        side_nav.append(f'        <span class="nav-label">{esc_next}</span>')
+        side_nav.append(f'        <span class="nav-arrow">&rsaquo;</span>')
+        side_nav.append(f'      </a>')
+        side_nav.append(f'    </div>')
+    side_nav.append('  </div>')
     side_nav_html = "\n".join(side_nav)
 
     # Bottom inline nav (text buttons)

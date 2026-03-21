@@ -710,11 +710,22 @@ img {
 
 /* ─── Fixed Side Protocol Navigation (prev / next) ─────────────────────────── */
 
-.protocol-side-nav {
+/* Shared fixed-position overlay that acts as the single containing block
+   for both side-nav buttons.  Both children use position: absolute and
+   the same top: 50% + translateY(-50%) rule, guaranteeing identical
+   vertical centers regardless of individual button height. */
+.protocol-side-nav-layer {
   position: fixed;
+  inset: 0;
+  z-index: 40;
+  pointer-events: none;          /* pass clicks through to page */
+}
+
+.protocol-side-nav {
+  position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  z-index: 40;
+  pointer-events: auto;          /* re-enable clicks on buttons */
 }
 
 /* Center prev button in the dedicated 72 px gutter column (grid col 3).
@@ -732,7 +743,6 @@ img {
 .protocol-side-nav__btn {
   display: flex;
   align-items: center;
-  justify-content: center;
   gap: 0.4rem;
   padding: 0.6rem 0.65rem;
   font-family: var(--font-ui);
@@ -747,7 +757,7 @@ img {
   transition: color 0.15s, background 0.15s, border-color 0.15s;
   writing-mode: vertical-rl;
   text-orientation: mixed;
-  height: 200px;          /* fixed height so both buttons match exactly */
+  max-height: 220px;
   overflow: hidden;
 }
 
@@ -971,31 +981,29 @@ img {
     max-width: 100%;
   }
 
-  /* Side nav → bottom sticky on mobile */
-  .protocol-side-nav {
+  /* Side nav → bottom sticky bar on mobile */
+  .protocol-side-nav-layer {
     position: fixed;
     top: auto;
     bottom: 0;
-    transform: none;
-    writing-mode: horizontal-tb;
-  }
-
-  .protocol-side-nav--prev {
     left: 0;
-    right: auto;
-    transform: none;
+    right: 0;
+    display: flex;
+    justify-content: space-between;
+    pointer-events: none;
   }
 
-  .protocol-side-nav--next {
-    right: 0;
-    left: auto;
+  .protocol-side-nav {
+    position: static;
+    transform: none;
+    pointer-events: auto;
   }
 
   .protocol-side-nav__btn {
     writing-mode: horizontal-tb;
     padding: 0.55rem 0.75rem;
     font-size: 0.7rem;
-    height: auto;
+    max-height: none;
     border-radius: 4px 4px 0 0;
   }
 
