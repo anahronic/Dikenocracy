@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="DKP-6-RESILIENCE-001 — Dikenocracy Protocol" />
+  <title>DKP-6-RESILIENCE-001 — Dikenocracy</title>
+  <link rel="canonical" href="https://dikenocracy.com/pages/protocols/dkp-6-resilience-001.html" />
+  <link rel="icon" href="../../assets/favicon.ico" />
+  <link rel="apple-touch-icon" href="../../assets/apple-touch-icon.png" />
+  <meta property="og:title" content="DKP-6-RESILIENCE-001 — Dikenocracy" />
+  <meta property="og:description" content="DKP-6-RESILIENCE-001 — Dikenocracy Protocol specification." />
+  <meta property="og:image" content="https://dikenocracy.com/assets/main_screen.webp" />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://dikenocracy.com/pages/protocols/dkp-6-resilience-001.html" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="stylesheet" href="../../styles.css" />
+</head>
+<body>
+
+  <a href="#main" class="skip-link">Skip to content</a>
+
+  <nav class="site-nav" aria-label="Main navigation">
+    <div class="site-nav__inner">
+      <a class="site-nav__brand" href="../../index.html">Dikenocracy</a>
+      <button class="site-nav__toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="site-nav-links">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="site-nav__links" id="site-nav-links" role="list">
+        <li><a href="../about.html">About</a></li>
+        <li><a href="../protocols.html" aria-current="page">Protocols</a></li>
+        <li><a href="../projects.html">Projects</a></li>
+        <li><a href="../converter.html">Converter</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="protocol-side-nav-layer" aria-hidden="true">
+    <div class="protocol-side-nav protocol-side-nav--prev">
+      <a class="protocol-side-nav__btn" href="dkp-6-integration-001.html" aria-label="Previous protocol: DKP-6-INTEGRATION-001">
+        <span class="nav-arrow">&lsaquo;</span>
+        <span class="nav-label">DKP-6-INTEGRATION-001</span>
+      </a>
+    </div>
+    <div class="protocol-side-nav protocol-side-nav--next">
+      <a class="protocol-side-nav__btn" href="dkp-7-privacy-001.html" aria-label="Next protocol: DKP-7-PRIVACY-001">
+        <span class="nav-label">DKP-7-PRIVACY-001</span>
+        <span class="nav-arrow">&rsaquo;</span>
+      </a>
+    </div>
+  </div>
+
+  <main id="main">
+    <div class="protocol-shell">
+      <aside class="protocol-map" aria-label="Protocol map">
+        <div class="protocol-map__heading">Protocol Map</div>
+        <div class="protocol-map__layer">
+          <span class="protocol-map__layer-label">Foundation</span>
+          <ul class="protocol-map__links">
+            <li><a href="code-of-planetary-synergy.html">Synergy Code</a></li>
+          </ul>
+        </div>
+        <div class="protocol-map__layer">
+          <span class="protocol-map__layer-label">L0 — Physical Truth</span>
+          <ul class="protocol-map__links">
+            <li><a href="dkp-0-oracle-001.html">ORACLE</a></li>
+            <li><a href="dkp-0-time-001.html">TIME</a></li>
+          </ul>
+        </div>
+        <div class="protocol-map__layer">
+          <span class="protocol-map__layer-label">L1 — Core</span>
+          <ul class="protocol-map__links">
+            <li><a href="dkp-1-axioms-001.html">AXIOMS</a></li>
+            <li><a href="dkp-1-identity-001.html">IDENTITY</a></li>
+            <li><a href="dkp-1-impact-001.html">IMPACT</a></li>
+            <li><a href="dkp-1-justice-001.html">JUSTICE</a></li>
+            <li><a href="dkp-1-prevention-001.html">PREVENTION</a></li>
+          </ul>
+        </div>
+        <div class="protocol-map__layer">
+          <span class="protocol-map__layer-label">L2 — Economic</span>
+          <ul class="protocol-map__links">
+            <li><a href="dkp-2-assets-001.html">ASSETS</a></li>
+            <li><a href="dkp-2-finance-001.html">FINANCE</a></li>
+            <li><a href="dkp-2-labor-001.html">LABOR</a></li>
+          </ul>
+        </div>
+        <div class="protocol-map__layer">
+          <span class="protocol-map__layer-label">L3 — Security</span>
+          <ul class="protocol-map__links">
+            <li><a href="dkp-3-antiterror-001.html">ANTITERROR</a></li>
+            <li><a href="dkp-3-defense-001.html">DEFENSE</a></li>
+            <li><a href="dkp-3-internal-sec-001.html">INTERNAL-SEC</a></li>
+            <li><a href="dkp-3-police-001.html">POLICE</a></li>
+          </ul>
+        </div>
+        <div class="protocol-map__layer">
+          <span class="protocol-map__layer-label">L4 — Stability</span>
+          <ul class="protocol-map__links">
+            <li><a href="dkp-4-crisis-001.html">CRISIS</a></li>
+            <li><a href="dkp-4-error-001.html">ERROR</a></li>
+            <li><a href="dkp-4-upgrade-001.html">UPGRADE</a></li>
+          </ul>
+        </div>
+        <div class="protocol-map__layer">
+          <span class="protocol-map__layer-label">L5 — Human Infra</span>
+          <ul class="protocol-map__links">
+            <li><a href="dkp-5-culture-001.html">CULTURE</a></li>
+            <li><a href="dkp-5-edu-001.html">EDU</a></li>
+            <li><a href="dkp-5-habitat-001.html">HABITAT</a></li>
+            <li><a href="dkp-5-info-001.html">INFO</a></li>
+            <li><a href="dkp-5-transport-001.html">TRANSPORT</a></li>
+            <li><a href="dkp-5-work-cycle-001.html">WORK-CYCLE</a></li>
+          </ul>
+        </div>
+        <div class="protocol-map__layer">
+          <span class="protocol-map__layer-label protocol-map__layer-label--active">L6 — Intersystem</span>
+          <ul class="protocol-map__links">
+            <li><a href="dkp-6-exit-001.html">EXIT</a></li>
+            <li><a href="dkp-6-integration-001.html">INTEGRATION</a></li>
+            <li><a href="dkp-6-resilience-001.html" class="pmap-active">RESILIENCE</a></li>
+          </ul>
+        </div>
+        <div class="protocol-map__layer">
+          <span class="protocol-map__layer-label">L7 — Meta / Scope</span>
+          <ul class="protocol-map__links">
+            <li><a href="dkp-7-ai-subject-001.html">AI-SUBJECT</a></li>
+            <li><a href="dkp-7-privacy-001.html">PRIVACY</a></li>
+            <li><a href="dkp-7-scope-001.html">SCOPE</a></li>
+            <li><a href="dkp-7-transparency-001.html">TRANSPARENCY</a></li>
+          </ul>
+        </div>
+        <div class="protocol-map__layer">
+          <span class="protocol-map__layer-label">L8 — Infrastructure</span>
+          <ul class="protocol-map__links">
+            <li><a href="dkp-8-audit-001.html">AUDIT</a></li>
+            <li><a href="dkp-8-interop-001.html">INTEROP</a></li>
+            <li><a href="dkp-8-simulation-001.html">SIMULATION</a></li>
+          </ul>
+        </div>
+        <div class="protocol-map__layer">
+          <span class="protocol-map__layer-label">Appendix</span>
+          <ul class="protocol-map__links">
+            <li><a href="appendix-a-design-rationale-safeguards-normative.html">Appendix A</a></li>
+          </ul>
+        </div>
+      </aside>
+      <aside class="protocol-toc" aria-label="Table of contents">
+        <button class="protocol-toc__toggle" aria-expanded="false" aria-controls="toc-list">
+          <span>On This Page</span>
+          <svg width="12" height="8" viewBox="0 0 12 8" fill="none"><path d="M1 1l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </button>
+        <nav id="toc-list">
+          <div class="protocol-toc__heading">On This Page</div>
+          <ul class="protocol-toc__list">
+          <li class="toc__sub"><a href="#system-resilience-under-adversarial-conditions">System Resilience Under Adversarial Conditions</a></li>
+          <li class="toc__sub"><a href="#1-purpose">1. Purpose</a></li>
+          <li class="toc__sub"><a href="#2-system-position">2. System Position</a></li>
+          <li class="toc__sub"><a href="#3-core-principle">3. Core Principle</a></li>
+          <li class="toc__sub"><a href="#4-threat-model-non-exhaustive">4. Threat Model (Non-exhaustive)</a></li>
+          <li class="toc__sub"><a href="#5-invariants">5. Invariants</a></li>
+          <li class="toc__sub"><a href="#6-allowed-structural-patterns">6. Allowed Structural Patterns</a></li>
+          <li class="toc__sub"><a href="#7-forbidden-structural-patterns">7. Forbidden Structural Patterns</a></li>
+          <li class="toc__sub"><a href="#8-failure-modes">8. Failure Modes</a></li>
+          <li class="toc__sub"><a href="#9-resilience-mechanism">9. Resilience Mechanism</a></li>
+          <li class="toc__sub"><a href="#10-boundary-conditions">10. Boundary Conditions</a></li>
+          <li class="toc__sub"><a href="#11-validation-criteria">11. Validation Criteria</a></li>
+          <li class="toc__sub"><a href="#12-key-constraint">12. Key Constraint</a></li>
+          <li class="toc__sub"><a href="#13-final-statement">13. Final Statement</a></li>
+          </ul>
+        </nav>
+      </aside>
+      <div class="protocol-content">
+        <div class="protocol-toolbar">
+          <a href="../protocols.html">&larr; All Protocols</a>
+        </div>
+
+        <article class="protocol-article">
+          <h1>DKP-6-RESILIENCE-001</h1>
+          <div class="protocol-meta">
+            Version: 1.1 &middot; Status: Freeze &middot; Layer: L6&ndash;L7<br />
+            Depends on: DKP-0-ORACLE-001, DKP-1-AXIOMS-001, DKP-1-PREVENTION-001, DKP-7-SCOPE-001, DKP-8-INTEROP-001<br />
+            Override: Not permitted
+          </div>
+<h3 id="system-resilience-under-adversarial-conditions">System Resilience Under Adversarial Conditions</h3>
+<hr />
+<h3 id="1-purpose">1. Purpose</h3>
+<p>This protocol defines structural constraints required for DKP to remain operational under adversarial conditions, including social, institutional, and systemic pressure.</p>
+<p>Resilience is defined as:</p>
+<p>continuity of function under pressure without dependency on protected actors</p>
+<hr />
+<h3 id="2-system-position">2. System Position</h3>
+<p>PTL &rarr; Measurement &rarr; Enforcement &rarr; Integration &rarr; Resilience &rarr; Scaling</p>
+<hr />
+<h3 id="3-core-principle">3. Core Principle</h3>
+<p>DKP must remain operational without dependency on:</p>
+<ul>
+<li>any individual actor</li>
+<li>any centralized authority</li>
+<li>any permission layer</li>
+</ul>
+<hr />
+<h3 id="4-threat-model-non-exhaustive">4. Threat Model (Non-exhaustive)</h3>
+<h4 id="41-l6-social-distortion">4.1 L6 Social Distortion</h4>
+<ul>
+<li>narrative substitution</li>
+<li>semantic degradation</li>
+<li>reputational targeting</li>
+</ul>
+<h4 id="42-l7-institutional-pressure">4.2 L7 Institutional Pressure</h4>
+<ul>
+<li>access restriction</li>
+<li>regulatory blocking</li>
+<li>infrastructure denial</li>
+</ul>
+<h4 id="43-l7-structural-absorption">4.3 L7 Structural Absorption</h4>
+<ul>
+<li>co-option into existing systems</li>
+<li>conversion into advisory layer</li>
+<li>loss of enforcement binding</li>
+</ul>
+<h4 id="44-undefined-flagged">4.4 Undefined (Flagged)</h4>
+<p>physical suppression scenarios<br />(handled via structural invariants only)</p>
+<hr />
+<h3 id="5-invariants">5. Invariants</h3>
+<h4 id="51-no-single-point-of-failure">5.1 No Single Point of Failure</h4>
+<p>No function of DKP may depend on a unique actor, node, or interface</p>
+<p>Constraint extension:</p>
+<p>System must remain valid only if N_eff ≥ N_eff_min (DKP-0-ORACLE-001)</p>
+<p>If violated → system enters invalid state (no enforcement)</p>
+<hr />
+<h4 id="52-non-personalization">5.2 Non-personalization</h4>
+<p>DKP must not be representable as an individual or leadership structure</p>
+<hr />
+<h4 id="53-measurement-supremacy-preservation">5.3 Measurement Supremacy Preservation</h4>
+<p>All enforcement must remain bound to measurable physical states (PTL)</p>
+<p>Forbidden:</p>
+<ul>
+<li>narrative override</li>
+<li>expert override</li>
+<li>institutional override</li>
+</ul>
+<p>Interop constraint:</p>
+<p>If external systems require human validation,<br />DKP outputs may be mirrored but not altered (DKP-8-INTEROP-001)</p>
+<hr />
+<h4 id="54-non-confrontational-integration-revised">5.4 Non-confrontational Integration (Revised)</h4>
+<p>DKP must not require explicit displacement of existing systems to operate</p>
+<p>Clarification:</p>
+<p>DKP operates as a constraint layer,<br />not as a governance replacement mechanism</p>
+<hr />
+<h4 id="55-functional-irreplaceability-revised">5.5 Functional Irreplaceability (Revised)</h4>
+<p>DKP components must produce measurable dependency through constraint enforcement</p>
+<p>Replaces previous ambiguous formulation.</p>
+<p>Clarification:</p>
+<p>Irreplaceability is emergent, not imposed</p>
+<p>Constraint:</p>
+<p>If DKP removal causes no measurable change in system constraints,<br />DKP is not yet integrated (not a resilience condition)</p>
+<p>Resolution of paradox:</p>
+<p>5.4 prohibits forced displacement</p>
+<p>5.5 defines emergent dependency via constraints</p>
+<p>No contradiction remains.</p>
+<hr />
+<h4 id="56-scope-isolation">5.6 Scope Isolation</h4>
+<p>Resilience mechanisms must not alter core axioms or enforcement logic</p>
+<p>Reference: DKP-7-SCOPE-001</p>
+<hr />
+<h4 id="57-interface-integrity">5.7 Interface Integrity (NEW &mdash; fixes Bundle Distortion)</h4>
+<p>All Entry Points must preserve minimum PTL metadata completeness</p>
+<p>Requirement:</p>
+<ul>
+<li>no partial state exposure</li>
+<li>no semantic filtering</li>
+<li>no aggregation that hides variance</li>
+</ul>
+<p>Reference: DKP-PTL-REG-DATA-001</p>
+<p>Violation leads to:</p>
+<p>local invalidation of entry point</p>
+<hr />
+<h4 id="58-anti-sybil-consistency">5.8 Anti-Sybil Consistency (NEW)</h4>
+<p>Node concentration must not exceed limits defined in DKP-0-ORACLE-001</p>
+<p>Implication:</p>
+<ul>
+<li>distributed nodes must remain statistically independent</li>
+<li>artificial scaling does not increase influence</li>
+</ul>
+<hr />
+<h3 id="6-allowed-structural-patterns">6. Allowed Structural Patterns</h3>
+<h4 id="61-distributed-entry-points">6.1 Distributed Entry Points</h4>
+<ul>
+<li>multiple independent implementations</li>
+<li>no canonical interface required</li>
+<li>MUST comply with 5.7 (metadata completeness)</li>
+</ul>
+<hr />
+<h4 id="62-local-first-deployment">6.2 Local-first Deployment</h4>
+<p>system functional at micro-level before scaling</p>
+<hr />
+<h4 id="63-passive-adoption-model">6.3 Passive Adoption Model</h4>
+<p>adoption via utility, not mandate</p>
+<hr />
+<h4 id="64-constraint-driven-interaction">6.4 Constraint-driven Interaction</h4>
+<p>behavior influenced only via measurable limits</p>
+<hr />
+<h3 id="7-forbidden-structural-patterns">7. Forbidden Structural Patterns</h3>
+<h4 id="71-central-authority-node">7.1 Central Authority Node</h4>
+<h4 id="72-identity-bound-trust">7.2 Identity-bound Trust</h4>
+<h4 id="73-narrative-dependence">7.3 Narrative Dependence</h4>
+<h4 id="74-enforcement-via-interpretation">7.4 Enforcement via Interpretation</h4>
+<p>(unchanged, consistent)</p>
+<hr />
+<h3 id="8-failure-modes">8. Failure Modes</h3>
+<h4 id="81-personalization-collapse">8.1 Personalization Collapse</h4>
+<h4 id="82-soft-capture">8.2 Soft Capture</h4>
+<h4 id="83-metric-corruption">8.3 Metric Corruption</h4>
+<p>(unchanged)</p>
+<hr />
+<h4 id="84-statistical-collapse">8.4 Statistical Collapse (NEW)</h4>
+<p>N_eff &lt; N_eff_min<br />&rarr; oracle inconsistency<br />&rarr; enforcement invalid<br />&rarr; system enters null-output state</p>
+<p>Reference: DKP-0-ORACLE-001</p>
+<hr />
+<h4 id="85-interface-degradation">8.5 Interface Degradation (NEW)</h4>
+<p>Entry Points provide incomplete PTL state<br />&rarr; local distortion<br />&rarr; cascade to soft capture</p>
+<hr />
+<h3 id="9-resilience-mechanism">9. Resilience Mechanism</h3>
+<p>DKP resists suppression through:</p>
+<ul>
+<li>absence of target</li>
+<li>absence of override layer</li>
+<li>PTL binding</li>
+<li>distributed enforcement</li>
+<li>statistical validity constraints</li>
+</ul>
+<hr />
+<h3 id="10-boundary-conditions">10. Boundary Conditions</h3>
+<h4 id="101-crisis-conditions">10.1 Crisis Conditions</h4>
+<p>Resilience does not override:</p>
+<ul>
+<li>DKP-4-CRISIS-001</li>
+<li>DKP-7-SCOPE-001</li>
+</ul>
+<p>Crisis actions:</p>
+<ul>
+<li>no precedent</li>
+<li>no centralization</li>
+</ul>
+<hr />
+<h4 id="102-undefined-zone">10.2 Undefined Zone</h4>
+<p>Physical threat to actors not handled directly<br />&rarr; mitigated via 5.1 (non-dependence)</p>
+<hr />
+<h3 id="11-validation-criteria">11. Validation Criteria</h3>
+<p>System is resilient if:</p>
+<ul>
+<li>removal of any actor has zero functional impact</li>
+<li>N_eff remains above threshold</li>
+<li>no entry point distorts PTL state</li>
+<li>enforcement remains automatic and measurable</li>
+<li>system continues under access restriction</li>
+</ul>
+<hr />
+<h3 id="12-key-constraint">12. Key Constraint</h3>
+<p>Resilience must emerge from structure, not protection</p>
+<hr />
+<h3 id="13-final-statement">13. Final Statement</h3>
+<p>DKP does not defend itself</p>
+<p>It remains:<br />non-targetable<br />non-overridable<br />non-distortable</p>
+<hr />
+<h4 id="audit-changelog">Что изменено (для аудита)</h4>
+<ul>
+<li>✔ устранён конфликт 5.4 / 5.5</li>
+<li>✔ введён Interface Integrity (Bundle Distortion закрыт)</li>
+<li>✔ добавлен N_eff collapse режим</li>
+<li>✔ добавлена interop-граница</li>
+<li>✔ добавлен Anti-Sybil constraint</li>
+</ul>
+        </article>
+
+        <nav class="protocol-nav-bottom" aria-label="Protocol navigation">
+          <a class="btn" href="dkp-6-integration-001.html" aria-label="Previous protocol: DKP-6-INTEGRATION-001">&larr; Previous Protocol</a>
+          <a class="btn" href="dkp-7-privacy-001.html" aria-label="Next protocol: DKP-7-PRIVACY-001">Next Protocol &rarr;</a>
+        </nav>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <p>Dikenocracy &mdash; public framework. Built openly alongside the old world.</p>
+  </footer>
+
+  <script src="../../script.js"></script>
+</body>
+</html>
