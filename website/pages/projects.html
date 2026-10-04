@@ -14,36 +14,32 @@
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://dikenocracy.com/pages/projects.html" />
   <meta name="twitter:card" content="summary_large_image" />
-  <link rel="stylesheet" href="../styles.css" />
+  <link rel="stylesheet" href="/styles-20260923.css" />
 </head>
 <body>
 
   <a href="#main" class="skip-link">Skip to content</a>
 
   <!-- ─── Navigation ──────────────────────────────────────────────────────── -->
-  <nav class="site-nav" aria-label="Main navigation">
-    <div class="site-nav__inner">
-      <a class="site-nav__brand" href="../index.html">Dikenocracy</a>
-
-      <button
-        class="site-nav__toggle"
-        aria-label="Toggle navigation"
-        aria-expanded="false"
-        aria-controls="site-nav-links"
-      >
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
-
-      <ul class="site-nav__links" id="site-nav-links" role="list">
-        <li><a href="about.html">About</a></li>
-        <li><a href="protocols.html">Protocols</a></li>
-        <li><a href="projects.html" aria-current="page">Projects</a></li>
-        <li><a href="converter.html">Converter</a></li>
-      </ul>
-    </div>
-  </nav>
+  <nav class="site-nav" aria-label="Main navigation" dir="ltr">
+  <div class="site-nav__inner">
+    <a class="site-nav__brand" href="/">Dikenocracy</a>
+    <ul class="site-nav__links" role="list">
+      <li><a href="/pages/about.html">About</a></li>
+      <li><a href="/pages/protocols.html">Protocols</a></li>
+      <li class="site-nav__has-menu">
+        <span class="site-nav__parent"><a href="/pages/projects.html" aria-current="page">Projects</a><button type="button" class="site-nav__submenu-toggle" aria-label="Show projects submenu" aria-controls="nav-projects-submenu" aria-expanded="false"><span class="site-nav__caret" aria-hidden="true"></span></button></span>
+        <ul class="site-nav__submenu" id="nav-projects-submenu" role="list" hidden>
+          <li><a href="/converter/index.html">Converter</a></li>
+          <li><a href="/shadoo/">Shadoo</a></li>
+          <li><a href="/ayalon/">Ayalon Monitor</a></li>
+          <li><a href="/survival/">Survival Manual</a></li>
+          <li><a href="/mazkira/">Mazkira — Business Assistant</a></li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+</nav>
 
   <!-- ─── Main Content ─────────────────────────────────────────────────────── -->
   <main id="main">
@@ -89,15 +85,56 @@
 
           <div class="card">
             <span class="card__label">Tool</span>
-            <h3 class="card__title">Market Lens</h3>
+            <h3 class="card__title">Shadoo</h3>
+            <p class="card__text">Encrypt and decrypt messages locally in your browser with a shared code phrase. Shadoo uses AES-256-GCM, detects tampering, and supports message expiry. Plaintext, code phrases and keys are not sent to the server. The website downloads its application files and checks for updates; encryption and decryption work while you are online.</p>
+            <div style="margin-top:0.8rem;">
+              <a class="btn" href="/shadoo/">Open Shadoo</a>
+            </div>
+          </div>
+
+          <div class="card">
+            <span class="card__label">Reference</span>
+            <h3 class="card__title">Post-Nuclear Survival Manual</h3>
             <p class="card__text">
-              A deterministic price-registry engine with client interpretation
-              protocol. Provides signal classification for consumer-facing
-              comparison without inference or estimation.
+              A comprehensive survival reference covering preparedness without a
+              private bunker, the first sixty seconds, shelter, radiation units
+              and dose-rate interpretation, fallout decay, decontamination,
+              potassium iodide, water, food, sanitation, medical care,
+              communication, and long-term recovery after a nuclear
+              catastrophe. Published in English, with the Russian original
+              alongside.
             </p>
-            <div class="info-note" style="margin-top:0.8rem;">
-              Currently internal. Public access will be announced when the
-              client layer reaches protocol compliance.
+            <div style="margin-top:0.8rem;">
+              <a class="btn" href="/survival/">Read Manual</a>
+            </div>
+          </div>
+
+          <div class="card">
+            <span class="card__label">Monitor</span>
+            <h3 class="card__title">Ayalon Model</h3>
+            <p class="card__text">
+              Real-time physical impact model for Highway 20 (Ayalon), Israel.
+              Measures congestion cost in vehicle-hours, excess fuel, CO₂, and
+              financial leakage using live TomTom traffic data, Gov.il fuel
+              pricing, and air-quality feeds. Layer L5 — Transport.
+            </p>
+            <div style="margin-top:0.8rem; display:flex; gap:0.6rem; flex-wrap:wrap;">
+              <a class="btn" href="projects/ayalon.html">View Project</a>
+              <a class="btn btn--outline" href="/ayalon/" target="_blank" rel="noopener">Open Live Model</a>
+            </div>
+          </div>
+
+          <div class="card">
+            <span class="card__label">Tool</span>
+            <h3 class="card__title">Mazkira — Business Assistant</h3>
+            <p class="card__text">
+              Secure assistant for small businesses in Israel: documents, bookkeeping support, taxes
+              (VAT, income tax, Bituach Leumi estimates), CRM and financial analysis. Each account has its own
+              isolated space; documents and sensitive fields are encrypted at rest. Interface in Hebrew, Russian
+              and English. Not tax advice and not a certified bookkeeping system.
+            </p>
+            <div style="margin-top:0.8rem; display:flex; gap:0.6rem; flex-wrap:wrap;">
+              <a class="btn" href="/mazkira/">Open Mazkira</a>
             </div>
           </div>
 
@@ -139,6 +176,7 @@
     <p>Dikenocracy &mdash; public framework. Built openly alongside the old world.</p>
   </footer>
 
-  <script src="../script.js"></script>
+  <script src="/script-20260923.js"></script>
+  <script type="module" src="/navigation-20260923.js"></script>
 </body>
 </html>

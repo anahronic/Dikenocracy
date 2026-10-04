@@ -14,9 +14,28 @@
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://dikenocracy.com/" />
   <meta name="twitter:card" content="summary_large_image" />
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="/styles-20260923.css" />
 </head>
 <body class="page-index">
+<nav class="site-nav" aria-label="Main navigation" dir="ltr">
+  <div class="site-nav__inner">
+    <a class="site-nav__brand" href="/">Dikenocracy</a>
+    <ul class="site-nav__links" role="list">
+      <li><a href="/pages/about.html">About</a></li>
+      <li><a href="/pages/protocols.html">Protocols</a></li>
+      <li class="site-nav__has-menu">
+        <span class="site-nav__parent"><a href="/pages/projects.html">Projects</a><button type="button" class="site-nav__submenu-toggle" aria-label="Show projects submenu" aria-controls="nav-projects-submenu" aria-expanded="false"><span class="site-nav__caret" aria-hidden="true"></span></button></span>
+        <ul class="site-nav__submenu" id="nav-projects-submenu" role="list" hidden>
+          <li><a href="/converter/index.html">Converter</a></li>
+          <li><a href="/shadoo/">Shadoo</a></li>
+          <li><a href="/ayalon/">Ayalon Monitor</a></li>
+          <li><a href="/survival/">Survival Manual</a></li>
+          <li><a href="/mazkira/">Mazkira — Business Assistant</a></li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+</nav>
 
   <!--
     Stage A — Intro screen.
@@ -25,11 +44,25 @@
   <section
     id="intro-screen"
     class="screen"
-    role="img"
-    aria-label="Dikenocracy introductory visual: We don't ask the old world for permission. We build a new world alongside it."
+    role="region"
+    aria-label="Dikenocracy manifest"
   >
-    <!-- No interactive content in Stage A; script manages the transition -->
+    <div class="manifest-container" aria-live="polite">
+      <p class="manifest-container__text">
+        We don't ask the old world for permission.<br>
+        We build a new world alongside it.
+      </p>
+    </div>
   </section>
+
+  <!--
+    Interstitial — protocol loading overlay.
+    Shown briefly when transitioning from welcome screen to the framework.
+  -->
+  <div id="interstitial" aria-hidden="true">
+    <div class="interstitial__bar"></div>
+    <span class="interstitial__msg">Initializing protocol layer&hellip;</span>
+  </div>
 
   <!--
     Stage B — Welcome screen.
@@ -41,12 +74,16 @@
     role="region"
     aria-label="Dikenocracy welcome screen"
   >
+    <div class="welcome-overlay">
+      <h1 class="welcome-overlay__title">Dikenocracy</h1>
+      <p class="welcome-overlay__sub">The rule of justice</p>
+    </div>
     <!--
-      Enter CTA — clean text button matching site design language.
-      Keyboard-accessible via <a> element.
+      Enter CTA — solid gold button, no glow.
     -->
     <div class="enter-cta">
       <a
+        id="enter-btn"
         class="enter-cta__btn"
         href="pages/about.html"
         aria-label="Enter the Dikenocracy Framework — navigate to the About page"
@@ -55,6 +92,7 @@
     </div>
   </section>
 
-  <script src="script.js"></script>
+  <script src="/script-20260923.js"></script>
+  <script type="module" src="/navigation-20260923.js"></script>
 </body>
 </html>

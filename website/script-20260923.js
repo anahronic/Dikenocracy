@@ -288,9 +288,9 @@
   document.addEventListener('DOMContentLoaded', function () {
     initIntroSequence();
     initInterstitial();
-    initMobileNav();
+
     initProtocolToc();
-    initProjectsSubmenu();
+
     initDocLanguageSwitch();
   });
 

@@ -14,36 +14,32 @@
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://dikenocracy.com/pages/about.html" />
   <meta name="twitter:card" content="summary_large_image" />
-  <link rel="stylesheet" href="../styles.css" />
+  <link rel="stylesheet" href="/styles-20260923.css" />
 </head>
 <body>
 
   <a href="#main" class="skip-link">Skip to content</a>
 
   <!-- ─── Navigation ──────────────────────────────────────────────────────── -->
-  <nav class="site-nav" aria-label="Main navigation">
-    <div class="site-nav__inner">
-      <a class="site-nav__brand" href="../index.html">Dikenocracy</a>
-
-      <button
-        class="site-nav__toggle"
-        aria-label="Toggle navigation"
-        aria-expanded="false"
-        aria-controls="site-nav-links"
-      >
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
-
-      <ul class="site-nav__links" id="site-nav-links" role="list">
-        <li><a href="about.html" aria-current="page">About</a></li>
-        <li><a href="protocols.html">Protocols</a></li>
-        <li><a href="projects.html">Projects</a></li>
-        <li><a href="converter.html">Converter</a></li>
-      </ul>
-    </div>
-  </nav>
+  <nav class="site-nav" aria-label="Main navigation" dir="ltr">
+  <div class="site-nav__inner">
+    <a class="site-nav__brand" href="/">Dikenocracy</a>
+    <ul class="site-nav__links" role="list">
+      <li><a href="/pages/about.html" aria-current="page">About</a></li>
+      <li><a href="/pages/protocols.html">Protocols</a></li>
+      <li class="site-nav__has-menu">
+        <span class="site-nav__parent"><a href="/pages/projects.html">Projects</a><button type="button" class="site-nav__submenu-toggle" aria-label="Show projects submenu" aria-controls="nav-projects-submenu" aria-expanded="false"><span class="site-nav__caret" aria-hidden="true"></span></button></span>
+        <ul class="site-nav__submenu" id="nav-projects-submenu" role="list" hidden>
+          <li><a href="/converter/index.html">Converter</a></li>
+          <li><a href="/shadoo/">Shadoo</a></li>
+          <li><a href="/ayalon/">Ayalon Monitor</a></li>
+          <li><a href="/survival/">Survival Manual</a></li>
+          <li><a href="/mazkira/">Mazkira — Business Assistant</a></li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+</nav>
 
   <!-- ─── Main Content ─────────────────────────────────────────────────────── -->
   <main id="main">
@@ -153,6 +149,7 @@
     <p>Dikenocracy &mdash; public framework. Built openly alongside the old world.</p>
   </footer>
 
-  <script src="../script.js"></script>
+  <script src="/script-20260923.js"></script>
+  <script type="module" src="/navigation-20260923.js"></script>
 </body>
 </html>

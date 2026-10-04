@@ -10,17 +10,25 @@
 </head>
 <body>
 
-  <nav class="site-nav" aria-label="Main navigation">
-    <div class="site-nav__inner">
-      <a class="site-nav__brand" href="/index.html">Dikenocracy</a>
-      <ul class="site-nav__links" id="site-nav-links" role="list">
-        <li><a href="/pages/about.html">About</a></li>
-        <li><a href="/pages/protocols.html">Protocols</a></li>
-        <li><a href="/pages/projects.html">Projects</a></li>
-        <li><a href="/pages/converter.html">Converter</a></li>
-      </ul>
-    </div>
-  </nav>
+  <nav class="site-nav" aria-label="Main navigation" dir="ltr">
+  <div class="site-nav__inner">
+    <a class="site-nav__brand" href="/">Dikenocracy</a>
+    <ul class="site-nav__links" role="list">
+      <li><a href="/pages/about.html">About</a></li>
+      <li><a href="/pages/protocols.html">Protocols</a></li>
+      <li class="site-nav__has-menu">
+        <span class="site-nav__parent"><a href="/pages/projects.html">Projects</a><button type="button" class="site-nav__submenu-toggle" aria-label="Show projects submenu" aria-controls="nav-projects-submenu" aria-expanded="false"><span class="site-nav__caret" aria-hidden="true"></span></button></span>
+        <ul class="site-nav__submenu" id="nav-projects-submenu" role="list" hidden>
+          <li><a href="/converter/index.html">Converter</a></li>
+          <li><a href="/shadoo/">Shadoo</a></li>
+          <li><a href="/ayalon/">Ayalon Monitor</a></li>
+          <li><a href="/survival/">Survival Manual</a></li>
+          <li><a href="/mazkira/">Mazkira — Business Assistant</a></li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+</nav>
 
   <main id="main">
     <div class="page-wrapper" style="text-align:center; padding-top: 12vh;">
@@ -37,5 +45,6 @@
   </footer>
 
   <script src="/script.js"></script>
+  <script type="module" src="/navigation-20260923.js"></script>
 </body>
 </html>

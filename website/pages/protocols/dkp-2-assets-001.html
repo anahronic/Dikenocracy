@@ -14,26 +14,31 @@
   <meta property="og:type" content="article" />
   <meta property="og:url" content="https://dikenocracy.com/pages/protocols/dkp-2-assets-001.html" />
   <meta name="twitter:card" content="summary_large_image" />
-  <link rel="stylesheet" href="../../styles.css" />
+  <link rel="stylesheet" href="/styles-20260923.css" />
 </head>
 <body>
 
   <a href="#main" class="skip-link">Skip to content</a>
 
-  <nav class="site-nav" aria-label="Main navigation">
-    <div class="site-nav__inner">
-      <a class="site-nav__brand" href="../../index.html">Dikenocracy</a>
-      <button class="site-nav__toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="site-nav-links">
-        <span></span><span></span><span></span>
-      </button>
-      <ul class="site-nav__links" id="site-nav-links" role="list">
-        <li><a href="../about.html">About</a></li>
-        <li><a href="../protocols.html" aria-current="page">Protocols</a></li>
-        <li><a href="../projects.html">Projects</a></li>
-        <li><a href="../converter.html">Converter</a></li>
-      </ul>
-    </div>
-  </nav>
+  <nav class="site-nav" aria-label="Main navigation" dir="ltr">
+  <div class="site-nav__inner">
+    <a class="site-nav__brand" href="/">Dikenocracy</a>
+    <ul class="site-nav__links" role="list">
+      <li><a href="/pages/about.html">About</a></li>
+      <li><a href="/pages/protocols.html" aria-current="page">Protocols</a></li>
+      <li class="site-nav__has-menu">
+        <span class="site-nav__parent"><a href="/pages/projects.html">Projects</a><button type="button" class="site-nav__submenu-toggle" aria-label="Show projects submenu" aria-controls="nav-projects-submenu" aria-expanded="false"><span class="site-nav__caret" aria-hidden="true"></span></button></span>
+        <ul class="site-nav__submenu" id="nav-projects-submenu" role="list" hidden>
+          <li><a href="/converter/index.html">Converter</a></li>
+          <li><a href="/shadoo/">Shadoo</a></li>
+          <li><a href="/ayalon/">Ayalon Monitor</a></li>
+          <li><a href="/survival/">Survival Manual</a></li>
+          <li><a href="/mazkira/">Mazkira — Business Assistant</a></li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+</nav>
 
   <div class="protocol-side-nav-layer" aria-hidden="true">
     <div class="protocol-side-nav protocol-side-nav--prev">
@@ -71,6 +76,7 @@
           <span class="protocol-map__layer-label">L1 — Core</span>
           <ul class="protocol-map__links">
               <li><a href="dkp-1-axioms-001.html">AXIOMS</a></li>
+              <li><a href="dkp-1-epistemic-boundaries-001.html">EPISTEMIC-BOUNDARIES</a></li>
               <li><a href="dkp-1-identity-001.html">IDENTITY</a></li>
               <li><a href="dkp-1-impact-001.html">IMPACT</a></li>
               <li><a href="dkp-1-justice-001.html">JUSTICE</a></li>
@@ -100,6 +106,7 @@
               <li><a href="dkp-4-crisis-001.html">CRISIS</a></li>
               <li><a href="dkp-4-error-001.html">ERROR</a></li>
               <li><a href="dkp-4-upgrade-001.html">UPGRADE</a></li>
+              <li><a href="dkp-4-epistemic-transitions-001.html">EPISTEMIC-TRANSITIONS</a></li>
           </ul>
         </div>
         <div class="protocol-map__layer">
@@ -315,6 +322,27 @@
 </ul>
 <p>No discretionary authority, closed committee, or opaque administrative body  MAY control or override asset reallocation.</p>
 <p>Public stewardship denotes <strong>algorithmic custodianship under open rules</strong>,  not bureaucratic management.</p>
+<h4 id="83-revocation-dispute-mechanism">8.3 Revocation Dispute Mechanism</h4>
+<p>All asset revocation events SHALL support dispute proceedings as follows:</p>
+<p>a) <strong>Dispute Window:</strong> Revocation may be disputed within thirty (30) DTI-Days of execution under DKP-4-ERROR-001.</p>
+<p>b) <strong>Escrow Preservation:</strong> Upon validated dispute filing, any reallocation proceeds or asset value equivalents SHALL be held in escrow until dispute resolution.</p>
+<p>c) <strong>Restitution Claims:</strong> Disputed revocations SHALL preserve Subject's restitution claims. If dispute succeeds:</p>
+<ul>
+<li>Physical assets SHALL be returned where possible</li>
+<li>Where return is impossible, equivalent value restitution SHALL be computed and allocated</li>
+</ul>
+<p>d) <strong>No Prejudice:</strong> Filing a revocation dispute SHALL NOT constitute grounds for additional restrictions or negative justice attribution.</p>
+<p>e) <strong>Epistemic Metadata:</strong> All revocation orders SHALL carry mandatory epistemic classification per DKP-1-EPISTEMIC-BOUNDARIES-001 Section 5:</p>
+<ul>
+<li>validity_state: as inherited from triggering Justice output</li>
+<li>confidence_state: as propagated from Impact measurements</li>
+<li>consistency_state: as inherited from triggering Justice output or upstream epistemic metadata</li>
+<li>scope_ref: reference to specific Justice outcome</li>
+<li>revalidation_required: TRUE</li>
+<li>dispute_allowed: TRUE</li>
+</ul>
+<p>Any revocation, suspension, reallocation, or dispute-related asset control output SHALL be considered non-operational and non-enforceable unless the full mandatory epistemic metadata set defined in DKP-1-EPISTEMIC-BOUNDARIES-001 Section 5 is present.</p>
+<p>Partial epistemic metadata SHALL invalidate the output at the point of emission. This condition SHALL NOT be deferred to audit or downstream validation layers.</p>
 <hr />
 <h3 id="9-natural-and-critical-assets">9. Natural and Critical Assets</h3>
 <p>Certain assets are designated as <strong>Non-Privatizable</strong> or  <strong>Conditionally Privatizable</strong>, including:</p>
@@ -392,6 +420,7 @@
     <p>Dikenocracy &mdash; public framework. Built openly alongside the old world.</p>
   </footer>
 
-  <script src="../../script.js"></script>
+  <script src="/script-20260923.js"></script>
+  <script type="module" src="/navigation-20260923.js"></script>
 </body>
 </html>

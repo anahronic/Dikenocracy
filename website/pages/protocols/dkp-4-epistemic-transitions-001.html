@@ -3,16 +3,16 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Appendix A — Design Rationale &amp; Safeguards (Normative) — Dikenocracy Protocol" />
-  <title>Appendix A — Design Rationale &amp; Safeguards (Normative) — Dikenocracy</title>
-  <link rel="canonical" href="https://dikenocracy.com/pages/protocols/appendix-a-design-rationale-safeguards-normative.html" />
+  <meta name="description" content="DKP-4-EPISTEMIC-TRANSITIONS-001 — Dikenocracy Protocol" />
+  <title>DKP-4-EPISTEMIC-TRANSITIONS-001 — Dikenocracy</title>
+  <link rel="canonical" href="https://dikenocracy.com/pages/protocols/dkp-4-epistemic-transitions-001.html" />
   <link rel="icon" href="../../assets/favicon.ico" />
   <link rel="apple-touch-icon" href="../../assets/apple-touch-icon.png" />
-  <meta property="og:title" content="Appendix A — Design Rationale &amp; Safeguards (Normative) — Dikenocracy" />
-  <meta property="og:description" content="Appendix A — Design Rationale &amp; Safeguards (Normative) — Dikenocracy Protocol specification." />
+  <meta property="og:title" content="DKP-4-EPISTEMIC-TRANSITIONS-001 — Dikenocracy" />
+  <meta property="og:description" content="DKP-4-EPISTEMIC-TRANSITIONS-001 — Dikenocracy Protocol specification." />
   <meta property="og:image" content="https://dikenocracy.com/assets/main_screen.webp" />
   <meta property="og:type" content="article" />
-  <meta property="og:url" content="https://dikenocracy.com/pages/protocols/appendix-a-design-rationale-safeguards-normative.html" />
+  <meta property="og:url" content="https://dikenocracy.com/pages/protocols/dkp-4-epistemic-transitions-001.html" />
   <meta name="twitter:card" content="summary_large_image" />
   <link rel="stylesheet" href="/styles-20260923.css" />
 </head>
@@ -42,9 +42,15 @@
 
   <div class="protocol-side-nav-layer" aria-hidden="true">
     <div class="protocol-side-nav protocol-side-nav--prev">
-      <a class="protocol-side-nav__btn" href="dkp-8-simulation-001.html" aria-label="Previous protocol: DKP-8-SIMULATION-001">
+      <a class="protocol-side-nav__btn" href="dkp-4-upgrade-001.html" aria-label="Previous protocol: DKP-4-UPGRADE-001">
         <span class="nav-arrow">&lsaquo;</span>
-        <span class="nav-label">DKP-8-SIMULATION-001</span>
+        <span class="nav-label">DKP-4-UPGRADE-001</span>
+      </a>
+    </div>
+    <div class="protocol-side-nav protocol-side-nav--next">
+      <a class="protocol-side-nav__btn" href="dkp-5-culture-001.html" aria-label="Next protocol: DKP-5-CULTURE-001">
+        <span class="nav-label">DKP-5-CULTURE-001</span>
+        <span class="nav-arrow">&rsaquo;</span>
       </a>
     </div>
   </div>
@@ -95,12 +101,13 @@
           </ul>
         </div>
         <div class="protocol-map__layer">
-          <span class="protocol-map__layer-label">L4 — Stability</span>
+          <span class="protocol-map__layer-label protocol-map__layer-label--active">L4 — Stability</span>
           <ul class="protocol-map__links">
               <li><a href="dkp-4-crisis-001.html">CRISIS</a></li>
               <li><a href="dkp-4-error-001.html">ERROR</a></li>
               <li><a href="dkp-4-upgrade-001.html">UPGRADE</a></li>
               <li><a href="dkp-4-epistemic-transitions-001.html">EPISTEMIC-TRANSITIONS</a></li>
+              <li><a href="dkp-4-epistemic-transitions-001.html" class="pmap-active">EPISTEMIC-TRANSITIONS</a></li>
           </ul>
         </div>
         <div class="protocol-map__layer">
@@ -140,9 +147,9 @@
           </ul>
         </div>
         <div class="protocol-map__layer">
-          <span class="protocol-map__layer-label protocol-map__layer-label--active">Appendix</span>
+          <span class="protocol-map__layer-label">Appendix</span>
           <ul class="protocol-map__links">
-              <li><a href="appendix-a-design-rationale-safeguards-normative.html" class="pmap-active">Appendix A</a></li>
+              <li><a href="appendix-a-design-rationale-safeguards-normative.html">Appendix A</a></li>
           </ul>
         </div>
       </aside>
@@ -154,11 +161,19 @@
         <nav id="toc-list">
           <div class="protocol-toc__heading">On This Page</div>
           <ul class="protocol-toc__list">
-          <li class="toc__sub"><a href="#a1-non-overlap-with-justice-l1">A.1 Non-Overlap with Justice (L1)</a></li>
-          <li class="toc__sub"><a href="#a2-non-overlap-with-defense-l3">A.2 Non-Overlap with Defense (L3)</a></li>
-          <li class="toc__sub"><a href="#a3-autonomy-future-transport-modes">A.3 Autonomy &amp; Future Transport Modes</a></li>
-          <li class="toc__sub"><a href="#a4-axiom-compatibility">A.4 Axiom Compatibility</a></li>
-          <li class="toc__sub"><a href="#a5-finality">A.5 Finality</a></li>
+          <li class="toc__sub"><a href="#epistemic-state-transition-protocol">Epistemic State Transition Protocol</a></li>
+          <li class="toc__sub"><a href="#1-purpose">1. Purpose</a></li>
+          <li class="toc__sub"><a href="#2-scope">2. Scope</a></li>
+          <li class="toc__sub"><a href="#3-core-invariants">3. Core Invariants</a></li>
+          <li class="toc__sub"><a href="#4-transition-rules">4. Transition Rules</a></li>
+          <li class="toc__sub"><a href="#41-downgrade-propagation">4.1 Downgrade Propagation</a></li>
+          <li class="toc__sub"><a href="#42-no-persistence-without-revalidation">4.2 No Persistence Without Revalidation</a></li>
+          <li class="toc__sub"><a href="#43-status-quo-preservation">4.3 Status Quo Preservation</a></li>
+          <li class="toc__sub"><a href="#44-re-entry-rule">4.4 Re-entry Rule</a></li>
+          <li class="toc__sub"><a href="#45-no-retroactive-truth">4.5 No Retroactive Truth</a></li>
+          <li class="toc__sub"><a href="#5-failure-prevention">5. Failure Prevention</a></li>
+          <li class="toc__sub"><a href="#6-audit-requirements">6. Audit Requirements</a></li>
+          <li class="toc__sub"><a href="#7-protocol-finality">7. Protocol Finality</a></li>
           </ul>
         </nav>
       </aside>
@@ -168,49 +183,129 @@
         </div>
 
         <article class="protocol-article">
-          <h1>Appendix A — Design Rationale &amp; Safeguards (Normative)</h1>
-          <div class="protocol-meta">Version: 1.0 &middot; Status: Freeze</div>
-<h3 id="a1-non-overlap-with-justice-l1">A.1 Non-Overlap with Justice (L1)</h3>
-<p>Low PPDI or high RED SHALL NOT automatically trigger Justice outcomes.</p>
-<p>They are treated as <strong>system degradation signals</strong>, not violations by Subjects.</p>
-<p>Justice consequences may only arise through DKP-1-JUSTICE-001 using proper attribution and thresholds.</p>
+          <h1>DKP-4-EPISTEMIC-TRANSITIONS-001</h1>
+          <div class="protocol-meta">Version: 1.0 &middot; Status: Draft — Freeze Candidate</div>
+<h3 id="epistemic-state-transition-protocol">Epistemic State Transition Protocol</h3>
 <hr />
-<h3 id="a2-non-overlap-with-defense-l3">A.2 Non-Overlap with Defense (L3)</h3>
-<p>This protocol does not address active harm or hostile events.</p>
-<p>Defense remains responsible for real-time containment of physical threats.</p>
-<p>Transport redesign addresses <strong>structural risk generation</strong>, not attacks.</p>
-<hr />
-<h3 id="a3-autonomy-future-transport-modes">A.3 Autonomy & Future Transport Modes</h3>
-<p>Autonomous or assisted transport systems are evaluated identically:</p>
+<p><strong>Layer:</strong> L2–L4 Boundary</p>
+<p><strong>Depends on:</strong></p>
 <ul>
-<li>if RED approaches zero, economic pressure shifts to PPDI competition,</li>
-<li>ownership form is irrelevant,</li>
-<li>physical impact remains the sole criterion.</li>
+<li>DKP-1-EPISTEMIC-BOUNDARIES-001</li>
+<li>DKP-1-JUSTICE-001</li>
+<li>DKP-2-FINANCE-001</li>
+<li>DKP-2-ASSETS-001</li>
+<li>DKP-4-CRISIS-001</li>
+</ul>
+<p><strong>Override:</strong> Not permitted</p>
+<hr />
+<h3 id="1-purpose">1. Purpose</h3>
+<p>This protocol defines deterministic behavior of the system when epistemic state of any upstream output changes over time.</p>
+<p>It ensures that:</p>
+<ul>
+<li>previously valid outputs do not persist beyond epistemic validity</li>
+<li>enforcement actions remain coupled to current measurable conditions</li>
+<li>no historical output is treated as persistent authority</li>
 </ul>
 <hr />
-<h3 id="a4-axiom-compatibility">A.4 Axiom Compatibility</h3>
-<p>This protocol is compatible with:</p>
+<h3 id="2-scope">2. Scope</h3>
+<p>Applies to all protocols producing or consuming epistemic outputs.</p>
+<p>Covers:</p>
 <ul>
-<li>A1 (Preservation of Life),</li>
-<li>A5 (Externality Accountability),</li>
-<li>A7 (Minimum Suffering Constraint),</li>
+<li>validity_state transitions</li>
+<li>confidence_state degradation</li>
+<li>consistency_state conflicts</li>
+<li>revalidation triggers</li>
 </ul>
-<p>without encoding axioms as direct enforcement triggers.</p>
 <hr />
-<h3 id="a5-finality">A.5 Finality</h3>
-<p>Upon freeze:</p>
+<h3 id="3-core-invariants">3. Core Invariants</h3>
+<ol>
+<li>No output remains operational beyond its epistemic validity.</li>
+<li>Epistemic degradation MUST propagate downstream.</li>
+<li>No historical VALID state creates persistent authority.</li>
+<li>Re-evaluation is required for any state-dependent enforcement.</li>
+</ol>
+<hr />
+<h3 id="4-transition-rules">4. Transition Rules</h3>
+<h4 id="41-downgrade-propagation">4.1 Downgrade Propagation</h4>
+<p>If any upstream epistemic field changes:</p>
 <ul>
-<li>any modification requires a new protocol identifier,</li>
+<li>VALID → CONDITIONAL / INVALID</li>
+<li>CONSISTENT → ORACLE_CONFLICT</li>
+<li>SUFFICIENT_DATA → DEGRADED_SIGNAL</li>
+</ul>
+<p>Then all dependent outputs SHALL:</p>
+<ul>
+<li>set revalidation_required = TRUE</li>
+<li>enter execution suspension or status quo mode</li>
+<li>prevent further enforcement escalation</li>
+</ul>
+<h4 id="42-no-persistence-without-revalidation">4.2 No Persistence Without Revalidation</h4>
+<p>No enforcement output SHALL remain active solely based on past VALID state if:</p>
+<ul>
+<li>epistemic state has degraded</li>
+<li>new admissible data is introduced</li>
+<li>consistency is no longer maintained</li>
+</ul>
+<h4 id="43-status-quo-preservation">4.3 Status Quo Preservation</h4>
+<p>During epistemic uncertainty or dispute:</p>
+<ul>
+<li>system SHALL preserve current state</li>
+<li>SHALL halt escalation</li>
+<li>SHALL prevent penalty accumulation</li>
+<li>SHALL await deterministic recomputation</li>
+</ul>
+<h4 id="44-re-entry-rule">4.4 Re-entry Rule</h4>
+<p>Resumption of enforcement requires:</p>
+<ul>
+<li>new valid output</li>
+<li>full epistemic metadata</li>
+<li>recomputation under updated inputs</li>
+</ul>
+<p>Previous outputs SHALL NOT auto-reactivate.</p>
+<h4 id="45-no-retroactive-truth">4.5 No Retroactive Truth</h4>
+<p>Past VALID outputs SHALL NOT be treated as evidence of correctness if later:</p>
+<ul>
+<li>conflict emerges</li>
+<li>data is invalidated</li>
+<li>scope is violated</li>
+</ul>
+<p>All outputs remain subject to epistemic reclassification.</p>
+<hr />
+<h3 id="5-failure-prevention">5. Failure Prevention</h3>
+<p>This protocol prevents:</p>
+<ul>
+<li>authority accumulation from past outputs</li>
+<li>delayed epistemic drift</li>
+<li>persistence of invalid enforcement</li>
+<li>silent degradation of system-state coupling</li>
+</ul>
+<hr />
+<h3 id="6-audit-requirements">6. Audit Requirements</h3>
+<p>L8 MUST test:</p>
+<ul>
+<li>downgrade propagation correctness</li>
+<li>enforcement suspension behavior</li>
+<li>revalidation triggers</li>
+<li>prevention of state persistence</li>
+</ul>
+<hr />
+<h3 id="7-protocol-finality">7. Protocol Finality</h3>
+<p>Once frozen, this protocol is immutable.</p>
+<p>Any modification requires:</p>
+<ul>
+<li>a new protocol identifier,</li>
 <li>explicit incompatibility declaration,</li>
-<li>full-system simulation under DKP-8-SIMULATION.</li>
+<li>full-system simulation under DKP-8-SIMULATION-001,</li>
+<li>explicit compatibility declaration with DKP-1-EPISTEMIC-BOUNDARIES-001.</li>
 </ul>
+<p>Protocol Hash (SHA-256): [to be inserted at freeze]</p>
 <hr />
-<p><strong>END OF PROTOCOL</strong></p>
+<p>END OF PROTOCOL</p>
         </article>
 
         <nav class="protocol-nav-bottom" aria-label="Protocol navigation">
-          <a class="btn" href="dkp-8-simulation-001.html" aria-label="Previous protocol: DKP-8-SIMULATION-001">&larr; Previous Protocol</a>
-          <span class="protocol-nav-bottom__spacer"></span>
+          <a class="btn" href="dkp-4-upgrade-001.html" aria-label="Previous protocol: DKP-4-UPGRADE-001">&larr; Previous Protocol</a>
+          <a class="btn" href="dkp-5-culture-001.html" aria-label="Next protocol: DKP-5-CULTURE-001">Next Protocol &rarr;</a>
         </nav>
       </div>
     </div>

@@ -14,32 +14,37 @@
   <meta property="og:type" content="article" />
   <meta property="og:url" content="https://dikenocracy.com/pages/protocols/dkp-1-identity-001.html" />
   <meta name="twitter:card" content="summary_large_image" />
-  <link rel="stylesheet" href="../../styles.css" />
+  <link rel="stylesheet" href="/styles-20260923.css" />
 </head>
 <body>
 
   <a href="#main" class="skip-link">Skip to content</a>
 
-  <nav class="site-nav" aria-label="Main navigation">
-    <div class="site-nav__inner">
-      <a class="site-nav__brand" href="../../index.html">Dikenocracy</a>
-      <button class="site-nav__toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="site-nav-links">
-        <span></span><span></span><span></span>
-      </button>
-      <ul class="site-nav__links" id="site-nav-links" role="list">
-        <li><a href="../about.html">About</a></li>
-        <li><a href="../protocols.html" aria-current="page">Protocols</a></li>
-        <li><a href="../projects.html">Projects</a></li>
-        <li><a href="../converter.html">Converter</a></li>
-      </ul>
-    </div>
-  </nav>
+  <nav class="site-nav" aria-label="Main navigation" dir="ltr">
+  <div class="site-nav__inner">
+    <a class="site-nav__brand" href="/">Dikenocracy</a>
+    <ul class="site-nav__links" role="list">
+      <li><a href="/pages/about.html">About</a></li>
+      <li><a href="/pages/protocols.html" aria-current="page">Protocols</a></li>
+      <li class="site-nav__has-menu">
+        <span class="site-nav__parent"><a href="/pages/projects.html">Projects</a><button type="button" class="site-nav__submenu-toggle" aria-label="Show projects submenu" aria-controls="nav-projects-submenu" aria-expanded="false"><span class="site-nav__caret" aria-hidden="true"></span></button></span>
+        <ul class="site-nav__submenu" id="nav-projects-submenu" role="list" hidden>
+          <li><a href="/converter/index.html">Converter</a></li>
+          <li><a href="/shadoo/">Shadoo</a></li>
+          <li><a href="/ayalon/">Ayalon Monitor</a></li>
+          <li><a href="/survival/">Survival Manual</a></li>
+          <li><a href="/mazkira/">Mazkira — Business Assistant</a></li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+</nav>
 
   <div class="protocol-side-nav-layer" aria-hidden="true">
     <div class="protocol-side-nav protocol-side-nav--prev">
-      <a class="protocol-side-nav__btn" href="dkp-1-axioms-001.html" aria-label="Previous protocol: DKP-1-AXIOMS-001">
+      <a class="protocol-side-nav__btn" href="dkp-1-epistemic-boundaries-001.html" aria-label="Previous protocol: DKP-1-EPISTEMIC-BOUNDARIES-001">
         <span class="nav-arrow">&lsaquo;</span>
-        <span class="nav-label">DKP-1-AXIOMS-001</span>
+        <span class="nav-label">DKP-1-EPISTEMIC-BOUNDARIES-001</span>
       </a>
     </div>
     <div class="protocol-side-nav protocol-side-nav--next">
@@ -71,6 +76,7 @@
           <span class="protocol-map__layer-label protocol-map__layer-label--active">L1 — Core</span>
           <ul class="protocol-map__links">
               <li><a href="dkp-1-axioms-001.html">AXIOMS</a></li>
+              <li><a href="dkp-1-epistemic-boundaries-001.html">EPISTEMIC-BOUNDARIES</a></li>
               <li><a href="dkp-1-identity-001.html" class="pmap-active">IDENTITY</a></li>
               <li><a href="dkp-1-impact-001.html">IMPACT</a></li>
               <li><a href="dkp-1-justice-001.html">JUSTICE</a></li>
@@ -100,6 +106,7 @@
               <li><a href="dkp-4-crisis-001.html">CRISIS</a></li>
               <li><a href="dkp-4-error-001.html">ERROR</a></li>
               <li><a href="dkp-4-upgrade-001.html">UPGRADE</a></li>
+              <li><a href="dkp-4-epistemic-transitions-001.html">EPISTEMIC-TRANSITIONS</a></li>
           </ul>
         </div>
         <div class="protocol-map__layer">
@@ -236,6 +243,29 @@
 <li>absence of intent, prediction, or awareness SHALL NOT invalidate attribution.</li>
 </ul>
 <p>Unattributed or untraceable impacts constitute a critical system violation.</p>
+<h4 id="41-minimum-attribution-confidence">4.1 Minimum Attribution Confidence</h4>
+<p>Attribution outputs are subject to minimum confidence requirements:</p>
+<p>a) <strong>NO_ATTRIBUTION State</strong></p>
+<p>Where attribution confidence falls below minimum admissibility threshold (as defined by DKP-8-SIMULATION-001 calibration), the protocol SHALL produce:</p>
+<ul>
+<li>NO_ATTRIBUTION</li>
+<li>confidence_state: INSUFFICIENT_DATA</li>
+<li>reason: [specific confidence failure]</li>
+</ul>
+<p>rather than forcing degraded attribution.</p>
+<p>b) <strong>Non-Enforcement Cascade</strong></p>
+<p>NO_ATTRIBUTION events SHALL NOT trigger enforcement cascades in downstream protocols.</p>
+<p>Systems receiving NO_ATTRIBUTION SHALL:</p>
+<ul>
+<li>Log the event for L8 audit</li>
+<li>Defer enforcement pending attribution resolution</li>
+<li>NOT impute attribution from circumstantial factors</li>
+</ul>
+<p>c) <strong>Investigation Trigger</strong></p>
+<p>NO_ATTRIBUTION for significant impact events SHALL trigger elevated investigation priority under DKP-8-AUDIT-001 without pre-determining attribution outcome.</p>
+<p>d) <strong>Preferred Over Degraded Attribution</strong></p>
+<p>In accordance with DKP-1-EPISTEMIC-BOUNDARIES-001 Section 10 (No-Output Priority Rule), NO_ATTRIBUTION is preferred over attribution with confidence_state: DEGRADED_SIGNAL when applicability boundary is violated.</p>
+<p>This clause prevents the "critical system violation" characterization in Section 4 from overriding epistemic boundary requirements.</p>
 <hr />
 <h3 id="5-delegation-and-automation">5. Delegation and Automation</h3>
 <p>Delegation transfers <strong>execution</strong>, not responsibility.</p>
@@ -333,7 +363,7 @@
         </article>
 
         <nav class="protocol-nav-bottom" aria-label="Protocol navigation">
-          <a class="btn" href="dkp-1-axioms-001.html" aria-label="Previous protocol: DKP-1-AXIOMS-001">&larr; Previous Protocol</a>
+          <a class="btn" href="dkp-1-epistemic-boundaries-001.html" aria-label="Previous protocol: DKP-1-EPISTEMIC-BOUNDARIES-001">&larr; Previous Protocol</a>
           <a class="btn" href="dkp-1-impact-001.html" aria-label="Next protocol: DKP-1-IMPACT-001">Next Protocol &rarr;</a>
         </nav>
       </div>
@@ -344,6 +374,7 @@
     <p>Dikenocracy &mdash; public framework. Built openly alongside the old world.</p>
   </footer>
 
-  <script src="../../script.js"></script>
+  <script src="/script-20260923.js"></script>
+  <script type="module" src="/navigation-20260923.js"></script>
 </body>
 </html>

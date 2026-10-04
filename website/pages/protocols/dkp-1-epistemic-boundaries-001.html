@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="DKP-1-EPISTEMIC-BOUNDARIES-001 — Dikenocracy Protocol" />
+  <title>DKP-1-EPISTEMIC-BOUNDARIES-001 — Dikenocracy</title>
+  <link rel="canonical" href="https://dikenocracy.com/pages/protocols/dkp-1-epistemic-boundaries-001.html" />
+  <link rel="icon" href="../../assets/favicon.ico" />
+  <link rel="apple-touch-icon" href="../../assets/apple-touch-icon.png" />
+  <meta property="og:title" content="DKP-1-EPISTEMIC-BOUNDARIES-001 — Dikenocracy" />
+  <meta property="og:description" content="DKP-1-EPISTEMIC-BOUNDARIES-001 — Dikenocracy Protocol specification." />
+  <meta property="og:image" content="https://dikenocracy.com/assets/main_screen.webp" />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://dikenocracy.com/pages/protocols/dkp-1-epistemic-boundaries-001.html" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="stylesheet" href="/styles-20260923.css" />
+</head>
+<body>
+
+  <a href="#main" class="skip-link">Skip to content</a>
+
+  <nav class="site-nav" aria-label="Main navigation" dir="ltr">
+  <div class="site-nav__inner">
+    <a class="site-nav__brand" href="/">Dikenocracy</a>
+    <ul class="site-nav__links" role="list">
+      <li><a href="/pages/about.html">About</a></li>
+      <li><a href="/pages/protocols.html" aria-current="page">Protocols</a></li>
+      <li class="site-nav__has-menu">
+        <span class="site-nav__parent"><a href="/pages/projects.html">Projects</a><button type="button" class="site-nav__submenu-toggle" aria-label="Show projects submenu" aria-controls="nav-projects-submenu" aria-expanded="false"><span class="site-nav__caret" aria-hidden="true"></span></button></span>
+        <ul class="site-nav__submenu" id="nav-projects-submenu" role="list" hidden>
+          <li><a href="/converter/index.html">Converter</a></li>
+          <li><a href="/shadoo/">Shadoo</a></li>
+          <li><a href="/ayalon/">Ayalon Monitor</a></li>
+          <li><a href="/survival/">Survival Manual</a></li>
+          <li><a href="/mazkira/">Mazkira — Business Assistant</a></li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+  <div class="protocol-side-nav-layer" aria-hidden="true">
+    <div class="protocol-side-nav protocol-side-nav--prev">
+      <a class="protocol-side-nav__btn" href="dkp-1-axioms-001.html" aria-label="Previous protocol: DKP-1-AXIOMS-001">
+        <span class="nav-arrow">&lsaquo;</span>
+        <span class="nav-label">DKP-1-AXIOMS-001</span>
+      </a>
+    </div>
+    <div class="protocol-side-nav protocol-side-nav--next">
+      <a class="protocol-side-nav__btn" href="dkp-1-identity-001.html" aria-label="Next protocol: DKP-1-IDENTITY-001">
+        <span class="nav-label">DKP-1-IDENTITY-001</span>
+        <span class="nav-arrow">&rsaquo;</span>
+      </a>
+    </div>
+  </div>
+
+  <main id="main">
+    <div class="protocol-shell">
+      <aside class="protocol-map" aria-label="Protocol map">
+        <div class="protocol-map__heading">Protocol Map</div>
+        <div class="protocol-map__layer">
+          <span class="protocol-map__layer-label">Foundation</span>
+          <ul class="protocol-map__links">
+              <li><a href="code-of-planetary-synergy.html">Synergy Code</a></li>
+          </ul>
+        </div>
+        <div class="protocol-map__layer">
+          <span class="protocol-map__layer-label">L0 — Physical Truth</span>
+          <ul class="protocol-map__links">
+              <li><a href="dkp-0-oracle-001.html">ORACLE</a></li>
+              <li><a href="dkp-0-time-001.html">TIME</a></li>
+          </ul>
+        </div>
+        <div class="protocol-map__layer">
+          <span class="protocol-map__layer-label protocol-map__layer-label--active">L1 — Core</span>
+          <ul class="protocol-map__links">
+              <li><a href="dkp-1-axioms-001.html">AXIOMS</a></li>
+              <li><a href="dkp-1-epistemic-boundaries-001.html" class="pmap-active">EPISTEMIC-BOUNDARIES</a></li>
+              <li><a href="dkp-1-identity-001.html">IDENTITY</a></li>
+              <li><a href="dkp-1-impact-001.html">IMPACT</a></li>
+              <li><a href="dkp-1-justice-001.html">JUSTICE</a></li>
+              <li><a href="dkp-1-prevention-001.html">PREVENTION</a></li>
+          </ul>
+        </div>
+        <div class="protocol-map__layer">
+          <span class="protocol-map__layer-label">L2 — Economic</span>
+          <ul class="protocol-map__links">
+              <li><a href="dkp-2-assets-001.html">ASSETS</a></li>
+              <li><a href="dkp-2-finance-001.html">FINANCE</a></li>
+              <li><a href="dkp-2-labor-001.html">LABOR</a></li>
+          </ul>
+        </div>
+        <div class="protocol-map__layer">
+          <span class="protocol-map__layer-label">L3 — Security</span>
+          <ul class="protocol-map__links">
+              <li><a href="dkp-3-antiterror-001.html">ANTITERROR</a></li>
+              <li><a href="dkp-3-defense-001.html">DEFENSE</a></li>
+              <li><a href="dkp-3-internal-sec-001.html">INTERNAL-SEC</a></li>
+              <li><a href="dkp-3-police-001.html">POLICE</a></li>
+          </ul>
+        </div>
+        <div class="protocol-map__layer">
+          <span class="protocol-map__layer-label">L4 — Stability</span>
+          <ul class="protocol-map__links">
+              <li><a href="dkp-4-crisis-001.html">CRISIS</a></li>
+              <li><a href="dkp-4-error-001.html">ERROR</a></li>
+              <li><a href="dkp-4-upgrade-001.html">UPGRADE</a></li>
+              <li><a href="dkp-4-epistemic-transitions-001.html">EPISTEMIC-TRANSITIONS</a></li>
+          </ul>
+        </div>
+        <div class="protocol-map__layer">
+          <span class="protocol-map__layer-label">L5 — Human Infra</span>
+          <ul class="protocol-map__links">
+              <li><a href="dkp-5-culture-001.html">CULTURE</a></li>
+              <li><a href="dkp-5-edu-001.html">EDU</a></li>
+              <li><a href="dkp-5-habitat-001.html">HABITAT</a></li>
+              <li><a href="dkp-5-info-001.html">INFO</a></li>
+              <li><a href="dkp-5-transport-001.html">TRANSPORT</a></li>
+              <li><a href="dkp-5-work-cycle-001.html">WORK-CYCLE</a></li>
+          </ul>
+        </div>
+        <div class="protocol-map__layer">
+          <span class="protocol-map__layer-label">L6 — Intersystem</span>
+          <ul class="protocol-map__links">
+              <li><a href="dkp-6-exit-001.html">EXIT</a></li>
+              <li><a href="dkp-6-integration-001.html">INTEGRATION</a></li>
+              <li><a href="dkp-6-resilience-001.html">RESILIENCE</a></li>
+          </ul>
+        </div>
+        <div class="protocol-map__layer">
+          <span class="protocol-map__layer-label">L7 — Meta / Scope</span>
+          <ul class="protocol-map__links">
+              <li><a href="dkp-7-ai-subject-001.html">AI-SUBJECT</a></li>
+              <li><a href="dkp-7-privacy-001.html">PRIVACY</a></li>
+              <li><a href="dkp-7-scope-001.html">SCOPE</a></li>
+              <li><a href="dkp-7-transparency-001.html">TRANSPARENCY</a></li>
+          </ul>
+        </div>
+        <div class="protocol-map__layer">
+          <span class="protocol-map__layer-label">L8 — Infrastructure</span>
+          <ul class="protocol-map__links">
+              <li><a href="dkp-8-audit-001.html">AUDIT</a></li>
+              <li><a href="dkp-8-interop-001.html">INTEROP</a></li>
+              <li><a href="dkp-8-simulation-001.html">SIMULATION</a></li>
+          </ul>
+        </div>
+        <div class="protocol-map__layer">
+          <span class="protocol-map__layer-label">Appendix</span>
+          <ul class="protocol-map__links">
+              <li><a href="appendix-a-design-rationale-safeguards-normative.html">Appendix A</a></li>
+          </ul>
+        </div>
+      </aside>
+      <aside class="protocol-toc" aria-label="Table of contents">
+        <button class="protocol-toc__toggle" aria-expanded="false" aria-controls="toc-list">
+          <span>On This Page</span>
+          <svg width="12" height="8" viewBox="0 0 12 8" fill="none"><path d="M1 1l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </button>
+        <nav id="toc-list">
+          <div class="protocol-toc__heading">On This Page</div>
+          <ul class="protocol-toc__list">
+          <li class="toc__sub"><a href="#0-preamble">0. Preamble</a></li>
+          <li class="toc__sub"><a href="#1-purpose">1. Purpose</a></li>
+          <li class="toc__sub"><a href="#2-system-position">2. System Position</a></li>
+          <li class="toc__sub"><a href="#3-core-definitions">3. Core Definitions</a></li>
+          <li class="toc__sub"><a href="#4-core-invariants">4. Core Invariants</a></li>
+          <li class="toc__sub"><a href="#5-mandatory-output-classification">5. Mandatory Output Classification</a></li>
+          <li class="toc__sub"><a href="#5x-mandatory-completeness-enforcement">5.x Mandatory Completeness Enforcement</a></li>
+          <li class="toc__sub"><a href="#6-non-finality-rule">6. Non-Finality Rule</a></li>
+          <li class="toc__sub"><a href="#7-dispute-protocol">7. Dispute Protocol</a></li>
+          <li class="toc__sub"><a href="#8-applicability-boundary-requirement">8. Applicability Boundary Requirement</a></li>
+          <li class="toc__sub"><a href="#9-staleness-and-signal-stability">9. Staleness and Signal Stability</a></li>
+          <li class="toc__sub"><a href="#10-no-output-priority-rule">10. No-Output Priority Rule</a></li>
+          <li class="toc__sub"><a href="#11-oracle-limitation">11. Oracle Limitation</a></li>
+          <li class="toc__sub"><a href="#12-prohibited-interpretations">12. Prohibited Interpretations</a></li>
+          <li class="toc__sub"><a href="#13-audit-and-simulation-requirements">13. Audit and Simulation Requirements</a></li>
+          <li class="toc__sub"><a href="#14-final-clause">14. Final Clause</a></li>
+          </ul>
+        </nav>
+      </aside>
+      <div class="protocol-content">
+        <div class="protocol-toolbar">
+          <a href="../protocols.html">&larr; All Protocols</a>
+        </div>
+
+        <article class="protocol-article">
+          <h1>DKP-1-EPISTEMIC-BOUNDARIES-001</h1>
+          <div class="protocol-meta">Version: 1.0 &middot; Status: Freeze Candidate</div>
+<p><strong>Epistemic Boundaries Protocol</strong></p>
+<hr />
+<p><strong>Layer:</strong> L1 — Epistemic Constraint</p>
+<p><strong>Depends on:</strong></p>
+<ul>
+<li>DKP-0-ORACLE-001</li>
+<li>DKP-1-AXIOMS-001</li>
+<li>DKP-7-SCOPE-001</li>
+<li>DKP-8-AUDIT-001</li>
+<li>DKP-8-SIMULATION-001</li>
+</ul>
+<p><strong>Override:</strong> Not permitted</p>
+<hr />
+<h3 id="0-preamble">0. Preamble</h3>
+<p>All DKP outputs are bounded evaluations of measured signals under defined conditions.</p>
+<p>They are not:</p>
+<ul>
+<li>truth</li>
+<li>authority</li>
+<li>final judgment</li>
+</ul>
+<p>Failure to enforce this boundary converts measurement systems into implicit authority systems.</p>
+<hr />
+<h3 id="1-purpose">1. Purpose</h3>
+<p>This protocol defines strict epistemic limits of all DKP outputs.</p>
+<p>It prevents:</p>
+<ul>
+<li>interpretation of outputs as truth</li>
+<li>accumulation of authority from repeated outputs</li>
+<li>irreversible consequences derived from bounded evaluations</li>
+<li>dogmatic use of stale or incomplete signals</li>
+</ul>
+<hr />
+<h3 id="2-system-position">2. System Position</h3>
+<p>This protocol operates as a universal constraint across all layers L1–L8.</p>
+<p>It:</p>
+<ul>
+<li>constrains all output-producing protocols</li>
+<li>does not implement execution mechanisms</li>
+<li>is enforced via L7 (scope, transparency) and L8 (audit, simulation)</li>
+</ul>
+<hr />
+<h3 id="3-core-definitions">3. Core Definitions</h3>
+<p><strong>Epistemic State</strong><br />Classification of output validity relative to data and conditions.</p>
+<p><strong>Validity State</strong><br />Whether output is usable within defined constraints.</p>
+<p><strong>Confidence State</strong><br />Assessment of data sufficiency and signal quality.</p>
+<p><strong>Consistency State</strong><br />Agreement or conflict between independent measurement sources.</p>
+<p><strong>Applicability Boundary</strong><br />Conditions under which output may be used.</p>
+<p><strong>Dispute Event</strong><br />Submission of new admissible data or conflict signal.</p>
+<p><strong>Re-evaluation</strong><br />Deterministic recomputation under updated admissible inputs.</p>
+<p><strong>Stale Output</strong><br />Output not revalidated under evolving conditions.</p>
+<p><strong>Epistemic Drift</strong><br />Mismatch between output and underlying physical state due to outdated or degraded inputs.</p>
+<hr />
+<h3 id="4-core-invariants">4. Core Invariants</h3>
+<ol>
+<li>No DKP output represents truth.</li>
+<li>No DKP output has authority outside its declared scope.</li>
+<li>No DKP output is final; all outputs remain subject to re-evaluation.</li>
+<li>Reversibility is defined as the ability to re-evaluate and correct system state under new admissible inputs, not as guaranteed rollback of past actions.</li>
+<li>Absence of epistemic metadata invalidates operational use of output.</li>
+<li>Persistent outputs without revalidation degrade in reliability.</li>
+</ol>
+<hr />
+<h3 id="5-mandatory-output-classification">5. Mandatory Output Classification</h3>
+<p>All operational outputs MUST include:</p>
+<h4>Validity State</h4>
+<ul>
+<li>VALID</li>
+<li>CONDITIONAL</li>
+<li>INVALID</li>
+</ul>
+<h4>Confidence State</h4>
+<ul>
+<li>SUFFICIENT_DATA</li>
+<li>INSUFFICIENT_DATA</li>
+<li>DEGRADED_SIGNAL</li>
+</ul>
+<h4>Consistency State</h4>
+<ul>
+<li>CONSISTENT</li>
+<li>ORACLE_CONFLICT</li>
+<li>UNRESOLVED</li>
+</ul>
+<h4>Additional Fields</h4>
+<ul>
+<li>scope_ref</li>
+<li>revalidation_required</li>
+<li>dispute_allowed</li>
+</ul>
+<hr />
+<h3 id="5x-mandatory-completeness-enforcement">5.x Mandatory Completeness Enforcement</h3>
+<p>Any output produced by any DKP protocol that is used for:</p>
+<ul>
+<li>enforcement</li>
+<li>restriction</li>
+<li>revocation</li>
+<li>allocation</li>
+<li>exclusion</li>
+<li>dispute processing</li>
+<li>or any operational decision-making</li>
+</ul>
+<p>SHALL include the full mandatory epistemic metadata set defined in this section.</p>
+<p>Outputs with missing, partial, or undefined epistemic metadata SHALL be classified as INVALID for operational use, regardless of their computed result.</p>
+<p>Such outputs:</p>
+<ul>
+<li>SHALL NOT be executed</li>
+<li>SHALL NOT be propagated</li>
+<li>SHALL NOT be treated as conditionally valid</li>
+<li>SHALL NOT be repaired by downstream systems</li>
+</ul>
+<p>Detection of incomplete metadata MAY be performed by L8 (Audit), but SHALL NOT be relied upon as the primary enforcement mechanism.</p>
+<p>Completeness enforcement MUST occur at the output production layer.</p>
+<hr />
+<h3 id="6-non-finality-rule">6. Non-Finality Rule</h3>
+<p>Outputs do not create irreversible epistemic states.</p>
+<p>Any output:</p>
+<ul>
+<li>may be superseded</li>
+<li>may be re-evaluated</li>
+<li>may be corrected under new admissible inputs</li>
+</ul>
+<p>This rule does NOT imply automatic rollback of executed consequences.</p>
+<p>Execution-layer reversibility is defined outside L1.</p>
+<hr />
+<h3 id="7-dispute-protocol">7. Dispute Protocol</h3>
+<p>Dispute is a deterministic system process.</p>
+<h4 id="71-trigger-conditions">7.1 Trigger Conditions</h4>
+<ul>
+<li>new admissible data</li>
+<li>oracle inconsistency</li>
+<li>scope violation</li>
+<li>measurement integrity challenge</li>
+</ul>
+<h4 id="72-system-behavior">7.2 System Behavior</h4>
+<p>Dispute SHALL:</p>
+<ol>
+<li>Preserve original output unchanged</li>
+<li>Create a new evaluation event</li>
+<li>Recompute deterministically with updated inputs</li>
+<li>Produce comparative delta between outputs</li>
+</ol>
+<p>No in-place mutation is allowed.</p>
+<hr />
+<h3 id="8-applicability-boundary-requirement">8. Applicability Boundary Requirement</h3>
+<p>All output-producing protocols MUST define:</p>
+<ul>
+<li>valid scope</li>
+<li>invalid scope</li>
+<li>no-output conditions</li>
+<li>minimum admissibility conditions</li>
+</ul>
+<p>Outputs without scope metadata are non-enforceable.</p>
+<hr />
+<h3 id="9-staleness-and-signal-stability">9. Staleness and Signal Stability</h3>
+<p>Output reliability degrades only under:</p>
+<ul>
+<li>detected environmental change</li>
+<li>loss of measurement integrity</li>
+<li>emergence of conflicting signals</li>
+</ul>
+<p>Absence of new data alone does NOT invalidate output if:</p>
+<ul>
+<li>environment is stable</li>
+<li>no conflicting signals exist</li>
+</ul>
+<p>Protocols MUST distinguish between:</p>
+<ul>
+<li>data absence under activity</li>
+<li>data absence under stability</li>
+</ul>
+<hr />
+<h3 id="10-no-output-priority-rule">10. No-Output Priority Rule</h3>
+<p>In critical or safety-relevant contexts:</p>
+<p>NO_OUTPUT is preferred over DEGRADED_SIGNAL</p>
+<p>when:</p>
+<ul>
+<li>data is insufficient</li>
+<li>consistency is unresolved</li>
+<li>applicability boundary is violated</li>
+</ul>
+<hr />
+<h3 id="11-oracle-limitation">11. Oracle Limitation</h3>
+<p>All measurements are:</p>
+<ul>
+<li>lossy</li>
+<li>delayed</li>
+<li>instrument-bounded</li>
+</ul>
+<p>Therefore all outputs are approximations, not absolute states.</p>
+<hr />
+<h3 id="12-prohibited-interpretations">12. Prohibited Interpretations</h3>
+<p>System outputs MUST NOT be treated as:</p>
+<ul>
+<li>truth</li>
+<li>guilt</li>
+<li>moral judgment</li>
+<li>irreversible decision basis</li>
+<li>authority outside scope</li>
+</ul>
+<hr />
+<h3 id="13-audit-and-simulation-requirements">13. Audit and Simulation Requirements</h3>
+<p>L8 MUST test:</p>
+<ul>
+<li>missing epistemic metadata</li>
+<li>stale output reuse</li>
+<li>authority drift</li>
+<li>dispute suppression</li>
+<li>scope violations</li>
+<li>misuse of degraded signals</li>
+</ul>
+<hr />
+<h3 id="14-final-clause">14. Final Clause</h3>
+<p>DKP operates as a measurement-constrained system.</p>
+<p>It produces bounded evaluations.</p>
+<p>It does not produce truth.</p>
+        </article>
+
+        <nav class="protocol-nav-bottom" aria-label="Protocol navigation">
+          <a class="btn" href="dkp-1-axioms-001.html" aria-label="Previous protocol: DKP-1-AXIOMS-001">&larr; Previous Protocol</a>
+          <a class="btn" href="dkp-1-identity-001.html" aria-label="Next protocol: DKP-1-IDENTITY-001">Next Protocol &rarr;</a>
+        </nav>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <p>Dikenocracy &mdash; public framework. Built openly alongside the old world.</p>
+  </footer>
+
+  <script src="/script-20260923.js"></script>
+  <script type="module" src="/navigation-20260923.js"></script>
+</body>
+</html>

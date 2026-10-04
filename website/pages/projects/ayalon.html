@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Ayalon — Real-time physical impact model for Highway 20, Israel. Measures congestion cost, excess fuel, and CO₂ emissions." />
+  <title>Ayalon Model — Dikenocracy</title>
+  <link rel="canonical" href="https://dikenocracy.com/pages/projects/ayalon.html" />
+  <link rel="icon" href="../../assets/favicon.ico" />
+  <link rel="apple-touch-icon" href="../../assets/apple-touch-icon.png" />
+  <meta property="og:title" content="Ayalon Model — Dikenocracy" />
+  <meta property="og:description" content="Real-time physical impact model measuring congestion cost on Highway 20 (Ayalon), Israel." />
+  <meta property="og:image" content="https://dikenocracy.com/assets/main_screen.webp" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://dikenocracy.com/pages/projects/ayalon.html" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="stylesheet" href="/styles-20260923.css" />
+  <style>
+    .ayalon-status {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.35rem 0.9rem;
+      border-radius: 999px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+    }
+    .ayalon-status--live {
+      background: rgba(34, 197, 94, 0.12);
+      color: #22c55e;
+      border: 1px solid rgba(34, 197, 94, 0.25);
+    }
+    .ayalon-status--sample {
+      background: rgba(212, 175, 55, 0.12);
+      color: #D4AF37;
+      border: 1px solid rgba(212, 175, 55, 0.25);
+    }
+    .ayalon-status__dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      animation: pulse-dot 2s ease-in-out infinite;
+    }
+    .ayalon-status--live .ayalon-status__dot { background: #22c55e; }
+    .ayalon-status--sample .ayalon-status__dot { background: #D4AF37; }
+    @keyframes pulse-dot {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
+    }
+    .ayalon-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.2rem;
+      margin-top: 1.5rem;
+    }
+    .ayalon-metric {
+      background: var(--bg-card, #141416);
+      border: 1px solid var(--border, #222);
+      border-radius: 8px;
+      padding: 1.2rem;
+    }
+    .ayalon-metric__label {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--muted, #888);
+      margin-bottom: 0.3rem;
+    }
+    .ayalon-metric__value {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--accent, #D4AF37);
+    }
+    .ayalon-source-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1rem;
+    }
+    .ayalon-source-table th,
+    .ayalon-source-table td {
+      text-align: left;
+      padding: 0.6rem 0.8rem;
+      border-bottom: 1px solid var(--border, #222);
+      font-size: 0.9rem;
+    }
+    .ayalon-source-table th {
+      color: var(--muted, #888);
+      font-weight: 600;
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+    .ayalon-iframe-wrap {
+      position: relative;
+      width: 100%;
+      min-height: 700px;
+      border: 1px solid var(--border, #222);
+      border-radius: 8px;
+      overflow: hidden;
+      margin-top: 1.5rem;
+      background: #0a0a0a;
+    }
+    .ayalon-iframe-wrap iframe {
+      width: 100%;
+      height: 700px;
+      border: none;
+    }
+    .ayalon-notice {
+      background: rgba(212, 175, 55, 0.08);
+      border: 1px solid rgba(212, 175, 55, 0.2);
+      border-radius: 6px;
+      padding: 1rem 1.2rem;
+      margin-top: 1.2rem;
+      font-size: 0.88rem;
+      color: var(--text, #ddd);
+    }
+    .ayalon-notice strong { color: #D4AF37; }
+  </style>
+</head>
+<body>
+
+  <a href="#main" class="skip-link">Skip to content</a>
+
+  <nav class="site-nav" aria-label="Main navigation" dir="ltr">
+  <div class="site-nav__inner">
+    <a class="site-nav__brand" href="/">Dikenocracy</a>
+    <ul class="site-nav__links" role="list">
+      <li><a href="/pages/about.html">About</a></li>
+      <li><a href="/pages/protocols.html">Protocols</a></li>
+      <li class="site-nav__has-menu">
+        <span class="site-nav__parent"><a href="/pages/projects.html" aria-current="page">Projects</a><button type="button" class="site-nav__submenu-toggle" aria-label="Show projects submenu" aria-controls="nav-projects-submenu" aria-expanded="false"><span class="site-nav__caret" aria-hidden="true"></span></button></span>
+        <ul class="site-nav__submenu" id="nav-projects-submenu" role="list" hidden>
+          <li><a href="/converter/index.html">Converter</a></li>
+          <li><a href="/shadoo/">Shadoo</a></li>
+          <li><a href="/ayalon/">Ayalon Monitor</a></li>
+          <li><a href="/survival/">Survival Manual</a></li>
+          <li><a href="/mazkira/">Mazkira — Business Assistant</a></li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+  <main id="main">
+    <div class="page-wrapper">
+
+      <header class="hero">
+        <h1 class="hero__title">Ayalon Model</h1>
+        <p class="hero__sub">Real-time physical impact measurement — Highway 20, Israel</p>
+      </header>
+
+      <div class="divider"></div>
+
+      <!-- Status + Open -->
+      <section class="section" aria-labelledby="ayalon-overview-heading">
+        <h2 class="section__heading" id="ayalon-overview-heading">Overview</h2>
+
+        <div style="display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; margin-bottom: 1rem;">
+          <span class="ayalon-status ayalon-status--live" id="ayalon-status-badge">
+            <span class="ayalon-status__dot"></span>
+            <span id="ayalon-status-text">Live</span>
+          </span>
+          <span style="color: var(--muted); font-size: 0.85rem;">Layer L5 — Transport / Physical Truth</span>
+        </div>
+
+        <p class="section__text">
+          The Ayalon Model is a real-time physical impact monitor for Highway 20
+          (Ayalon Freeway) in Tel Aviv, Israel. It measures the systemic cost of
+          traffic congestion by computing excess time, wasted fuel, CO₂ emissions,
+          and direct financial loss — all derived from live traffic data.
+        </p>
+        <p class="section__text">
+          This is not a prediction model. It is a measurement instrument that
+          transforms observed traffic conditions into physical counters with full
+          provenance metadata. Every data point traces back to its source.
+        </p>
+
+        <div style="margin-top: 1.2rem;">
+          <a class="btn" href="/ayalon/" target="_blank" rel="noopener">Open Live Model</a>
+        </div>
+      </section>
+
+      <div class="divider"></div>
+
+      <!-- What it measures -->
+      <section class="section" aria-labelledby="ayalon-measures-heading">
+        <h2 class="section__heading" id="ayalon-measures-heading">What it measures</h2>
+        <div class="ayalon-grid">
+          <div class="ayalon-metric">
+            <div class="ayalon-metric__label">Vehicle-Hours (delay)</div>
+            <div class="ayalon-metric__value">ΔT</div>
+            <p style="margin-top: 0.5rem; font-size: 0.85rem; color: var(--muted);">
+              Total extra time all vehicles spend due to congestion vs free-flow speed (90 km/h).
+            </p>
+          </div>
+          <div class="ayalon-metric">
+            <div class="ayalon-metric__label">Excess fuel (litres)</div>
+            <div class="ayalon-metric__value">F<sub>excess</sub></div>
+            <p style="margin-top: 0.5rem; font-size: 0.85rem; color: var(--muted);">
+              Extra fuel burned during delay — idle and stop-go driving at 0.8 L/h × 1.5 stop-go factor.
+            </p>
+          </div>
+          <div class="ayalon-metric">
+            <div class="ayalon-metric__label">CO₂ emissions (kg)</div>
+            <div class="ayalon-metric__value">2.31 × F</div>
+            <p style="margin-top: 0.5rem; font-size: 0.85rem; color: var(--muted);">
+              Carbon dioxide implied by excess fuel consumption (2.31 kg CO₂ per litre gasoline).
+            </p>
+          </div>
+          <div class="ayalon-metric">
+            <div class="ayalon-metric__label">Financial leakage (₪)</div>
+            <div class="ayalon-metric__value">P<sub>fuel</sub> × F</div>
+            <p style="margin-top: 0.5rem; font-size: 0.85rem; color: var(--muted);">
+              Direct fuel cost from congestion. Fuel price fetched from Gov.il monthly notice.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <div class="divider"></div>
+
+      <!-- Data sources -->
+      <section class="section" aria-labelledby="ayalon-sources-heading">
+        <h2 class="section__heading" id="ayalon-sources-heading">Data sources</h2>
+        <table class="ayalon-source-table">
+          <thead>
+            <tr>
+              <th>Source</th>
+              <th>Data</th>
+              <th>Cadence</th>
+              <th>Key required</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>TomTom Traffic Flow API v4</td>
+              <td>Real-time speed, travel time per segment</td>
+              <td>~5 min (cache TTL)</td>
+              <td>Yes (TOMTOM_API_KEY)</td>
+            </tr>
+            <tr>
+              <td>Open-Meteo / Sviva</td>
+              <td>Air quality (PM2.5, AQI)</td>
+              <td>~10 min</td>
+              <td>No</td>
+            </tr>
+            <tr>
+              <td>Gov.il fuel notice</td>
+              <td>Consumer gasoline 95 price (ILS/L)</td>
+              <td>Monthly (cached 24h)</td>
+              <td>No</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="ayalon-notice">
+          <strong>Note:</strong> Vehicle counts are <em>estimated</em> from flow speed
+          and density (not an official counter). When running without a TomTom API key,
+          the model operates in <strong>sample mode</strong> with synthetic data for
+          demonstration purposes.
+        </div>
+      </section>
+
+      <div class="divider"></div>
+
+      <!-- Methodology -->
+      <section class="section" aria-labelledby="ayalon-method-heading">
+        <h2 class="section__heading" id="ayalon-method-heading">Methodology</h2>
+        <p class="section__text">
+          The model probes three canonical segments along Highway 20 (La Guardia,
+          HaShalom, Arlozorov interchanges). For each segment:
+        </p>
+        <ol class="section__text" style="padding-left: 1.5rem; line-height: 1.8;">
+          <li>Polyline length is computed via Haversine distance on the TomTom coordinate response.</li>
+          <li>Free-flow travel time is derived from posted speed (90 km/h).</li>
+          <li>Delay = observed travel time − free-flow travel time (clamped ≥ 0).</li>
+          <li>Fuel excess = delay × estimated vehicles × idle rate × stop-go factor.</li>
+          <li>CO₂ = fuel excess × 2.31 kg/L. Leakage = fuel excess × current fuel price.</li>
+        </ol>
+        <p class="section__text">
+          Constants are frozen in <code>LOCKED_CONSTANTS.json</code> (Appendix A, v1.2).
+          Every model run produces a provenance record with pipeline run ID, source IDs,
+          and data timestamps. History is stored in a local SQLite database.
+        </p>
+      </section>
+
+      <div class="divider"></div>
+
+      <!-- Provenance -->
+      <section class="section" aria-labelledby="ayalon-prov-heading">
+        <h2 class="section__heading" id="ayalon-prov-heading">Provenance</h2>
+        <p class="section__text">
+          Every measurement cycle records:
+        </p>
+        <ul class="section__text" style="padding-left: 1.5rem; line-height: 1.8;">
+          <li><strong>Model version:</strong> 1.0-freeze</li>
+          <li><strong>Constants version:</strong> Appendix A v1.2</li>
+          <li><strong>Data timestamp:</strong> ISO-8601 UTC from TomTom response</li>
+          <li><strong>Source IDs:</strong> traffic, air quality, fuel — each traced to provider</li>
+          <li><strong>Pipeline run ID:</strong> UUID v4, unique per measurement</li>
+        </ul>
+        <p class="section__text">
+          Protocol reference: <strong>DKP-5-TRANSPORT-001</strong>, Layer L5 — Transport / Physical Truth.
+        </p>
+      </section>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <p>Dikenocracy &mdash; public framework. Built openly alongside the old world.</p>
+  </footer>
+
+  <script src="/script-20260923.js"></script>
+  <script>
+    // Check Ayalon app health and update status badge
+    (function () {
+      var badge = document.getElementById('ayalon-status-badge');
+      var text = document.getElementById('ayalon-status-text');
+      if (!badge || !text) return;
+      fetch('/ayalon/_stcore/health', { method: 'GET', mode: 'no-cors' })
+        .then(function () {
+          badge.className = 'ayalon-status ayalon-status--live';
+          text.textContent = 'Live';
+        })
+        .catch(function () {
+          badge.className = 'ayalon-status ayalon-status--sample';
+          text.textContent = 'Offline';
+        });
+    })();
+  </script>
+  <script type="module" src="/navigation-20260923.js"></script>
+</body>
+</html>
