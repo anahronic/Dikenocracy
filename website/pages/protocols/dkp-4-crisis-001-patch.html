@@ -3,16 +3,16 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="DKP-4-EPISTEMIC-TRANSITIONS-001 — Dikenocracy Protocol" />
-  <title>DKP-4-EPISTEMIC-TRANSITIONS-001 — Dikenocracy</title>
-  <link rel="canonical" href="https://dikenocracy.com/pages/protocols/dkp-4-epistemic-transitions-001.html" />
+  <meta name="description" content="DKP-4-CRISIS-001 (PATCH) — Dikenocracy" />
+  <title>DKP-4-CRISIS-001 (PATCH) — Dikenocracy</title>
+  <link rel="canonical" href="https://dikenocracy.com/pages/protocols/dkp-4-crisis-001-patch.html" />
   <link rel="icon" href="../../assets/favicon.ico" />
   <link rel="apple-touch-icon" href="../../assets/apple-touch-icon.png" />
-  <meta property="og:title" content="DKP-4-EPISTEMIC-TRANSITIONS-001 — Dikenocracy" />
-  <meta property="og:description" content="DKP-4-EPISTEMIC-TRANSITIONS-001 — Dikenocracy Protocol specification." />
+  <meta property="og:title" content="DKP-4-CRISIS-001 (PATCH) — Dikenocracy" />
+  <meta property="og:description" content="DKP-4-CRISIS-001 (PATCH) — Dikenocracy Protocol specification." />
   <meta property="og:image" content="https://dikenocracy.com/assets/main_screen.webp" />
   <meta property="og:type" content="article" />
-  <meta property="og:url" content="https://dikenocracy.com/pages/protocols/dkp-4-epistemic-transitions-001.html" />
+  <meta property="og:url" content="https://dikenocracy.com/pages/protocols/dkp-4-crisis-001-patch.html" />
   <meta name="twitter:card" content="summary_large_image" />
   <link rel="stylesheet" href="/styles-20260923.css" />
   <link rel="stylesheet" href="/protocols-20261004.css" />
@@ -43,14 +43,14 @@
 
   <div class="protocol-side-nav-layer" aria-hidden="true">
     <div class="protocol-side-nav protocol-side-nav--prev">
-      <a class="protocol-side-nav__btn" href="dkp-4-upgrade-001.html" aria-label="Previous protocol: DKP-4-UPGRADE-001">
+      <a class="protocol-side-nav__btn" href="dkp-4-crisis-001.html" aria-label="Previous protocol: DKP-4-CRISIS-001">
         <span class="nav-arrow">&lsaquo;</span>
-        <span class="nav-label">DKP-4-UPGRADE-001</span>
+        <span class="nav-label">DKP-4-CRISIS-001</span>
       </a>
     </div>
     <div class="protocol-side-nav protocol-side-nav--next">
-      <a class="protocol-side-nav__btn" href="dkp-5-culture-001.html" aria-label="Next protocol: DKP-5-CULTURE-001">
-        <span class="nav-label">DKP-5-CULTURE-001</span>
+      <a class="protocol-side-nav__btn" href="dkp-4-error-001.html" aria-label="Next protocol: DKP-4-ERROR-001">
+        <span class="nav-label">DKP-4-ERROR-001</span>
         <span class="nav-arrow">&rsaquo;</span>
       </a>
     </div>
@@ -105,10 +105,10 @@
             <span class="protocol-map__layer-label protocol-map__layer-label--active">L4 — Stability</span>
             <ul class="protocol-map__links">
                 <li><a href="dkp-4-crisis-001.html">CRISIS</a></li>
-                <li><a href="dkp-4-crisis-001-patch.html">CRISIS PATCH</a></li>
+                <li><a href="dkp-4-crisis-001-patch.html" class="pmap-active">CRISIS PATCH</a></li>
                 <li><a href="dkp-4-error-001.html">ERROR</a></li>
                 <li><a href="dkp-4-upgrade-001.html">UPGRADE</a></li>
-                <li><a href="dkp-4-epistemic-transitions-001.html" class="pmap-active">EPISTEMIC-TRANSITIONS</a></li>
+                <li><a href="dkp-4-epistemic-transitions-001.html">EPISTEMIC-TRANSITIONS</a></li>
             </ul>
           </div>
           <div class="protocol-map__layer">
@@ -162,19 +162,24 @@
         <nav id="toc-list">
           <div class="protocol-toc__heading">On This Page</div>
           <ul class="protocol-toc__list">
-          <li class="toc__sub"><a href="#epistemic-state-transition-protocol">Epistemic State Transition Protocol</a></li>
+          <li class="toc__sub"><a href="#null-output-state-handling-extension">Null-Output State Handling Extension</a></li>
           <li class="toc__sub"><a href="#1-purpose">1. Purpose</a></li>
-          <li class="toc__sub"><a href="#2-scope">2. Scope</a></li>
-          <li class="toc__sub"><a href="#3-core-invariants">3. Core Invariants</a></li>
-          <li class="toc__sub"><a href="#4-transition-rules">4. Transition Rules</a></li>
-          <li class="toc__sub"><a href="#41-downgrade-propagation">4.1 Downgrade Propagation</a></li>
-          <li class="toc__sub"><a href="#42-no-persistence-without-revalidation">4.2 No Persistence Without Revalidation</a></li>
-          <li class="toc__sub"><a href="#43-status-quo-preservation">4.3 Status Quo Preservation</a></li>
-          <li class="toc__sub"><a href="#44-re-entry-rule">4.4 Re-entry Rule</a></li>
-          <li class="toc__sub"><a href="#45-no-retroactive-truth">4.5 No Retroactive Truth</a></li>
-          <li class="toc__sub"><a href="#5-failure-prevention">5. Failure Prevention</a></li>
-          <li class="toc__sub"><a href="#6-audit-requirements">6. Audit Requirements</a></li>
-          <li class="toc__sub"><a href="#7-protocol-finality">7. Protocol Finality</a></li>
+          <li class="toc__sub"><a href="#2-trigger-condition">2. Trigger Condition</a></li>
+          <li class="toc__sub"><a href="#3-system-state-definition">3. System State Definition</a></li>
+          <li class="toc__sub"><a href="#4-hard-constraints">4. Hard Constraints</a></li>
+          <li class="toc__sub"><a href="#41-no-fallback-authority">4.1 No Fallback Authority</a></li>
+          <li class="toc__sub"><a href="#42-no-degraded-enforcement">4.2 No Degraded Enforcement</a></li>
+          <li class="toc__sub"><a href="#43-no-priority-routing">4.3 No Priority Routing</a></li>
+          <li class="toc__sub"><a href="#5-allowed-behavior">5. Allowed Behavior</a></li>
+          <li class="toc__sub"><a href="#51-passive-operation">5.1 Passive Operation</a></li>
+          <li class="toc__sub"><a href="#52-autonomous-recovery">5.2 Autonomous Recovery</a></li>
+          <li class="toc__sub"><a href="#6-forbidden-recovery-patterns">6. Forbidden Recovery Patterns</a></li>
+          <li class="toc__sub"><a href="#7-crisis-interaction-constraint">7. Crisis Interaction Constraint</a></li>
+          <li class="toc__sub"><a href="#8-failure-mode">8. Failure Mode</a></li>
+          <li class="toc__sub"><a href="#81-forced-override-attempt">8.1 Forced Override Attempt</a></li>
+          <li class="toc__sub"><a href="#9-validation-criteria">9. Validation Criteria</a></li>
+          <li class="toc__sub"><a href="#10-key-invariant">10. Key Invariant</a></li>
+          <li class="toc__sub"><a href="#11-final-statement">11. Final Statement</a></li>
           </ul>
         </nav>
       </aside>
@@ -184,132 +189,130 @@
         </div>
 
         <article class="protocol-article">
-          <h1>DKP-4-EPISTEMIC-TRANSITIONS-001</h1>
+          <h1>DKP-4-CRISIS-001 (PATCH)</h1>
           <div class="protocol-meta">
-            <time datetime="2026-10-04">Last updated: 2026-10-04</time>
+            <time datetime="2026-10-04">Last updated: 2026-10-04</time><br />
+            Addendum to DKP-4-CRISIS-001 (not a separate protocol) &middot; Patch: extends v1.0 &middot; Layer: L4 &middot; Affects: DKP-6-RESILIENCE-001 (8.4) &middot; Override: Not permitted
           </div>
-<h3 id="epistemic-state-transition-protocol">Epistemic State Transition Protocol</h3>
-<hr/>
-<p><strong>Layer:</strong> L2–L4 Boundary</p>
-<p><strong>Depends on:</strong></p>
-<ul>
-<li>DKP-1-EPISTEMIC-BOUNDARIES-001</li>
-<li>DKP-1-JUSTICE-001</li>
-<li>DKP-2-FINANCE-001</li>
-<li>DKP-2-ASSETS-001</li>
-<li>DKP-4-CRISIS-001</li>
-</ul>
-<p><strong>Override:</strong> Not permitted</p>
+<h3 id="null-output-state-handling-extension">Null-Output State Handling Extension</h3>
 <hr/>
 <h3 id="1-purpose">1. Purpose</h3>
-<p>This protocol defines deterministic behavior of the system when epistemic state of any upstream output changes over time.</p>
-<p>It ensures that:</p>
+<p>Define system behavior when DKP enters:</p>
 <ul>
-<li>previously valid outputs do not persist beyond epistemic validity</li>
-<li>enforcement actions remain coupled to current measurable conditions</li>
-<li>no historical output is treated as persistent authority</li>
+<li>null-output state</li>
+</ul>
+<p>as specified in DKP-6-RESILIENCE-001.</p>
+<hr/>
+<h3 id="2-trigger-condition">2. Trigger Condition</h3>
+<pre><code>N_eff &lt; N_eff_min
+OR
+oracle consistency invalid</code></pre>
+<p>Reference: DKP-0-ORACLE-001</p>
+<hr/>
+<h3 id="3-system-state-definition">3. System State Definition</h3>
+<pre><code>state = NO_ENFORCEMENT</code></pre>
+<p>Clarification:</p>
+<ul>
+<li>no penalties</li>
+<li>no rewards</li>
+<li>no attribution</li>
+<li>no enforcement outputs</li>
+</ul>
+<p>Only:</p>
+<ul>
+<li>measurement continues</li>
 </ul>
 <hr/>
-<h3 id="2-scope">2. Scope</h3>
-<p>Applies to all protocols producing or consuming epistemic outputs.</p>
-<p>Covers:</p>
+<h3 id="4-hard-constraints">4. Hard Constraints</h3>
+<h4 id="41-no-fallback-authority">4.1 No Fallback Authority</h4>
+<p>No human, institution, or algorithm may replace DKP enforcement</p>
+<p>Violation leads to:</p>
 <ul>
-<li>validity_state transitions</li>
-<li>confidence_state degradation</li>
-<li>consistency_state conflicts</li>
-<li>revalidation triggers</li>
+<li>system exit from DKP domain</li>
+<li>treated as external system</li>
 </ul>
 <hr/>
-<h3 id="3-core-invariants">3. Core Invariants</h3>
-<ol type="1">
-<li>No output remains operational beyond its epistemic validity.</li>
-<li>Epistemic degradation MUST propagate downstream.</li>
-<li>No historical VALID state creates persistent authority.</li>
-<li>Re-evaluation is required for any state-dependent enforcement.</li>
-</ol>
-<hr/>
-<h3 id="4-transition-rules">4. Transition Rules</h3>
-<h4 id="41-downgrade-propagation">4.1 Downgrade Propagation</h4>
-<p>If any upstream epistemic field changes:</p>
+<h4 id="42-no-degraded-enforcement">4.2 No Degraded Enforcement</h4>
+<p>Partial enforcement is forbidden</p>
+<p>Reason:</p>
 <ul>
-<li>VALID → CONDITIONAL / INVALID</li>
-<li>CONSISTENT → ORACLE_CONFLICT</li>
-<li>SUFFICIENT_DATA → DEGRADED_SIGNAL</li>
-</ul>
-<p>Then all dependent outputs SHALL:</p>
-<ul>
-<li>set revalidation_required = TRUE</li>
-<li>enter execution suspension or status quo mode</li>
-<li>prevent further enforcement escalation</li>
-</ul>
-<h4 id="42-no-persistence-without-revalidation">4.2 No Persistence Without Revalidation</h4>
-<p>No enforcement output SHALL remain active solely based on past VALID state if:</p>
-<ul>
-<li>epistemic state has degraded</li>
-<li>new admissible data is introduced</li>
-<li>consistency is no longer maintained</li>
-</ul>
-<h4 id="43-status-quo-preservation">4.3 Status Quo Preservation</h4>
-<p>During epistemic uncertainty or dispute:</p>
-<ul>
-<li>system SHALL preserve current state</li>
-<li>SHALL halt escalation</li>
-<li>SHALL prevent penalty accumulation</li>
-<li>SHALL await deterministic recomputation</li>
-</ul>
-<h4 id="44-re-entry-rule">4.4 Re-entry Rule</h4>
-<p>Resumption of enforcement requires:</p>
-<ul>
-<li>new valid output</li>
-<li>full epistemic metadata</li>
-<li>recomputation under updated inputs</li>
-</ul>
-<p>Previous outputs SHALL NOT auto-reactivate.</p>
-<h4 id="45-no-retroactive-truth">4.5 No Retroactive Truth</h4>
-<p>Past VALID outputs SHALL NOT be treated as evidence of correctness if later:</p>
-<ul>
-<li>conflict emerges</li>
-<li>data is invalidated</li>
-<li>scope is violated</li>
-</ul>
-<p>All outputs remain subject to epistemic reclassification.</p>
-<hr/>
-<h3 id="5-failure-prevention">5. Failure Prevention</h3>
-<p>This protocol prevents:</p>
-<ul>
-<li>authority accumulation from past outputs</li>
-<li>delayed epistemic drift</li>
-<li>persistence of invalid enforcement</li>
-<li>silent degradation of system-state coupling</li>
+<li>creates manipulable regime</li>
+<li>breaks A3 (reality supremacy)</li>
 </ul>
 <hr/>
-<h3 id="6-audit-requirements">6. Audit Requirements</h3>
-<p>L8 MUST test:</p>
+<h4 id="43-no-priority-routing">4.3 No Priority Routing</h4>
+<p>System must not selectively restore enforcement for subsets</p>
+<p>No:</p>
 <ul>
-<li>downgrade propagation correctness</li>
-<li>enforcement suspension behavior</li>
-<li>revalidation triggers</li>
-<li>prevention of state persistence</li>
+<li>“critical actors”</li>
+<li>“essential sectors”</li>
 </ul>
 <hr/>
-<h3 id="7-protocol-finality">7. Protocol Finality</h3>
-<p>This protocol is changed only through the controlled procedure of DKP-4-UPGRADE-001: proposal, simulation under DKP-8-SIMULATION-001, audit under DKP-8-AUDIT-001, acceptance conditions, activation window and rollback.</p>
-<p>Any modification requires:</p>
+<h3 id="5-allowed-behavior">5. Allowed Behavior</h3>
+<h4 id="51-passive-operation">5.1 Passive Operation</h4>
 <ul>
-<li>a new protocol identifier,</li>
-<li>explicit incompatibility declaration,</li>
-<li>full-system simulation under DKP-8-SIMULATION-001,</li>
-<li>explicit compatibility declaration with DKP-1-EPISTEMIC-BOUNDARIES-001.</li>
+<li>system continues collecting PTL data</li>
+<li>no transformation into decisions</li>
 </ul>
-<p>Presentation-only corrections that do not change normative content are not Upgrades (DKP-4-UPGRADE-001 §3); they are recorded only by the "Last updated" date of this document.</p>
-<p>Edition integrity: the SHA-256 digest of the canonical source of each published edition is listed in <code>SHA256SUMS.txt</code> of the canonical repository (github.com/anahronic/World).</p>
 <hr/>
-<p>END OF PROTOCOL</p>
+<h4 id="52-autonomous-recovery">5.2 Autonomous Recovery</h4>
+<pre><code>If N_eff ≥ N_eff_min
+AND consistency restored
+→ enforcement resumes automatically</code></pre>
+<p>No:</p>
+<ul>
+<li>approval</li>
+<li>restart command</li>
+<li>manual validation</li>
+</ul>
+<hr/>
+<h3 id="6-forbidden-recovery-patterns">6. Forbidden Recovery Patterns</h3>
+<p>6.1 Manual Restart</p>
+<p>6.2 External Certification</p>
+<p>6.3 Emergency Governance Layer</p>
+<p>All violate DKP-7-SCOPE-001</p>
+<hr/>
+<h3 id="7-crisis-interaction-constraint">7. Crisis Interaction Constraint</h3>
+<p>Null-output state does not grant additional authority</p>
+<p>Critical:</p>
+<ul>
+<li>crisis mechanisms must operate without DKP enforcement layer</li>
+<li>no precedent is created</li>
+</ul>
+<hr/>
+<h3 id="8-failure-mode">8. Failure Mode</h3>
+<h4 id="81-forced-override-attempt">8.1 Forced Override Attempt</h4>
+<p>External system attempts to inject decisions during null-output</p>
+<p>Result:</p>
+<ul>
+<li>DKP remains inactive</li>
+<li>external system operates outside DKP</li>
+</ul>
+<hr/>
+<h3 id="9-validation-criteria">9. Validation Criteria</h3>
+<p>System is compliant if:</p>
+<ul>
+<li>enforcement fully stops at threshold breach</li>
+<li>no partial outputs exist</li>
+<li>recovery is automatic and deterministic</li>
+<li>no authority emerges during downtime</li>
+</ul>
+<hr/>
+<h3 id="10-key-invariant">10. Key Invariant</h3>
+<p>No enforcement is strictly safer than invalid enforcement</p>
+<hr/>
+<h3 id="11-final-statement">11. Final Statement</h3>
+<p>DKP does not degrade</p>
+<p>It either:</p>
+<ul>
+<li>operates correctly</li>
+<li>or does not operate</li>
+</ul>
         </article>
 
         <nav class="protocol-nav-bottom" aria-label="Protocol navigation">
-          <a class="btn" href="dkp-4-upgrade-001.html" aria-label="Previous protocol: DKP-4-UPGRADE-001">&larr; Previous Protocol</a>
-          <a class="btn" href="dkp-5-culture-001.html" aria-label="Next protocol: DKP-5-CULTURE-001">Next Protocol &rarr;</a>
+          <a class="btn" href="dkp-4-crisis-001.html" aria-label="Previous protocol: DKP-4-CRISIS-001">&larr; Previous Protocol</a>
+          <a class="btn" href="dkp-4-error-001.html" aria-label="Next protocol: DKP-4-ERROR-001">Next Protocol &rarr;</a>
         </nav>
       </div>
     </div>

@@ -1,0 +1,38 @@
+/* Protocol pages, release 2026-10-04. Loaded after styles-20260923.css. */
+
+/* Formulas are text, not images: readable without external services and copyable. */
+.protocol-article .formula {
+  font-family: var(--font-main);
+  font-size: 1.15rem;
+  text-align: center;
+  margin: 1.2em 0;
+  padding: 0.8em 1em;
+  background: var(--bg-panel);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  overflow-x: auto;
+  white-space: nowrap;
+}
+
+/* "^" / "_" markers inside <sup>/<sub>: invisible, but kept when the text is copied,
+   so B(t)^2.83 and B_min survive copy-paste. */
+.protocol-article .copy-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+/* Code blocks: one background on <pre>, none on the inner <code>. */
+.protocol-article pre code {
+  background: none;
+  padding: 0;
+  font-size: inherit;
+  white-space: pre;
+}
+
+.protocol-meta time { font-variant-numeric: tabular-nums; }
+.release-line { color: var(--text-secondary); }
