@@ -462,8 +462,7 @@ def index_html(docs, n, release, txt_name):
       <section class="section" aria-labelledby="download-heading">
         <h2 class="section__heading" id="download-heading">Complete text</h2>
         <p class="section__text">
-          The full Code of Planetary Synergy, the pointer to the authorial postulates,
-          all {n} protocols, the CRISIS addendum, Appendix A and the glossary in one
+          The full Code of Planetary Synergy, all {n} protocols, the CRISIS addendum, Appendix A and the glossary in one
           plain-text file (release <time datetime="{release}">{release}</time>).
         </p>
         <div class="entry-points">
@@ -554,10 +553,10 @@ def build_txt(docs, ids, release, glossary_md):
     out, toc = [], []
     head = [bar, f'DIKENOCRACY — CODE OF PLANETARY SYNERGY AND {n} PROTOCOLS', bar, '',
             f'Release: {release}',
-            f'Composition: Code of Planetary Synergy; authorial postulates (pointer, see Part II); {n} protocols L0–L8;',
+            f'Composition: Code of Planetary Synergy; {n} protocols L0–L8;',
             '             addendum DKP-4-CRISIS-001 (PATCH); Appendix A to DKP-5-TRANSPORT-001; Dikenocracy Glossary.',
-            f'Counted protocols: {n} unique protocol IDs. The Code, the postulates, the addendum, the appendix and',
-            '                   the glossary are not protocols and are not counted.',
+            f'Counted protocols: {n} unique protocol IDs. The Code, the addendum, the appendix and the glossary',
+            '                   are not protocols and are not counted.',
             'Canonical source: https://github.com/anahronic/World/tree/main/Dikenocracy (SHA256SUMS.txt)',
             'Website: https://dikenocracy.com/pages/protocols.html',
             'Each document shows its own "Last updated" date; the release date above is the date of this full release.',
@@ -579,18 +578,8 @@ def build_txt(docs, ids, release, glossary_md):
     toc.append('PART I.   CODE OF PLANETARY SYNERGY')
     section('PART I. CODE OF PLANETARY SYNERGY', None, to_plain(code['body']), code)
 
-    toc.append('PART II.  AUTHORIAL POSTULATES OF DIKENOCRACY (pointer)')
-    section('PART II. AUTHORIAL POSTULATES OF DIKENOCRACY', None, '\n'.join([
-        'No separate authorial text of postulates exists in the corpus. The postulates are stated in two',
-        'places, both reproduced in full in this file and intentionally not copied here a second time:',
-        '',
-        '1. The Preamble of the Code of Planetary Synergy (Part I): the predefined axioms from which the',
-        '   function δίκη is derived, beginning with the "Golden Rule".',
-        '2. DKP-1-AXIOMS-001 (Part III, layer L1): the normative axioms of the system, counted once as a',
-        '   protocol.', '']))
-
-    toc.append(f'PART III. PROTOCOLS L0–L8 ({n})')
-    section(f'PART III. PROTOCOLS L0–L8 ({n} PROTOCOLS)', None, 'The protocols follow, layer by layer.\n')
+    toc.append(f'PART II.  PROTOCOLS L0–L8 ({n})')
+    section(f'PART II. PROTOCOLS L0–L8 ({n} PROTOCOLS)', None, 'The protocols follow, layer by layer.\n')
     k = 0
     for key, label, full in LAYERS[1:-1]:
         toc.append(f'          {full}')
@@ -606,14 +595,14 @@ def build_txt(docs, ids, release, glossary_md):
                 toc.append(f'                Addendum: {d["id"]} — {sub}')
                 section(f'ADDENDUM: {d["id"]}', sub + ' (not a separate protocol; not counted)', to_plain(d['body']), d)
     assert k == n
-    toc.append('PART IV.  APPENDICES')
+    toc.append('PART III. APPENDICES')
     for slug, lay, short, sub in REGISTRY:
         if lay == 'appendix':
             d = docs[slug]
             toc.append(f'          {d["id"]} — appendix to DKP-5-TRANSPORT-001')
-            section(f'PART IV. {d["id"]}', 'Appendix to DKP-5-TRANSPORT-001 (not counted as a protocol)', to_plain(d['body']), d)
-    toc.append('PART V.   GLOSSARY')
-    section('PART V. DIKENOCRACY GLOSSARY', None, to_plain(glossary_md))
+            section(f'PART III. {d["id"]}', 'Appendix to DKP-5-TRANSPORT-001 (not counted as a protocol)', to_plain(d['body']), d)
+    toc.append('PART IV.  GLOSSARY')
+    section('PART IV. DIKENOCRACY GLOSSARY', None, to_plain(glossary_md))
 
     text = '\n'.join(head) + '\n' + '\n'.join(['TABLE OF CONTENTS', ''] + toc) + '\n\n' + '\n\n'.join(parts) + '\n' + bar + '\nEND OF RELEASE ' + release + '\n'
     return text

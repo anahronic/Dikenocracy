@@ -3,10 +3,10 @@ DIKENOCRACY — CODE OF PLANETARY SYNERGY AND 35 PROTOCOLS
 ====================================================================================================
 
 Release: 2026-10-04
-Composition: Code of Planetary Synergy; authorial postulates (pointer, see Part II); 35 protocols L0–L8;
+Composition: Code of Planetary Synergy; 35 protocols L0–L8;
              addendum DKP-4-CRISIS-001 (PATCH); Appendix A to DKP-5-TRANSPORT-001; Dikenocracy Glossary.
-Counted protocols: 35 unique protocol IDs. The Code, the postulates, the addendum, the appendix and
-                   the glossary are not protocols and are not counted.
+Counted protocols: 35 unique protocol IDs. The Code, the addendum, the appendix and the glossary
+                   are not protocols and are not counted.
 Canonical source: https://github.com/anahronic/World/tree/main/Dikenocracy (SHA256SUMS.txt)
 Website: https://dikenocracy.com/pages/protocols.html
 Each document shows its own "Last updated" date; the release date above is the date of this full release.
@@ -15,8 +15,7 @@ Formula notation in this file: x^y = x to the power y, x_min = x with subscript 
 TABLE OF CONTENTS
 
 PART I.   CODE OF PLANETARY SYNERGY
-PART II.  AUTHORIAL POSTULATES OF DIKENOCRACY (pointer)
-PART III. PROTOCOLS L0–L8 (35)
+PART II.  PROTOCOLS L0–L8 (35)
           L0 — Physical Truth
              1. DKP-0-ORACLE-001 — Physical Truth Layer Protocol (PTL)
              2. DKP-0-TIME-001 — Dikenocratic Time & Date Index Protocol (DTI)
@@ -62,9 +61,9 @@ PART III. PROTOCOLS L0–L8 (35)
             33. DKP-8-AUDIT-001 — Continuous Audit Protocol
             34. DKP-8-INTEROP-001 — Interoperability Protocol
             35. DKP-8-SIMULATION-001 — Simulation & Validation Protocol
-PART IV.  APPENDICES
+PART III. APPENDICES
           Appendix A — Design Rationale & Safeguards (Normative) — appendix to DKP-5-TRANSPORT-001
-PART V.   GLOSSARY
+PART IV.  GLOSSARY
 
 ====================================================================================================
 PART I. CODE OF PLANETARY SYNERGY
@@ -467,20 +466,7 @@ Glossary & Definitions
 
 
 ====================================================================================================
-PART II. AUTHORIAL POSTULATES OF DIKENOCRACY
-====================================================================================================
-
-No separate authorial text of postulates exists in the corpus. The postulates are stated in two
-places, both reproduced in full in this file and intentionally not copied here a second time:
-
-1. The Preamble of the Code of Planetary Synergy (Part I): the predefined axioms from which the
-   function δίκη is derived, beginning with the "Golden Rule".
-2. DKP-1-AXIOMS-001 (Part III, layer L1): the normative axioms of the system, counted once as a
-   protocol.
-
-
-====================================================================================================
-PART III. PROTOCOLS L0–L8 (35 PROTOCOLS)
+PART II. PROTOCOLS L0–L8 (35 PROTOCOLS)
 ====================================================================================================
 
 The protocols follow, layer by layer.
@@ -10358,7 +10344,7 @@ Edition integrity: the SHA-256 digest of the canonical source of each published 
 
 
 ====================================================================================================
-PART IV. Appendix A — Design Rationale & Safeguards (Normative)
+PART III. Appendix A — Design Rationale & Safeguards (Normative)
 Appendix to DKP-5-TRANSPORT-001 (not counted as a protocol)
 Last updated: 2026-10-04
 ====================================================================================================
@@ -10423,7 +10409,7 @@ END OF PROTOCOL
 
 
 ====================================================================================================
-PART V. DIKENOCRACY GLOSSARY
+PART IV. DIKENOCRACY GLOSSARY
 ====================================================================================================
 
 Dikenocracy Glossary Core Concepts
