@@ -661,7 +661,9 @@ def main():
     for old in dl.glob('Dikenocracy SYNERGY and * PROTOCOLS.txt'):
         old.unlink()
     txt_path = dl / txt_name
-    txt_path.write_bytes(txt.encode('utf-8'))
+    # UTF-8 with BOM: the server sends text/plain without a charset, and the BOM makes
+    # browsers that open the file inline decode δίκη, ≥, ± etc. correctly.
+    txt_path.write_bytes(txt.encode('utf-8-sig'))
     copies = [a.world / txt_name] + [c / txt_name if c.is_dir() else c for c in a.txt_copy]
     for c in copies:
         shutil.copyfile(txt_path, c)
