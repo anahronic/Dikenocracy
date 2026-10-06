@@ -1,0 +1,81 @@
+/* Protocol Lab — extends the site stylesheet (/styles-20260923.css) */
+
+.lab-hidden { display: none !important; }
+
+.lab-toolbar {
+  display: flex; flex-wrap: wrap; gap: var(--gap-sm); align-items: center;
+  justify-content: center; margin-top: var(--gap-sm);
+}
+.lab-lang { display: flex; gap: 0.4rem; }
+.lab-lang__btn[aria-pressed="true"] { border-color: var(--accent); color: var(--accent); }
+.lab-status { font-family: var(--font-ui); font-size: 0.9rem; color: var(--text-secondary); margin: 0; }
+
+.lab-props { font-family: var(--font-ui); color: var(--text-primary); line-height: 1.6; padding-left: 1.2rem; }
+.lab-props strong { color: var(--accent); }
+
+.lab-note {
+  font-family: var(--font-ui); font-size: 0.92rem; color: var(--text-secondary);
+  border-left: 3px solid var(--accent-dim); padding: 0.4rem 0.8rem; margin: var(--gap-sm) 0;
+}
+.lab-note:empty { display: none; }
+
+.lab-badge {
+  display: inline-block; font-family: var(--font-ui); font-size: 0.72rem; letter-spacing: 0.04em;
+  text-transform: uppercase; padding: 0.05rem 0.45rem; border: 1px solid var(--border);
+  border-radius: 3px; color: var(--text-secondary); margin-left: 0.3rem; vertical-align: middle;
+}
+.lab-badge--text { border-color: var(--accent-dim); color: var(--accent); }
+.lab-badge--hypothesis, .lab-badge--changed { border-color: #6a5acd; color: #b8a9ff; }
+.lab-badge--calibration { border-color: #2f7f6f; color: #6fd3bd; }
+
+.lab-variant {
+  border: 1px solid var(--border); background: var(--bg-card); border-radius: 6px;
+  padding: var(--gap-sm); margin: var(--gap-sm) 0;
+}
+.lab-variant__head { display: flex; flex-wrap: wrap; gap: 0.6rem; align-items: center; margin-bottom: 0.6rem; }
+.lab-variant__head input { max-width: 14rem; }
+.lab-fields { display: grid; grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr)); gap: 0.8rem 1.2rem; }
+.lab-field { display: flex; flex-direction: column; gap: 0.25rem; font-family: var(--font-ui); font-size: 0.9rem; }
+.lab-field label { color: var(--text-primary); }
+.lab-field small { color: var(--text-secondary); }
+.lab-field input, .lab-field select, .lab-variant__head input, .lab-field textarea {
+  background: var(--bg-deep); color: var(--text-primary); border: 1px solid var(--border);
+  border-radius: 4px; padding: 0.35rem 0.5rem; font: inherit; width: 100%; box-sizing: border-box;
+}
+.lab-field input:focus, .lab-field select:focus, .lab-field textarea:focus { outline: 2px solid var(--accent); }
+.lab-pair { display: flex; gap: 0.4rem; }
+
+.lab-actions { display: flex; flex-wrap: wrap; gap: 0.6rem; margin: var(--gap-sm) 0; }
+.lab-file { position: relative; overflow: hidden; }
+.lab-file input { position: absolute; inset: 0; opacity: 0; cursor: pointer; }
+
+.lab-progress { display: flex; gap: 0.8rem; align-items: center; font-family: var(--font-ui); }
+.lab-progress progress { flex: 1; accent-color: var(--accent); }
+.lab-problems { color: #ff8a80; font-family: var(--font-ui); }
+
+.lab-table-wrap { overflow-x: auto; margin: var(--gap-sm) 0; }
+.lab-table { border-collapse: collapse; width: 100%; font-family: var(--font-ui); font-size: 0.88rem; }
+.lab-table th, .lab-table td { border-bottom: 1px solid var(--border); padding: 0.35rem 0.5rem; text-align: left; vertical-align: top; }
+.lab-table th { color: var(--text-secondary); font-weight: 600; }
+.lab-table td.num { text-align: right; font-variant-numeric: tabular-nums; }
+.lab-table button.linklike { background: none; border: 0; color: var(--accent); cursor: pointer; padding: 0; font: inherit; text-decoration: underline; }
+
+.st { font-weight: 700; }
+.st--PASS { color: #6fd38c; }
+.st--FAIL { color: #ff8a80; }
+.st--UNKNOWN { color: #ffd166; }
+.st--NOT_APPLICABLE { color: var(--text-secondary); }
+
+.lab-sentence { font-family: var(--font-ui); font-size: 1rem; color: var(--text-primary); }
+.lab-ids { font-family: var(--font-mono); font-size: 0.8rem; color: var(--text-secondary); word-break: break-all; }
+.lab-code {
+  background: var(--bg-deep); border: 1px solid var(--border); border-radius: 4px; padding: 0.8rem;
+  overflow-x: auto; font-family: var(--font-mono); font-size: 0.85rem; color: var(--text-primary);
+}
+.lab-hyp { font-family: var(--font-ui); margin-top: var(--gap-sm); }
+.lab-hyp summary { cursor: pointer; color: var(--accent); }
+
+@media (max-width: 600px) {
+  .lab-fields { grid-template-columns: 1fr; }
+  .lab-table { font-size: 0.8rem; }
+}

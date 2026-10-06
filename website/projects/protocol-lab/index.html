@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Dikenocracy Protocol Lab — run checks and models of Dikenocracy protocol provisions in your browser and repeat them outside the site." />
+  <title>Protocol Lab — Dikenocracy</title>
+  <link rel="canonical" href="https://dikenocracy.com/projects/protocol-lab/" />
+  <link rel="icon" href="/assets/favicon.ico" />
+  <link rel="stylesheet" href="/styles-20260923.css" />
+  <link rel="stylesheet" href="lab.css" />
+</head>
+<body>
+  <a href="#main" class="skip-link">Skip to content</a>
+
+  <nav class="site-nav" aria-label="Main navigation" dir="ltr">
+    <div class="site-nav__inner">
+      <a class="site-nav__brand" href="/">Dikenocracy</a>
+      <ul class="site-nav__links" role="list">
+        <li><a href="/pages/about.html">About</a></li>
+        <li><a href="/pages/protocols.html">Protocols</a></li>
+        <li><a href="/pages/projects.html" aria-current="page">Projects</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main id="main">
+    <div class="page-wrapper">
+      <header class="hero lab-hero">
+        <h1 class="hero__title" data-i18n="title">Protocol Lab</h1>
+        <p class="hero__sub" data-i18n="subtitle">Check protocol provisions on declared cases and repeat every result</p>
+        <div class="lab-toolbar">
+          <div class="lab-lang" role="group" aria-label="Language">
+            <button type="button" class="btn btn--secondary lab-lang__btn" data-lang="en" aria-pressed="true">EN</button>
+            <button type="button" class="btn btn--secondary lab-lang__btn" data-lang="ru" aria-pressed="false">RU</button>
+          </div>
+          <p class="lab-status" id="engine-status" role="status" aria-live="polite"></p>
+        </div>
+      </header>
+
+      <div class="divider"></div>
+
+      <section class="section" aria-labelledby="about-heading">
+        <h2 class="section__heading" id="about-heading" data-i18n="about.heading">What this is</h2>
+        <p class="section__text" data-i18n="about.p1">Choose a question, set the conditions, run a real computation in your browser and get a report that explains every result. Your inputs stay on your device; nothing is sent to the server.</p>
+        <ul class="lab-props">
+          <li><strong data-i18n="about.k1">Compliance</strong> — <span data-i18n="about.v1">are the checked provisions met in this experiment?</span></li>
+          <li><strong data-i18n="about.k2">Model validity</strong> — <span data-i18n="about.v2">which data and assumptions link the model to a real system? Shown separately as hypotheses.</span></li>
+          <li><strong data-i18n="about.k3">Readiness for use</strong> — <span data-i18n="about.v3">never granted here: results are research outputs (operational_use: false), not an admission under DKP-8-SIMULATION-001.</span></li>
+        </ul>
+      </section>
+
+      <section class="section" aria-labelledby="modules-heading">
+        <h2 class="section__heading" id="modules-heading" data-i18n="modules.heading">Experiments</h2>
+        <p class="section__text" id="modules-counts"></p>
+        <div class="cards" id="module-cards"></div>
+      </section>
+
+      <section class="section lab-hidden" id="setup" aria-labelledby="setup-heading">
+        <h2 class="section__heading" id="setup-heading"></h2>
+        <p class="section__text" id="setup-summary"></p>
+        <p class="lab-note" id="setup-causal"></p>
+        <div id="variants"></div>
+        <div class="lab-actions">
+          <button type="button" class="btn btn--secondary" id="add-variant" data-i18n="setup.add">Add variant</button>
+          <button type="button" class="btn btn--secondary" id="validate" data-i18n="setup.validate">Check input</button>
+          <button type="button" class="btn" id="run" data-i18n="setup.run">Run</button>
+          <button type="button" class="btn btn--secondary" id="cancel" data-i18n="setup.cancel" disabled>Cancel</button>
+          <label class="btn btn--secondary lab-file">
+            <span data-i18n="setup.import">Import request</span>
+            <input type="file" id="import-request" accept="application/json,.json" />
+          </label>
+          <button type="button" class="btn btn--secondary" id="export-request" data-i18n="setup.export">Export request</button>
+        </div>
+        <div class="lab-progress lab-hidden" id="progress">
+          <progress id="progress-bar" max="1" value="0"></progress>
+          <span id="progress-text"></span>
+        </div>
+        <ul class="lab-problems" id="problems" role="alert"></ul>
+        <details class="lab-hyp" id="setup-hypotheses">
+          <summary data-i18n="setup.hypotheses">Declared hypotheses of this module</summary>
+          <ul id="hypotheses-list"></ul>
+        </details>
+      </section>
+
+      <section class="section lab-hidden" id="result" aria-labelledby="result-heading">
+        <h2 class="section__heading" id="result-heading" data-i18n="result.heading">Result</h2>
+        <div id="result-body"></div>
+        <div class="lab-actions">
+          <button type="button" class="btn" id="download-package" data-i18n="result.package">Download replay package</button>
+          <button type="button" class="btn btn--secondary" id="download-result" data-i18n="result.json">Download result.json</button>
+        </div>
+      </section>
+
+      <section class="section" aria-labelledby="coverage-heading">
+        <h2 class="section__heading" id="coverage-heading" data-i18n="coverage.heading">Protocol coverage</h2>
+        <p class="section__text" data-i18n="coverage.p1">Provisions of each registered document are listed with an exact quote; documents still being registered are marked. Coverage is computed from the registry: a document card is not a finished simulator.</p>
+        <div id="coverage"></div>
+        <div id="requirements"></div>
+      </section>
+
+      <section class="section" aria-labelledby="repeat-heading">
+        <h2 class="section__heading" id="repeat-heading" data-i18n="repeat.heading">Repeat outside the site</h2>
+        <p class="section__text" data-i18n="repeat.p1">Each replay package contains the request, the result, the report and the code version. Recompute it with the open-source engine:</p>
+        <pre class="lab-code">git clone https://github.com/anahronic/dkp-l8-simulation-engine
+cd dkp-l8-simulation-engine
+pip install -r requirements.txt
+python -m lab replay package.zip</pre>
+      </section>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <p>Dikenocracy &mdash; public framework. Built openly alongside the old world.</p>
+  </footer>
+
+  <script type="module" src="lab.js"></script>
+</body>
+</html>
