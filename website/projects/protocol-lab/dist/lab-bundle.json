@@ -1,5 +1,5 @@
 {
- "bundle_sha256": "01330150beb4d648df71822e12c187128f58347bc0bd450d79ded6b8c6e0f78e",
+ "bundle_sha256": "37b871bf42f95a7f82ad831169d1098e871b85db8fa417dac99405f25e70e791",
  "files": 229,
  "listing": {
   "lab/ARCHITECTURE_DEVIATION.md": "d39c88d97ae0ca54636e1757708711e6d79861b2f5ca35c4c6acf534a7572267",
@@ -194,7 +194,7 @@
   "lab/tools/pyodide_check.py": "ed7b2ab354057102bcc7b76c05c815cc24ffdce16f173c598311422eff8bb3d3",
   "lab/tools/sync_coverage.py": "b9889eaff1d0250b7b727f0c2fa5b1f6e32d4abeac27cd8e69243d8e36624214",
   "lab/tools/trace.py": "7701cbfa12c9ff100cccd9922ea041f4832144f441fd871ae3109b775d34f5df",
-  "lab/tools/ui_test.mjs": "4b48dfed50e78a8d0ce21f8f8b4e5eca179d7a55c1b3fc04a9abfdc8a7de38a5",
+  "lab/tools/ui_test.mjs": "1a6dd6e8d21e023e0a01cd4d3286a4046c218636d32ff4c8ab2dff93dc11bad2",
   "requirements.txt": "cf287f55f40e07496258c6d4d131a02e8b741ec6d60b064990c70ee55213f247",
   "simulation/__init__.py": "1c8ec125ec1ba1b03b039a3e6974530d17e1c771f2d05ad74ec0e89f2f93d465",
   "simulation/compare_candidates.py": "45e70768cf188509ea2bc66b6ab6ccaed07058662c3ac9c43f7f5623227e1c86",
