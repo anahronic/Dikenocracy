@@ -68,6 +68,8 @@
 
 .lab-sentence { font-family: var(--font-ui); font-size: 1rem; color: var(--text-primary); }
 .lab-ids { font-family: var(--font-mono); font-size: 0.8rem; color: var(--text-secondary); word-break: break-all; }
+/* long URLs and identifiers wrap instead of widening the page on narrow screens (review КТ4-GPT-04) */
+.lab-url, .lab-url a, .lab-note { overflow-wrap: anywhere; word-break: break-word; }
 .lab-code {
   background: var(--bg-deep); border: 1px solid var(--border); border-radius: 4px; padding: 0.8rem;
   overflow-x: auto; font-family: var(--font-mono); font-size: 0.85rem; color: var(--text-primary);

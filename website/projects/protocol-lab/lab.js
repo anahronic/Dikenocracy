@@ -297,7 +297,7 @@ async function showRequirements(doc) {
   reqCache[doc] = reqCache[doc] || (await call("requirements", { doc })).requirements;
   const box = $("requirements"); box.replaceChildren(el("h3", { text: doc }));
   const meta = catalog.documents.find((d) => d.id === doc);
-  if (meta && meta.site_url) box.append(el("p", {}, el("a", { href: meta.site_url, text: meta.site_url })));
+  if (meta && meta.site_url) box.append(el("p", { class: "lab-url" }, el("a", { href: meta.site_url, text: meta.site_url })));
   box.append(table(["id", "§", t("col.req"), t("col.status"), "quote"], reqCache[doc].map((r) => [r.id, r.section, r.title, r.coverage, r.quote])));
   box.scrollIntoView({ behavior: "smooth" });
 }
