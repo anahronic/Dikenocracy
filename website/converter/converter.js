@@ -95,8 +95,11 @@ function fmtGreg(g, lang) {
  *  Reference: Dershowitz & Reingold "Calendrical Calculations"
  * ═══════════════════════════════════════════════════════════════════════════ */
 
-/** Hebrew epoch: JDN of 1 Tishrei 1 (Hebrew year 1) = 347997 */
-const HEBREW_EPOCH = 347997;
+/**
+ * Hebrew epoch: JDN of 1 Tishrei AM 1 (Monday, 7 October 3761 BCE, proleptic Julian) = 347998
+ * (R.D. −1373427 in Calendrical Calculations; JDN = R.D. + 1721425).
+ */
+const HEBREW_EPOCH = 347998;
 
 /** Return true if Hebrew year is a leap year (has Adar II). */
 function hebrewLeapYear(year) {
@@ -111,16 +114,34 @@ function hebrewMonthsInYear(year) {
 }
 
 /**
- * Delay of Rosh Hashana (parts-based).
- * "Molad" of Tishrei for Hebrew year.
+ * Days from the epoch to the molad of Tishrei, with the "lo ADU Rosh" postponement
+ * (Rosh Hashana never on Sunday, Wednesday or Friday) and molad zaken.
+ * Calendrical Calculations: hebrew-calendar-elapsed-days.
  */
-function hebrewElapsedDays(year) {
+function hebrewCalendarElapsedDays(year) {
   const monthsElapsed = Math.floor((235 * year - 234) / 19);
   const partsElapsed = 12084 + 13753 * monthsElapsed;
-  let day = 29 * monthsElapsed + Math.floor(partsElapsed / 25920);
-  // Postponement rules
-  if ((3 * (day + 1)) % 7 < 3) day += 1;
-  return day;
+  const day = 29 * monthsElapsed + Math.floor(partsElapsed / 25920);
+  return ((3 * (day + 1)) % 7 < 3) ? day + 1 : day;
+}
+
+/**
+ * The remaining two postponements (GaTaRaD and BeTU'TaKPaT): a year may not be 356 days long
+ * (push this Rosh Hashana by 2 days) and the preceding year may not be 382 days long (push by 1).
+ * Calendrical Calculations: hebrew-year-length-correction.
+ */
+function hebrewYearLengthCorrection(year) {
+  const ny0 = hebrewCalendarElapsedDays(year - 1);
+  const ny1 = hebrewCalendarElapsedDays(year);
+  const ny2 = hebrewCalendarElapsedDays(year + 1);
+  if (ny2 - ny1 === 356) return 2;
+  if (ny1 - ny0 === 382) return 1;
+  return 0;
+}
+
+/** Days from the epoch to 1 Tishrei of the given year (all four postponement rules). */
+function hebrewElapsedDays(year) {
+  return hebrewCalendarElapsedDays(year) + hebrewYearLengthCorrection(year);
 }
 
 /**
@@ -177,9 +198,11 @@ function hebrewToJdn(year, month, day) {
   // Days from epoch to 1 Tishrei of this year
   let jdn = HEBREW_EPOCH + hebrewElapsedDays(year);
 
-  // Add days for complete months before civilMonth
-  const totalMonths = hebrewLeapYear(year) ? 13 : 12;
+  // Add days for complete months before civilMonth.
+  // Civil slots are fixed (1..13, slot 7 = Adar II); slot 7 does not exist in a common year.
+  const isLeap = hebrewLeapYear(year);
   for (let m = 1; m < civilMonth; m++) {
+    if (m === 7 && !isLeap) continue;
     jdn += hebrewMonthDaysCivil(year, m);
   }
 
@@ -203,17 +226,17 @@ function jdnToHebrew(jdn) {
   const yearStart = HEBREW_EPOCH + hebrewElapsedDays(year);
   let remaining = jdn - yearStart;
 
-  // Find the civil month
-  const totalMonths = hebrewLeapYear(year) ? 13 : 12;
-  let civilMonth = 1;
-  for (let m = 1; m <= totalMonths; m++) {
+  // Find the civil month (fixed slots 1..13; slot 7 = Adar II exists only in leap years)
+  const isLeap = hebrewLeapYear(year);
+  let civilMonth = 13;
+  for (let m = 1; m <= 13; m++) {
+    if (m === 7 && !isLeap) continue;
     const mDays = hebrewMonthDaysCivil(year, m);
     if (remaining < mDays) {
       civilMonth = m;
       break;
     }
     remaining -= mDays;
-    if (m === totalMonths) civilMonth = m; // shouldn't happen
   }
 
   const day = remaining + 1;
@@ -332,7 +355,8 @@ function hebrewYearGematria(year) {
  */
 function fmtHebrewDateString(year, month, day) {
   const dayStr = toHebrewGematria(day);
-  const monthName = HEBREW_MONTH_NAMES[month] || '';
+  // In a leap year the first Adar is "Adar I" (אדר א׳); in a common year it is just "Adar"
+  const monthName = (month === 12 && hebrewLeapYear(year)) ? 'אדר א׳' : (HEBREW_MONTH_NAMES[month] || '');
   const yearStr = hebrewYearGematria(year);
   return `${dayStr} ${monthName} ${yearStr}`;
 }

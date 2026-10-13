@@ -342,7 +342,7 @@ const I18N = {
 /** Hebrew month names (civil order: Tishrei=1 in pyluach mapping) */
 const HEBREW_MONTHS = [
   'ניסן', 'אייר', 'סיון', 'תמוז', 'אב', 'אלול',
-  'תשרי', 'חשון', 'כסלו', 'טבת', 'שבט', 'אדר', 'אדר ב׳'
+  'תשרי', 'חשון', 'כסלו', 'טבת', 'שבט', 'אדר / אדר א׳', 'אדר ב׳'
 ];
 
 /** RTL languages */
