@@ -10,11 +10,11 @@
   <link rel="apple-touch-icon" href="../assets/apple-touch-icon.png" />
   <meta property="og:title" content="Projects — Dikenocracy" />
   <meta property="og:description" content="Tools and experiments implementing the Dikenocracy framework." />
-  <meta property="og:image" content="https://dikenocracy.com/assets/main_screen.webp" />
+  <meta property="og:image" content="https://dikenocracy.com/assets/og-20261013.jpg" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://dikenocracy.com/pages/projects.html" />
   <meta name="twitter:card" content="summary_large_image" />
-  <link rel="stylesheet" href="/styles-20260923.css" />
+  <link rel="stylesheet" href="/styles-20261013.css" />
 </head>
 <body>
 
@@ -23,7 +23,7 @@
   <!-- ─── Navigation ──────────────────────────────────────────────────────── -->
   <nav class="site-nav" aria-label="Main navigation" dir="ltr">
   <div class="site-nav__inner">
-    <a class="site-nav__brand" href="/">Dikenocracy</a>
+    <a class="site-nav__brand" href="/"><svg class="site-nav__logo" aria-hidden="true"><use href="/assets/icons-20261013.svg#i-l1"/></svg>Dikenocracy</a>
     <ul class="site-nav__links" role="list">
       <li><a href="/pages/about.html">About</a></li>
       <li><a href="/pages/protocols.html">Protocols</a></li>
@@ -46,125 +46,143 @@
     <div class="page-wrapper">
 
       <!-- Hero -->
-      <header class="hero">
-        <h1 class="hero__title">Projects</h1>
-        <p class="hero__sub">Engineering the framework into reality</p>
+      <header class="page-hero page-hero--center">
+        <div>
+          <p class="eyebrow"><svg class="icon" aria-hidden="true"><use href="/assets/icons-20261013.svg#i-tool"/></svg> Projects</p>
+          <h1 class="page-hero__title">Engineering the framework into reality</h1>
+          <p class="page-hero__lead">
+            Dikenocracy is not only a theory. It is also an engineering and
+            public-infrastructure effort expressed through concrete tools and
+            experiments. Each project implements a bounded part of the protocol
+            stack in verifiable, testable software.
+          </p>
+        </div>
       </header>
 
-      <div class="divider"></div>
-
-      <!-- Intro -->
-      <section class="section" aria-labelledby="projects-intro-heading">
-        <h2 class="section__heading" id="projects-intro-heading">Overview</h2>
-        <p class="section__text">
-          Dikenocracy is not only a theory. It is also an engineering and
-          public-infrastructure effort expressed through concrete tools and
-          experiments. Each project implements a bounded part of the protocol
-          stack in verifiable, testable software.
-        </p>
-      </section>
-
       <!-- Project cards -->
-      <section class="section" aria-labelledby="active-heading">
-        <h2 class="section__heading" id="active-heading">Active projects</h2>
-        <div class="cards">
+      <section class="block" aria-labelledby="active-heading">
+        <div class="block__head">
+          <h2 class="block__title" id="active-heading">Active projects</h2>
+        </div>
+        <div class="project-grid">
 
-          <div class="card">
-            <span class="card__label">Tool</span>
-            <h3 class="card__title">Converter DTI</h3>
-            <p class="card__text">
-              A deterministic converter between Gregorian, Hebrew, and
-              Dikenocratic Time Interface (DTI) formats. Implements
-              DKP-0-TIME-001 with a canonical JDN-based domain layer, FastAPI
-              service, and Streamlit client.
-            </p>
-            <div style="margin-top:0.8rem;">
-              <a class="btn" href="converter.html">Open Converter</a>
+          <article class="project-card">
+            <a class="project-card__cover" href="/mazkira/" tabindex="-1"><img src="/assets/covers/mazkira-20261013.svg" alt="" width="480" height="270" /></a>
+            <div class="project-card__body">
+              <span class="tag">Tool</span>
+              <h3 class="project-card__title"><a href="/mazkira/">Mazkira — Business Assistant</a></h3>
+              <p class="project-card__text">
+                Secure assistant for small businesses in Israel: documents, bookkeeping support, taxes
+                (VAT, income tax, Bituach Leumi estimates), CRM and financial analysis. Each account has its own
+                isolated space; documents and sensitive fields are encrypted at rest. Interface in Hebrew, Russian
+                and English. Not tax advice and not a certified bookkeeping system.
+              </p>
+              <div class="project-card__actions">
+                <a class="btn" href="/mazkira/">Open Mazkira</a>
+              </div>
             </div>
-          </div>
+          </article>
 
-          <div class="card">
-            <span class="card__label">Tool</span>
-            <h3 class="card__title">Shadoo</h3>
-            <p class="card__text">Encrypt and decrypt messages locally in your browser with a shared code phrase. Shadoo uses AES-256-GCM, detects tampering, and supports message expiry. Plaintext, code phrases and keys are not sent to the server. The website downloads its application files and checks for updates; encryption and decryption work while you are online.</p>
-            <div style="margin-top:0.8rem;">
-              <a class="btn" href="/shadoo/">Open Shadoo</a>
+          <article class="project-card">
+            <a class="project-card__cover" href="/converter/" tabindex="-1"><img src="/assets/covers/converter-20261013.svg" alt="" width="480" height="270" /></a>
+            <div class="project-card__body">
+              <span class="tag">Tool · L0</span>
+              <h3 class="project-card__title"><a href="converter.html">Converter DTI</a></h3>
+              <p class="project-card__text">
+                A deterministic converter between Gregorian, Hebrew, and
+                Dikenocratic Time Interface (DTI) formats. Implements
+                DKP-0-TIME-001 with a canonical JDN-based domain layer, FastAPI
+                service, and Streamlit client.
+              </p>
+              <div class="project-card__actions">
+                <a class="btn" href="/converter/">Open Converter</a>
+                <a class="btn btn--ghost" href="converter.html">About</a>
+              </div>
             </div>
-          </div>
+          </article>
 
-          <div class="card">
-            <span class="card__label">Reference</span>
-            <h3 class="card__title">Post-Nuclear Survival Manual</h3>
-            <p class="card__text">
-              A comprehensive survival reference covering preparedness without a
-              private bunker, the first sixty seconds, shelter, radiation units
-              and dose-rate interpretation, fallout decay, decontamination,
-              potassium iodide, water, food, sanitation, medical care,
-              communication, and long-term recovery after a nuclear
-              catastrophe. Published in English, with the Russian original
-              alongside.
-            </p>
-            <div style="margin-top:0.8rem;">
-              <a class="btn" href="/survival/">Read Manual</a>
+          <article class="project-card">
+            <a class="project-card__cover" href="/shadoo/" tabindex="-1"><img src="/assets/covers/shadoo-20261013.svg" alt="" width="480" height="270" /></a>
+            <div class="project-card__body">
+              <span class="tag">Tool</span>
+              <h3 class="project-card__title"><a href="/shadoo/">Shadoo</a></h3>
+              <p class="project-card__text">Encrypt and decrypt messages locally in your browser with a shared code phrase. Shadoo uses AES-256-GCM, detects tampering, and supports message expiry. Plaintext, code phrases and keys are not sent to the server. The website downloads its application files and checks for updates; encryption and decryption work while you are online.</p>
+              <div class="project-card__actions">
+                <a class="btn" href="/shadoo/">Open Shadoo</a>
+              </div>
             </div>
-          </div>
+          </article>
 
-          <div class="card">
-            <span class="card__label">Monitor</span>
-            <h3 class="card__title">Ayalon Model</h3>
-            <p class="card__text">
-              Real-time physical impact model for Highway 20 (Ayalon), Israel.
-              Measures congestion cost in vehicle-hours, excess fuel, CO₂, and
-              financial leakage using live TomTom traffic data, Gov.il fuel
-              pricing, and air-quality feeds. Layer L5 — Transport.
-            </p>
-            <div style="margin-top:0.8rem; display:flex; gap:0.6rem; flex-wrap:wrap;">
-              <a class="btn" href="projects/ayalon.html">View Project</a>
-              <a class="btn btn--outline" href="/ayalon/" target="_blank" rel="noopener">Open Live Model</a>
+          <article class="project-card">
+            <a class="project-card__cover" href="/survival/" tabindex="-1"><img src="/assets/covers/survival-20261013.svg" alt="" width="480" height="270" /></a>
+            <div class="project-card__body">
+              <span class="tag">Reference</span>
+              <h3 class="project-card__title"><a href="/survival/">Post-Nuclear Survival Manual</a></h3>
+              <p class="project-card__text">
+                A comprehensive survival reference covering preparedness without a
+                private bunker, the first sixty seconds, shelter, radiation units
+                and dose-rate interpretation, fallout decay, decontamination,
+                potassium iodide, water, food, sanitation, medical care,
+                communication, and long-term recovery after a nuclear
+                catastrophe. Published in English, with the Russian original
+                alongside.
+              </p>
+              <div class="project-card__actions">
+                <a class="btn" href="/survival/">Read Manual</a>
+              </div>
             </div>
-          </div>
+          </article>
 
-          <div class="card">
-            <span class="card__label">Tool</span>
-            <h3 class="card__title">Mazkira — Business Assistant</h3>
-            <p class="card__text">
-              Secure assistant for small businesses in Israel: documents, bookkeeping support, taxes
-              (VAT, income tax, Bituach Leumi estimates), CRM and financial analysis. Each account has its own
-              isolated space; documents and sensitive fields are encrypted at rest. Interface in Hebrew, Russian
-              and English. Not tax advice and not a certified bookkeeping system.
-            </p>
-            <div style="margin-top:0.8rem; display:flex; gap:0.6rem; flex-wrap:wrap;">
-              <a class="btn" href="/mazkira/">Open Mazkira</a>
+          <article class="project-card">
+            <a class="project-card__cover" href="projects/ayalon.html" tabindex="-1"><img src="/assets/covers/ayalon-20261013.svg" alt="" width="480" height="270" /></a>
+            <div class="project-card__body">
+              <span class="tag">Monitor · L5</span>
+              <h3 class="project-card__title"><a href="projects/ayalon.html">Ayalon Model</a></h3>
+              <p class="project-card__text">
+                Real-time physical impact model for Highway 20 (Ayalon), Israel.
+                Measures congestion cost in vehicle-hours, excess fuel, CO₂, and
+                financial leakage using live TomTom traffic data, Gov.il fuel
+                pricing, and air-quality feeds. Layer L5 — Transport.
+              </p>
+              <div class="project-card__actions">
+                <a class="btn" href="projects/ayalon.html">View Project</a>
+                <a class="btn btn--ghost" href="/ayalon/" target="_blank" rel="noopener">Open Live Model</a>
+              </div>
             </div>
-          </div>
+          </article>
 
         </div>
       </section>
 
-      <section class="section" aria-labelledby="planned-heading">
-        <h2 class="section__heading" id="planned-heading">Planned</h2>
-        <div class="cards">
-
-          <div class="card">
-            <span class="card__label card__label--placeholder">Future</span>
-            <h3 class="card__title">Public Dashboards</h3>
-            <p class="card__text">
-              Real-time visualization of protocol-level metrics, oracle health,
-              and governance indicators. Details will be published here as the
-              public project layer expands.
-            </p>
-          </div>
-
-          <div class="card">
-            <span class="card__label card__label--placeholder">Future</span>
-            <h3 class="card__title">Governance Simulations</h3>
-            <p class="card__text">
-              Interactive simulation environments for testing protocol parameter
-              changes before deployment. Implementation will follow
-              DKP-8-SIMULATION-001 specification.
-            </p>
-          </div>
-
+      <section class="block" aria-labelledby="planned-heading">
+        <div class="block__head">
+          <h2 class="block__title" id="planned-heading">Planned</h2>
+        </div>
+        <div class="project-grid">
+          <article class="project-card project-card--planned">
+            <span class="project-card__cover"><img src="/assets/covers/dashboards-20261013.svg" alt="" width="480" height="270" loading="lazy" /></span>
+            <div class="project-card__body">
+              <span class="tag tag--muted">Future</span>
+              <h3 class="project-card__title">Public Dashboards</h3>
+              <p class="project-card__text">
+                Real-time visualization of protocol-level metrics, oracle health,
+                and governance indicators. Details will be published here as the
+                public project layer expands.
+              </p>
+            </div>
+          </article>
+          <article class="project-card project-card--planned">
+            <span class="project-card__cover"><img src="/assets/covers/simulations-20261013.svg" alt="" width="480" height="270" loading="lazy" /></span>
+            <div class="project-card__body">
+              <span class="tag tag--muted">Future</span>
+              <h3 class="project-card__title">Governance Simulations</h3>
+              <p class="project-card__text">
+                Interactive simulation environments for testing protocol parameter
+                changes before deployment. Implementation will follow
+                DKP-8-SIMULATION-001 specification.
+              </p>
+            </div>
+          </article>
         </div>
       </section>
 
@@ -173,7 +191,17 @@
 
   <!-- ─── Footer ─────────────────────────────────────────────────────────────── -->
   <footer class="site-footer">
-    <p>Dikenocracy &mdash; public framework. Built openly alongside the old world.</p>
+    <div class="site-footer__inner">
+      <a class="site-footer__brand" href="/"><svg aria-hidden="true"><use href="/assets/icons-20261013.svg#i-l1"/></svg>Dikenocracy</a>
+      <ul class="site-footer__links">
+        <li><a href="/pages/about.html">About</a></li>
+        <li><a href="/pages/protocols.html">Protocols</a></li>
+        <li><a href="/pages/projects.html">Projects</a></li>
+        <li><a href="https://github.com/anahronic/World/tree/main/Dikenocracy" rel="noopener noreferrer">Canonical texts</a></li>
+        <li><a href="https://github.com/anahronic/Dikenocracy" rel="noopener noreferrer">Source code</a></li>
+      </ul>
+      <p class="site-footer__note">Dikenocracy &mdash; public framework. Built openly alongside the old world.</p>
+    </div>
   </footer>
 
   <script src="/script-20260923.js"></script>

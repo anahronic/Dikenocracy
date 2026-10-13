@@ -10,12 +10,12 @@
   <link rel="apple-touch-icon" href="../assets/apple-touch-icon.png" />
   <meta property="og:title" content="Protocols — Dikenocracy" />
   <meta property="og:description" content="35 layered, auditable governance protocols." />
-  <meta property="og:image" content="https://dikenocracy.com/assets/main_screen.webp" />
+  <meta property="og:image" content="https://dikenocracy.com/assets/og-20261013.jpg" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://dikenocracy.com/pages/protocols.html" />
   <meta name="twitter:card" content="summary_large_image" />
-  <link rel="stylesheet" href="/styles-20260923.css" />
-  <link rel="stylesheet" href="/protocols-20261004.css" />
+  <link rel="stylesheet" href="/styles-20261013.css" />
+  <link rel="stylesheet" href="/protocols-20261013.css" />
 </head>
 <body>
 
@@ -24,7 +24,7 @@
   <!-- ─── Navigation ──────────────────────────────────────────────────────── -->
   <nav class="site-nav" aria-label="Main navigation" dir="ltr">
   <div class="site-nav__inner">
-    <a class="site-nav__brand" href="/">Dikenocracy</a>
+    <a class="site-nav__brand" href="/"><svg class="site-nav__logo" aria-hidden="true"><use href="/assets/icons-20261013.svg#i-l1"/></svg>Dikenocracy</a>
     <ul class="site-nav__links" role="list">
       <li><a href="/pages/about.html">About</a></li>
       <li><a href="/pages/protocols.html" aria-current="page">Protocols</a></li>
@@ -147,340 +147,393 @@
       <!-- Main content area -->
       <div class="protocol-content">
 
-      <!-- Hero -->
-      <header class="hero">
-        <h1 class="hero__title">Protocols</h1>
-        <p class="hero__sub">Layered · Dated · Auditable</p>
+      <header class="page-hero">
+        <div>
+          <p class="eyebrow"><svg class="icon" aria-hidden="true"><use href="/assets/icons-20261013.svg#i-layers"/></svg> Layered &middot; Dated &middot; Auditable</p>
+          <h1 class="page-hero__title">Protocols</h1>
+          <p class="page-hero__lead">
+            The Dikenocracy framework is built through layered protocols. Each protocol
+            defines a bounded part of the system and is designed to be testable and
+            auditable. No higher-layer protocol may violate a lower-layer constraint.
+          </p>
+          <div class="hero-actions">
+            <a class="btn" href="#foundation-heading">Browse the layers <svg class="icon" aria-hidden="true"><use href="/assets/icons-20261013.svg#i-arrow"/></svg></a>
+            <a class="btn btn--ghost" href="/downloads/Dikenocracy%20SYNERGY%20and%2035%20PROTOCOLS.txt" download><svg class="icon" aria-hidden="true"><use href="/assets/icons-20261013.svg#i-download"/></svg> Complete text</a>
+          </div>
+        </div>
+        <figure class="page-hero__figure page-hero__figure--card">
+          <img src="/assets/protocol-stack-20261013.svg" width="600" height="468"
+               alt="Nine protocol layers stacked from L0 Physical Truth at the base to L8 Infrastructure at the top." />
+        </figure>
       </header>
 
-      <div class="divider"></div>
+      <nav class="layer-nav" aria-label="Jump to a layer">
+        <a href="#foundation-heading"><svg class="icon" aria-hidden="true"><use href="/assets/icons-20261013.svg#i-foundation"/></svg>Foundation</a>
+        <a href="#l0-heading"><svg class="icon" aria-hidden="true"><use href="/assets/icons-20261013.svg#i-l0"/></svg>L0</a>
+        <a href="#l1-heading"><svg class="icon" aria-hidden="true"><use href="/assets/icons-20261013.svg#i-l1"/></svg>L1</a>
+        <a href="#l2-heading"><svg class="icon" aria-hidden="true"><use href="/assets/icons-20261013.svg#i-l2"/></svg>L2</a>
+        <a href="#l3-heading"><svg class="icon" aria-hidden="true"><use href="/assets/icons-20261013.svg#i-l3"/></svg>L3</a>
+        <a href="#l4-heading"><svg class="icon" aria-hidden="true"><use href="/assets/icons-20261013.svg#i-l4"/></svg>L4</a>
+        <a href="#l5-heading"><svg class="icon" aria-hidden="true"><use href="/assets/icons-20261013.svg#i-l5"/></svg>L5</a>
+        <a href="#l6-heading"><svg class="icon" aria-hidden="true"><use href="/assets/icons-20261013.svg#i-l6"/></svg>L6</a>
+        <a href="#l7-heading"><svg class="icon" aria-hidden="true"><use href="/assets/icons-20261013.svg#i-l7"/></svg>L7</a>
+        <a href="#l8-heading"><svg class="icon" aria-hidden="true"><use href="/assets/icons-20261013.svg#i-l8"/></svg>L8</a>
+        <a href="#appendix-heading"><svg class="icon" aria-hidden="true"><use href="/assets/icons-20261013.svg#i-appendix"/></svg>Appendix</a>
+      </nav>
 
       <!-- Intro -->
-      <section class="section" aria-labelledby="protocols-intro-heading">
-        <h2 class="section__heading" id="protocols-intro-heading">Protocol Architecture</h2>
-        <p class="section__text">
-          The Dikenocracy framework is built through layered protocols. Each protocol
-          defines a bounded part of the system and is designed to be testable and
-          auditable. No higher-layer protocol may violate a lower-layer constraint.
-        </p>
-        <p class="section__text">
+      <details class="info-card">
+        <summary>How protocols are named, dated and changed</summary>
+        <p>
           Protocols are identified by their layer prefix (DKP-0 … DKP-8) and a
           functional code. Each document shows the date of its last edition
           (“Last updated”). Changes to normative content follow DKP-4-UPGRADE-001
           (proposal, simulation, audit, acceptance, activation window and rollback);
           the date identifies an edition and does not by itself certify a change.
         </p>
-        <p class="section__text release-line">
+        <p class="release-line">
           Current release: <time datetime="2026-10-04">2026-10-04</time> &middot;
           35 protocols across 9 layers (L0–L8), plus the Code of Planetary Synergy,
           one addendum and one appendix.
         </p>
-      </section>
+      </details>
 
-      <section class="section" aria-labelledby="foundation-heading">
-        <h2 class="section__heading" id="foundation-heading">Foundation</h2>
-
-        <a class="protocol-layer" href="protocols/code-of-planetary-synergy.html">
-          <div class="protocol-layer__id">Code of Planetary Synergy</div>
-          <div class="protocol-layer__name">Foundational normative document of the Dikenocracy system</div>
-        </a>
-      </section>
-
-      <section class="section" aria-labelledby="l0-heading">
-        <h2 class="section__heading" id="l0-heading">L0 — Physical Truth</h2>
-        <p class="section__text">
-          The foundation layer. Defines how observable physical reality is captured,
-          verified, and made available to higher layers.
-        </p>
-
-        <a class="protocol-layer" href="protocols/dkp-0-oracle-001.html">
-          <div class="protocol-layer__id">DKP-0-ORACLE-001</div>
-          <div class="protocol-layer__name">Physical Truth Layer Protocol (PTL)</div>
-        </a>
-
-        <a class="protocol-layer" href="protocols/dkp-0-time-001.html">
-          <div class="protocol-layer__id">DKP-0-TIME-001</div>
-          <div class="protocol-layer__name">Dikenocratic Time &amp; Date Index Protocol (DTI)</div>
-        </a>
-      </section>
-
-      <section class="section" aria-labelledby="l1-heading">
-        <h2 class="section__heading" id="l1-heading">L1 — Core</h2>
-        <p class="section__text">
-          Foundational axioms, identity attribution, impact measurement, and justice
-          invariants that all higher layers must respect.
-        </p>
-
-        <a class="protocol-layer" href="protocols/dkp-1-axioms-001.html">
-          <div class="protocol-layer__id">DKP-1-AXIOMS-001</div>
-          <div class="protocol-layer__name">Axioms Protocol</div>
-        </a>
-
-        <a class="protocol-layer" href="protocols/dkp-1-epistemic-boundaries-001.html">
-          <div class="protocol-layer__id">DKP-1-EPISTEMIC-BOUNDARIES-001</div>
-          <div class="protocol-layer__name">Epistemic Boundaries Protocol</div>
-        </a>
-
-        <a class="protocol-layer" href="protocols/dkp-1-identity-001.html">
-          <div class="protocol-layer__id">DKP-1-IDENTITY-001</div>
-          <div class="protocol-layer__name">Identity &amp; Subject Protocol</div>
-        </a>
-
-        <a class="protocol-layer" href="protocols/dkp-1-impact-001.html">
-          <div class="protocol-layer__id">DKP-1-IMPACT-001</div>
-          <div class="protocol-layer__name">Impact Measurement Protocol</div>
-        </a>
-
-        <a class="protocol-layer" href="protocols/dkp-1-justice-001.html">
-          <div class="protocol-layer__id">DKP-1-JUSTICE-001</div>
-          <div class="protocol-layer__name">Justice Function Protocol (δίκη)</div>
-        </a>
-
-        <a class="protocol-layer" href="protocols/dkp-1-prevention-001.html">
-          <div class="protocol-layer__id">DKP-1-PREVENTION-001</div>
-          <div class="protocol-layer__name">Preventive Impact Attribution Protocol</div>
-        </a>
-      </section>
-
-      <section class="section" aria-labelledby="l2-heading">
-        <h2 class="section__heading" id="l2-heading">L2 — Economic</h2>
-        <p class="section__text">
-          Dual-circuit economy rules, tokenized value chains, conditional emission,
-          and stake-based security mechanisms.
-        </p>
-
-        <a class="protocol-layer" href="protocols/dkp-2-assets-001.html">
-          <div class="protocol-layer__id">DKP-2-ASSETS-001</div>
-          <div class="protocol-layer__name">Property &amp; Assets Protocol</div>
-        </a>
-
-        <a class="protocol-layer" href="protocols/dkp-2-finance-001.html">
-          <div class="protocol-layer__id">DKP-2-FINANCE-001</div>
-          <div class="protocol-layer__name">Financial System Protocol</div>
-        </a>
-
-        <a class="protocol-layer" href="protocols/dkp-2-labor-001.html">
-          <div class="protocol-layer__id">DKP-2-LABOR-001</div>
-          <div class="protocol-layer__name">Labor &amp; Participation Protocol</div>
-        </a>
-      </section>
-
-      <section class="section" aria-labelledby="l3-heading">
-        <h2 class="section__heading" id="l3-heading">L3 — Security</h2>
-        <p class="section__text">
-          Defense, counter-terrorism, internal security, and physical enforcement
-          within strict constraint boundaries.
-        </p>
-
-        <a class="protocol-layer" href="protocols/dkp-3-antiterror-001.html">
-          <div class="protocol-layer__id">DKP-3-ANTITERROR-001</div>
-          <div class="protocol-layer__name">Anti-Terror &amp; Asymmetric Harm Containment Protocol</div>
-        </a>
-
-        <a class="protocol-layer" href="protocols/dkp-3-defense-001.html">
-          <div class="protocol-layer__id">DKP-3-DEFENSE-001</div>
-          <div class="protocol-layer__name">Defense &amp; System Protection Protocol</div>
-        </a>
-
-        <a class="protocol-layer" href="protocols/dkp-3-internal-sec-001.html">
-          <div class="protocol-layer__id">DKP-3-INTERNAL-SEC-001</div>
-          <div class="protocol-layer__name">Internal Security &amp; System Integrity Protocol</div>
-        </a>
-
-        <a class="protocol-layer" href="protocols/dkp-3-police-001.html">
-          <div class="protocol-layer__id">DKP-3-POLICE-001</div>
-          <div class="protocol-layer__name">Public Order &amp; Physical Enforcement Protocol</div>
-        </a>
-      </section>
-
-      <section class="section" aria-labelledby="l4-heading">
-        <h2 class="section__heading" id="l4-heading">L4 — Stability</h2>
-        <p class="section__text">
-          Crisis handling, error correction, and controlled protocol upgrade mechanisms.
-        </p>
-
-        <a class="protocol-layer" href="protocols/dkp-4-crisis-001.html">
-          <div class="protocol-layer__id">DKP-4-CRISIS-001</div>
-          <div class="protocol-layer__name">Crisis &amp; Fail-Safe Protocol</div>
-        </a>
-
-        <a class="protocol-layer" href="protocols/dkp-4-crisis-001-patch.html">
-          <div class="protocol-layer__id">DKP-4-CRISIS-001 (PATCH)</div>
-          <div class="protocol-layer__name">Addendum to DKP-4-CRISIS-001: Null-Output State Handling Extension</div>
-        </a>
-
-        <a class="protocol-layer" href="protocols/dkp-4-error-001.html">
-          <div class="protocol-layer__id">DKP-4-ERROR-001</div>
-          <div class="protocol-layer__name">Errors &amp; Appeals Protocol</div>
-        </a>
-
-        <a class="protocol-layer" href="protocols/dkp-4-upgrade-001.html">
-          <div class="protocol-layer__id">DKP-4-UPGRADE-001</div>
-          <div class="protocol-layer__name">System Upgrade &amp; Anti-Capture Protocol</div>
-        </a>
-
-        <a class="protocol-layer" href="protocols/dkp-4-epistemic-transitions-001.html">
-          <div class="protocol-layer__id">DKP-4-EPISTEMIC-TRANSITIONS-001</div>
-          <div class="protocol-layer__name">Epistemic State Transition Protocol</div>
-        </a>
-      </section>
-
-      <section class="section" aria-labelledby="l5-heading">
-        <h2 class="section__heading" id="l5-heading">L5 — Human Infrastructure</h2>
-        <p class="section__text">
-          Culture, education, habitat, information, transport, and work-cycle standards
-          for physical and cognitive dignity.
-        </p>
-
-        <a class="protocol-layer" href="protocols/dkp-5-culture-001.html">
-          <div class="protocol-layer__id">DKP-5-CULTURE-001</div>
-          <div class="protocol-layer__name">Culture &amp; Language Protocol</div>
-        </a>
-
-        <a class="protocol-layer" href="protocols/dkp-5-edu-001.html">
-          <div class="protocol-layer__id">DKP-5-EDU-001</div>
-          <div class="protocol-layer__name">Education Protocol</div>
-        </a>
-
-        <a class="protocol-layer" href="protocols/dkp-5-habitat-001.html">
-          <div class="protocol-layer__id">DKP-5-HABITAT-001</div>
-          <div class="protocol-layer__name">Living Space &amp; Environmental Dignity Protocol</div>
-        </a>
-
-        <a class="protocol-layer" href="protocols/dkp-5-info-001.html">
-          <div class="protocol-layer__id">DKP-5-INFO-001</div>
-          <div class="protocol-layer__name">Information &amp; Truth Protocol</div>
-        </a>
-
-        <a class="protocol-layer" href="protocols/dkp-5-transport-001.html">
-          <div class="protocol-layer__id">DKP-5-TRANSPORT-001</div>
-          <div class="protocol-layer__name">Public Transport, Risk Reduction &amp; Physical Dignity Protocol</div>
-        </a>
-
-        <a class="protocol-layer" href="protocols/dkp-5-work-cycle-001.html">
-          <div class="protocol-layer__id">DKP-5-WORK-CYCLE-001</div>
-          <div class="protocol-layer__name">Work Cycle &amp; Recovery Rhythm Protocol</div>
-        </a>
-      </section>
-
-      <section class="section" aria-labelledby="l6-heading">
-        <h2 class="section__heading" id="l6-heading">L6 — Intersystem</h2>
-        <p class="section__text">
-          Entry and exit protocols for jurisdictions interfacing with the Dikenocracy system.
-        </p>
-
-        <a class="protocol-layer" href="protocols/dkp-6-exit-001.html">
-          <div class="protocol-layer__id">DKP-6-EXIT-001</div>
-          <div class="protocol-layer__name">Exit Protocol</div>
-        </a>
-
-        <a class="protocol-layer" href="protocols/dkp-6-integration-001.html">
-          <div class="protocol-layer__id">DKP-6-INTEGRATION-001</div>
-          <div class="protocol-layer__name">Integration Protocol</div>
-        </a>
-
-        <a class="protocol-layer" href="protocols/dkp-6-resilience-001.html">
-          <div class="protocol-layer__id">DKP-6-RESILIENCE-001</div>
-          <div class="protocol-layer__name">System Resilience Under Adversarial Conditions</div>
-        </a>
-      </section>
-
-      <section class="section" aria-labelledby="l7-heading">
-        <h2 class="section__heading" id="l7-heading">L7 — Meta / Scope</h2>
-        <p class="section__text">
-          Applicability boundaries, privacy hard limits, transparency requirements,
-          and AI subject constraints.
-        </p>
-
-        <a class="protocol-layer" href="protocols/dkp-7-ai-subject-001.html">
-          <div class="protocol-layer__id">DKP-7-AI-SUBJECT-001</div>
-          <div class="protocol-layer__name">Constitution for AI Subjects in Dikenocracy</div>
-        </a>
-
-        <a class="protocol-layer" href="protocols/dkp-7-privacy-001.html">
-          <div class="protocol-layer__id">DKP-7-PRIVACY-001</div>
-          <div class="protocol-layer__name">Data Privacy Protocol</div>
-        </a>
-
-        <a class="protocol-layer" href="protocols/dkp-7-scope-001.html">
-          <div class="protocol-layer__id">DKP-7-SCOPE-001</div>
-          <div class="protocol-layer__name">Scope &amp; Limits Protocol</div>
-        </a>
-
-        <a class="protocol-layer" href="protocols/dkp-7-transparency-001.html">
-          <div class="protocol-layer__id">DKP-7-TRANSPARENCY-001</div>
-          <div class="protocol-layer__name">Transparency Protocol</div>
-        </a>
-      </section>
-
-      <section class="section" aria-labelledby="l8-heading">
-        <h2 class="section__heading" id="l8-heading">L8 — Infrastructure</h2>
-        <p class="section__text">
-          Continuous audit, external interoperability, and simulation &amp; validation
-          engines.
-        </p>
-
-        <a class="protocol-layer" href="protocols/dkp-8-audit-001.html">
-          <div class="protocol-layer__id">DKP-8-AUDIT-001</div>
-          <div class="protocol-layer__name">Continuous Audit Protocol</div>
-        </a>
-
-        <a class="protocol-layer" href="protocols/dkp-8-interop-001.html">
-          <div class="protocol-layer__id">DKP-8-INTEROP-001</div>
-          <div class="protocol-layer__name">Interoperability Protocol</div>
-        </a>
-
-        <a class="protocol-layer" href="protocols/dkp-8-simulation-001.html">
-          <div class="protocol-layer__id">DKP-8-SIMULATION-001</div>
-          <div class="protocol-layer__name">Simulation &amp; Validation Protocol</div>
-        </a>
-      </section>
-
-      <section class="section" aria-labelledby="appendix-heading">
-        <h2 class="section__heading" id="appendix-heading">Appendix</h2>
-
-        <a class="protocol-layer" href="protocols/appendix-a-design-rationale-safeguards-normative.html">
-          <div class="protocol-layer__id">Appendix A</div>
-          <div class="protocol-layer__name">Design Rationale &amp; Safeguards (Normative) — appendix to DKP-5-TRANSPORT-001</div>
-        </a>
-      </section>
-
-      <!-- Consolidated text -->
-      <section class="section" aria-labelledby="download-heading">
-        <h2 class="section__heading" id="download-heading">Complete text</h2>
-        <p class="section__text">
-          The full Code of Planetary Synergy, all 35 protocols, the CRISIS addendum, Appendix A and the glossary in one
-          plain-text file (release <time datetime="2026-10-04">2026-10-04</time>).
-        </p>
-        <div class="entry-points">
-          <a class="btn" href="/downloads/Dikenocracy%20SYNERGY%20and%2035%20PROTOCOLS.txt" download>Download “Dikenocracy SYNERGY and 35 PROTOCOLS.txt”</a>
+      <section class="layer-block" id="foundation-heading" aria-labelledby="foundation-heading-title">
+        <header class="layer-block__head">
+          <span class="icon-badge"><svg class="icon" aria-hidden="true"><use href="/assets/icons-20261013.svg#i-foundation"/></svg></span>
+          <div>
+            <h2 class="layer-block__title" id="foundation-heading-title">Foundation</h2>
+          </div>
+          
+        </header>
+        <div class="layer-block__list">
+          <a class="protocol-layer" href="protocols/code-of-planetary-synergy.html">
+            <div class="protocol-layer__id">Code of Planetary Synergy</div>
+            <div class="protocol-layer__name">Foundational normative document of the Dikenocracy system</div>
+          </a>
         </div>
       </section>
 
+      <section class="layer-block" id="l0-heading" aria-labelledby="l0-heading-title">
+        <header class="layer-block__head">
+          <span class="icon-badge"><svg class="icon" aria-hidden="true"><use href="/assets/icons-20261013.svg#i-l0"/></svg></span>
+          <div>
+            <h2 class="layer-block__title" id="l0-heading-title">L0 — Physical Truth</h2>
+            <p class="layer-block__text">The foundation layer. Defines how observable physical reality is captured,
+          verified, and made available to higher layers.</p>
+          </div>
+          <span class="tag tag--indigo layer-block__count">2 protocols</span>
+        </header>
+        <div class="layer-block__list">
+          <a class="protocol-layer" href="protocols/dkp-0-oracle-001.html">
+            <div class="protocol-layer__id">DKP-0-ORACLE-001</div>
+            <div class="protocol-layer__name">Physical Truth Layer Protocol (PTL)</div>
+          </a>
+          <a class="protocol-layer" href="protocols/dkp-0-time-001.html">
+            <div class="protocol-layer__id">DKP-0-TIME-001</div>
+            <div class="protocol-layer__name">Dikenocratic Time &amp; Date Index Protocol (DTI)</div>
+          </a>
+        </div>
+      </section>
+
+      <section class="layer-block" id="l1-heading" aria-labelledby="l1-heading-title">
+        <header class="layer-block__head">
+          <span class="icon-badge"><svg class="icon" aria-hidden="true"><use href="/assets/icons-20261013.svg#i-l1"/></svg></span>
+          <div>
+            <h2 class="layer-block__title" id="l1-heading-title">L1 — Core</h2>
+            <p class="layer-block__text">Foundational axioms, identity attribution, impact measurement, and justice
+          invariants that all higher layers must respect.</p>
+          </div>
+          <span class="tag tag--indigo layer-block__count">6 protocols</span>
+        </header>
+        <div class="layer-block__list">
+          <a class="protocol-layer" href="protocols/dkp-1-axioms-001.html">
+            <div class="protocol-layer__id">DKP-1-AXIOMS-001</div>
+            <div class="protocol-layer__name">Axioms Protocol</div>
+          </a>
+          <a class="protocol-layer" href="protocols/dkp-1-epistemic-boundaries-001.html">
+            <div class="protocol-layer__id">DKP-1-EPISTEMIC-BOUNDARIES-001</div>
+            <div class="protocol-layer__name">Epistemic Boundaries Protocol</div>
+          </a>
+          <a class="protocol-layer" href="protocols/dkp-1-identity-001.html">
+            <div class="protocol-layer__id">DKP-1-IDENTITY-001</div>
+            <div class="protocol-layer__name">Identity &amp; Subject Protocol</div>
+          </a>
+          <a class="protocol-layer" href="protocols/dkp-1-impact-001.html">
+            <div class="protocol-layer__id">DKP-1-IMPACT-001</div>
+            <div class="protocol-layer__name">Impact Measurement Protocol</div>
+          </a>
+          <a class="protocol-layer" href="protocols/dkp-1-justice-001.html">
+            <div class="protocol-layer__id">DKP-1-JUSTICE-001</div>
+            <div class="protocol-layer__name">Justice Function Protocol (δίκη)</div>
+          </a>
+          <a class="protocol-layer" href="protocols/dkp-1-prevention-001.html">
+            <div class="protocol-layer__id">DKP-1-PREVENTION-001</div>
+            <div class="protocol-layer__name">Preventive Impact Attribution Protocol</div>
+          </a>
+        </div>
+      </section>
+
+      <section class="layer-block" id="l2-heading" aria-labelledby="l2-heading-title">
+        <header class="layer-block__head">
+          <span class="icon-badge"><svg class="icon" aria-hidden="true"><use href="/assets/icons-20261013.svg#i-l2"/></svg></span>
+          <div>
+            <h2 class="layer-block__title" id="l2-heading-title">L2 — Economic</h2>
+            <p class="layer-block__text">Dual-circuit economy rules, tokenized value chains, conditional emission,
+          and stake-based security mechanisms.</p>
+          </div>
+          <span class="tag tag--indigo layer-block__count">3 protocols</span>
+        </header>
+        <div class="layer-block__list">
+          <a class="protocol-layer" href="protocols/dkp-2-assets-001.html">
+            <div class="protocol-layer__id">DKP-2-ASSETS-001</div>
+            <div class="protocol-layer__name">Property &amp; Assets Protocol</div>
+          </a>
+          <a class="protocol-layer" href="protocols/dkp-2-finance-001.html">
+            <div class="protocol-layer__id">DKP-2-FINANCE-001</div>
+            <div class="protocol-layer__name">Financial System Protocol</div>
+          </a>
+          <a class="protocol-layer" href="protocols/dkp-2-labor-001.html">
+            <div class="protocol-layer__id">DKP-2-LABOR-001</div>
+            <div class="protocol-layer__name">Labor &amp; Participation Protocol</div>
+          </a>
+        </div>
+      </section>
+
+      <section class="layer-block" id="l3-heading" aria-labelledby="l3-heading-title">
+        <header class="layer-block__head">
+          <span class="icon-badge"><svg class="icon" aria-hidden="true"><use href="/assets/icons-20261013.svg#i-l3"/></svg></span>
+          <div>
+            <h2 class="layer-block__title" id="l3-heading-title">L3 — Security</h2>
+            <p class="layer-block__text">Defense, counter-terrorism, internal security, and physical enforcement
+          within strict constraint boundaries.</p>
+          </div>
+          <span class="tag tag--indigo layer-block__count">4 protocols</span>
+        </header>
+        <div class="layer-block__list">
+          <a class="protocol-layer" href="protocols/dkp-3-antiterror-001.html">
+            <div class="protocol-layer__id">DKP-3-ANTITERROR-001</div>
+            <div class="protocol-layer__name">Anti-Terror &amp; Asymmetric Harm Containment Protocol</div>
+          </a>
+          <a class="protocol-layer" href="protocols/dkp-3-defense-001.html">
+            <div class="protocol-layer__id">DKP-3-DEFENSE-001</div>
+            <div class="protocol-layer__name">Defense &amp; System Protection Protocol</div>
+          </a>
+          <a class="protocol-layer" href="protocols/dkp-3-internal-sec-001.html">
+            <div class="protocol-layer__id">DKP-3-INTERNAL-SEC-001</div>
+            <div class="protocol-layer__name">Internal Security &amp; System Integrity Protocol</div>
+          </a>
+          <a class="protocol-layer" href="protocols/dkp-3-police-001.html">
+            <div class="protocol-layer__id">DKP-3-POLICE-001</div>
+            <div class="protocol-layer__name">Public Order &amp; Physical Enforcement Protocol</div>
+          </a>
+        </div>
+      </section>
+
+      <section class="layer-block" id="l4-heading" aria-labelledby="l4-heading-title">
+        <header class="layer-block__head">
+          <span class="icon-badge"><svg class="icon" aria-hidden="true"><use href="/assets/icons-20261013.svg#i-l4"/></svg></span>
+          <div>
+            <h2 class="layer-block__title" id="l4-heading-title">L4 — Stability</h2>
+            <p class="layer-block__text">Crisis handling, error correction, and controlled protocol upgrade mechanisms.</p>
+          </div>
+          <span class="tag tag--indigo layer-block__count">4 protocols</span>
+        </header>
+        <div class="layer-block__list">
+          <a class="protocol-layer" href="protocols/dkp-4-crisis-001.html">
+            <div class="protocol-layer__id">DKP-4-CRISIS-001</div>
+            <div class="protocol-layer__name">Crisis &amp; Fail-Safe Protocol</div>
+          </a>
+          <a class="protocol-layer" href="protocols/dkp-4-crisis-001-patch.html">
+            <div class="protocol-layer__id">DKP-4-CRISIS-001 (PATCH)</div>
+            <div class="protocol-layer__name">Addendum to DKP-4-CRISIS-001: Null-Output State Handling Extension</div>
+          </a>
+          <a class="protocol-layer" href="protocols/dkp-4-error-001.html">
+            <div class="protocol-layer__id">DKP-4-ERROR-001</div>
+            <div class="protocol-layer__name">Errors &amp; Appeals Protocol</div>
+          </a>
+          <a class="protocol-layer" href="protocols/dkp-4-upgrade-001.html">
+            <div class="protocol-layer__id">DKP-4-UPGRADE-001</div>
+            <div class="protocol-layer__name">System Upgrade &amp; Anti-Capture Protocol</div>
+          </a>
+          <a class="protocol-layer" href="protocols/dkp-4-epistemic-transitions-001.html">
+            <div class="protocol-layer__id">DKP-4-EPISTEMIC-TRANSITIONS-001</div>
+            <div class="protocol-layer__name">Epistemic State Transition Protocol</div>
+          </a>
+        </div>
+      </section>
+
+      <section class="layer-block" id="l5-heading" aria-labelledby="l5-heading-title">
+        <header class="layer-block__head">
+          <span class="icon-badge"><svg class="icon" aria-hidden="true"><use href="/assets/icons-20261013.svg#i-l5"/></svg></span>
+          <div>
+            <h2 class="layer-block__title" id="l5-heading-title">L5 — Human Infrastructure</h2>
+            <p class="layer-block__text">Culture, education, habitat, information, transport, and work-cycle standards
+          for physical and cognitive dignity.</p>
+          </div>
+          <span class="tag tag--indigo layer-block__count">6 protocols</span>
+        </header>
+        <div class="layer-block__list">
+          <a class="protocol-layer" href="protocols/dkp-5-culture-001.html">
+            <div class="protocol-layer__id">DKP-5-CULTURE-001</div>
+            <div class="protocol-layer__name">Culture &amp; Language Protocol</div>
+          </a>
+          <a class="protocol-layer" href="protocols/dkp-5-edu-001.html">
+            <div class="protocol-layer__id">DKP-5-EDU-001</div>
+            <div class="protocol-layer__name">Education Protocol</div>
+          </a>
+          <a class="protocol-layer" href="protocols/dkp-5-habitat-001.html">
+            <div class="protocol-layer__id">DKP-5-HABITAT-001</div>
+            <div class="protocol-layer__name">Living Space &amp; Environmental Dignity Protocol</div>
+          </a>
+          <a class="protocol-layer" href="protocols/dkp-5-info-001.html">
+            <div class="protocol-layer__id">DKP-5-INFO-001</div>
+            <div class="protocol-layer__name">Information &amp; Truth Protocol</div>
+          </a>
+          <a class="protocol-layer" href="protocols/dkp-5-transport-001.html">
+            <div class="protocol-layer__id">DKP-5-TRANSPORT-001</div>
+            <div class="protocol-layer__name">Public Transport, Risk Reduction &amp; Physical Dignity Protocol</div>
+          </a>
+          <a class="protocol-layer" href="protocols/dkp-5-work-cycle-001.html">
+            <div class="protocol-layer__id">DKP-5-WORK-CYCLE-001</div>
+            <div class="protocol-layer__name">Work Cycle &amp; Recovery Rhythm Protocol</div>
+          </a>
+        </div>
+      </section>
+
+      <section class="layer-block" id="l6-heading" aria-labelledby="l6-heading-title">
+        <header class="layer-block__head">
+          <span class="icon-badge"><svg class="icon" aria-hidden="true"><use href="/assets/icons-20261013.svg#i-l6"/></svg></span>
+          <div>
+            <h2 class="layer-block__title" id="l6-heading-title">L6 — Intersystem</h2>
+            <p class="layer-block__text">Entry and exit protocols for jurisdictions interfacing with the Dikenocracy system.</p>
+          </div>
+          <span class="tag tag--indigo layer-block__count">3 protocols</span>
+        </header>
+        <div class="layer-block__list">
+          <a class="protocol-layer" href="protocols/dkp-6-exit-001.html">
+            <div class="protocol-layer__id">DKP-6-EXIT-001</div>
+            <div class="protocol-layer__name">Exit Protocol</div>
+          </a>
+          <a class="protocol-layer" href="protocols/dkp-6-integration-001.html">
+            <div class="protocol-layer__id">DKP-6-INTEGRATION-001</div>
+            <div class="protocol-layer__name">Integration Protocol</div>
+          </a>
+          <a class="protocol-layer" href="protocols/dkp-6-resilience-001.html">
+            <div class="protocol-layer__id">DKP-6-RESILIENCE-001</div>
+            <div class="protocol-layer__name">System Resilience Under Adversarial Conditions</div>
+          </a>
+        </div>
+      </section>
+
+      <section class="layer-block" id="l7-heading" aria-labelledby="l7-heading-title">
+        <header class="layer-block__head">
+          <span class="icon-badge"><svg class="icon" aria-hidden="true"><use href="/assets/icons-20261013.svg#i-l7"/></svg></span>
+          <div>
+            <h2 class="layer-block__title" id="l7-heading-title">L7 — Meta / Scope</h2>
+            <p class="layer-block__text">Applicability boundaries, privacy hard limits, transparency requirements,
+          and AI subject constraints.</p>
+          </div>
+          <span class="tag tag--indigo layer-block__count">4 protocols</span>
+        </header>
+        <div class="layer-block__list">
+          <a class="protocol-layer" href="protocols/dkp-7-ai-subject-001.html">
+            <div class="protocol-layer__id">DKP-7-AI-SUBJECT-001</div>
+            <div class="protocol-layer__name">Constitution for AI Subjects in Dikenocracy</div>
+          </a>
+          <a class="protocol-layer" href="protocols/dkp-7-privacy-001.html">
+            <div class="protocol-layer__id">DKP-7-PRIVACY-001</div>
+            <div class="protocol-layer__name">Data Privacy Protocol</div>
+          </a>
+          <a class="protocol-layer" href="protocols/dkp-7-scope-001.html">
+            <div class="protocol-layer__id">DKP-7-SCOPE-001</div>
+            <div class="protocol-layer__name">Scope &amp; Limits Protocol</div>
+          </a>
+          <a class="protocol-layer" href="protocols/dkp-7-transparency-001.html">
+            <div class="protocol-layer__id">DKP-7-TRANSPARENCY-001</div>
+            <div class="protocol-layer__name">Transparency Protocol</div>
+          </a>
+        </div>
+      </section>
+
+      <section class="layer-block" id="l8-heading" aria-labelledby="l8-heading-title">
+        <header class="layer-block__head">
+          <span class="icon-badge"><svg class="icon" aria-hidden="true"><use href="/assets/icons-20261013.svg#i-l8"/></svg></span>
+          <div>
+            <h2 class="layer-block__title" id="l8-heading-title">L8 — Infrastructure</h2>
+            <p class="layer-block__text">Continuous audit, external interoperability, and simulation &amp; validation
+          engines.</p>
+          </div>
+          <span class="tag tag--indigo layer-block__count">3 protocols</span>
+        </header>
+        <div class="layer-block__list">
+          <a class="protocol-layer" href="protocols/dkp-8-audit-001.html">
+            <div class="protocol-layer__id">DKP-8-AUDIT-001</div>
+            <div class="protocol-layer__name">Continuous Audit Protocol</div>
+          </a>
+          <a class="protocol-layer" href="protocols/dkp-8-interop-001.html">
+            <div class="protocol-layer__id">DKP-8-INTEROP-001</div>
+            <div class="protocol-layer__name">Interoperability Protocol</div>
+          </a>
+          <a class="protocol-layer" href="protocols/dkp-8-simulation-001.html">
+            <div class="protocol-layer__id">DKP-8-SIMULATION-001</div>
+            <div class="protocol-layer__name">Simulation &amp; Validation Protocol</div>
+          </a>
+        </div>
+      </section>
+
+      <section class="layer-block" id="appendix-heading" aria-labelledby="appendix-heading-title">
+        <header class="layer-block__head">
+          <span class="icon-badge"><svg class="icon" aria-hidden="true"><use href="/assets/icons-20261013.svg#i-appendix"/></svg></span>
+          <div>
+            <h2 class="layer-block__title" id="appendix-heading-title">Appendix</h2>
+          </div>
+          
+        </header>
+        <div class="layer-block__list">
+          <a class="protocol-layer" href="protocols/appendix-a-design-rationale-safeguards-normative.html">
+            <div class="protocol-layer__id">Appendix A</div>
+            <div class="protocol-layer__name">Design Rationale &amp; Safeguards (Normative) — appendix to DKP-5-TRANSPORT-001</div>
+          </a>
+        </div>
+      </section>
+
+      <!-- Consolidated text -->
+      <section class="cta-band" aria-labelledby="download-heading">
+        <div>
+          <h2 id="download-heading">Complete text</h2>
+          <p>
+            The full Code of Planetary Synergy, all 35 protocols, the CRISIS addendum, Appendix A and the glossary in one
+            plain-text file (release <time datetime="2026-10-04">2026-10-04</time>).
+          </p>
+        </div>
+        <a class="btn" href="/downloads/Dikenocracy%20SYNERGY%20and%2035%20PROTOCOLS.txt" download><svg class="icon" aria-hidden="true"><use href="/assets/icons-20261013.svg#i-download"/></svg> Download “Dikenocracy SYNERGY and 35 PROTOCOLS.txt”</a>
+      </section>
+
       <!-- Official Source -->
-      <section class="section" aria-labelledby="source-heading">
-        <h2 class="section__heading" id="source-heading">Official source</h2>
-        <p class="section__text">
+      <section class="info-card" aria-labelledby="source-heading">
+        <h2 id="source-heading">Official source</h2>
+        <p>
           All protocol specifications are maintained openly. The canonical texts are
           published in the World repository; the code of this website is in the
           Dikenocracy repository.
         </p>
-        <div class="entry-points">
+        <div class="hero-actions">
           <a
-            class="btn"
+            class="btn btn--ghost"
             href="https://github.com/anahronic/World/tree/main/Dikenocracy"
             target="_blank"
             rel="noopener noreferrer"
           >
-            Canonical texts on GitHub
+            <svg class="icon" aria-hidden="true"><use href="/assets/icons-20261013.svg#i-github"/></svg> Canonical texts on GitHub
           </a>
           <a
-            class="btn"
+            class="btn btn--ghost"
             href="https://github.com/anahronic/Dikenocracy"
             target="_blank"
             rel="noopener noreferrer"
           >
-            Website source
+            <svg class="icon" aria-hidden="true"><use href="/assets/icons-20261013.svg#i-github"/></svg> Website source
           </a>
         </div>
         <div class="info-note">
@@ -496,7 +549,17 @@
 
   <!-- ─── Footer ─────────────────────────────────────────────────────────────── -->
   <footer class="site-footer">
-    <p>Dikenocracy &mdash; public framework. Built openly alongside the old world.</p>
+    <div class="site-footer__inner">
+      <a class="site-footer__brand" href="/"><svg aria-hidden="true"><use href="/assets/icons-20261013.svg#i-l1"/></svg>Dikenocracy</a>
+      <ul class="site-footer__links">
+        <li><a href="/pages/about.html">About</a></li>
+        <li><a href="/pages/protocols.html">Protocols</a></li>
+        <li><a href="/pages/projects.html">Projects</a></li>
+        <li><a href="https://github.com/anahronic/World/tree/main/Dikenocracy" rel="noopener noreferrer">Canonical texts</a></li>
+        <li><a href="https://github.com/anahronic/Dikenocracy" rel="noopener noreferrer">Source code</a></li>
+      </ul>
+      <p class="site-footer__note">Dikenocracy &mdash; public framework. Built openly alongside the old world.</p>
+    </div>
   </footer>
 
   <script src="/script-20260923.js"></script>

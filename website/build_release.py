@@ -32,8 +32,38 @@ from bs4 import BeautifulSoup
 SITE = pathlib.Path(__file__).resolve().parent
 TOOLS = SITE / 'tools'
 DOMAIN = 'https://dikenocracy.com'
-CSS_MAIN = '/styles-20260923.css'
-CSS_PROTOCOLS = '/protocols-20261004.css'
+CSS_MAIN = '/styles-20261013.css'
+CSS_PROTOCOLS = '/protocols-20261013.css'
+ICONS = '/assets/icons-20261013.svg'
+OG_IMAGE = '/assets/og-20261013.jpg'
+
+# Shared page chrome (also applied to the hand-written pages by tools/apply_chrome.py)
+BRAND_HTML = (f'<a class="site-nav__brand" href="/"><svg class="site-nav__logo" aria-hidden="true">'
+              f'<use href="{ICONS}#i-l1"/></svg>Dikenocracy</a>')
+FOOTER_HTML = f'''<footer class="site-footer">
+    <div class="site-footer__inner">
+      <a class="site-footer__brand" href="/"><svg aria-hidden="true"><use href="{ICONS}#i-l1"/></svg>Dikenocracy</a>
+      <ul class="site-footer__links">
+        <li><a href="/pages/about.html">About</a></li>
+        <li><a href="/pages/protocols.html">Protocols</a></li>
+        <li><a href="/pages/projects.html">Projects</a></li>
+        <li><a href="https://github.com/anahronic/World/tree/main/Dikenocracy" rel="noopener noreferrer">Canonical texts</a></li>
+        <li><a href="https://github.com/anahronic/Dikenocracy" rel="noopener noreferrer">Source code</a></li>
+      </ul>
+      <p class="site-footer__note">Dikenocracy &mdash; public framework. Built openly alongside the old world.</p>
+    </div>
+  </footer>'''
+# Icon per layer (assets/icons-20261013.svg)
+LAYER_ICON = {'foundation': 'i-foundation', 'L0': 'i-l0', 'L1': 'i-l1', 'L2': 'i-l2', 'L3': 'i-l3', 'L4': 'i-l4',
+              'L5': 'i-l5', 'L6': 'i-l6', 'L7': 'i-l7', 'L8': 'i-l8', 'appendix': 'i-appendix'}
+
+
+def icon(name, cls='icon'):
+    return f'<svg class="{cls}" aria-hidden="true"><use href="{ICONS}#{name}"/></svg>'
+
+
+def layer_anchor(key):
+    return {'foundation': 'foundation-heading', 'appendix': 'appendix-heading'}.get(key, key.lower() + '-heading')
 
 # Order of the publication. (slug, layer, map label, index subtitle)
 LAYERS = [
@@ -208,9 +238,9 @@ def body_html(md, slug):
 
 
 def nav_html(active=None):
-    return '''<nav class="site-nav" aria-label="Main navigation" dir="ltr">
+    return f'''<nav class="site-nav" aria-label="Main navigation" dir="ltr">
   <div class="site-nav__inner">
-    <a class="site-nav__brand" href="/">Dikenocracy</a>
+    {BRAND_HTML}
     <ul class="site-nav__links" role="list">
       <li><a href="/pages/about.html">About</a></li>
       <li><a href="/pages/protocols.html" aria-current="page">Protocols</a></li>
@@ -295,6 +325,10 @@ def page_html(slug, doc, prev, nxt, docs):
         f'          <li{"" if lvl == "h2" else " class=\"toc__sub\""}><a href="#{hid}">{html.escape(text)}</a></li>'
         for lvl, hid, text in toc)
     desc = 'Dikenocracy Protocol' if doc['kind'] == 'protocol' else 'Dikenocracy'
+    layer = next(r[1] for r in REGISTRY if r[0] == slug)
+    layer_full = next(full for key, _, full in LAYERS if key == layer)
+    kicker = (f'<div class="protocol-kicker"><span class="icon-badge icon-badge--sm">{icon(LAYER_ICON[layer])}</span>'
+              f'<a href="../protocols.html#{layer_anchor(layer)}">{html.escape(layer_full)}</a></div>')
     return f'''<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -307,7 +341,7 @@ def page_html(slug, doc, prev, nxt, docs):
   <link rel="apple-touch-icon" href="../../assets/apple-touch-icon.png" />
   <meta property="og:title" content="{t} — Dikenocracy" />
   <meta property="og:description" content="{t} — Dikenocracy Protocol specification." />
-  <meta property="og:image" content="{DOMAIN}/assets/main_screen.webp" />
+  <meta property="og:image" content="{DOMAIN}{OG_IMAGE}" />
   <meta property="og:type" content="article" />
   <meta property="og:url" content="{DOMAIN}/pages/protocols/{slug}.html" />
   <meta name="twitter:card" content="summary_large_image" />
@@ -343,6 +377,7 @@ def page_html(slug, doc, prev, nxt, docs):
         </div>
 
         <article class="protocol-article">
+          {kicker}
           <h1>{t}</h1>
           <div class="protocol-meta">
             {meta_html(doc)}
@@ -355,9 +390,7 @@ def page_html(slug, doc, prev, nxt, docs):
     </div>
   </main>
 
-  <footer class="site-footer">
-    <p>Dikenocracy &mdash; public framework. Built openly alongside the old world.</p>
-  </footer>
+  {FOOTER_HTML}
 
   <script src="/script-20260923.js"></script>
   <script type="module" src="/navigation-20260923.js"></script>
@@ -367,28 +400,40 @@ def page_html(slug, doc, prev, nxt, docs):
 
 
 def index_html(docs, n, release, txt_name):
-    sections = []
+    sections, chips = [], []
     for key, label, full in LAYERS:
         items = [r for r in REGISTRY if r[1] == key]
-        hid = {'foundation': 'foundation-heading', 'appendix': 'appendix-heading'}.get(key, key.lower() + '-heading')
+        hid = layer_anchor(key)
         cards = []
         for slug, _, short, sub in items:
             ident = 'Code of Planetary Synergy' if slug.startswith('code') else docs[slug]['id']
             if docs[slug]['kind'] == 'appendix':
                 ident = 'Appendix A'
-            cards.append(f'''        <a class="protocol-layer" href="protocols/{slug}.html">
-          <div class="protocol-layer__id">{html.escape(ident)}</div>
-          <div class="protocol-layer__name">{html.escape(sub)}</div>
-        </a>''')
-        text = f'''        <p class="section__text">
-          {LAYER_TEXT[key]}
-        </p>
-''' if key in LAYER_TEXT else ''
-        sections.append(f'''      <section class="section" aria-labelledby="{hid}">
-        <h2 class="section__heading" id="{hid}">{html.escape(full)}</h2>
-{text}
-''' + '\n\n'.join(cards) + '\n      </section>')
+            cards.append(f'''          <a class="protocol-layer" href="protocols/{slug}.html">
+            <div class="protocol-layer__id">{html.escape(ident)}</div>
+            <div class="protocol-layer__name">{html.escape(sub)}</div>
+          </a>''')
+        count = sum(1 for r in items if docs[r[0]]['kind'] == 'protocol')
+        count_html = (f'<span class="tag tag--indigo layer-block__count">{count} protocol{"s" if count != 1 else ""}</span>'
+                      if count else '')
+        text = f'''
+            <p class="layer-block__text">{LAYER_TEXT[key]}</p>''' if key in LAYER_TEXT else ''
+        short_label = full.split(' — ')[0] if ' — ' in full else full
+        chips.append(f'<a href="#{hid}">{icon(LAYER_ICON[key])}{html.escape(short_label)}</a>')
+        sections.append(f'''      <section class="layer-block" id="{hid}" aria-labelledby="{hid}-title">
+        <header class="layer-block__head">
+          <span class="icon-badge">{icon(LAYER_ICON[key])}</span>
+          <div>
+            <h2 class="layer-block__title" id="{hid}-title">{html.escape(full)}</h2>{text}
+          </div>
+          {count_html}
+        </header>
+        <div class="layer-block__list">
+''' + '\n'.join(cards) + '''
+        </div>
+      </section>''')
     sec = '\n\n'.join(sections)
+    chip_html = '\n        '.join(chips)
     txt_url = '/downloads/' + txt_name.replace(' ', '%20')
     return f'''<!DOCTYPE html>
 <html lang="en">
@@ -402,7 +447,7 @@ def index_html(docs, n, release, txt_name):
   <link rel="apple-touch-icon" href="../assets/apple-touch-icon.png" />
   <meta property="og:title" content="Protocols — Dikenocracy" />
   <meta property="og:description" content="{n} layered, auditable governance protocols." />
-  <meta property="og:image" content="{DOMAIN}/assets/main_screen.webp" />
+  <meta property="og:image" content="{DOMAIN}{OG_IMAGE}" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="{DOMAIN}/pages/protocols.html" />
   <meta name="twitter:card" content="summary_large_image" />
@@ -426,74 +471,85 @@ def index_html(docs, n, release, txt_name):
       <!-- Main content area -->
       <div class="protocol-content">
 
-      <!-- Hero -->
-      <header class="hero">
-        <h1 class="hero__title">Protocols</h1>
-        <p class="hero__sub">Layered · Dated · Auditable</p>
+      <header class="page-hero">
+        <div>
+          <p class="eyebrow">{icon('i-layers')} Layered &middot; Dated &middot; Auditable</p>
+          <h1 class="page-hero__title">Protocols</h1>
+          <p class="page-hero__lead">
+            The Dikenocracy framework is built through layered protocols. Each protocol
+            defines a bounded part of the system and is designed to be testable and
+            auditable. No higher-layer protocol may violate a lower-layer constraint.
+          </p>
+          <div class="hero-actions">
+            <a class="btn" href="#foundation-heading">Browse the layers {icon('i-arrow')}</a>
+            <a class="btn btn--ghost" href="{txt_url}" download>{icon('i-download')} Complete text</a>
+          </div>
+        </div>
+        <figure class="page-hero__figure page-hero__figure--card">
+          <img src="/assets/protocol-stack-20261013.svg" width="600" height="468"
+               alt="Nine protocol layers stacked from L0 Physical Truth at the base to L8 Infrastructure at the top." />
+        </figure>
       </header>
 
-      <div class="divider"></div>
+      <nav class="layer-nav" aria-label="Jump to a layer">
+        {chip_html}
+      </nav>
 
       <!-- Intro -->
-      <section class="section" aria-labelledby="protocols-intro-heading">
-        <h2 class="section__heading" id="protocols-intro-heading">Protocol Architecture</h2>
-        <p class="section__text">
-          The Dikenocracy framework is built through layered protocols. Each protocol
-          defines a bounded part of the system and is designed to be testable and
-          auditable. No higher-layer protocol may violate a lower-layer constraint.
-        </p>
-        <p class="section__text">
+      <details class="info-card">
+        <summary>How protocols are named, dated and changed</summary>
+        <p>
           Protocols are identified by their layer prefix (DKP-0 … DKP-8) and a
           functional code. Each document shows the date of its last edition
           (“Last updated”). Changes to normative content follow DKP-4-UPGRADE-001
           (proposal, simulation, audit, acceptance, activation window and rollback);
           the date identifies an edition and does not by itself certify a change.
         </p>
-        <p class="section__text release-line">
+        <p class="release-line">
           Current release: <time datetime="{release}">{release}</time> &middot;
           {n} protocols across 9 layers (L0–L8), plus the Code of Planetary Synergy,
           one addendum and one appendix.
         </p>
-      </section>
+      </details>
 
 {sec}
 
       <!-- Consolidated text -->
-      <section class="section" aria-labelledby="download-heading">
-        <h2 class="section__heading" id="download-heading">Complete text</h2>
-        <p class="section__text">
-          The full Code of Planetary Synergy, all {n} protocols, the CRISIS addendum, Appendix A and the glossary in one
-          plain-text file (release <time datetime="{release}">{release}</time>).
-        </p>
-        <div class="entry-points">
-          <a class="btn" href="{txt_url}" download>Download “{html.escape(txt_name)}”</a>
+      <section class="cta-band" aria-labelledby="download-heading">
+        <div>
+          <h2 id="download-heading">Complete text</h2>
+          <p>
+            The full Code of Planetary Synergy, all {n} protocols, the CRISIS addendum, Appendix A and the glossary in one
+            plain-text file (release <time datetime="{release}">{release}</time>).
+          </p>
         </div>
+        <a class="btn" href="{txt_url}" download>{icon('i-download')} Download “{html.escape(txt_name)}”</a>
       </section>
 
       <!-- Official Source -->
-      <section class="section" aria-labelledby="source-heading">
-        <h2 class="section__heading" id="source-heading">Official source</h2>
-        <p class="section__text">
+      <section class="info-card" aria-labelledby="source-heading">
+        <h2 id="source-heading">Official source</h2>
+        <p>
           All protocol specifications are maintained openly. The canonical texts are
           published in the World repository; the code of this website is in the
           Dikenocracy repository.
         </p>
-        <div class="entry-points">
+        <div class="hero-actions">
           <a
-            class="btn"
+            class="btn btn--ghost"
             href="https://github.com/anahronic/World/tree/main/Dikenocracy"
             target="_blank"
             rel="noopener noreferrer"
           >
-            Canonical texts on GitHub
+            {icon('i-github')} Canonical texts on GitHub
           </a>
           <a
-            class="btn"
+            class="btn btn--ghost"
             href="https://github.com/anahronic/Dikenocracy"
             target="_blank"
             rel="noopener noreferrer"
           >
-            Website source
+            {icon('i-github')} Website source
           </a>
         </div>
         <div class="info-note">
@@ -508,9 +564,7 @@ def index_html(docs, n, release, txt_name):
   </main>
 
   <!-- ─── Footer ─────────────────────────────────────────────────────────────── -->
-  <footer class="site-footer">
-    <p>Dikenocracy &mdash; public framework. Built openly alongside the old world.</p>
-  </footer>
+  {FOOTER_HTML}
 
   <script src="/script-20260923.js"></script>
   <script type="module" src="/navigation-20260923.js"></script>
