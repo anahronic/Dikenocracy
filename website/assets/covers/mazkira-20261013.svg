@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 270" role="img" aria-label="Mazkira: documents, bookkeeping support and taxes for a small business">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#fbf7ee"/><stop offset="1" stop-color="#efeafc"/>
+    </linearGradient>
+  </defs>
+  <rect width="480" height="270" fill="url(#bg)"/>
+  <circle cx="420" cy="40" r="90" fill="#ffffff" opacity=".45"/>
+  <circle cx="40" cy="250" r="70" fill="#ffffff" opacity=".4"/>
+
+  <g transform="translate(70 46)">
+    <path d="M20 0 H140 V172 l-15 -10 -15 10 -15 -10 -15 10 -15 -10 -15 10 -15 -10 -15 10 -15 -10 -15 10Z" fill="#ffffff" stroke="#3d3489" stroke-width="3" stroke-linejoin="round"/>
+    <g stroke="#cfc6f3" stroke-width="5" stroke-linecap="round"><path d="M44 34 H116"/><path d="M44 58 H100"/><path d="M44 82 H110"/></g>
+    <text x="80" y="134" font-family="Segoe UI, Arial" font-size="26" font-weight="700" fill="#c99a2e" text-anchor="middle">₪ 295</text>
+  </g>
+  <path d="M290 200 H440" stroke="#3d3489" stroke-width="2" stroke-linecap="round"/>
+  <rect x="300" y="160" width="16" height="40" rx="4" fill="#cfc6f3"/><rect x="326" y="138" width="16" height="62" rx="4" fill="#cfc6f3"/><rect x="352" y="148" width="16" height="52" rx="4" fill="#cfc6f3"/><rect x="378" y="112" width="16" height="88" rx="4" fill="#c99a2e"/><rect x="404" y="126" width="16" height="74" rx="4" fill="#3d3489"/>
+  <g transform="translate(392 40)">
+    <path d="M30 0 L0 11 v22 c0 19 13 32 30 37 c17 -5 30 -18 30 -37 v-22z" fill="#f6e7c1" stroke="#c99a2e" stroke-width="3" stroke-linejoin="round"/>
+    <path d="M17 35 l9 9 17 -19" fill="none" stroke="#3d3489" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+</svg>

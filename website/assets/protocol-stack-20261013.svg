@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 468" role="img" aria-labelledby="stack-title stack-desc">
+<title id="stack-title">The Dikenocracy protocol stack</title>
+<desc id="stack-desc">Nine protocol layers stacked from L0 Physical Truth at the base to L8 Infrastructure at the top. No higher layer may violate a lower-layer constraint.</desc>
+<style>.n{font:600 15px "Segoe UI",Helvetica,Arial,sans-serif;fill:#1f2733}.k{font:700 13px "Segoe UI",Helvetica,Arial,sans-serif;letter-spacing:.06em}.s{font:13px Georgia,serif;fill:#5b6573;font-style:italic}</style>
+<ellipse cx="190" cy="424" rx="140" ry="12" fill="#1f2733" opacity=".07"/>
+<g><polygon points="40,356 190,408 190,417 40,365" fill="#c9a24a"/><polygon points="340,356 190,408 190,417 340,365" fill="#a8801f"/><polygon points="40,356 190,304 340,356 190,408" fill="#f3dc9b" stroke="#fff" stroke-width="1.5" opacity=".97"/></g>
+<line x1="346" y1="359" x2="374" y2="359" stroke="#a8801f" stroke-width="1.5"/>
+<text x="382" y="361"><tspan class="k" fill="#a8801f">L0</tspan><tspan class="n" dx="8">Physical Truth</tspan></text>
+<g><polygon points="40,320 190,372 190,381 40,329" fill="#c09c5b"/><polygon points="340,320 190,372 190,381 340,329" fill="#9e7932"/><polygon points="40,320 190,268 340,320 190,372" fill="#eed8a6" stroke="#fff" stroke-width="1.5" opacity=".97"/></g>
+<line x1="346" y1="323" x2="374" y2="323" stroke="#9e7932" stroke-width="1.5"/>
+<text x="382" y="325"><tspan class="k" fill="#9e7932">L1</tspan><tspan class="n" dx="8">Core</tspan></text>
+<g><polygon points="40,284 190,336 190,345 40,293" fill="#b6956c"/><polygon points="340,284 190,336 190,345 340,293" fill="#947344"/><polygon points="40,284 190,232 340,284 190,336" fill="#e8d5b1" stroke="#fff" stroke-width="1.5" opacity=".97"/></g>
+<line x1="346" y1="287" x2="374" y2="287" stroke="#947344" stroke-width="1.5"/>
+<text x="382" y="289"><tspan class="k" fill="#947344">L2</tspan><tspan class="n" dx="8">Economic</tspan></text>
+<g><polygon points="40,248 190,300 190,309 40,257" fill="#ac8f7c"/><polygon points="340,248 190,300 190,309 340,257" fill="#8b6c57"/><polygon points="40,248 190,196 340,248 190,300" fill="#e3d2bc" stroke="#fff" stroke-width="1.5" opacity=".97"/></g>
+<line x1="346" y1="251" x2="374" y2="251" stroke="#8b6c57" stroke-width="1.5"/>
+<text x="382" y="253"><tspan class="k" fill="#8b6c57">L3</tspan><tspan class="n" dx="8">Security</tspan></text>
+<g><polygon points="40,212 190,264 190,273 40,221" fill="#a3888d"/><polygon points="340,212 190,264 190,273 340,221" fill="#81666a"/><polygon points="40,212 190,160 340,212 190,264" fill="#decec6" stroke="#fff" stroke-width="1.5" opacity=".97"/></g>
+<line x1="346" y1="215" x2="374" y2="215" stroke="#81666a" stroke-width="1.5"/>
+<text x="382" y="217"><tspan class="k" fill="#81666a">L4</tspan><tspan class="n" dx="8">Stability</tspan></text>
+<g><polygon points="40,176 190,228 190,237 40,185" fill="#9a829e"/><polygon points="340,176 190,228 190,237 340,185" fill="#775f7d"/><polygon points="40,176 190,124 340,176 190,228" fill="#d9cad1" stroke="#fff" stroke-width="1.5" opacity=".97"/></g>
+<line x1="346" y1="179" x2="374" y2="179" stroke="#775f7d" stroke-width="1.5"/>
+<text x="382" y="181"><tspan class="k" fill="#775f7d">L5</tspan><tspan class="n" dx="8">Human Infrastructure</tspan></text>
+<g><polygon points="40,140 190,192 190,201 40,149" fill="#907cae"/><polygon points="340,140 190,192 190,201 340,149" fill="#6e5890"/><polygon points="40,140 190,88 340,140 190,192" fill="#d4c7dc" stroke="#fff" stroke-width="1.5" opacity=".97"/></g>
+<line x1="346" y1="143" x2="374" y2="143" stroke="#6e5890" stroke-width="1.5"/>
+<text x="382" y="145"><tspan class="k" fill="#6e5890">L6</tspan><tspan class="n" dx="8">Intersystem</tspan></text>
+<g><polygon points="40,104 190,156 190,165 40,113" fill="#8675bf"/><polygon points="340,104 190,156 190,165 340,113" fill="#6452a2"/><polygon points="40,104 190,52 340,104 190,156" fill="#cec4e7" stroke="#fff" stroke-width="1.5" opacity=".97"/></g>
+<line x1="346" y1="107" x2="374" y2="107" stroke="#6452a2" stroke-width="1.5"/>
+<text x="382" y="109"><tspan class="k" fill="#6452a2">L7</tspan><tspan class="n" dx="8">Meta / Scope</tspan></text>
+<g><polygon points="40,68 190,120 190,129 40,77" fill="#7d6fd0"/><polygon points="340,68 190,120 190,129 340,77" fill="#5a4bb5"/><polygon points="40,68 190,16 340,68 190,120" fill="#c9c0f2" stroke="#fff" stroke-width="1.5" opacity=".97"/></g>
+<line x1="346" y1="71" x2="374" y2="71" stroke="#5a4bb5" stroke-width="1.5"/>
+<text x="382" y="73"><tspan class="k" fill="#5a4bb5">L8</tspan><tspan class="n" dx="8">Infrastructure</tspan></text>
+<text class="s" x="190" y="458" text-anchor="middle">a higher layer never overrides a lower one</text>
+</svg>
