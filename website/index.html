@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Dikenocracy — a framework for reality-based governance." />
-  <title>Dikenocracy</title>
+  <meta name="description" content="Dikenocracy — a framework for reality-based governance: measurable reality, deterministic rules and transparent protocols." />
+  <title>Dikenocracy — a framework for reality-based governance</title>
   <link rel="canonical" href="https://dikenocracy.com/" />
   <link rel="icon" href="assets/favicon.ico" />
   <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
@@ -15,8 +15,12 @@
   <meta property="og:url" content="https://dikenocracy.com/" />
   <meta name="twitter:card" content="summary_large_image" />
   <link rel="stylesheet" href="/styles-20261013.css" />
+  <link rel="preload" as="image" href="/assets/hero-justice-20261013.webp" />
 </head>
-<body class="page-index">
+<body>
+
+  <a href="#main" class="skip-link">Skip to content</a>
+
 <nav class="site-nav" aria-label="Main navigation" dir="ltr">
   <div class="site-nav__inner">
     <a class="site-nav__brand" href="/"><svg class="site-nav__logo" aria-hidden="true"><use href="/assets/icons-20261013.svg#i-l1"/></svg>Dikenocracy</a>
@@ -37,60 +41,161 @@
   </div>
 </nav>
 
-  <!--
-    Stage A — Intro screen.
-    Visible immediately, hidden after INTRO_DURATION_MS via script.js.
-  -->
-  <section
-    id="intro-screen"
-    class="screen"
-    role="region"
-    aria-label="Dikenocracy manifest"
-  >
-    <div class="manifest-container" aria-live="polite">
-      <p class="manifest-container__text">
-        We don't ask the old world for permission.<br>
-        We build a new world alongside it.
-      </p>
-    </div>
-  </section>
+  <main id="main" class="landing">
 
-  <!--
-    Interstitial — protocol loading overlay.
-    Shown briefly when transitioning from welcome screen to the framework.
-  -->
-  <div id="interstitial" aria-hidden="true">
-    <div class="interstitial__bar"></div>
-    <span class="interstitial__msg">Initializing protocol layer&hellip;</span>
-  </div>
+    <!-- ─── Hero ─────────────────────────────────────────────────────────── -->
+    <section class="landing-hero" aria-labelledby="hero-title">
+      <div>
+        <p class="eyebrow"><svg class="icon" aria-hidden="true"><use href="/assets/icons-20261013.svg#i-l1"/></svg> The rule of justice</p>
+        <h1 class="landing-hero__title" id="hero-title">Justice as a <em>function</em>, not a metaphor.</h1>
+        <p class="landing-hero__lead">
+          Dikenocracy is a governance framework built on measurable reality, deterministic rules and
+          transparent protocols — designed to reduce dependence on opinion, narrative and unchecked authority.
+        </p>
+        <div class="hero-actions">
+          <a class="btn" href="/pages/protocols.html">Read the protocols <svg class="icon" aria-hidden="true"><use href="/assets/icons-20261013.svg#i-arrow"/></svg></a>
+          <a class="btn btn--ghost" href="/pages/about.html">What is Dikenocracy?</a>
+        </div>
+        <div class="hero-facts">
+          <div><b>35</b>protocols</div>
+          <div><b>9</b>layers, L0–L8</div>
+          <div><b>5</b>working projects</div>
+          <div><b>Open</b>texts &amp; source</div>
+        </div>
+      </div>
+      <figure class="landing-hero__art">
+        <img src="/assets/hero-justice-20261013.webp" width="670" height="850"
+             alt="Illustration: a statue of Dike, the goddess of justice, with scales and the words ΔΙΚΕ ΔΗΜΟΣ, in a green city at dusk." />
+        <figcaption><strong>Δίκη — Dike</strong>Justice as a measurable balance between actions and the stability of the system.</figcaption>
+      </figure>
+    </section>
 
-  <!--
-    Stage B — Welcome screen.
-    Initially hidden. Made visible by script.js after the intro fades out.
-  -->
-  <section
-    id="welcome-screen"
-    class="screen screen--hidden"
-    role="region"
-    aria-label="Dikenocracy welcome screen"
-  >
-    <div class="welcome-overlay">
-      <h1 class="welcome-overlay__title">Dikenocracy</h1>
-      <p class="welcome-overlay__sub">The rule of justice</p>
+    <!-- ─── Manifesto ────────────────────────────────────────────────────── -->
+    <section class="quote-band" aria-label="Manifesto">
+      <p>We don’t ask the old world for permission.<br />We build a new world alongside it.</p>
+      <span>The Dikenocracy manifesto</span>
+    </section>
+
+    <!-- ─── Principles ───────────────────────────────────────────────────── -->
+    <section class="block" aria-labelledby="principles-title">
+      <div class="block__head">
+        <div>
+          <h2 class="block__title" id="principles-title">How it works</h2>
+          <p class="block__lead">Four ideas run through every protocol.</p>
+        </div>
+        <a class="block__more" href="/pages/about.html">More about the idea <svg class="icon" aria-hidden="true"><use href="/assets/icons-20261013.svg#i-arrow"/></svg></a>
+      </div>
+      <div class="feature-grid">
+        <article class="feature">
+          <span class="icon-badge"><svg aria-hidden="true"><use href="/assets/icons-20261013.svg#i-measure"/></svg></span>
+          <h3>Measurable reality</h3>
+          <p>Decisions start from verified physical data. The base layer defines how reality is captured and checked.</p>
+        </article>
+        <article class="feature">
+          <span class="icon-badge icon-badge--gold"><svg aria-hidden="true"><use href="/assets/icons-20261013.svg#i-rules"/></svg></span>
+          <h3>Deterministic rules</h3>
+          <p>Rules are formal and testable, so accountability becomes a consequence rather than a political choice.</p>
+        </article>
+        <article class="feature">
+          <span class="icon-badge"><svg aria-hidden="true"><use href="/assets/icons-20261013.svg#i-open"/></svg></span>
+          <h3>Transparent protocols</h3>
+          <p>Every protocol is public, dated and auditable. Changes follow a defined upgrade procedure.</p>
+        </article>
+        <article class="feature">
+          <span class="icon-badge icon-badge--gold"><svg aria-hidden="true"><use href="/assets/icons-20261013.svg#i-people"/></svg></span>
+          <h3>No unchecked authority</h3>
+          <p>Power is held by the function of justice — open algorithms, public metrics and data — not by people, parties or elites.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- ─── Protocol stack ───────────────────────────────────────────────── -->
+    <section class="block" aria-labelledby="stack-title">
+      <div class="split">
+        <figure class="split__figure split__figure--card">
+          <img src="/assets/protocol-stack-20261013.svg" width="600" height="468" loading="lazy"
+               alt="Nine protocol layers stacked from L0 Physical Truth at the base to L8 Infrastructure at the top." />
+        </figure>
+        <div>
+          <p class="eyebrow"><svg class="icon" aria-hidden="true"><use href="/assets/icons-20261013.svg#i-layers"/></svg> The protocol stack</p>
+          <h2 class="block__title" id="stack-title">Nine layers, from physical truth to infrastructure</h2>
+          <p>
+            Each protocol defines a bounded part of the system and is designed to be testable and auditable.
+            Layers build on each other: no higher-layer protocol may violate a lower-layer constraint.
+          </p>
+          <p>
+            The foundation is the Code of Planetary Synergy; above it sit the axioms, justice and identity,
+            the economy, security, stability, human infrastructure and the audit machinery.
+          </p>
+          <div class="hero-actions">
+            <a class="btn" href="/pages/protocols.html">Explore all 35 protocols</a>
+            <a class="btn btn--ghost" href="/downloads/Dikenocracy%20SYNERGY%20and%2035%20PROTOCOLS.txt" download><svg class="icon" aria-hidden="true"><use href="/assets/icons-20261013.svg#i-download"/></svg> Complete text</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── Projects ─────────────────────────────────────────────────────── -->
+    <section class="block" aria-labelledby="projects-title">
+      <div class="block__head">
+        <div>
+          <h2 class="block__title" id="projects-title">Working projects</h2>
+          <p class="block__lead">Concrete tools that put parts of the protocol stack into software you can use today.</p>
+        </div>
+        <a class="block__more" href="/pages/projects.html">All projects <svg class="icon" aria-hidden="true"><use href="/assets/icons-20261013.svg#i-arrow"/></svg></a>
+      </div>
+      <div class="project-grid">
+        <article class="project-card">
+          <a class="project-card__cover" href="/mazkira/" tabindex="-1"><img src="/assets/covers/mazkira-20261013.svg" alt="" loading="lazy" width="480" height="270" /></a>
+          <div class="project-card__body">
+            <span class="tag">Business tool</span>
+            <h3 class="project-card__title"><a href="/mazkira/">Mazkira</a></h3>
+            <p class="project-card__text">An assistant for small businesses in Israel: documents, bookkeeping support, taxes and cash flow — in Hebrew, Russian and English.</p>
+          </div>
+        </article>
+        <article class="project-card">
+          <a class="project-card__cover" href="/converter/" tabindex="-1"><img src="/assets/covers/converter-20261013.svg" alt="" loading="lazy" width="480" height="270" /></a>
+          <div class="project-card__body">
+            <span class="tag">Tool · L0</span>
+            <h3 class="project-card__title"><a href="/converter/">DTI Time Converter</a></h3>
+            <p class="project-card__text">Convert any date between the Gregorian, Hebrew and Dikenocratic (DTI) calendars, right in your browser.</p>
+          </div>
+        </article>
+        <article class="project-card">
+          <a class="project-card__cover" href="/shadoo/" tabindex="-1"><img src="/assets/covers/shadoo-20261013.svg" alt="" loading="lazy" width="480" height="270" /></a>
+          <div class="project-card__body">
+            <span class="tag">Privacy tool</span>
+            <h3 class="project-card__title"><a href="/shadoo/">Shadoo</a></h3>
+            <p class="project-card__text">Encrypt a message locally with a code phrase you agreed in person. Nothing readable is sent to the server.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ─── CTA ──────────────────────────────────────────────────────────── -->
+    <section class="cta-band" aria-labelledby="cta-title">
+      <div>
+        <h2 id="cta-title">Start with the foundation</h2>
+        <p>The Code of Planetary Synergy explains the system in one document; every protocol builds on it.</p>
+      </div>
+      <a class="btn" href="/pages/protocols/code-of-planetary-synergy.html">Read the Code <svg class="icon" aria-hidden="true"><use href="/assets/icons-20261013.svg#i-arrow"/></svg></a>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="site-footer__inner">
+      <a class="site-footer__brand" href="/"><svg aria-hidden="true"><use href="/assets/icons-20261013.svg#i-l1"/></svg>Dikenocracy</a>
+      <ul class="site-footer__links">
+        <li><a href="/pages/about.html">About</a></li>
+        <li><a href="/pages/protocols.html">Protocols</a></li>
+        <li><a href="/pages/projects.html">Projects</a></li>
+        <li><a href="https://github.com/anahronic/World/tree/main/Dikenocracy" rel="noopener noreferrer">Canonical texts</a></li>
+        <li><a href="https://github.com/anahronic/Dikenocracy" rel="noopener noreferrer">Source code</a></li>
+      </ul>
+      <p class="site-footer__note">Dikenocracy &mdash; public framework. Built openly alongside the old world.</p>
     </div>
-    <!--
-      Enter CTA — solid gold button, no glow.
-    -->
-    <div class="enter-cta">
-      <a
-        id="enter-btn"
-        class="enter-cta__btn"
-        href="pages/about.html"
-        aria-label="Enter the Dikenocracy Framework — navigate to the About page"
-      >Connect to Reality</a>
-      <span class="enter-cta__sub">Enter the Dikenocracy framework</span>
-    </div>
-  </section>
+  </footer>
 
   <script src="/script-20260923.js"></script>
   <script type="module" src="/navigation-20260923.js"></script>
