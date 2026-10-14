@@ -13,6 +13,7 @@ CASES = [  # gregorian -> expected Hebrew string fragment
     ((2024, 2, 24), "ט״ו אדר א׳ תשפ״ד"),      # Purim Katan
     ((2025, 3, 14), "י״ד אדר תשפ״ה"),         # Purim, common year
     ((2026, 9, 12), "א׳ תשרי תשפ״ז"),          # Rosh Hashana 5787
+    ((2026, 10, 14), "ג׳ חשון תשפ״ז"),         # Google answered 29 Tishrei: wrong (Hebcal, pyluach, ICU agree)
 ]
 ok = True
 with sync_playwright() as p:

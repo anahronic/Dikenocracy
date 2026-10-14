@@ -39,7 +39,7 @@ for (let jdn = api.gregorianToJdn(y0, 1, 1); jdn <= api.gregorianToJdn(y1, 12, 3
 }
 
 // Контрольные даты из обращений пользователей
-const cases = [[2023, 10, 7, 'כ״ב תשרי תשפ״ד']];
+const cases = [[2023, 10, 7, 'כ״ב תשרי תשפ״ד'], [2026, 10, 14, 'ג׳ חשון תשפ״ז'], [2026, 9, 12, 'א׳ תשרי תשפ״ז']];
 for (const [y, m, d, want] of cases) {
   const h = api.jdnToHebrew(api.gregorianToJdn(y, m, d));
   const s = api.fmtHebrewDateString(h.year, h.month, h.day);
