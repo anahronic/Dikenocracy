@@ -30,7 +30,25 @@ main_name = re.search(r'/shadoo/assets/(index-[\w-]+\.js)', index).group(1)
 main = (assets / main_name).read_text(encoding='utf-8')
 
 if 'href:`/mazkira/`' in main:
-    sys.exit('already patched')
+    # Already patched: only swap the light stylesheet for the current shadoo-light.css (new hashed name),
+    # and update index.html, its precache revision and the precache entry so returning visitors get it.
+    old_css = re.search(r'/shadoo/assets/(site-light-[0-9a-f]{8}\.css)', index).group(1)
+    css = (HERE / 'shadoo-light.css').read_bytes()
+    css_name = f'site-light-{short(css)}.css'
+    if css_name == old_css:
+        print('stylesheet already current')
+        sys.exit(0)
+    (assets / css_name).write_bytes(css)
+    (assets / old_css).unlink()
+    index = index.replace(old_css, css_name)
+    (root / 'index.html').write_text(index, encoding='utf-8', newline='\n')
+    sw = sw.replace(f'"assets/{old_css}"', f'"assets/{css_name}"')
+    rev = hashlib.md5((root / 'index.html').read_bytes()).hexdigest()
+    sw, n = re.subn(r'(\{url:"index\.html",revision:")[0-9a-f]{32}(")', rf'\g<1>{rev}\2', sw)
+    assert n == 1 and css_name in sw, 'sw.js precache entries not found'
+    (root / 'sw.js').write_text(sw, encoding='utf-8', newline='\n')
+    print(f'stylesheet updated: {old_css} -> {css_name}')
+    sys.exit(0)
 
 # 1) menu: Mazkira after Survival Manual; Shadoo marked as the current page
 survival = '(0,O.jsx)(`li`,{children:(0,O.jsx)(`a`,{href:`/survival/`,children:`Survival Manual`})})'

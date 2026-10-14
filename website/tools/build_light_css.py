@@ -1,4 +1,4 @@
-"""Builds styles-20261013.css (light theme) from the layout rules of styles-20260923.css
+"""Builds styles-20261014.css (light theme) from the layout rules of styles-20260923.css
 plus tools/redesign_light.css.
 
     python website/tools/build_light_css.py
@@ -87,9 +87,9 @@ for dark, light in [
 assert '#0B0B0B' not in css and '#121212' not in css, 'dark colours left'
 
 out = HEADER + '\n' + css + '\n' + (SITE / 'tools' / 'redesign_light.css').read_text(encoding='utf-8')
-(SITE / 'styles-20261013.css').write_text(out, encoding='utf-8', newline='\n')
+(SITE / 'styles-20261014.css').write_text(out, encoding='utf-8', newline='\n')
 # protocol-specific rules only use variables; copy under the new name for cache busting
-(SITE / 'protocols-20261013.css').write_text(
+(SITE / 'protocols-20261014.css').write_text(
     (SITE / 'tools' / 'source' / 'protocols-20261004.css').read_text(encoding='utf-8').replace('\r\n', '\n')
-    .replace('Loaded after styles-20260923.css', 'Loaded after styles-20261013.css'), encoding='utf-8', newline='\n')
-print('styles-20261013.css', len(out), 'bytes')
+    .replace('Loaded after styles-20260923.css', 'Loaded after styles-20261014.css'), encoding='utf-8', newline='\n')
+print('styles-20261014.css', len(out), 'bytes')

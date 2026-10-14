@@ -32,8 +32,8 @@ from bs4 import BeautifulSoup
 SITE = pathlib.Path(__file__).resolve().parent
 TOOLS = SITE / 'tools'
 DOMAIN = 'https://dikenocracy.com'
-CSS_MAIN = '/styles-20261013.css'
-CSS_PROTOCOLS = '/protocols-20261013.css'
+CSS_MAIN = '/styles-20261014.css'
+CSS_PROTOCOLS = '/protocols-20261014.css'
 ICONS = '/assets/icons-20261013.svg'
 OG_IMAGE = '/assets/og-20261013.jpg'
 

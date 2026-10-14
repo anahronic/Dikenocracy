@@ -61,12 +61,29 @@ a:hover, a:focus { color: var(--link-hover); }
 .site-nav__submenu a { padding: .6rem .85rem; white-space: nowrap; font-size: .95rem; border-radius: 9px; border-bottom: 0; color: var(--text-primary); }
 .site-nav__submenu a:hover, .site-nav__submenu a:focus-visible { background: var(--primary-soft); color: var(--primary); }
 .site-nav__submenu a[aria-current='page'] { background: var(--primary-soft); }
+/* Phones: the three sections become large buttons (48px high) instead of small text links */
 @media (max-width: 680px) {
-  .site-nav__inner { padding: .55rem 1rem 0; flex-wrap: wrap; gap: .1rem; }
-  .site-nav__brand { width: 100%; font-size: 1.05rem; }
-  .site-nav__links { width: 100%; justify-content: space-between; gap: .5rem; }
-  .site-nav__links > li > a, .site-nav__parent > a { padding: .65rem 0; font-size: .92rem; }
-  .site-nav__submenu { min-width: 15rem; }
+  .site-nav__inner { position: relative; padding: .6rem 1rem .75rem; flex-wrap: wrap; gap: .55rem; min-height: 0; }
+  .site-nav__brand { width: 100%; font-size: 1.2rem; }
+  .site-nav__logo { width: 34px; height: 34px; padding: 6px; }
+  .site-nav__links { width: 100%; gap: .5rem; }
+  .site-nav__links > li { flex: 1 1 auto; display: block; }
+  .site-nav__has-menu { position: static; }
+  .site-nav__links > li > a, .site-nav__parent {
+    display: flex; align-items: center; justify-content: center; gap: .1rem;
+    min-height: 48px; padding: 0 .6rem; border: 1px solid var(--border); border-radius: 12px;
+    background: #fff; color: var(--text-primary); font-size: 1.05rem; font-weight: 600; line-height: 1.2; text-align: center;
+  }
+  .site-nav__parent > a { padding: 0; border: 0; font-size: inherit; font-weight: inherit; color: inherit; }
+  .site-nav__submenu-toggle { min-width: 28px; min-height: 46px; color: inherit; }
+  .site-nav__caret { border-left-width: 6px; border-right-width: 6px; border-top-width: 7px; }
+  .site-nav__links > li > a[aria-current='page'], .site-nav__parent:has(> a[aria-current='page']) {
+    background: var(--primary); border-color: var(--primary); color: #fff;
+  }
+  .site-nav__links > li > a[aria-current='page']:hover, .site-nav__parent > a[aria-current='page'],
+  .site-nav__parent > a[aria-current='page']:hover { color: #fff; border: 0; }
+  .site-nav__submenu { left: 1rem; right: 1rem; top: calc(100% - .25rem); min-width: 0; max-width: none; padding: .5rem; }
+  .site-nav__submenu a { padding: .9rem 1rem; font-size: 1.05rem; white-space: normal; }
 }
 @media print { .site-nav { display: none; } }
 
@@ -386,6 +403,17 @@ body, h1, h2, h3, h4, .hero__title, .page-hero__title, .block__title, .layer-blo
   .layer-block__count { grid-column: 2; justify-self: start; margin-left: 0; margin-top: .4rem; }
   .layer-block__list { grid-template-columns: 1fr; }
 }
+
+/* ─── Phones: readable type, big tap targets, nothing wider than the screen ─── */
+@media (max-width: 680px) {
+  html { font-size: 17px; }                       /* every rem-based size grows ~6% on phones */
+  .tag, .layer-chip, .protocol-layer__id { font-size: .8rem; }
+  .btn { min-height: 48px; }
+  .site-footer__links { gap: .2rem 1.3rem; }
+  .site-footer__links a { display: inline-block; padding: .55rem 0; }
+}
+/* wide data tables scroll inside their own box instead of widening the page (the phone would zoom out) */
+.ayalon-source-table { display: block; max-width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; }
 
 /* the converter page loads its own <style> after this file: raise specificity */
 html body .conv-tab.active, html body .radio-btn.active { background: var(--primary); border-color: var(--primary); color: #fff; }
