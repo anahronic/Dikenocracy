@@ -8,7 +8,7 @@ import pathlib
 import re
 
 SITE = pathlib.Path(__file__).resolve().parent.parent
-old = (SITE / 'styles-20260923.css').read_text(encoding='utf-8').replace('\r\n', '\n')
+old = (SITE / 'tools' / 'source' / 'styles-20260923.css').read_text(encoding='utf-8').replace('\r\n', '\n')
 
 HEADER = '''/*
  * Dikenocracy — Public Website, light theme (2026-10-13)
@@ -90,6 +90,6 @@ out = HEADER + '\n' + css + '\n' + (SITE / 'tools' / 'redesign_light.css').read_
 (SITE / 'styles-20261013.css').write_text(out, encoding='utf-8', newline='\n')
 # protocol-specific rules only use variables; copy under the new name for cache busting
 (SITE / 'protocols-20261013.css').write_text(
-    (SITE / 'protocols-20261004.css').read_text(encoding='utf-8').replace('\r\n', '\n')
+    (SITE / 'tools' / 'source' / 'protocols-20261004.css').read_text(encoding='utf-8').replace('\r\n', '\n')
     .replace('Loaded after styles-20260923.css', 'Loaded after styles-20261013.css'), encoding='utf-8', newline='\n')
 print('styles-20261013.css', len(out), 'bytes')
