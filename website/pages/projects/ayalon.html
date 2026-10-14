@@ -114,9 +114,9 @@
       padding: 1rem 1.2rem;
       margin-top: 1.2rem;
       font-size: 0.88rem;
-      color: var(--text, #ddd);
+      color: var(--text-primary, #1f2733);
     }
-    .ayalon-notice strong { color: #D4AF37; }
+    .ayalon-notice strong { color: var(--accent, #8a6514); }
   </style>
 </head>
 <body>
@@ -151,7 +151,7 @@
           <p class="eyebrow"><svg class="icon" aria-hidden="true"><use href="/assets/icons-20261013.svg#i-l5"/></svg> Project · Layer L5</p>
           <h1 class="page-hero__title">Ayalon Model</h1>
           <p class="page-hero__lead">Real-time physical impact measurement — Highway 20, Israel</p>
-          <div class="hero-actions"><a class="btn" href="/ayalon/" target="_blank" rel="noopener">Open Live Model</a><a class="btn btn--ghost" href="../projects.html">All projects</a></div>
+          <div class="hero-actions"><a class="btn btn--ghost" href="../projects.html">All projects</a></div>
         </div>
         <figure class="page-hero__figure page-hero__figure--card">
           <img src="/assets/covers/ayalon-20261013.svg" width="480" height="270" alt="Illustration: a highway in perspective with cars, a gauge of vehicle-hours and a CO₂ cloud." />
@@ -163,9 +163,9 @@
         <h2 class="section__heading" id="ayalon-overview-heading">Overview</h2>
 
         <div style="display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; margin-bottom: 1rem;">
-          <span class="ayalon-status ayalon-status--live" id="ayalon-status-badge">
+          <span class="ayalon-status ayalon-status--sample" id="ayalon-status-badge">
             <span class="ayalon-status__dot"></span>
-            <span id="ayalon-status-text">Live</span>
+            <span id="ayalon-status-text">Paused</span>
           </span>
           <span style="color: var(--muted); font-size: 0.85rem;">Layer L5 — Transport / Physical Truth</span>
         </div>
@@ -182,8 +182,9 @@
           provenance metadata. Every data point traces back to its source.
         </p>
 
-        <div style="margin-top: 1.2rem;">
-          <a class="btn" href="/ayalon/" target="_blank" rel="noopener">Open Live Model</a>
+        <div class="ayalon-notice">
+          <strong>Temporarily paused.</strong> The live monitor is offline while the project is on hold.
+          The description of the model below stays available; the live version will return here.
         </div>
       </section>
 
@@ -329,23 +330,6 @@
   </footer>
 
   <script src="/script-20260923.js"></script>
-  <script>
-    // Check Ayalon app health and update status badge
-    (function () {
-      var badge = document.getElementById('ayalon-status-badge');
-      var text = document.getElementById('ayalon-status-text');
-      if (!badge || !text) return;
-      fetch('/ayalon/_stcore/health', { method: 'GET', mode: 'no-cors' })
-        .then(function () {
-          badge.className = 'ayalon-status ayalon-status--live';
-          text.textContent = 'Live';
-        })
-        .catch(function () {
-          badge.className = 'ayalon-status ayalon-status--sample';
-          text.textContent = 'Offline';
-        });
-    })();
-  </script>
   <script type="module" src="/navigation-20260923.js"></script>
 </body>
 </html>
