@@ -14,7 +14,7 @@ sys.path.insert(0, str(SITE))
 from build_release import CSS_MAIN, FOOTER_HTML, OG_IMAGE, nav_html  # noqa: E402
 
 NAV_RE = re.compile(r'<nav class="site-nav".*?</nav>', re.S)
-FOOTER_RE = re.compile(r'<footer class="site-footer">.*?</footer>', re.S)
+FOOTER_RE = re.compile(r'<footer class="site-footer"[^>]*>.*?</footer>', re.S)
 CSS_RE = re.compile(r'<link rel="stylesheet" href="/(?:styles|protocols)-\d{8}\.css" />\n?')
 SITE_JS = '<script src="/site-20261015.js" defer></script>'
 

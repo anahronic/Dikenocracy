@@ -14,7 +14,7 @@
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://dikenocracy.com/pages/converter.html" />
   <meta name="twitter:card" content="summary_large_image" />
-  <link rel="stylesheet" href="/styles-20261014.css" />
+  <link rel="stylesheet" href="/styles-20261015.css" />
 </head>
 <body>
 
@@ -23,169 +23,174 @@
   <!-- ─── Navigation ──────────────────────────────────────────────────────── -->
   <nav class="site-nav" aria-label="Main navigation" dir="ltr">
   <div class="site-nav__inner">
-    <a class="site-nav__brand" href="/"><svg class="site-nav__logo" aria-hidden="true"><use href="/assets/icons-20261013.svg#i-l1"/></svg>Dikenocracy</a>
+    <a class="site-nav__brand" href="/"><svg class="site-nav__logo" aria-hidden="true"><use href="/assets/icons-20261015.svg#i-mark"/></svg>Dikenocracy</a>
     <ul class="site-nav__links" role="list">
       <li><a href="/pages/about.html">About</a></li>
       <li><a href="/pages/protocols.html">Protocols</a></li>
       <li class="site-nav__has-menu">
-        <span class="site-nav__parent"><a href="/pages/projects.html">Projects</a><button type="button" class="site-nav__submenu-toggle" aria-label="Show projects submenu" aria-controls="nav-projects-submenu" aria-expanded="false"><span class="site-nav__caret" aria-hidden="true"></span></button></span>
+        <span class="site-nav__parent"><a href="/pages/projects.html" aria-current="page">Projects</a><button type="button" class="site-nav__submenu-toggle" aria-label="Show projects submenu" aria-controls="nav-projects-submenu" aria-expanded="false"><span class="site-nav__caret" aria-hidden="true"></span></button></span>
         <ul class="site-nav__submenu" id="nav-projects-submenu" role="list" hidden>
+          <li><a href="/mazkira/">Mazkira — Business Assistant</a></li>
           <li><a href="/converter/index.html">Converter</a></li>
           <li><a href="/shadoo/">Shadoo</a></li>
-          <li><a href="/ayalon/">Ayalon Monitor</a></li>
           <li><a href="/survival/">Survival Manual</a></li>
-          <li><a href="/mazkira/">Mazkira — Business Assistant</a></li>
+          <li><a href="/ayalon/">Ayalon Monitor</a></li>
         </ul>
       </li>
     </ul>
+    <a class="site-nav__action" href="/pages/protocols/code-of-planetary-synergy.html">Read the Code</a>
   </div>
 </nav>
 
   <!-- ─── Main Content ─────────────────────────────────────────────────────── -->
   <main id="main">
-    <div class="page-wrapper">
 
-      <!-- Hero -->
-      <header class="page-hero">
-        <div>
-          <p class="eyebrow"><svg class="icon" aria-hidden="true"><use href="/assets/icons-20261013.svg#i-clock"/></svg> Tool · DKP-0-TIME-001</p>
-          <h1 class="page-hero__title">DTI Time Converter</h1>
-          <p class="page-hero__lead">Deterministic date conversion for the Dikenocracy framework</p>
-          <div class="hero-actions"><a class="btn" href="../converter/">Open Converter</a><a class="btn btn--ghost" href="protocols/dkp-0-time-001.html">Read DKP-0-TIME-001</a></div>
-        </div>
-        <figure class="page-hero__figure page-hero__figure--card">
-          <img src="/assets/covers/converter-20261013.svg" width="480" height="270" alt="Illustration: a clock and the same day shown in the Gregorian, Hebrew and DTI calendars." />
+    <header class="page-head wrap grid">
+      <h1 class="page-head__title">DTI Time Converter</h1>
+      <p class="page-head__note">Tool · DKP-0-TIME-001</p>
+      <p class="page-head__lead">Deterministic date conversion for the Dikenocracy framework</p>
+      <div class="page-head__actions actions">
+        <a class="btn" href="../converter/">Open Converter <svg class="icon icon--arrow" aria-hidden="true"><use href="/assets/icons-20261015.svg#i-arrow"/></svg></a>
+        <a class="btn btn--ghost" href="protocols/dkp-0-time-001.html">Read DKP-0-TIME-001</a>
+      </div>
+    </header>
+
+    <!-- Explanation -->
+    <section class="wrap grid" aria-labelledby="converter-what-heading">
+      <div class="side">
+        <figure class="pic">
+          <img src="/assets/covers/converter-20261015.svg" width="480" height="270" alt="Illustration: a clock and the same day shown in the Gregorian, Hebrew and DTI calendars." />
         </figure>
-      </header>
-
-      <!-- Explanation -->
-      <section class="section" aria-labelledby="converter-what-heading">
-        <h2 class="section__heading" id="converter-what-heading">What it does</h2>
-        <p class="section__text">
-          The DTI Time Converter translates between Gregorian dates, Hebrew dates,
-          and the Dikenocratic Time Interface (DTI). The DTI model is based on
-          deterministic mapping through JDN and a 360-day derived year
-          representation.
-        </p>
-        <p class="section__text">
-          The canonical rules are: <code>DTI-Day&nbsp;=&nbsp;JDN</code>,
-          <code>DY&nbsp;=&nbsp;floor(JDN&nbsp;/&nbsp;360)</code>,
-          <code>DOY&nbsp;=&nbsp;(JDN&nbsp;mod&nbsp;360)&nbsp;+&nbsp;1</code>.
-          Every conversion is fully reversible and machine-auditable.
-        </p>
-      </section>
-
-      <!-- Launch area -->
-      <section class="section" aria-labelledby="converter-launch-heading">
-        <h2 class="section__heading" id="converter-launch-heading">Open the converter</h2>
-
-        <noscript>
-          <p class="section__text">
-            The converter requires JavaScript to operate.
+      </div>
+      <div class="axis">
+        <h2 class="section__title" id="converter-what-heading">What it does</h2>
+        <div class="prose">
+          <p>
+            The DTI Time Converter translates between Gregorian dates, Hebrew dates,
+            and the Dikenocratic Time Interface (DTI). The DTI model is based on
+            deterministic mapping through JDN and a 360-day derived year
+            representation.
           </p>
-        </noscript>
+          <p>
+            The canonical rules are: <code>DTI-Day&nbsp;=&nbsp;JDN</code>,
+            <code>DY&nbsp;=&nbsp;floor(JDN&nbsp;/&nbsp;360)</code>,
+            <code>DOY&nbsp;=&nbsp;(JDN&nbsp;mod&nbsp;360)&nbsp;+&nbsp;1</code>.
+            Every conversion is fully reversible and machine-auditable.
+          </p>
+        </div>
+      </div>
+    </section>
 
-        <div class="converter-launch">
-          <div class="converter-launch__text">
+    <!-- Launch area -->
+    <section class="section field-surface" aria-labelledby="converter-launch-heading">
+      <div class="wrap grid">
+        <div class="side">
+          <h2 class="section__title" id="converter-launch-heading">Open the converter</h2>
+        </div>
+        <div class="axis">
+          <noscript>
+            <p class="section__lead">
+              The converter requires JavaScript to operate.
+            </p>
+          </noscript>
+          <p class="section__lead">
             The standalone client-side converter runs directly in your browser —
             no server required. It supports three conversion modes
             (Gregorian, DTI, and Hebrew), 10 interface languages,
             and both numeric and Hebrew-letter date input.
             All conversion logic follows DKP-0-TIME-001 and
             uses integer-only arithmetic.
+          </p>
+          <p class="actions">
+            <a class="btn" href="../converter/index.html" aria-label="Open the DTI Time Converter">Open Converter <svg class="icon icon--arrow" aria-hidden="true"><use href="/assets/icons-20261015.svg#i-arrow"/></svg></a>
+          </p>
+          <div class="prose">
+            <p>
+              The converter is a zero-dependency client-side application.
+              Hebrew calendar calculations use a full Gauss/Reingold–Dershowitz
+              algorithm implemented entirely in JavaScript — no Python backend required.
+            </p>
           </div>
-          <a
-            class="btn"
-            href="../converter/index.html"
-            aria-label="Open the DTI Time Converter"
-          >
-            Open Converter
-          </a>
         </div>
+      </div>
+    </section>
 
-        <div class="info-note">
-          The converter is a zero-dependency client-side application.
-          Hebrew calendar calculations use a full Gauss/Reingold–Dershowitz
-          algorithm implemented entirely in JavaScript — no Python backend required.
-        </div>
-      </section>
-
-      <!-- Technical details -->
-      <section class="section" aria-labelledby="converter-details-heading">
-        <h2 class="section__heading" id="converter-details-heading">Technical details</h2>
-        <p class="section__text">
+    <!-- Technical details -->
+    <section class="section wrap grid" aria-labelledby="converter-details-heading">
+      <div class="side">
+        <h2 class="section__title" id="converter-details-heading">Technical details</h2>
+      </div>
+      <div class="axis">
+        <p class="section__lead">
           The converter is a standalone client-side application built with
           vanilla HTML, CSS, and JavaScript. It loads the site design system
           (<code>styles.css</code>) and two dedicated modules:
           <code>converter.js</code> (conversion logic) and
           <code>converter-i18n.js</code> (translations).
         </p>
+        <ul class="index-list" role="list" data-reveal>
+          <li><span class="is-plain"><b>Three conversion paths</b><span>Gregorian → DTI / Hebrew<br />DTI → Gregorian / Hebrew<br />Hebrew → Gregorian / DTI</span><em>Modes</em></span></li>
+          <li><span class="is-plain"><b>DKP-0-TIME-001</b><span>Implements all normative test vectors. The 2000-01-01 vector follows canonical formula output (DY6809-306). See PROTOCOL_NOTES.md for the rationale.</span><em>Protocol</em></span></li>
+          <li><a href="https://github.com/anahronic/Dikenocracy/tree/main/Converter%20DTI" target="_blank" rel="noopener noreferrer"><b>GitHub</b><span>anahronic/Dikenocracy &rarr; Converter DTI</span><svg class="icon" aria-hidden="true"><use href="/assets/icons-20261015.svg#i-arrow"/></svg></a></li>
+        </ul>
+      </div>
+    </section>
 
-        <div class="cards">
-          <div class="card">
-            <span class="card__label">Modes</span>
-            <h3 class="card__title">Three conversion paths</h3>
-            <p class="card__text">
-              Gregorian → DTI / Hebrew<br />
-              DTI → Gregorian / Hebrew<br />
-              Hebrew → Gregorian / DTI
-            </p>
-          </div>
-          <div class="card">
-            <span class="card__label">Protocol</span>
-            <h3 class="card__title">DKP-0-TIME-001</h3>
-            <p class="card__text">
-              Implements all normative test vectors. The 2000-01-01 vector
-              follows canonical formula output (DY6809-306).
-              See PROTOCOL_NOTES.md for the rationale.
-            </p>
-          </div>
-          <div class="card">
-            <span class="card__label">Source</span>
-            <h3 class="card__title">GitHub</h3>
-            <p class="card__text">
-              <a
-                href="https://github.com/anahronic/Dikenocracy/tree/main/Converter%20DTI"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                anahronic/Dikenocracy &rarr; Converter DTI
-              </a>
-            </p>
-          </div>
+    <!-- Ecosystem note -->
+    <section class="section wrap grid" aria-labelledby="converter-ecosystem-heading">
+      <div class="axis">
+        <h2 class="section__title" id="converter-ecosystem-heading">Ecosystem context</h2>
+        <div class="prose">
+          <p>
+            This tool is part of the broader Dikenocracy protocol ecosystem. It
+            serves as the reference implementation for the time layer
+            (DKP-0-TIME-001) and provides a foundation for time-indexed
+            governance records, accountability cycles, and audit trails.
+          </p>
         </div>
-      </section>
+      </div>
+    </section>
 
-      <!-- Ecosystem note -->
-      <section class="section" aria-labelledby="converter-ecosystem-heading">
-        <h2 class="section__heading" id="converter-ecosystem-heading">Ecosystem context</h2>
-        <p class="section__text">
-          This tool is part of the broader Dikenocracy protocol ecosystem. It
-          serves as the reference implementation for the time layer
-          (DKP-0-TIME-001) and provides a foundation for time-indexed
-          governance records, accountability cycles, and audit trails.
-        </p>
-      </section>
-
-    </div><!-- /.page-wrapper -->
   </main>
 
   <!-- ─── Footer ─────────────────────────────────────────────────────────────── -->
-  <footer class="site-footer">
+  <footer class="site-footer" dir="ltr">
     <div class="site-footer__inner">
-      <a class="site-footer__brand" href="/"><svg aria-hidden="true"><use href="/assets/icons-20261013.svg#i-l1"/></svg>Dikenocracy</a>
-      <ul class="site-footer__links">
-        <li><a href="/pages/about.html">About</a></li>
-        <li><a href="/pages/protocols.html">Protocols</a></li>
-        <li><a href="/pages/projects.html">Projects</a></li>
-        <li><a href="https://github.com/anahronic/World/tree/main/Dikenocracy" rel="noopener noreferrer">Canonical texts</a></li>
-        <li><a href="https://github.com/anahronic/Dikenocracy" rel="noopener noreferrer">Source code</a></li>
-      </ul>
-      <p class="site-footer__note">Dikenocracy &mdash; public framework. Built openly alongside the old world.</p>
+      <div class="site-footer__cols">
+        <div>
+          <h2 class="site-footer__title">Framework</h2>
+          <ul class="site-footer__links">
+            <li><a href="/pages/about.html">About</a></li>
+            <li><a href="/pages/protocols.html">Protocols</a></li>
+            <li><a href="/pages/protocols/code-of-planetary-synergy.html">Code of Planetary Synergy</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2 class="site-footer__title">Projects</h2>
+          <ul class="site-footer__links">
+            <li><a href="/mazkira/">Mazkira</a></li>
+            <li><a href="/converter/index.html">DTI Time Converter</a></li>
+            <li><a href="/shadoo/">Shadoo</a></li>
+            <li><a href="/survival/">Survival Manual</a></li>
+            <li><a href="/ayalon/">Ayalon Monitor</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2 class="site-footer__title">Sources</h2>
+          <ul class="site-footer__links">
+            <li><a href="https://github.com/anahronic/World/tree/main/Dikenocracy" rel="noopener noreferrer">Canonical texts</a></li>
+            <li><a href="https://github.com/anahronic/Dikenocracy" rel="noopener noreferrer">Source code</a></li>
+            <li><a href="/pages/protocols.html#download-heading">Complete text</a></li>
+          </ul>
+        </div>
+        <p class="site-footer__note">Dikenocracy &mdash; public framework. Built openly alongside the old world.</p>
+      </div>
+      <a class="site-footer__wordmark" href="/" aria-label="Dikenocracy, home page">Dikenocracy</a>
     </div>
   </footer>
 
   <script src="/script-20260923.js"></script>
   <script type="module" src="/navigation-20260923.js"></script>
+  <script src="/site-20261015.js" defer></script>
 </body>
 </html>

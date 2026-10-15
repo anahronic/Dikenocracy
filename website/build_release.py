@@ -45,7 +45,7 @@ BRAND_HTML = (f'<a class="site-nav__brand" href="/"><svg class="site-nav__logo" 
 PROJECT_LINKS = [('/mazkira/', 'Mazkira — Business Assistant', 'Mazkira'), ('/converter/index.html', 'Converter', 'DTI Time Converter'),
                  ('/shadoo/', 'Shadoo', 'Shadoo'), ('/survival/', 'Survival Manual', 'Survival Manual'),
                  ('/ayalon/', 'Ayalon Monitor', 'Ayalon Monitor')]
-FOOTER_HTML = f'''<footer class="site-footer">
+FOOTER_HTML = f'''<footer class="site-footer" dir="ltr">
     <div class="site-footer__inner">
       <div class="site-footer__cols">
         <div>
