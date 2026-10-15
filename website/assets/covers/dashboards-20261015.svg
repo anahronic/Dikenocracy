@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 270" role="img" aria-label="Public dashboards (planned)">
+  <rect width="480" height="270" fill="#d5d9e0"/>
+
+  <rect x="70" y="50" width="340" height="180" rx="14" fill="#f7f8fa" stroke="#b9bfca" stroke-width="2"/>
+  <path d="M96 190 L150 150 L200 166 L256 112 L310 128 L382 80" fill="none" stroke="#0b0c0e" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M96 190 L150 150 L200 166 L256 112 L310 128 L382 80 V206 H96Z" fill="#e2e5ea" opacity=".7"/>
+  <circle cx="256" cy="112" r="6" fill="#1f2de6"/><circle cx="382" cy="80" r="6" fill="#1f2de6"/>
+</svg>

@@ -32,28 +32,50 @@ from bs4 import BeautifulSoup
 SITE = pathlib.Path(__file__).resolve().parent
 TOOLS = SITE / 'tools'
 DOMAIN = 'https://dikenocracy.com'
-CSS_MAIN = '/styles-20261014.css'
-CSS_PROTOCOLS = '/protocols-20261014.css'
-ICONS = '/assets/icons-20261013.svg'
+CSS_MAIN = '/styles-20261015.css'   # built by tools/build_site_css.py; design decisions in DIRECTION.md
+ICONS = '/assets/icons-20261015.svg'
 OG_IMAGE = '/assets/og-20261013.jpg'
+SCRIPTS_HTML = '''  <script src="/script-20260923.js"></script>
+  <script type="module" src="/navigation-20260923.js"></script>
+  <script src="/site-20261015.js" defer></script>'''
 
 # Shared page chrome (also applied to the hand-written pages by tools/apply_chrome.py)
 BRAND_HTML = (f'<a class="site-nav__brand" href="/"><svg class="site-nav__logo" aria-hidden="true">'
-              f'<use href="{ICONS}#i-l1"/></svg>Dikenocracy</a>')
+              f'<use href="{ICONS}#i-mark"/></svg>Dikenocracy</a>')
+PROJECT_LINKS = [('/mazkira/', 'Mazkira — Business Assistant', 'Mazkira'), ('/converter/index.html', 'Converter', 'DTI Time Converter'),
+                 ('/shadoo/', 'Shadoo', 'Shadoo'), ('/survival/', 'Survival Manual', 'Survival Manual'),
+                 ('/ayalon/', 'Ayalon Monitor', 'Ayalon Monitor')]
 FOOTER_HTML = f'''<footer class="site-footer">
     <div class="site-footer__inner">
-      <a class="site-footer__brand" href="/"><svg aria-hidden="true"><use href="{ICONS}#i-l1"/></svg>Dikenocracy</a>
-      <ul class="site-footer__links">
-        <li><a href="/pages/about.html">About</a></li>
-        <li><a href="/pages/protocols.html">Protocols</a></li>
-        <li><a href="/pages/projects.html">Projects</a></li>
-        <li><a href="https://github.com/anahronic/World/tree/main/Dikenocracy" rel="noopener noreferrer">Canonical texts</a></li>
-        <li><a href="https://github.com/anahronic/Dikenocracy" rel="noopener noreferrer">Source code</a></li>
-      </ul>
-      <p class="site-footer__note">Dikenocracy &mdash; public framework. Built openly alongside the old world.</p>
+      <div class="site-footer__cols">
+        <div>
+          <h2 class="site-footer__title">Framework</h2>
+          <ul class="site-footer__links">
+            <li><a href="/pages/about.html">About</a></li>
+            <li><a href="/pages/protocols.html">Protocols</a></li>
+            <li><a href="/pages/protocols/code-of-planetary-synergy.html">Code of Planetary Synergy</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2 class="site-footer__title">Projects</h2>
+          <ul class="site-footer__links">
+{chr(10).join(f'            <li><a href="{href}">{short}</a></li>' for href, _, short in PROJECT_LINKS)}
+          </ul>
+        </div>
+        <div>
+          <h2 class="site-footer__title">Sources</h2>
+          <ul class="site-footer__links">
+            <li><a href="https://github.com/anahronic/World/tree/main/Dikenocracy" rel="noopener noreferrer">Canonical texts</a></li>
+            <li><a href="https://github.com/anahronic/Dikenocracy" rel="noopener noreferrer">Source code</a></li>
+            <li><a href="/pages/protocols.html#download-heading">Complete text</a></li>
+          </ul>
+        </div>
+        <p class="site-footer__note">Dikenocracy &mdash; public framework. Built openly alongside the old world.</p>
+      </div>
+      <a class="site-footer__wordmark" href="/" aria-label="Dikenocracy, home page">Dikenocracy</a>
     </div>
   </footer>'''
-# Icon per layer (assets/icons-20261013.svg)
+# Icon per layer (assets/icons-20261015.svg)
 LAYER_ICON = {'foundation': 'i-foundation', 'L0': 'i-l0', 'L1': 'i-l1', 'L2': 'i-l2', 'L3': 'i-l3', 'L4': 'i-l4',
               'L5': 'i-l5', 'L6': 'i-l6', 'L7': 'i-l7', 'L8': 'i-l8', 'appendix': 'i-appendix'}
 
@@ -237,74 +259,91 @@ def body_html(md, slug):
     return str(soup).strip(), toc
 
 
-def nav_html(active=None):
+def nav_html(active='protocols'):
+    """Main navigation. active: 'about' | 'protocols' | 'projects' | None (marks the current section)."""
+    cur = {k: (' aria-current="page"' if k == active else '') for k in ('about', 'protocols', 'projects')}
+    sub = '\n'.join(f'          <li><a href="{href}">{html.escape(label)}</a></li>' for href, label, _ in PROJECT_LINKS)
     return f'''<nav class="site-nav" aria-label="Main navigation" dir="ltr">
   <div class="site-nav__inner">
     {BRAND_HTML}
     <ul class="site-nav__links" role="list">
-      <li><a href="/pages/about.html">About</a></li>
-      <li><a href="/pages/protocols.html" aria-current="page">Protocols</a></li>
+      <li><a href="/pages/about.html"{cur['about']}>About</a></li>
+      <li><a href="/pages/protocols.html"{cur['protocols']}>Protocols</a></li>
       <li class="site-nav__has-menu">
-        <span class="site-nav__parent"><a href="/pages/projects.html">Projects</a><button type="button" class="site-nav__submenu-toggle" aria-label="Show projects submenu" aria-controls="nav-projects-submenu" aria-expanded="false"><span class="site-nav__caret" aria-hidden="true"></span></button></span>
+        <span class="site-nav__parent"><a href="/pages/projects.html"{cur['projects']}>Projects</a><button type="button" class="site-nav__submenu-toggle" aria-label="Show projects submenu" aria-controls="nav-projects-submenu" aria-expanded="false"><span class="site-nav__caret" aria-hidden="true"></span></button></span>
         <ul class="site-nav__submenu" id="nav-projects-submenu" role="list" hidden>
-          <li><a href="/converter/index.html">Converter</a></li>
-          <li><a href="/shadoo/">Shadoo</a></li>
-          <li><a href="/ayalon/">Ayalon Monitor</a></li>
-          <li><a href="/survival/">Survival Manual</a></li>
-          <li><a href="/mazkira/">Mazkira — Business Assistant</a></li>
+{sub}
         </ul>
       </li>
     </ul>
+    <a class="site-nav__action" href="/pages/protocols/code-of-planetary-synergy.html">Read the Code</a>
   </div>
 </nav>'''
 
 
-def map_html(active_slug, prefix, indent='        '):
-    out = [f'{indent}<aside class="protocol-map" aria-label="Protocol map">',
-           f'{indent}  <div class="protocol-map__heading">Protocol Map</div>']
-    for key, label, _ in LAYERS:
-        items = [r for r in REGISTRY if r[1] == key]
-        act = any(r[0] == active_slug for r in items)
-        cls = 'protocol-map__layer-label' + (' protocol-map__layer-label--active' if act else '')
-        out += [f'{indent}  <div class="protocol-map__layer">',
-                f'{indent}    <span class="{cls}">{html.escape(label)}</span>',
-                f'{indent}    <ul class="protocol-map__links">']
-        for slug, _, short, _ in items:
-            a = ' class="pmap-active"' if slug == active_slug else ''
-            out.append(f'{indent}        <li><a href="{prefix}{slug}.html"{a}>{html.escape(short)}</a></li>')
-        out += [f'{indent}    </ul>', f'{indent}  </div>']
-    out.append(f'{indent}</aside>')
-    return '\n'.join(out)
+def reg(slug):
+    return next(r for r in REGISTRY if r[0] == slug)
 
 
-def side_nav(prev, nxt, docs):
-    parts = ['  <div class="protocol-side-nav-layer" aria-hidden="true">']
-    if prev:
-        t = html.escape(docs[prev]['id'])
-        parts.append(f'''    <div class="protocol-side-nav protocol-side-nav--prev">
-      <a class="protocol-side-nav__btn" href="{prev}.html" aria-label="Previous protocol: {t}">
-        <span class="nav-arrow">&lsaquo;</span>
-        <span class="nav-label">{t}</span>
-      </a>
-    </div>''')
-    if nxt:
-        t = html.escape(docs[nxt]['id'])
-        parts.append(f'''    <div class="protocol-side-nav protocol-side-nav--next">
-      <a class="protocol-side-nav__btn" href="{nxt}.html" aria-label="Next protocol: {t}">
-        <span class="nav-label">{t}</span>
-        <span class="nav-arrow">&rsaquo;</span>
-      </a>
-    </div>''')
-    parts.append('  </div>')
-    return '\n'.join(parts)
+def doc_label(slug, docs):
+    """Identifier as it is shown in lists: the protocol ID, or the Code / appendix name."""
+    if slug.startswith('code'):
+        return 'Code of Planetary Synergy'
+    if docs[slug]['kind'] == 'appendix':
+        return 'Appendix A'
+    return docs[slug]['id']
+
+
+def rail_html(slug, docs, toc_items):
+    """Left rail of a protocol page: this layer's documents, the layer switcher, the contents."""
+    layer = reg(slug)[1]
+    layer_full = next(full for key, _, full in LAYERS if key == layer)
+    items = []
+    for s, lay, short, sub in REGISTRY:
+        if lay != layer:
+            continue
+        cur = ' aria-current="page"' if s == slug else ''
+        items.append(f'            <li><a href="{s}.html"{cur}>{html.escape(doc_label(s, docs))}<span>{html.escape(sub)}</span></a></li>')
+    switch = []
+    for key, label, full in LAYERS:
+        short = full.split(' — ')[0] if ' — ' in full else full
+        short = {'Foundation': 'Code', 'Appendix': 'App.'}.get(short, short)
+        cur = ' aria-current="true"' if key == layer else ''
+        switch.append(f'<li><a href="../protocols.html#{layer_anchor(key)}" title="{html.escape(full)}"{cur}>{html.escape(short)}</a></li>')
+    return f'''      <aside class="doc-rail" aria-label="Protocol navigation">
+        <nav class="doc-rail__block" aria-label="Documents in {html.escape(layer_full)}">
+          <p class="doc-rail__title"><a href="../protocols.html#{layer_anchor(layer)}">{html.escape(layer_full)}</a></p>
+          <ul class="doc-layer" role="list">
+{chr(10).join(items)}
+          </ul>
+          <p class="doc-rail__title doc-rail__title--gap">All layers</p>
+          <ul class="doc-rail__layers" role="list">{''.join(switch)}</ul>
+          <a class="doc-rail__all" href="../protocols.html">All protocols</a>
+        </nav>
+        <div class="protocol-toc">
+          <button class="protocol-toc__toggle" aria-expanded="false" aria-controls="toc-list">
+            <span>On this page</span>
+            {icon('i-chevron')}
+          </button>
+          <nav id="toc-list" aria-label="On this page">
+            <p class="protocol-toc__heading">On this page</p>
+            <ul class="protocol-toc__list" role="list">
+{toc_items}
+            </ul>
+          </nav>
+        </div>
+      </aside>'''
 
 
 def bottom_nav(prev, nxt, docs):
-    a = (f'<a class="btn" href="{prev}.html" aria-label="Previous protocol: {html.escape(docs[prev]["id"])}">&larr; Previous Protocol</a>'
-         if prev else '<span class="protocol-nav-bottom__spacer"></span>')
-    b = (f'<a class="btn" href="{nxt}.html" aria-label="Next protocol: {html.escape(docs[nxt]["id"])}">Next Protocol &rarr;</a>'
-         if nxt else '<span class="protocol-nav-bottom__spacer"></span>')
-    return f'''        <nav class="protocol-nav-bottom" aria-label="Protocol navigation">
+    def card(s, rel, cls, label):
+        return (f'<a class="{cls}" href="{s}.html" rel="{rel}">'
+                f'<span class="k">{label}</span>'
+                f'<span class="id">{html.escape(doc_label(s, docs))}</span>'
+                f'<span class="t">{html.escape(reg(s)[3])}</span></a>')
+    a = card(prev, 'prev', 'is-prev', icon('i-arrow', 'icon icon--back') + 'Previous') if prev else ''
+    b = card(nxt, 'next', 'is-next', 'Next' + icon('i-arrow')) if nxt else ''
+    return f'''        <nav class="protocol-nav-bottom" aria-label="Previous and next document">
           {a}
           {b}
         </nav>'''
@@ -322,13 +361,11 @@ def page_html(slug, doc, prev, nxt, docs):
     t = html.escape(title)
     body, toc = body_html(doc["body"], slug)
     toc_items = '\n'.join(
-        f'          <li{"" if lvl == "h2" else " class=\"toc__sub\""}><a href="#{hid}">{html.escape(text)}</a></li>'
+        f'              <li{"" if lvl == "h2" else " class=\"toc__sub\""}><a href="#{hid}">{html.escape(text)}</a></li>'
         for lvl, hid, text in toc)
     desc = 'Dikenocracy Protocol' if doc['kind'] == 'protocol' else 'Dikenocracy'
-    layer = next(r[1] for r in REGISTRY if r[0] == slug)
+    _, layer, _, sub = reg(slug)
     layer_full = next(full for key, _, full in LAYERS if key == layer)
-    kicker = (f'<div class="protocol-kicker"><span class="icon-badge icon-badge--sm">{icon(LAYER_ICON[layer])}</span>'
-              f'<a href="../protocols.html#{layer_anchor(layer)}">{html.escape(layer_full)}</a></div>')
     return f'''<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -346,39 +383,25 @@ def page_html(slug, doc, prev, nxt, docs):
   <meta property="og:url" content="{DOMAIN}/pages/protocols/{slug}.html" />
   <meta name="twitter:card" content="summary_large_image" />
   <link rel="stylesheet" href="{CSS_MAIN}" />
-  <link rel="stylesheet" href="{CSS_PROTOCOLS}" />
+  <link rel="preload" href="/assets/fonts/source-serif-4-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin />
 </head>
 <body>
 
   <a href="#main" class="skip-link">Skip to content</a>
+  <div class="read-progress" aria-hidden="true"></div>
 
-  {nav_html()}
-
-{side_nav(prev, nxt, docs)}
+  {nav_html('protocols')}
 
   <main id="main">
     <div class="protocol-shell">
-{map_html(slug, '')}
-      <aside class="protocol-toc" aria-label="Table of contents">
-        <button class="protocol-toc__toggle" aria-expanded="false" aria-controls="toc-list">
-          <span>On This Page</span>
-          <svg width="12" height="8" viewBox="0 0 12 8" fill="none"><path d="M1 1l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-        </button>
-        <nav id="toc-list">
-          <div class="protocol-toc__heading">On This Page</div>
-          <ul class="protocol-toc__list">
-{toc_items}
-          </ul>
-        </nav>
-      </aside>
+{rail_html(slug, docs, toc_items)}
       <div class="protocol-content">
-        <div class="protocol-toolbar">
-          <a href="../protocols.html">&larr; All Protocols</a>
-        </div>
-
         <article class="protocol-article">
-          {kicker}
+          <nav class="doc-crumbs" aria-label="Breadcrumb">
+            <a href="../protocols.html">Protocols</a>{icon('i-chevron')}<a href="../protocols.html#{layer_anchor(layer)}">{html.escape(layer_full)}</a>
+          </nav>
           <h1>{t}</h1>
+          <p class="doc-head__title">{html.escape(sub)}</p>
           <div class="protocol-meta">
             {meta_html(doc)}
           </div>
@@ -392,48 +415,49 @@ def page_html(slug, doc, prev, nxt, docs):
 
   {FOOTER_HTML}
 
-  <script src="/script-20260923.js"></script>
-  <script type="module" src="/navigation-20260923.js"></script>
+{SCRIPTS_HTML}
 </body>
 </html>
 '''
 
 
 def index_html(docs, n, release, txt_name):
-    sections, chips = [], []
+    sections, buttons = [], ['<button type="button" data-layer-filter="all" aria-pressed="true">All</button>']
+    total = 0
     for key, label, full in LAYERS:
         items = [r for r in REGISTRY if r[1] == key]
         hid = layer_anchor(key)
-        cards = []
+        rows = []
         for slug, _, short, sub in items:
-            ident = 'Code of Planetary Synergy' if slug.startswith('code') else docs[slug]['id']
-            if docs[slug]['kind'] == 'appendix':
-                ident = 'Appendix A'
-            cards.append(f'''          <a class="protocol-layer" href="protocols/{slug}.html">
-            <div class="protocol-layer__id">{html.escape(ident)}</div>
-            <div class="protocol-layer__name">{html.escape(sub)}</div>
-          </a>''')
+            ident = doc_label(slug, docs)
+            d = docs[slug]['last_updated']
+            search = ' '.join((ident, short, sub, slug.replace('-', ' '))).lower()
+            rows.append(f'''          <li class="proto-row" data-search="{html.escape(search)}"><a href="protocols/{slug}.html">'''
+                        f'''<span class="proto-row__id">{html.escape(ident)}</span>'''
+                        f'''<span class="proto-row__title">{html.escape(sub)}</span>'''
+                        f'''<time class="proto-row__date" datetime="{d}">{d}</time>{icon('i-arrow')}</a></li>''')
+        total += len(items)
         count = sum(1 for r in items if docs[r[0]]['kind'] == 'protocol')
-        count_html = (f'<span class="tag tag--indigo layer-block__count">{count} protocol{"s" if count != 1 else ""}</span>'
-                      if count else '')
+        extra = len(items) - count
+        if count:
+            count_html = f'{count} protocol{"s" if count != 1 else ""}' + (f' and {extra} addendum' if extra else '')
+        else:
+            count_html = 'Not counted as a protocol'
         text = f'''
-            <p class="layer-block__text">{LAYER_TEXT[key]}</p>''' if key in LAYER_TEXT else ''
+            <p class="layer-group__text">{LAYER_TEXT[key]}</p>''' if key in LAYER_TEXT else ''
         short_label = full.split(' — ')[0] if ' — ' in full else full
-        chips.append(f'<a href="#{hid}">{icon(LAYER_ICON[key])}{html.escape(short_label)}</a>')
-        sections.append(f'''      <section class="layer-block" id="{hid}" aria-labelledby="{hid}-title">
-        <header class="layer-block__head">
-          <span class="icon-badge">{icon(LAYER_ICON[key])}</span>
-          <div>
-            <h2 class="layer-block__title" id="{hid}-title">{html.escape(full)}</h2>{text}
-          </div>
-          {count_html}
+        buttons.append(f'<button type="button" data-layer-filter="{key}" aria-pressed="false">{html.escape(short_label)}</button>')
+        sections.append(f'''      <section class="layer-group" id="{hid}" data-layer="{key}" aria-labelledby="{hid}-title">
+        <header class="layer-group__head">
+          <h2 class="layer-group__title" id="{hid}-title">{html.escape(full)}</h2>{text}
+          <p class="layer-group__count">{count_html}</p>
         </header>
-        <div class="layer-block__list">
-''' + '\n'.join(cards) + '''
-        </div>
+        <ul class="proto-list" role="list">
+''' + '\n'.join(rows) + '''
+        </ul>
       </section>''')
     sec = '\n\n'.join(sections)
-    chip_html = '\n        '.join(chips)
+    btn_html = '\n            '.join(buttons)
     txt_url = '/downloads/' + txt_name.replace(' ', '%20')
     return f'''<!DOCTYPE html>
 <html lang="en">
@@ -452,122 +476,91 @@ def index_html(docs, n, release, txt_name):
   <meta property="og:url" content="{DOMAIN}/pages/protocols.html" />
   <meta name="twitter:card" content="summary_large_image" />
   <link rel="stylesheet" href="{CSS_MAIN}" />
-  <link rel="stylesheet" href="{CSS_PROTOCOLS}" />
 </head>
 <body>
 
   <a href="#main" class="skip-link">Skip to content</a>
 
-  <!-- ─── Navigation ──────────────────────────────────────────────────────── -->
-  {nav_html()}
+  {nav_html('protocols')}
 
-  <!-- ─── Main Content ─────────────────────────────────────────────────────── -->
   <main id="main">
-    <div class="protocol-shell">
 
-      <!-- Protocol Map sidebar -->
-{map_html(None, 'protocols/')}
+    <header class="page-head wrap grid">
+      <h1 class="page-head__title">Protocols</h1>
+      <p class="page-head__lead">
+        The Dikenocracy framework is built through layered protocols. Each protocol defines a bounded part of the
+        system and is designed to be testable and auditable. No higher-layer protocol may violate a lower-layer constraint.
+      </p>
+      <p class="page-head__note">
+        Release <time datetime="{release}">{release}</time>: {n} protocols across 9 layers (L0–L8), plus the
+        Code of Planetary Synergy, one addendum and one appendix.
+      </p>
+      <div class="page-head__actions actions">
+        <a class="btn" href="protocols/code-of-planetary-synergy.html">Start with the Code {icon('i-arrow', 'icon icon--arrow')}</a>
+        <a class="btn btn--ghost" href="{txt_url}" download>{icon('i-download')} Complete text (.txt)</a>
+      </div>
+    </header>
 
-      <!-- Main content area -->
-      <div class="protocol-content">
-
-      <header class="page-hero">
-        <div>
-          <p class="eyebrow">{icon('i-layers')} Layered &middot; Dated &middot; Auditable</p>
-          <h1 class="page-hero__title">Protocols</h1>
-          <p class="page-hero__lead">
-            The Dikenocracy framework is built through layered protocols. Each protocol
-            defines a bounded part of the system and is designed to be testable and
-            auditable. No higher-layer protocol may violate a lower-layer constraint.
-          </p>
-          <div class="hero-actions">
-            <a class="btn" href="#foundation-heading">Browse the layers {icon('i-arrow')}</a>
-            <a class="btn btn--ghost" href="{txt_url}" download>{icon('i-download')} Complete text</a>
-          </div>
+    <section class="explorer wrap" data-explorer aria-label="Protocol index">
+      <div class="explorer__bar" hidden>
+        <label class="explorer__search">
+          <span class="visually-hidden">Search the protocols</span>
+          {icon('i-search')}
+          <input type="search" placeholder="Search by name or identifier, e.g. justice, DKP-4" autocomplete="off" spellcheck="false" data-explorer-search />
+        </label>
+        <div class="explorer__filters" role="group" aria-label="Show one layer">
+            {btn_html}
         </div>
-        <figure class="page-hero__figure page-hero__figure--card">
-          <img src="/assets/protocol-stack-20261013.svg" width="600" height="468"
-               alt="Nine protocol layers stacked from L0 Physical Truth at the base to L8 Infrastructure at the top." />
-        </figure>
-      </header>
-
-      <nav class="layer-nav" aria-label="Jump to a layer">
-        {chip_html}
-      </nav>
-
-      <!-- Intro -->
-      <details class="info-card">
-        <summary>How protocols are named, dated and changed</summary>
-        <p>
-          Protocols are identified by their layer prefix (DKP-0 … DKP-8) and a
-          functional code. Each document shows the date of its last edition
-          (“Last updated”). Changes to normative content follow DKP-4-UPGRADE-001
-          (proposal, simulation, audit, acceptance, activation window and rollback);
-          the date identifies an edition and does not by itself certify a change.
-        </p>
-        <p class="release-line">
-          Current release: <time datetime="{release}">{release}</time> &middot;
-          {n} protocols across 9 layers (L0–L8), plus the Code of Planetary Synergy,
-          one addendum and one appendix.
-        </p>
-      </details>
+        <p class="explorer__count" aria-live="polite" data-explorer-count>{total} documents</p>
+      </div>
 
 {sec}
 
-      <!-- Consolidated text -->
-      <section class="cta-band" aria-labelledby="download-heading">
-        <div>
-          <h2 id="download-heading">Complete text</h2>
-          <p>
-            The full Code of Planetary Synergy, all {n} protocols, the CRISIS addendum, Appendix A and the glossary in one
-            plain-text file (release <time datetime="{release}">{release}</time>).
-          </p>
-        </div>
-        <a class="btn" href="{txt_url}" download>{icon('i-download')} Download “{html.escape(txt_name)}”</a>
-      </section>
+      <p class="explorer__empty" data-explorer-empty hidden>No document matches this search. Try a shorter word or another layer.</p>
+    </section>
 
-      <!-- Official Source -->
-      <section class="info-card" aria-labelledby="source-heading">
+    <section class="download field-cobalt" aria-labelledby="download-heading">
+      <div class="wrap grid">
+        <h2 class="download__title" id="download-heading">Complete text</h2>
+        <p class="download__text">
+          The full Code of Planetary Synergy, all {n} protocols, the CRISIS addendum, Appendix A and the glossary in one
+          plain-text file (release <time datetime="{release}">{release}</time>).
+        </p>
+        <div class="download__actions">
+          <a class="btn btn--light" href="{txt_url}" download>{icon('i-download')} Download “{html.escape(txt_name)}”</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="notes section wrap grid" aria-labelledby="source-heading">
+      <p class="notes__side">Protocol files follow the naming convention DKP-&lt;layer&gt;-&lt;domain&gt;-&lt;seq&gt;. {n} protocols across 9 layers (L0–L8).</p>
+      <div class="notes__item">
+        <h2 id="names-heading">How protocols are named, dated and changed</h2>
+        <p>
+          Protocols are identified by their layer prefix (DKP-0 … DKP-8) and a functional code. Each document shows
+          the date of its last edition (“Last updated”). Changes to normative content follow DKP-4-UPGRADE-001
+          (proposal, simulation, audit, acceptance, activation window and rollback); the date identifies an edition
+          and does not by itself certify a change.
+        </p>
+      </div>
+      <div class="notes__item">
         <h2 id="source-heading">Official source</h2>
         <p>
-          All protocol specifications are maintained openly. The canonical texts are
-          published in the World repository; the code of this website is in the
-          Dikenocracy repository.
+          All protocol specifications are maintained openly. The canonical texts are published in the World
+          repository; the code of this website is in the Dikenocracy repository.
         </p>
-        <div class="hero-actions">
-          <a
-            class="btn btn--ghost"
-            href="https://github.com/anahronic/World/tree/main/Dikenocracy"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            {icon('i-github')} Canonical texts on GitHub
-          </a>
-          <a
-            class="btn btn--ghost"
-            href="https://github.com/anahronic/Dikenocracy"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            {icon('i-github')} Website source
-          </a>
+        <div class="actions notes__actions">
+          <a class="more" href="https://github.com/anahronic/World/tree/main/Dikenocracy" target="_blank" rel="noopener noreferrer">{icon('i-github')} Canonical texts on GitHub</a>
+          <a class="more" href="https://github.com/anahronic/Dikenocracy" target="_blank" rel="noopener noreferrer">{icon('i-github')} Website source</a>
         </div>
-        <div class="info-note">
-          Protocol files follow the naming convention
-          <code>DKP-&lt;layer&gt;-&lt;domain&gt;-&lt;seq&gt;</code>.
-          {n} protocols across 9 layers (L0–L8).
-        </div>
-      </section>
+      </div>
+    </section>
 
-      </div><!-- /.protocol-content -->
-    </div><!-- /.protocol-shell -->
   </main>
 
-  <!-- ─── Footer ─────────────────────────────────────────────────────────────── -->
   {FOOTER_HTML}
 
-  <script src="/script-20260923.js"></script>
-  <script type="module" src="/navigation-20260923.js"></script>
+{SCRIPTS_HTML}
 </body>
 </html>
 '''
@@ -680,6 +673,8 @@ def main():
     ap.add_argument('--release-date', required=True)
     ap.add_argument('--docx', action='store_true')
     ap.add_argument('--txt-copy', action='append', default=[], type=pathlib.Path)
+    ap.add_argument('--pages-only', action='store_true',
+                    help='regenerate the site pages, index, manifest and sitemap only; write nothing into the World repo')
     a = ap.parse_args()
     date.fromisoformat(a.release_date)
     docs = load_sources(a.world)
@@ -696,6 +691,9 @@ def main():
     (SITE / 'pages' / 'protocols.html').write_text(index_html(docs, n, a.release_date, txt_name), encoding='utf-8', newline='\n')
     (out / 'manifest.txt').write_text(''.join(f'{s}\t{docs[s]["id"]}\n' for s in slugs), encoding='utf-8', newline='\n')
     update_sitemap(SITE / 'sitemap.xml', docs, a.release_date)
+    if a.pages_only:
+        print(f'pages only: protocols={n} documents={len(docs)}')
+        return
 
     glossary = (a.world / 'Dikenocracy' / 'Dikenocracy Glossary.md').read_text(encoding='utf-8')
     txt = build_txt(docs, ids, a.release_date, glossary)

@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Dikenocracy — concept B «Manifesto»</title>
+<style>
+@font-face { font-family: 'Bricolage Grotesque'; src: url(../fonts/bricolage-grotesque-latin-wght-normal.woff2) format('woff2'); font-weight: 200 800; font-display: swap; }
+@font-face { font-family: 'Inter'; src: url(../fonts/inter-latin-wght-normal.woff2) format('woff2'); font-weight: 100 900; font-display: swap; }
+@font-face { font-family: 'JetBrains Mono'; src: url(../fonts/jetbrains-mono-latin-wght-normal.woff2) format('woff2'); font-weight: 100 800; font-display: swap; }
+
+:root {
+  --cobalt: #2433d6; --cobalt-2: #1c28b4; --night: #0b0f2b; --night-2: #151a3d;
+  --lime: #d4f542; --paper: #f5f3ee; --paper-2: #ebe8df; --ink: #0b0f2b; --ink-2: #353a58; --muted: #626783;
+  --on-dark: #c9cdf2;
+  --display: 'Bricolage Grotesque', 'Inter', system-ui, sans-serif;
+  --text: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --mono: 'JetBrains Mono', Consolas, monospace;
+  --gut: clamp(16px, 4vw, 56px);
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body { margin: 0; background: var(--paper); color: var(--ink); font: 400 1.0625rem/1.6 var(--text); }
+a { color: inherit; }
+img { max-width: 100%; display: block; }
+.wrap { max-width: 1360px; margin: 0 auto; padding: 0 var(--gut); }
+.label { font: 500 .78rem/1.3 var(--mono); letter-spacing: .1em; text-transform: uppercase; margin: 0; }
+
+.btn { display: inline-flex; align-items: center; gap: .6em; min-height: 54px; padding: 0 1.6rem; border-radius: 14px;
+  font: 650 1.02rem var(--text); text-decoration: none; transition: transform .15s, background .15s; }
+.btn:hover { transform: translateY(-2px); }
+.btn--lime { background: var(--lime); color: var(--ink); }
+.btn--line { border: 1.5px solid rgba(255, 255, 255, .55); color: #fff; }
+.btn--line:hover { border-color: #fff; }
+.btn--ink { background: var(--ink); color: #fff; }
+.btn--cobalt { background: var(--cobalt); color: #fff; }
+.actions { display: flex; flex-wrap: wrap; gap: .8rem; }
+
+/* hero */
+.hero { background: var(--cobalt); color: #fff; overflow: hidden; }
+.nav__in { display: flex; align-items: center; gap: 2rem; min-height: 76px; }
+.brand { display: inline-flex; align-items: center; gap: .6rem; font: 750 1.3rem var(--display); letter-spacing: -.02em; text-decoration: none; }
+.brand i { width: 22px; height: 22px; border-radius: 50%; background: var(--lime); box-shadow: inset -7px 0 0 #fff; }
+.nav__links { display: flex; gap: 1.8rem; margin-left: auto; }
+.nav__links a { text-decoration: none; font-weight: 500; opacity: .85; }
+.nav__links a:hover { opacity: 1; text-decoration: underline; text-decoration-color: var(--lime); text-underline-offset: 6px; text-decoration-thickness: 2px; }
+.hero__grid { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: 2rem; align-items: center; padding-top: clamp(28px, 5vw, 72px); padding-bottom: clamp(36px, 5vw, 64px); }
+.hero .label { color: var(--lime); }
+.hero h1 { font: 800 clamp(2.8rem, 7vw, 7.4rem)/1 var(--display); letter-spacing: -.04em; margin: .35em 0 .45em; }
+.hero h1 mark { display: inline-block; line-height: .92; background: var(--lime); color: var(--ink); padding: .02em .1em .08em; margin: .04em 0; border-radius: .1em; box-decoration-break: clone; -webkit-box-decoration-break: clone; }
+.hero__lead { font-size: clamp(1.1rem, 1.5vw, 1.32rem); line-height: 1.55; color: #e3e6ff; max-width: 40ch; margin: 0 0 2rem; }
+.hero__art img { width: 100%; height: auto; }
+.facts { display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid rgba(255, 255, 255, .25); }
+.facts div { padding: 1.4rem 0 2.2rem; }
+.facts b { display: block; font: 800 clamp(2.6rem, 5vw, 4.6rem)/1 var(--display); letter-spacing: -.04em; color: var(--lime); }
+.facts span { font: 500 .78rem var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--on-dark); }
+
+/* manifesto */
+.manifesto { position: relative; background: var(--night); color: #fff; }
+.manifesto img { width: 100%; height: clamp(420px, 46vw, 660px); object-fit: cover; object-position: 50% 60%; }
+.manifesto::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(11, 15, 43, .1) 20%, rgba(11, 15, 43, .92) 88%); }
+.manifesto__text { position: absolute; inset: auto 0 0; z-index: 1; padding-bottom: clamp(36px, 5vw, 72px); }
+.manifesto blockquote { margin: 0; font: 800 clamp(2.2rem, 5.4vw, 5.4rem)/.98 var(--display); letter-spacing: -.035em; max-width: 18ch; }
+.manifesto blockquote span { color: var(--lime); }
+.manifesto .label { color: var(--on-dark); margin-bottom: 1.2rem; }
+
+/* section head */
+.sec { padding-top: clamp(80px, 10vw, 140px); }
+.head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: end; gap: 1.5rem 3rem; margin-bottom: clamp(32px, 4vw, 56px); }
+.head .label { color: var(--cobalt); margin-bottom: 1rem; }
+.head h2 { margin: 0; font: 800 clamp(2.3rem, 5vw, 4.8rem)/.98 var(--display); letter-spacing: -.035em; max-width: 16ch; }
+.more { font-weight: 650; text-decoration: none; border-bottom: 2px solid var(--cobalt); padding-bottom: 2px; }
+.more:hover { color: var(--cobalt); }
+
+/* bento */
+.bento { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+.tile { border-radius: 26px; padding: clamp(24px, 3vw, 40px); min-height: 300px; display: flex; flex-direction: column; position: relative; overflow: hidden; }
+.tile__n { font: 600 .85rem var(--mono); letter-spacing: .08em; }
+.tile h3 { margin: auto 0 .6rem; font: 800 clamp(1.8rem, 3vw, 2.9rem)/1 var(--display); letter-spacing: -.035em; position: relative; }
+.tile p { margin: 0; max-width: 40ch; position: relative; }
+.tile--wide { grid-column: span 2; }
+.tile--cobalt { background: var(--cobalt); color: #fff; }
+.tile--cobalt p { color: #dfe2ff; }
+.tile--cobalt .tile__art { position: absolute; inset: 0 0 auto auto; width: 70%; opacity: .9; }
+.tile--lime { background: var(--lime); }
+.tile--lime .glyph { font: 700 clamp(4rem, 8vw, 7rem)/1 var(--mono); letter-spacing: -.06em; margin-top: .6rem; }
+.tile--night { background: var(--night); color: #fff; }
+.tile--night p { color: var(--on-dark); }
+.tile--night code { display: block; margin: 1.1rem 0 0; font: 500 .82rem/1.9 var(--mono); color: var(--lime); }
+.tile--line { background: #fff; border: 1.5px solid var(--paper-2); }
+.tile--line p { color: var(--ink-2); }
+.crowd { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 1rem; max-width: 26rem; }
+.crowd i { width: 14px; height: 14px; border-radius: 50%; background: var(--paper-2); }
+.crowd i.on { background: var(--cobalt); }
+
+/* stack */
+.stack { background: var(--night); color: #fff; margin-top: clamp(80px, 10vw, 140px); padding: clamp(72px, 9vw, 130px) 0; }
+.stack .head .label { color: var(--lime); }
+.stack .head p { color: var(--on-dark); max-width: 46ch; margin: 0; font-size: 1.1rem; }
+.rows { list-style: none; margin: 0; padding: 0; }
+.rows li { display: grid; grid-template-columns: 4.2rem minmax(0, 14rem) minmax(0, 1fr); gap: 1rem; align-items: center; padding: .85rem 0; border-top: 1px solid rgba(255, 255, 255, .12); }
+.rows__id { font: 700 1.25rem var(--mono); color: var(--on-dark); }
+.rows__name { font: 700 1.2rem/1.15 var(--display); letter-spacing: -.01em; text-decoration: none; }
+.rows__name:hover { color: var(--lime); }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.chips a { font: 500 .74rem var(--mono); letter-spacing: .04em; text-decoration: none; padding: .5rem .7rem; border-radius: 8px; background: var(--night-2); border: 1px solid #262c5c; color: #e6e8ff; transition: background .12s, color .12s; }
+.chips a:hover { background: var(--lime); color: var(--ink); border-color: var(--lime); }
+.rows .is-l0 .rows__id, .rows .is-l0 .rows__name { color: var(--lime); }
+.rows .is-l0 .chips a { background: var(--lime); color: var(--ink); border-color: var(--lime); }
+.rows .is-base { border-top: 1px solid rgba(255, 255, 255, .35); }
+.rows .is-base .chips a { background: var(--cobalt); border-color: var(--cobalt); }
+.stack__foot { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 1.2rem; margin-top: 2.2rem; }
+.stack__foot p { margin: 0; font: 500 .85rem var(--mono); color: var(--on-dark); }
+.stack__foot p b { color: var(--lime); }
+
+/* projects */
+.proj { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+.proj a { display: flex; flex-direction: column; background: #fff; border-radius: 26px; overflow: hidden; text-decoration: none; transition: transform .2s, box-shadow .2s; }
+.proj a:hover { transform: translateY(-4px); box-shadow: 0 22px 44px rgba(11, 15, 43, .12); }
+.proj__cover { aspect-ratio: 16 / 9; background: var(--cobalt); }
+.proj__cover img { width: 100%; height: 100%; object-fit: cover; }
+.proj__body { padding: 1.5rem 1.6rem 1.7rem; display: flex; flex-direction: column; flex: 1; }
+.tag { align-self: flex-start; font: 600 .72rem var(--mono); letter-spacing: .08em; text-transform: uppercase; padding: .35rem .6rem; border-radius: 6px; background: var(--lime); }
+.proj h3 { margin: .9rem 0 .4rem; font: 800 2rem/1 var(--display); letter-spacing: -.03em; }
+.proj p { margin: 0 0 1.2rem; color: var(--ink-2); }
+.proj__go { margin-top: auto; font-weight: 650; color: var(--cobalt); }
+
+/* cta */
+.cta { margin-top: clamp(80px, 10vw, 140px); background: var(--lime); }
+.cta .wrap { padding-top: clamp(64px, 9vw, 120px); padding-bottom: clamp(64px, 9vw, 120px); display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); gap: 2rem 4rem; align-items: end; }
+.cta h2 { margin: 0; font: 800 clamp(3rem, 7.5vw, 7.4rem)/.9 var(--display); letter-spacing: -.045em; }
+.cta p { margin: 0 0 1.4rem; font-size: 1.2rem; max-width: 34ch; }
+
+.foot { background: var(--night); color: var(--on-dark); }
+.foot .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 1.5rem 3rem; padding-top: 48px; padding-bottom: 48px; }
+.foot .brand { color: #fff; }
+.foot ul { list-style: none; display: flex; flex-wrap: wrap; gap: .5rem 1.75rem; margin: 0; padding: 0; }
+.foot a { text-decoration: none; }
+.foot a:hover { color: #fff; text-decoration: underline; }
+.foot small { flex-basis: 100%; font: .78rem var(--mono); color: #7d82a8; }
+
+@media (max-width: 980px) {
+  .hero__grid { grid-template-columns: minmax(0, 1fr); }
+  .hero__art { max-width: 460px; }
+  .bento, .proj { grid-template-columns: 1fr; }
+  .tile--wide { grid-column: auto; }
+  .rows li { grid-template-columns: 3.4rem minmax(0, 1fr); }
+  .chips { grid-column: 1 / -1; }
+  .cta .wrap { grid-template-columns: 1fr; }
+}
+@media (max-width: 680px) {
+  html { font-size: 17px; }
+  .nav__in { flex-wrap: wrap; gap: .6rem; min-height: 0; padding-top: .8rem; padding-bottom: .4rem; }
+  .nav__links { flex-basis: 100%; display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; margin: 0; }
+  .nav__links a { display: grid; place-items: center; min-height: 46px; border-radius: 12px; background: rgba(255, 255, 255, .12); opacity: 1; font-size: .95rem; }
+  .hero__art { display: none; }
+  .facts { grid-template-columns: repeat(2, 1fr); }
+  .facts div { padding: 1rem 0 1.4rem; }
+  .manifesto img { height: 520px; object-position: 62% 60%; }
+  .tile { min-height: 240px; border-radius: 20px; }
+  .tile--cobalt .tile__art { width: 100%; opacity: .55; }
+  .chips a { font-size: .7rem; padding: .45rem .55rem; }
+}
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap nav__in">
+    <a class="brand" href="/"><i aria-hidden="true"></i>Dikenocracy</a>
+    <nav class="nav__links" aria-label="Main navigation">
+      <a href="/pages/about.html">About</a>
+      <a href="/pages/protocols.html">Protocols</a>
+      <a href="/pages/projects.html">Projects</a>
+    </nav>
+  </div>
+  <div class="wrap hero__grid">
+    <div>
+      <p class="label">The rule of justice</p>
+      <h1>Justice as a <mark>function</mark>, not a&nbsp;metaphor.</h1>
+      <p class="hero__lead">Dikenocracy is a governance framework built on measurable reality, deterministic rules and transparent protocols — designed to reduce dependence on opinion, narrative and unchecked authority.</p>
+      <div class="actions">
+        <a class="btn btn--lime" href="/pages/protocols.html">Read the protocols →</a>
+        <a class="btn btn--line" href="/pages/about.html">What is Dikenocracy?</a>
+      </div>
+    </div>
+    <figure class="hero__art" style="margin:0">
+      <img src="../art/stack-cobalt.svg" width="640" height="600" alt="Nine stacked layers, L0 at the base highlighted, each with one dot per protocol." />
+    </figure>
+  </div>
+  <div class="wrap">
+    <div class="facts">
+      <div><b>35</b><span>protocols</span></div>
+      <div><b>9</b><span>layers, L0–L8</span></div>
+      <div><b>5</b><span>working projects</span></div>
+      <div><b>Open</b><span>texts &amp; source</span></div>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="manifesto" aria-label="Manifesto">
+    <img src="../art/duotone-cobalt.webp" width="1310" height="352" alt="A city square at night: people gathered around a monument, an old colonnade on one side, light trails of traffic on the other." />
+    <div class="manifesto__text">
+      <div class="wrap">
+        <p class="label">The Dikenocracy manifesto</p>
+        <blockquote>We don’t ask the old world for permission. <span>We build a new world alongside&nbsp;it.</span></blockquote>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec wrap" aria-labelledby="ideas-title">
+    <div class="head">
+      <div><p class="label">How it works</p><h2 id="ideas-title">Four ideas run through every protocol.</h2></div>
+      <a class="more" href="/pages/about.html">More about the idea →</a>
+    </div>
+    <div class="bento">
+      <article class="tile tile--cobalt tile--wide">
+        <img class="tile__art" src="../art/field-cobalt.svg" alt="" />
+        <span class="tile__n">01</span>
+        <h3>Measurable reality</h3>
+        <p>Decisions start from verified physical data. The base layer defines how reality is captured and checked.</p>
+      </article>
+      <article class="tile tile--lime">
+        <span class="tile__n">02</span>
+        <div class="glyph" aria-hidden="true">f(x)</div>
+        <h3>Deterministic rules</h3>
+        <p>Rules are formal and testable, so accountability becomes a consequence rather than a political choice.</p>
+      </article>
+      <article class="tile tile--night">
+        <span class="tile__n">03</span>
+        <code aria-hidden="true">DKP-1-AXIOMS-001<br />DKP-1-JUSTICE-001<br />DKP-4-UPGRADE-001</code>
+        <h3>Transparent protocols</h3>
+        <p>Every protocol is public, dated and auditable. Changes follow a defined upgrade procedure.</p>
+      </article>
+      <article class="tile tile--line tile--wide">
+        <span class="tile__n">04</span>
+        <div class="crowd" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i class="on"></i><i></i><i></i><i></i></div>
+        <h3>No unchecked authority</h3>
+        <p>Power is held by the function of justice — open algorithms, public metrics and data — not by people, parties or elites.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="stack" aria-labelledby="stack-title">
+    <div class="wrap">
+      <div class="head">
+        <div><p class="label">The protocol stack</p><h2 id="stack-title">Nine layers, from physical truth to infrastructure.</h2></div>
+        <p>Each protocol defines a bounded part of the system and is designed to be testable and auditable. Every chip below is a protocol — open it.</p>
+      </div>
+      <ul class="rows">
+        <li><span class="rows__id">L8</span><a class="rows__name" href="/pages/protocols.html#l8-heading">Infrastructure</a><span class="chips"><a href="/pages/protocols/dkp-8-audit-001.html">AUDIT</a><a href="/pages/protocols/dkp-8-interop-001.html">INTEROP</a><a href="/pages/protocols/dkp-8-simulation-001.html">SIMULATION</a></span></li>
+        <li><span class="rows__id">L7</span><a class="rows__name" href="/pages/protocols.html#l7-heading">Meta / Scope</a><span class="chips"><a href="/pages/protocols/dkp-7-ai-subject-001.html">AI-SUBJECT</a><a href="/pages/protocols/dkp-7-privacy-001.html">PRIVACY</a><a href="/pages/protocols/dkp-7-scope-001.html">SCOPE</a><a href="/pages/protocols/dkp-7-transparency-001.html">TRANSPARENCY</a></span></li>
+        <li><span class="rows__id">L6</span><a class="rows__name" href="/pages/protocols.html#l6-heading">Intersystem</a><span class="chips"><a href="/pages/protocols/dkp-6-exit-001.html">EXIT</a><a href="/pages/protocols/dkp-6-integration-001.html">INTEGRATION</a><a href="/pages/protocols/dkp-6-resilience-001.html">RESILIENCE</a></span></li>
+        <li><span class="rows__id">L5</span><a class="rows__name" href="/pages/protocols.html#l5-heading">Human Infrastructure</a><span class="chips"><a href="/pages/protocols/dkp-5-culture-001.html">CULTURE</a><a href="/pages/protocols/dkp-5-edu-001.html">EDU</a><a href="/pages/protocols/dkp-5-habitat-001.html">HABITAT</a><a href="/pages/protocols/dkp-5-info-001.html">INFO</a><a href="/pages/protocols/dkp-5-transport-001.html">TRANSPORT</a><a href="/pages/protocols/dkp-5-work-cycle-001.html">WORK-CYCLE</a></span></li>
+        <li><span class="rows__id">L4</span><a class="rows__name" href="/pages/protocols.html#l4-heading">Stability</a><span class="chips"><a href="/pages/protocols/dkp-4-crisis-001.html">CRISIS</a><a href="/pages/protocols/dkp-4-error-001.html">ERROR</a><a href="/pages/protocols/dkp-4-upgrade-001.html">UPGRADE</a><a href="/pages/protocols/dkp-4-epistemic-transitions-001.html">EPISTEMIC-TRANSITIONS</a></span></li>
+        <li><span class="rows__id">L3</span><a class="rows__name" href="/pages/protocols.html#l3-heading">Security</a><span class="chips"><a href="/pages/protocols/dkp-3-antiterror-001.html">ANTITERROR</a><a href="/pages/protocols/dkp-3-defense-001.html">DEFENSE</a><a href="/pages/protocols/dkp-3-internal-sec-001.html">INTERNAL-SEC</a><a href="/pages/protocols/dkp-3-police-001.html">POLICE</a></span></li>
+        <li><span class="rows__id">L2</span><a class="rows__name" href="/pages/protocols.html#l2-heading">Economic</a><span class="chips"><a href="/pages/protocols/dkp-2-assets-001.html">ASSETS</a><a href="/pages/protocols/dkp-2-finance-001.html">FINANCE</a><a href="/pages/protocols/dkp-2-labor-001.html">LABOR</a></span></li>
+        <li><span class="rows__id">L1</span><a class="rows__name" href="/pages/protocols.html#l1-heading">Core</a><span class="chips"><a href="/pages/protocols/dkp-1-axioms-001.html">AXIOMS</a><a href="/pages/protocols/dkp-1-epistemic-boundaries-001.html">EPISTEMIC-BOUNDARIES</a><a href="/pages/protocols/dkp-1-identity-001.html">IDENTITY</a><a href="/pages/protocols/dkp-1-impact-001.html">IMPACT</a><a href="/pages/protocols/dkp-1-justice-001.html">JUSTICE</a><a href="/pages/protocols/dkp-1-prevention-001.html">PREVENTION</a></span></li>
+        <li class="is-l0"><span class="rows__id">L0</span><a class="rows__name" href="/pages/protocols.html#l0-heading">Physical Truth</a><span class="chips"><a href="/pages/protocols/dkp-0-oracle-001.html">ORACLE</a><a href="/pages/protocols/dkp-0-time-001.html">TIME</a></span></li>
+        <li class="is-base"><span class="rows__id">∴</span><a class="rows__name" href="/pages/protocols/code-of-planetary-synergy.html">Foundation</a><span class="chips"><a href="/pages/protocols/code-of-planetary-synergy.html">CODE OF PLANETARY SYNERGY</a></span></li>
+      </ul>
+      <div class="stack__foot">
+        <p><b>↓</b> No higher-layer protocol may violate a lower-layer constraint.</p>
+        <div class="actions">
+          <a class="btn btn--lime" href="/pages/protocols.html">Explore all 35 protocols →</a>
+          <a class="btn btn--line" href="/downloads/Dikenocracy%20SYNERGY%20and%2035%20PROTOCOLS.txt" download>Complete text</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec wrap" aria-labelledby="projects-title">
+    <div class="head">
+      <div><p class="label">Working projects</p><h2 id="projects-title">Tools you can use today.</h2></div>
+      <a class="more" href="/pages/projects.html">All projects →</a>
+    </div>
+    <div class="proj">
+      <a href="/mazkira/"><div class="proj__cover"><img src="/assets/covers/mazkira-20261013.svg" alt="" loading="lazy" width="480" height="270" /></div><div class="proj__body"><span class="tag">Business tool</span><h3>Mazkira</h3><p>An assistant for small businesses in Israel: documents, bookkeeping support, taxes and cash flow — in Hebrew, Russian and English.</p><span class="proj__go">Open Mazkira →</span></div></a>
+      <a href="/converter/"><div class="proj__cover"><img src="/assets/covers/converter-20261013.svg" alt="" loading="lazy" width="480" height="270" /></div><div class="proj__body"><span class="tag">Tool · L0</span><h3>DTI Time Converter</h3><p>Convert any date between the Gregorian, Hebrew and Dikenocratic (DTI) calendars, right in your browser.</p><span class="proj__go">Convert a date →</span></div></a>
+      <a href="/shadoo/"><div class="proj__cover"><img src="/assets/covers/shadoo-20261013.svg" alt="" loading="lazy" width="480" height="270" /></div><div class="proj__body"><span class="tag">Privacy tool</span><h3>Shadoo</h3><p>Encrypt a message locally with a code phrase you agreed in person. Nothing readable is sent to the server.</p><span class="proj__go">Open Shadoo →</span></div></a>
+    </div>
+  </section>
+
+  <section class="cta" aria-labelledby="cta-title">
+    <div class="wrap">
+      <h2 id="cta-title">Start with the foundation.</h2>
+      <div>
+        <p>The Code of Planetary Synergy explains the system in one document; every protocol builds on it.</p>
+        <a class="btn btn--ink" href="/pages/protocols/code-of-planetary-synergy.html">Read the Code →</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <a class="brand" href="/">Dikenocracy</a>
+    <ul>
+      <li><a href="/pages/about.html">About</a></li>
+      <li><a href="/pages/protocols.html">Protocols</a></li>
+      <li><a href="/pages/projects.html">Projects</a></li>
+      <li><a href="https://github.com/anahronic/World/tree/main/Dikenocracy" rel="noopener noreferrer">Canonical texts</a></li>
+      <li><a href="https://github.com/anahronic/Dikenocracy" rel="noopener noreferrer">Source code</a></li>
+    </ul>
+    <small>Dikenocracy — public framework. Built openly alongside the old world.</small>
+  </div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Dikenocracy — concept A «Protocol»</title>
+<style>
+@font-face { font-family: 'Inter Tight'; src: url(../fonts/inter-tight-latin-wght-normal.woff2) format('woff2'); font-weight: 100 900; font-display: swap; }
+@font-face { font-family: 'Inter'; src: url(../fonts/inter-latin-wght-normal.woff2) format('woff2'); font-weight: 100 900; font-display: swap; }
+@font-face { font-family: 'JetBrains Mono'; src: url(../fonts/jetbrains-mono-latin-wght-normal.woff2) format('woff2'); font-weight: 100 800; font-display: swap; }
+
+:root {
+  --paper: #f3f1ea; --paper-2: #e9e6dc; --ink: #141412; --ink-2: #3b3934; --muted: #6c685f;
+  --rule: #d6d2c6; --signal: #ff4d1f; --signal-deep: #c93a12;
+  --display: 'Inter Tight', 'Inter', system-ui, sans-serif;
+  --text: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --mono: 'JetBrains Mono', Consolas, monospace;
+  --gut: clamp(16px, 4vw, 56px);
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body { margin: 0; background: var(--paper); color: var(--ink); font: 400 1.0625rem/1.6 var(--text); }
+a { color: inherit; }
+img { max-width: 100%; display: block; }
+.wrap { max-width: 1360px; margin: 0 auto; padding: 0 var(--gut); }
+.label { font: 500 .78rem/1.3 var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin: 0; }
+.label b { color: var(--signal-deep); font-weight: 600; }
+
+/* buttons */
+.btn { display: inline-flex; align-items: center; gap: .6em; min-height: 52px; padding: 0 1.5rem; border-radius: 999px;
+  background: var(--ink); color: var(--paper); font: 600 1rem var(--text); text-decoration: none; transition: background .15s; }
+.btn:hover { background: var(--signal); color: var(--ink); }
+.btn--signal { background: var(--signal); color: var(--ink); }
+.btn--signal:hover { background: var(--ink); color: var(--paper); }
+.link { font-weight: 600; text-decoration: underline; text-decoration-color: var(--signal); text-decoration-thickness: 2px; text-underline-offset: 5px; }
+.link:hover { color: var(--signal-deep); }
+.actions { display: flex; flex-wrap: wrap; align-items: center; gap: 1.25rem 1.75rem; }
+
+/* nav */
+.nav { position: sticky; top: 0; z-index: 10; background: rgba(243, 241, 234, .9); backdrop-filter: blur(10px); border-bottom: 1px solid var(--rule); }
+.nav__in { display: flex; align-items: center; gap: 2rem; min-height: 68px; }
+.brand { display: inline-flex; align-items: center; gap: .65rem; font: 700 1.2rem var(--display); letter-spacing: -.02em; text-decoration: none; }
+.brand svg { width: 26px; height: 26px; }
+.nav__links { display: flex; gap: 1.75rem; margin-left: auto; }
+.nav__links a { font-weight: 500; text-decoration: none; color: var(--ink-2); }
+.nav__links a:hover { color: var(--ink); text-decoration: underline; text-decoration-color: var(--signal); text-underline-offset: 6px; text-decoration-thickness: 2px; }
+.nav .btn { min-height: 42px; padding: 0 1.1rem; font-size: .92rem; }
+
+/* hero */
+.hero { padding-top: clamp(36px, 5vw, 72px); }
+.hero h1 { font: 700 clamp(3.1rem, 9.2vw, 9.2rem)/.92 var(--display); letter-spacing: -.042em; margin: .35em 0 0; max-width: 13ch; }
+.hero h1 .hl { color: var(--signal); }
+.hero__row { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 2rem 4rem; align-items: end; margin-top: clamp(28px, 4vw, 52px); }
+.lead { font-size: clamp(1.15rem, 1.6vw, 1.4rem); line-height: 1.5; color: var(--ink-2); max-width: 36ch; margin: 0; }
+.field { margin: clamp(40px, 6vw, 80px) 0 0; position: relative; }
+.field img { width: 100%; height: auto; }
+.field figcaption { position: relative; height: 3.2rem; border-top: 1px solid var(--ink); margin-top: 18px; }
+.field figcaption span { position: absolute; top: 12px; font: 500 .75rem var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+.field figcaption span::before { content: ''; position: absolute; left: 0; top: -13px; width: 1px; height: 9px; background: var(--ink); }
+.field figcaption span:nth-child(1) { left: 0; }
+.field figcaption span:nth-child(2) { left: 36%; }
+.field figcaption span:nth-child(3) { left: 62%; color: var(--signal-deep); }
+.field figcaption span:nth-child(3)::before { background: var(--signal); width: 2px; }
+
+/* facts */
+.facts { display: grid; grid-template-columns: repeat(4, 1fr); border-bottom: 1px solid var(--ink); }
+.facts div { padding: clamp(20px, 3vw, 36px) 0 clamp(22px, 3vw, 40px); border-left: 1px solid var(--rule); padding-left: clamp(14px, 2vw, 28px); }
+.facts div:first-child { border-left: 0; padding-left: 0; }
+.facts b { display: block; font: 700 clamp(3.2rem, 7vw, 6.8rem)/.95 var(--display); letter-spacing: -.05em; }
+.facts span { display: block; margin-top: .6rem; font: 500 .78rem var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+
+/* manifesto */
+.manifesto { background: var(--ink); color: var(--paper); margin-top: clamp(80px, 10vw, 140px); }
+.manifesto .wrap { padding-top: clamp(64px, 9vw, 130px); padding-bottom: clamp(40px, 5vw, 64px); }
+.manifesto .label { color: #a29e93; }
+.manifesto blockquote { margin: .8em 0 0; font: 600 clamp(2.3rem, 5.6vw, 5.4rem)/1.02 var(--display); letter-spacing: -.045em; max-width: 17ch; }
+.manifesto blockquote em { font-style: normal; color: var(--signal); }
+.manifesto__img { position: relative; }
+.manifesto__img::before { content: ''; position: absolute; inset: 0 0 auto; height: 45%; background: linear-gradient(var(--ink), rgba(20, 20, 18, 0)); }
+.manifesto__img img { width: 100%; height: clamp(240px, 32vw, 460px); object-fit: cover; object-position: 50% 70%; }
+
+/* sections */
+.sec { padding-top: clamp(80px, 10vw, 150px); }
+.sec-head { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 1.5rem 3rem; align-items: start; margin-bottom: clamp(36px, 5vw, 64px); }
+.sec-head h2 { grid-column: 2; margin: 0; font: 650 clamp(2.2rem, 4.6vw, 4.4rem)/1 var(--display); letter-spacing: -.045em; }
+.sec-head .label { padding-top: .9rem; border-top: 2px solid var(--ink); }
+.sec-head > p:not(.label), .sec-head > .link { grid-column: 2; margin: 0; }
+.sec-head > p:not(.label) { color: var(--ink-2); font-size: 1.15rem; max-width: 56ch; }
+
+/* ideas */
+.ideas { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, 1fr); gap: 0 3rem; }
+.ideas li { border-top: 1px solid var(--ink); padding: 1.6rem 0 2.6rem; display: grid; grid-template-columns: 4.5rem 1fr; }
+.ideas__n { font: 600 .95rem var(--mono); color: var(--signal-deep); padding-top: .45rem; }
+.ideas h3 { margin: 0 0 .6rem; font: 650 clamp(1.6rem, 2.4vw, 2.2rem)/1.08 var(--display); letter-spacing: -.035em; }
+.ideas p { margin: 0; color: var(--ink-2); max-width: 44ch; }
+
+/* stack */
+.layers { list-style: none; margin: 0; padding: 0; border-top: 2px solid var(--ink); }
+.layers a { display: grid; grid-template-columns: 5.5rem minmax(0, 15rem) minmax(0, 1fr) 9rem 2rem; gap: 1.25rem; align-items: center;
+  padding: 1.05rem .5rem; border-bottom: 1px solid var(--rule); text-decoration: none; transition: background .12s, padding .12s; }
+.layers a:hover { background: var(--paper-2); padding-left: 1rem; }
+.layers__id { font: 600 1.5rem var(--mono); letter-spacing: -.02em; }
+.layers__name { font: 650 1.3rem/1.15 var(--display); letter-spacing: -.02em; }
+.layers__desc { color: var(--muted); font-size: .95rem; line-height: 1.45; }
+.layers__count { display: flex; align-items: center; gap: 4px; font: 500 .8rem var(--mono); color: var(--muted); }
+.layers__count i { width: 10px; height: 10px; background: var(--ink); }
+.layers__count em { font-style: normal; margin-left: .5rem; }
+.layers__go { font-size: 1.3rem; text-align: right; }
+.layers .is-base a { background: var(--ink); color: var(--paper); border-bottom-color: var(--ink); }
+.layers .is-base .layers__desc, .layers .is-base .layers__count { color: #b9b5aa; }
+.layers .is-base .layers__count i { background: var(--signal); }
+.layers .is-base a:hover { background: #26251f; }
+.layers .is-l0 .layers__id { color: var(--signal-deep); }
+.layers .is-l0 .layers__count i { background: var(--signal); }
+.stack__foot { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 1.5rem; margin-top: 2rem; }
+.stack__rule { font: 500 .85rem var(--mono); letter-spacing: .04em; color: var(--ink-2); margin: 0; }
+.stack__rule b { color: var(--signal-deep); }
+
+/* projects */
+.proj { display: grid; grid-template-columns: 1.35fr 1fr 1fr; gap: clamp(16px, 2vw, 28px); }
+.proj a { display: flex; flex-direction: column; text-decoration: none; border-top: 2px solid var(--ink); padding-top: 1rem; }
+.proj__cover { aspect-ratio: 16 / 10; overflow: hidden; background: var(--paper-2); }
+.proj__cover img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(1) contrast(1.15); mix-blend-mode: multiply; transition: filter .25s, transform .4s; }
+.proj a:hover .proj__cover img { filter: none; transform: scale(1.03); }
+.proj .label { margin-top: 1.1rem; }
+.proj h3 { margin: .35rem 0 .45rem; font: 650 clamp(1.6rem, 2.3vw, 2.2rem)/1.05 var(--display); letter-spacing: -.035em; }
+.proj p { margin: 0 0 1rem; color: var(--ink-2); max-width: 42ch; }
+.proj__go { margin-top: auto; font-weight: 600; text-decoration: underline; text-decoration-color: var(--signal); text-decoration-thickness: 2px; text-underline-offset: 5px; }
+
+/* cta */
+.cta { background: var(--signal); margin-top: clamp(90px, 11vw, 160px); }
+.cta .wrap { padding-top: clamp(56px, 8vw, 110px); padding-bottom: clamp(56px, 8vw, 110px); display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); gap: 2rem 4rem; align-items: end; }
+.cta .label { color: var(--ink); grid-column: 1 / -1; }
+.cta h2 { margin: 0; font: 700 clamp(2.8rem, 7vw, 7rem)/.92 var(--display); letter-spacing: -.055em; }
+.cta p { margin: 0 0 1.5rem; font-size: 1.2rem; max-width: 34ch; }
+.cta .btn:hover { background: var(--paper); color: var(--ink); }
+
+/* footer */
+.foot { background: var(--ink); color: #c9c5ba; }
+.foot .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 1.5rem 3rem; padding-top: 48px; padding-bottom: 48px; }
+.foot .brand { color: var(--paper); }
+.foot ul { list-style: none; display: flex; flex-wrap: wrap; gap: .5rem 1.75rem; margin: 0; padding: 0; }
+.foot a { text-decoration: none; }
+.foot a:hover { color: var(--paper); text-decoration: underline; }
+.foot small { flex-basis: 100%; font: .78rem var(--mono); letter-spacing: .04em; color: #8b877d; }
+
+/* responsive */
+@media (max-width: 980px) {
+  .sec-head { grid-template-columns: 1fr; }
+  .sec-head h2, .sec-head > p:not(.label), .sec-head > .link { grid-column: 1; }
+  .ideas { grid-template-columns: 1fr; }
+  .layers a { grid-template-columns: 4rem minmax(0, 1fr) auto 1.5rem; }
+  .layers__desc { display: none; }
+  .proj { grid-template-columns: 1fr; }
+  .cta .wrap { grid-template-columns: 1fr; }
+}
+@media (max-width: 680px) {
+  html { font-size: 17px; }
+  .nav { position: static; }
+  .nav__in { flex-wrap: wrap; gap: .6rem; min-height: 0; padding-top: .7rem; padding-bottom: .7rem; }
+  .nav .btn { display: none; }
+  .nav__links { flex-basis: 100%; display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; margin: 0; }
+  .nav__links a { display: grid; place-items: center; min-height: 46px; border: 1px solid var(--ink); border-radius: 999px; font-size: .95rem; }
+  .hero__row { grid-template-columns: 1fr; }
+  .facts { grid-template-columns: repeat(2, 1fr); }
+  .facts div:nth-child(3) { border-left: 0; padding-left: 0; }
+  .facts div:nth-child(n+3) { border-top: 1px solid var(--rule); }
+  .field figcaption span { font-size: .62rem; letter-spacing: .04em; }
+  .field figcaption span:nth-child(2) { left: 30%; }
+  .layers a { grid-template-columns: 3.2rem minmax(0, 1fr) auto; gap: .75rem; padding: .95rem .25rem; }
+  .layers__id { font-size: 1.15rem; }
+  .layers__name { font-size: 1.1rem; }
+  .layers__go { display: none; }
+  .layers__count i { width: 8px; height: 8px; }
+  .ideas li { grid-template-columns: 3rem 1fr; }
+}
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap nav__in">
+    <a class="brand" href="/"><svg viewBox="0 0 26 26" aria-hidden="true"><g fill="#141412"><circle cx="4" cy="4" r="3"/><circle cx="13" cy="4" r="3"/><circle cx="22" cy="4" r="3"/><circle cx="4" cy="13" r="3"/><circle cx="13" cy="13" r="3"/><circle cx="22" cy="13" r="3"/><circle cx="13" cy="22" r="3"/><circle cx="22" cy="22" r="3"/></g><circle cx="4" cy="22" r="3" fill="#ff4d1f"/></svg>Dikenocracy</a>
+    <nav class="nav__links" aria-label="Main navigation">
+      <a href="/pages/about.html">About</a>
+      <a href="/pages/protocols.html">Protocols</a>
+      <a href="/pages/projects.html">Projects</a>
+    </nav>
+    <a class="btn" href="/pages/protocols/code-of-planetary-synergy.html">Read the Code →</a>
+  </div>
+</header>
+
+<main>
+  <section class="hero wrap" aria-labelledby="hero-title">
+    <p class="label"><b>●</b>&ensp;The rule of justice&ensp;·&ensp;An open governance framework</p>
+    <h1 id="hero-title">Justice as a <span class="hl">function</span>, not&nbsp;a&nbsp;metaphor.</h1>
+    <div class="hero__row">
+      <p class="lead">Dikenocracy is a governance framework built on measurable reality, deterministic rules and transparent protocols — designed to reduce dependence on opinion, narrative and unchecked authority.</p>
+      <div class="actions">
+        <a class="btn" href="/pages/protocols.html">Read the protocols →</a>
+        <a class="link" href="/pages/about.html">What is Dikenocracy?</a>
+      </div>
+    </div>
+    <figure class="field">
+      <img src="../art/field-paper.svg" width="1200" height="560" alt="A field of dots: scattered and uneven on the left, settling into a precise grid on the right, where a red curve marks the rule." />
+      <figcaption aria-hidden="true"><span>Opinion</span><span>Measurement</span><span>Rule → consequence</span></figcaption>
+    </figure>
+  </section>
+
+  <section class="facts wrap" aria-label="In numbers">
+    <div><b>35</b><span>protocols</span></div>
+    <div><b>9</b><span>layers, L0–L8</span></div>
+    <div><b>5</b><span>working projects</span></div>
+    <div><b>Open</b><span>texts &amp; source</span></div>
+  </section>
+
+  <section class="manifesto" aria-label="Manifesto">
+    <div class="wrap">
+      <p class="label">The Dikenocracy manifesto</p>
+      <blockquote>We don’t ask the old world for permission. We build a new world <em>alongside&nbsp;it.</em></blockquote>
+    </div>
+    <div class="manifesto__img"><img src="../art/mono-square.webp" width="1310" height="352" loading="lazy" alt="A city square at night: people gathered around a monument, an old colonnade on one side, light trails of traffic on the other." /></div>
+  </section>
+
+  <section class="sec wrap" aria-labelledby="ideas-title">
+    <header class="sec-head">
+      <p class="label">01 — How it works</p>
+      <h2 id="ideas-title">Four ideas run through every protocol.</h2>
+      <a class="link" href="/pages/about.html">More about the idea →</a>
+    </header>
+    <ol class="ideas">
+      <li><span class="ideas__n">01</span><div><h3>Measurable reality</h3><p>Decisions start from verified physical data. The base layer defines how reality is captured and checked.</p></div></li>
+      <li><span class="ideas__n">02</span><div><h3>Deterministic rules</h3><p>Rules are formal and testable, so accountability becomes a consequence rather than a political choice.</p></div></li>
+      <li><span class="ideas__n">03</span><div><h3>Transparent protocols</h3><p>Every protocol is public, dated and auditable. Changes follow a defined upgrade procedure.</p></div></li>
+      <li><span class="ideas__n">04</span><div><h3>No unchecked authority</h3><p>Power is held by the function of justice — open algorithms, public metrics and data — not by people, parties or elites.</p></div></li>
+    </ol>
+  </section>
+
+  <section class="sec wrap" aria-labelledby="stack-title">
+    <header class="sec-head">
+      <p class="label">02 — The protocol stack</p>
+      <h2 id="stack-title">Nine layers, from physical truth to infrastructure.</h2>
+      <p>Each protocol defines a bounded part of the system and is designed to be testable and auditable. Layers build on each other.</p>
+    </header>
+    <ol class="layers">
+      <li><a href="/pages/protocols.html#l8-heading"><span class="layers__id">L8</span><span class="layers__name">Infrastructure</span><span class="layers__desc">Continuous audit, external interoperability, simulation &amp; validation engines.</span><span class="layers__count"><i></i><i></i><i></i><em>3</em></span><span class="layers__go">→</span></a></li>
+      <li><a href="/pages/protocols.html#l7-heading"><span class="layers__id">L7</span><span class="layers__name">Meta / Scope</span><span class="layers__desc">Applicability boundaries, privacy hard limits, transparency, AI subjects.</span><span class="layers__count"><i></i><i></i><i></i><i></i><em>4</em></span><span class="layers__go">→</span></a></li>
+      <li><a href="/pages/protocols.html#l6-heading"><span class="layers__id">L6</span><span class="layers__name">Intersystem</span><span class="layers__desc">Entry and exit for jurisdictions interfacing with the system.</span><span class="layers__count"><i></i><i></i><i></i><em>3</em></span><span class="layers__go">→</span></a></li>
+      <li><a href="/pages/protocols.html#l5-heading"><span class="layers__id">L5</span><span class="layers__name">Human Infrastructure</span><span class="layers__desc">Culture, education, habitat, information, transport, work cycle.</span><span class="layers__count"><i></i><i></i><i></i><i></i><i></i><i></i><em>6</em></span><span class="layers__go">→</span></a></li>
+      <li><a href="/pages/protocols.html#l4-heading"><span class="layers__id">L4</span><span class="layers__name">Stability</span><span class="layers__desc">Crisis handling, error correction, controlled upgrades.</span><span class="layers__count"><i></i><i></i><i></i><i></i><em>4</em></span><span class="layers__go">→</span></a></li>
+      <li><a href="/pages/protocols.html#l3-heading"><span class="layers__id">L3</span><span class="layers__name">Security</span><span class="layers__desc">Defense, counter-terrorism, internal security, physical enforcement.</span><span class="layers__count"><i></i><i></i><i></i><i></i><em>4</em></span><span class="layers__go">→</span></a></li>
+      <li><a href="/pages/protocols.html#l2-heading"><span class="layers__id">L2</span><span class="layers__name">Economic</span><span class="layers__desc">Dual-circuit economy, value chains, conditional emission.</span><span class="layers__count"><i></i><i></i><i></i><em>3</em></span><span class="layers__go">→</span></a></li>
+      <li><a href="/pages/protocols.html#l1-heading"><span class="layers__id">L1</span><span class="layers__name">Core</span><span class="layers__desc">Axioms, identity, impact measurement, justice invariants.</span><span class="layers__count"><i></i><i></i><i></i><i></i><i></i><i></i><em>6</em></span><span class="layers__go">→</span></a></li>
+      <li class="is-l0"><a href="/pages/protocols.html#l0-heading"><span class="layers__id">L0</span><span class="layers__name">Physical Truth</span><span class="layers__desc">How observable reality is captured, verified and passed up.</span><span class="layers__count"><i></i><i></i><em>2</em></span><span class="layers__go">→</span></a></li>
+      <li class="is-base"><a href="/pages/protocols/code-of-planetary-synergy.html"><span class="layers__id">∴</span><span class="layers__name">Code of Planetary Synergy</span><span class="layers__desc">The foundation every protocol builds on.</span><span class="layers__count"><i></i><em>1</em></span><span class="layers__go">→</span></a></li>
+    </ol>
+    <div class="stack__foot">
+      <p class="stack__rule"><b>↓</b> No higher-layer protocol may violate a lower-layer constraint.</p>
+      <div class="actions">
+        <a class="btn" href="/pages/protocols.html">Explore all 35 protocols →</a>
+        <a class="link" href="/downloads/Dikenocracy%20SYNERGY%20and%2035%20PROTOCOLS.txt" download>Complete text (.txt)</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec wrap" aria-labelledby="projects-title">
+    <header class="sec-head">
+      <p class="label">03 — Working projects</p>
+      <h2 id="projects-title">Concrete tools that put the protocols into software you can use today.</h2>
+      <a class="link" href="/pages/projects.html">All projects →</a>
+    </header>
+    <div class="proj">
+      <a href="/mazkira/"><div class="proj__cover"><img src="/assets/covers/mazkira-20261013.svg" alt="" loading="lazy" width="480" height="270" /></div><p class="label">Business tool</p><h3>Mazkira</h3><p>An assistant for small businesses in Israel: documents, bookkeeping support, taxes and cash flow — in Hebrew, Russian and English.</p><span class="proj__go">Open Mazkira</span></a>
+      <a href="/converter/"><div class="proj__cover"><img src="/assets/covers/converter-20261013.svg" alt="" loading="lazy" width="480" height="270" /></div><p class="label">Tool · L0</p><h3>DTI Time Converter</h3><p>Convert any date between the Gregorian, Hebrew and Dikenocratic (DTI) calendars, right in your browser.</p><span class="proj__go">Convert a date</span></a>
+      <a href="/shadoo/"><div class="proj__cover"><img src="/assets/covers/shadoo-20261013.svg" alt="" loading="lazy" width="480" height="270" /></div><p class="label">Privacy tool</p><h3>Shadoo</h3><p>Encrypt a message locally with a code phrase you agreed in person. Nothing readable is sent to the server.</p><span class="proj__go">Open Shadoo</span></a>
+    </div>
+  </section>
+
+  <section class="cta" aria-labelledby="cta-title">
+    <div class="wrap">
+      <p class="label">Where to start</p>
+      <h2 id="cta-title">Start with the foundation.</h2>
+      <div>
+        <p>The Code of Planetary Synergy explains the system in one document; every protocol builds on it.</p>
+        <a class="btn" href="/pages/protocols/code-of-planetary-synergy.html">Read the Code →</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <a class="brand" href="/">Dikenocracy</a>
+    <ul>
+      <li><a href="/pages/about.html">About</a></li>
+      <li><a href="/pages/protocols.html">Protocols</a></li>
+      <li><a href="/pages/projects.html">Projects</a></li>
+      <li><a href="https://github.com/anahronic/World/tree/main/Dikenocracy" rel="noopener noreferrer">Canonical texts</a></li>
+      <li><a href="https://github.com/anahronic/Dikenocracy" rel="noopener noreferrer">Source code</a></li>
+    </ul>
+    <small>Dikenocracy — public framework. Built openly alongside the old world.</small>
+  </div>
+</footer>
+</body>
+</html>

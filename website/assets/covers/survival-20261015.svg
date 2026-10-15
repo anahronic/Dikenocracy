@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 270" role="img" aria-label="Post-Nuclear Survival Manual: shelter, water, health and recovery">
+  <rect width="480" height="270" fill="#d5d9e0"/>
+
+  <g transform="translate(96 54)">
+    <path d="M144 22 C104 4 52 4 6 18 V178 C52 164 104 164 144 182Z" fill="#f7f8fa" stroke="#0b0c0e" stroke-width="3" stroke-linejoin="round"/>
+    <path d="M144 22 C184 4 236 4 282 18 V178 C236 164 184 164 144 182Z" fill="#f7f8fa" stroke="#0b0c0e" stroke-width="3" stroke-linejoin="round"/>
+    <path d="M144 22 V182" stroke="#0b0c0e" stroke-width="2"/>
+    <g transform="translate(40 50)">
+      <path d="M0 50 L36 18 L72 50" fill="none" stroke="#1f2de6" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+      <rect x="10" y="46" width="52" height="40" rx="3" fill="#dfe2fb" stroke="#1f2de6" stroke-width="3"/>
+      <rect x="29" y="62" width="14" height="24" rx="2" fill="#1f2de6"/>
+    </g>
+    <g stroke="#0b0c0e" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none">
+      <path d="M176 52 l7 7 12-13"/><path d="M204 54 h50" stroke="#b9bfca"/>
+      <path d="M176 88 l7 7 12-13"/><path d="M204 90 h44" stroke="#b9bfca"/>
+      <path d="M176 124 l7 7 12-13"/><path d="M204 126 h52" stroke="#b9bfca"/>
+    </g>
+  </g>
+</svg>

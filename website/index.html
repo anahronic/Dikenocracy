@@ -14,8 +14,9 @@
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://dikenocracy.com/" />
   <meta name="twitter:card" content="summary_large_image" />
-  <link rel="stylesheet" href="/styles-20261014.css" />
-  <link rel="preload" as="image" href="/assets/hero-justice-20261013.webp" />
+  <link rel="stylesheet" href="/styles-20261015.css" />
+  <link rel="preload" href="/assets/fonts/libre-franklin-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" as="image" href="/assets/art/masthead-20261015.webp" />
 </head>
 <body>
 
@@ -23,181 +24,228 @@
 
 <nav class="site-nav" aria-label="Main navigation" dir="ltr">
   <div class="site-nav__inner">
-    <a class="site-nav__brand" href="/"><svg class="site-nav__logo" aria-hidden="true"><use href="/assets/icons-20261013.svg#i-l1"/></svg>Dikenocracy</a>
+    <a class="site-nav__brand" href="/"><svg class="site-nav__logo" aria-hidden="true"><use href="/assets/icons-20261015.svg#i-mark"/></svg>Dikenocracy</a>
     <ul class="site-nav__links" role="list">
       <li><a href="/pages/about.html">About</a></li>
       <li><a href="/pages/protocols.html">Protocols</a></li>
       <li class="site-nav__has-menu">
         <span class="site-nav__parent"><a href="/pages/projects.html">Projects</a><button type="button" class="site-nav__submenu-toggle" aria-label="Show projects submenu" aria-controls="nav-projects-submenu" aria-expanded="false"><span class="site-nav__caret" aria-hidden="true"></span></button></span>
         <ul class="site-nav__submenu" id="nav-projects-submenu" role="list" hidden>
+          <li><a href="/mazkira/">Mazkira — Business Assistant</a></li>
           <li><a href="/converter/index.html">Converter</a></li>
           <li><a href="/shadoo/">Shadoo</a></li>
-          <li><a href="/ayalon/">Ayalon Monitor</a></li>
           <li><a href="/survival/">Survival Manual</a></li>
-          <li><a href="/mazkira/">Mazkira — Business Assistant</a></li>
+          <li><a href="/ayalon/">Ayalon Monitor</a></li>
         </ul>
       </li>
     </ul>
+    <a class="site-nav__action" href="/pages/protocols/code-of-planetary-synergy.html">Read the Code</a>
   </div>
 </nav>
 
-  <main id="main" class="landing">
+  <main id="main" class="home">
 
-    <!-- ─── Hero ─────────────────────────────────────────────────────────── -->
-    <section class="landing-hero" aria-labelledby="hero-title">
-      <div>
-        <p class="eyebrow"><svg class="icon" aria-hidden="true"><use href="/assets/icons-20261013.svg#i-l1"/></svg> The rule of justice</p>
-        <h1 class="landing-hero__title" id="hero-title">Justice as a <em>function</em>, not a metaphor.</h1>
-        <p class="landing-hero__lead">
-          Dikenocracy is a governance framework built on measurable reality, deterministic rules and
-          transparent protocols — designed to reduce dependence on opinion, narrative and unchecked authority.
-        </p>
-        <div class="hero-actions">
-          <a class="btn" href="/pages/protocols.html">Read the protocols <svg class="icon" aria-hidden="true"><use href="/assets/icons-20261013.svg#i-arrow"/></svg></a>
+    <!-- Masthead: picture band, the title, the dateline (live: today in three calendars) -->
+    <header class="masthead" aria-labelledby="hero-title">
+      <div class="masthead__band">
+        <img src="/assets/art/masthead-20261015.webp" width="1310" height="352"
+             alt="A city square at dusk: people gather around a monument; an old colonnade stands on the left and traffic streams past on the right." />
+      </div>
+      <div class="wrap grid masthead__body">
+        <h1 class="masthead__title" id="hero-title"><span class="line"><span>Justice as a function,</span></span> <span class="line"><span>not a metaphor.</span></span></h1>
+        <p class="dateline" data-dateline><a href="/converter/index.html" data-dateline-text>Convert today’s date to Dikenocratic time (DTI)</a></p>
+        <p class="masthead__standfirst">Dikenocracy is a governance framework built on measurable reality, deterministic rules and transparent protocols — designed to reduce dependence on opinion, narrative and unchecked authority.</p>
+        <div class="masthead__actions actions">
+          <a class="btn" href="/pages/protocols.html">Read the protocols <svg class="icon icon--arrow" aria-hidden="true"><use href="/assets/icons-20261015.svg#i-arrow"/></svg></a>
           <a class="btn btn--ghost" href="/pages/about.html">What is Dikenocracy?</a>
         </div>
-        <div class="hero-facts">
-          <div><b>35</b>protocols</div>
-          <div><b>9</b>layers, L0–L8</div>
-          <div><b>5</b>working projects</div>
-          <div><b>Open</b>texts &amp; source</div>
+      </div>
+    </header>
+
+    <!-- What it is, in a minute -->
+    <section aria-labelledby="intro-title">
+      <h2 class="visually-hidden" id="intro-title">What Dikenocracy is</h2>
+      <div class="tiles" data-reveal>
+        <div class="tile tile--slogan"><p>Alongside the old world</p></div>
+        <div class="tile tile--figure"><b>35</b><span>protocols in nine layers, L0–L8</span></div>
+        <figure class="tile tile--pic"><img src="/assets/art/people-20261015.webp" width="560" height="352" loading="lazy" alt="People standing in a ring around the base of a monument in a city square." /></figure>
+        <div class="tile tile--text">
+          <p class="tile__side">The name derives from δίκη (Dike).</p>
+          <div class="tile__body">
+            <p>Justice as an objective and measurable balance between a subject’s actions and the system’s stability. Power is not held by people, parties, or elites. Power is held by the function of justice itself, formalized through open and immutable algorithms, public metrics, and transparent data.</p>
+            <p>Most systems fail when they lose connection to reality. They stop responding to measurable conditions and start operating through ideology, inertia, and opaque power. Dikenocracy is an attempt to reconnect governance to verifiable conditions.</p>
+          </div>
         </div>
       </div>
-      <figure class="landing-hero__art">
-        <img src="/assets/hero-justice-20261013.webp" width="670" height="850"
-             alt="Illustration: a statue of Dike, the goddess of justice, with scales and the words ΔΙΚΕ ΔΗΜΟΣ, in a green city at dusk." />
-        <figcaption><strong>Δίκη — Dike</strong>Justice as a measurable balance between actions and the stability of the system.</figcaption>
+    </section>
+
+    <!-- How it works: the four ideas, as a staircase -->
+    <section class="section wrap" aria-labelledby="ideas-title">
+      <h2 class="visually-hidden" id="ideas-title">How it works: four ideas run through every protocol</h2>
+      <ol class="stair" data-reveal>
+        <li><h3 class="stair__line">Reality is measured first.</h3><p class="stair__text">Decisions start from verified physical data. The base layer defines how reality is captured and checked.</p></li>
+        <li><h3 class="stair__line">Then the rule applies.</h3><p class="stair__text">Rules are formal and testable, so accountability becomes a consequence rather than a political choice.</p></li>
+        <li><h3 class="stair__line">Every rule is public.</h3><p class="stair__text">Every protocol is public, dated and auditable. Changes follow a defined upgrade procedure.</p></li>
+        <li><h3 class="stair__line">No one holds unchecked power.</h3><p class="stair__text">Power is held by the function of justice — open algorithms, public metrics and data — not by people, parties or elites.</p></li>
+      </ol>
+      <p class="stair-foot grid"><a class="more axis" href="/pages/about.html">More about the idea <svg class="icon icon--arrow" aria-hidden="true"><use href="/assets/icons-20261015.svg#i-arrow"/></svg></a></p>
+    </section>
+
+    <!-- The Main Equation, quoted from the Code (Appendix A.1) -->
+    <section class="equation field-cobalt" aria-labelledby="equation-title">
+      <div class="wrap grid">
+        <h2 class="equation__title" id="equation-title">The Main Equation of Civilization Motion</h2>
+        <p class="equation__intro">At any moment in time t, the Network must maintain:</p>
+        <p class="equation__formula" aria-label="d W over d t is greater than or equal to k times E of t times T of t times B of t to the power 2.83"><span>dW/dt ≥</span> <span>k · E(t) · T(t) · B(t)<sup><span class="copy-only">^</span>2.83</sup></span></p>
+        <dl class="equation__vars">
+          <div><dt>W(t)</dt><dd>Global welfare + biosphere health (in arbitrary utility units)</dd></div>
+          <div><dt>E(t)</dt><dd>Total egoistic activity of all agents</dd></div>
+          <div><dt>T(t)</dt><dd>Rate of technological expansion (logarithm of available energy and compute)</dd></div>
+          <div><dt>B(t)</dt><dd>Biosphere Health Index (0...1, measured by Physical Truth Layer)</dd></div>
+          <div><dt>k = 0.94...1.06</dt><dd>Calibrated every 3 years by independent audit</dd></div>
+          <div><dt>B<sub><span class="copy-only">_</span>min</sub> = 0.68</dt><dd>Hard threshold; if B(t) &lt; B<sub><span class="copy-only">_</span>min</sub>, all Kill Switches activate simultaneously.</dd></div>
+        </dl>
+        <p class="equation__source">From the Code of Planetary Synergy, Appendix A.1 (immutable since 2025).</p>
+        <div class="equation__actions"><a class="btn btn--light" href="/pages/protocols/code-of-planetary-synergy.html">Read the Code of Planetary Synergy <svg class="icon icon--arrow" aria-hidden="true"><use href="/assets/icons-20261015.svg#i-arrow"/></svg></a></div>
+      </div>
+    </section>
+
+    <!-- The protocol stack: statement, table pushed right -->
+    <section class="section wrap grid" aria-labelledby="stack-title">
+      <h2 class="layers__title" id="stack-title">Nine layers, from physical truth to infrastructure.</h2>
+      <figure class="layers__pic"><img src="/assets/art/stack-20261015.svg" width="560" height="700" loading="lazy" alt="Nine stacked layers, L0 at the base in blue, with one dot for each protocol on its layer." /></figure>
+      <p class="layers__name" aria-hidden="true">Layers</p>
+      <ul class="layers__table" role="list" data-reveal>
+        <li><a href="/pages/protocols.html#l8-heading"><span class="k">L8</span><span class="n">Infrastructure</span><span class="v">3 protocols</span><svg class="icon" aria-hidden="true"><use href="/assets/icons-20261015.svg#i-arrow"/></svg></a></li>
+        <li><a href="/pages/protocols.html#l7-heading"><span class="k">L7</span><span class="n">Meta / Scope</span><span class="v">4 protocols</span><svg class="icon" aria-hidden="true"><use href="/assets/icons-20261015.svg#i-arrow"/></svg></a></li>
+        <li><a href="/pages/protocols.html#l6-heading"><span class="k">L6</span><span class="n">Intersystem</span><span class="v">3 protocols</span><svg class="icon" aria-hidden="true"><use href="/assets/icons-20261015.svg#i-arrow"/></svg></a></li>
+        <li class="is-group"><a href="/pages/protocols.html#l5-heading"><span class="k">L5</span><span class="n">Human Infrastructure</span><span class="v">6 protocols</span><svg class="icon" aria-hidden="true"><use href="/assets/icons-20261015.svg#i-arrow"/></svg></a></li>
+        <li><a href="/pages/protocols.html#l4-heading"><span class="k">L4</span><span class="n">Stability</span><span class="v">4 protocols</span><svg class="icon" aria-hidden="true"><use href="/assets/icons-20261015.svg#i-arrow"/></svg></a></li>
+        <li><a href="/pages/protocols.html#l3-heading"><span class="k">L3</span><span class="n">Security</span><span class="v">4 protocols</span><svg class="icon" aria-hidden="true"><use href="/assets/icons-20261015.svg#i-arrow"/></svg></a></li>
+        <li class="is-group"><a href="/pages/protocols.html#l2-heading"><span class="k">L2</span><span class="n">Economic</span><span class="v">3 protocols</span><svg class="icon" aria-hidden="true"><use href="/assets/icons-20261015.svg#i-arrow"/></svg></a></li>
+        <li><a href="/pages/protocols.html#l1-heading"><span class="k">L1</span><span class="n">Core</span><span class="v">6 protocols</span><svg class="icon" aria-hidden="true"><use href="/assets/icons-20261015.svg#i-arrow"/></svg></a></li>
+        <li><a href="/pages/protocols.html#l0-heading"><span class="k">L0</span><span class="n">Physical Truth</span><span class="v">2 protocols</span><svg class="icon" aria-hidden="true"><use href="/assets/icons-20261015.svg#i-arrow"/></svg></a></li>
+        <li class="is-group is-base"><a href="/pages/protocols/code-of-planetary-synergy.html"><span class="k">Base</span><span class="n">Code of Planetary Synergy</span><span class="v">Foundation</span><svg class="icon" aria-hidden="true"><use href="/assets/icons-20261015.svg#i-arrow"/></svg></a></li>
+      </ul>
+      <div class="layers__foot">
+        <p class="layers__rule">Layers build on each other: no higher-layer protocol may violate a lower-layer constraint.</p>
+        <div class="actions">
+          <a class="btn" href="/pages/protocols.html">Explore all 35 protocols <svg class="icon icon--arrow" aria-hidden="true"><use href="/assets/icons-20261015.svg#i-arrow"/></svg></a>
+          <a class="btn btn--ghost" href="/downloads/Dikenocracy%20SYNERGY%20and%2035%20PROTOCOLS.txt" download><svg class="icon" aria-hidden="true"><use href="/assets/icons-20261015.svg#i-download"/></svg> Complete text (.txt)</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Working projects: staggered tiles -->
+    <section class="section wrap" aria-labelledby="projects-title">
+      <div class="work" data-reveal>
+        <div class="work__head">
+          <h2 id="projects-title">Working projects</h2>
+          <p>Concrete tools that put parts of the protocol stack into software you can use today.</p>
+          <a class="more" href="/pages/projects.html">All projects <svg class="icon icon--arrow" aria-hidden="true"><use href="/assets/icons-20261015.svg#i-arrow"/></svg></a>
+        </div>
+        <a class="work__item work__item--wide" href="/mazkira/">
+          <div class="work__pic"><img src="/assets/covers/mazkira-20261015.svg" width="480" height="270" loading="lazy" alt="" /></div>
+          <p class="work__cap">Mazkira <span>Business tool</span></p>
+          <p>An assistant for small businesses in Israel: documents, bookkeeping support, taxes and cash flow — in Hebrew, Russian and English.</p>
+        </a>
+        <a class="work__item work__item--tall" href="/converter/index.html">
+          <div class="work__pic"><img src="/assets/covers/converter-20261015.svg" width="480" height="270" loading="lazy" alt="" /></div>
+          <p class="work__cap">DTI Time Converter <span>Tool · L0</span></p>
+          <p>Convert any date between the Gregorian, Hebrew and Dikenocratic (DTI) calendars, right in your browser.</p>
+        </a>
+        <a class="work__item work__item--tall" href="/shadoo/">
+          <div class="work__pic"><img src="/assets/covers/shadoo-20261015.svg" width="480" height="270" loading="lazy" alt="" /></div>
+          <p class="work__cap">Shadoo <span>Privacy tool</span></p>
+          <p>Encrypt a message locally with a code phrase you agreed in person. Nothing readable is sent to the server.</p>
+        </a>
+        <a class="work__item work__item--tall" href="/survival/">
+          <div class="work__pic"><img src="/assets/covers/survival-20261015.svg" width="480" height="270" loading="lazy" alt="" /></div>
+          <p class="work__cap">Survival Manual <span>Manual</span></p>
+          <p>Post-nuclear survival manual: shelter, water, health and recovery, in English and Russian.</p>
+        </a>
+        <a class="work__item work__item--wide" href="/pages/projects/ayalon.html">
+          <div class="work__pic"><img src="/assets/covers/ayalon-20261015.svg" width="480" height="270" loading="lazy" alt="" /></div>
+          <p class="work__cap">Ayalon Monitor <span>Paused</span></p>
+          <p>Congestion on Highway 20 measured as a physical cost. The live model is paused.</p>
+        </a>
+      </div>
+    </section>
+
+    <!-- Open by default: picture, colour tile, facts -->
+    <section class="section wrap grid" aria-labelledby="source-title">
+      <h2 class="source__title" id="source-title">Official source</h2>
+      <p class="source__lead">All protocol specifications are maintained openly. The canonical texts are published in the World repository; the code of this website is in the Dikenocracy repository.</p>
+      <figure class="source__pic pic">
+        <img src="/assets/art/colonnade-20261015.webp" width="600" height="359" loading="lazy" alt="An old colonnaded building beside a street with light trails of traffic and people on the pavement." />
+        <p class="source__note">Each document shows the date of its last edition. Changes to normative content follow DKP-4-UPGRADE-001.</p>
       </figure>
-    </section>
-
-    <!-- ─── Manifesto ────────────────────────────────────────────────────── -->
-    <section class="quote-band" aria-label="Manifesto">
-      <p>We don’t ask the old world for permission.<br />We build a new world alongside it.</p>
-      <span>The Dikenocracy manifesto</span>
-    </section>
-
-    <!-- ─── Principles ───────────────────────────────────────────────────── -->
-    <section class="block" aria-labelledby="principles-title">
-      <div class="block__head">
-        <div>
-          <h2 class="block__title" id="principles-title">How it works</h2>
-          <p class="block__lead">Four ideas run through every protocol.</p>
-        </div>
-        <a class="block__more" href="/pages/about.html">More about the idea <svg class="icon" aria-hidden="true"><use href="/assets/icons-20261013.svg#i-arrow"/></svg></a>
-      </div>
-      <div class="feature-grid">
-        <article class="feature">
-          <span class="icon-badge"><svg aria-hidden="true"><use href="/assets/icons-20261013.svg#i-measure"/></svg></span>
-          <h3>Measurable reality</h3>
-          <p>Decisions start from verified physical data. The base layer defines how reality is captured and checked.</p>
-        </article>
-        <article class="feature">
-          <span class="icon-badge icon-badge--gold"><svg aria-hidden="true"><use href="/assets/icons-20261013.svg#i-rules"/></svg></span>
-          <h3>Deterministic rules</h3>
-          <p>Rules are formal and testable, so accountability becomes a consequence rather than a political choice.</p>
-        </article>
-        <article class="feature">
-          <span class="icon-badge"><svg aria-hidden="true"><use href="/assets/icons-20261013.svg#i-open"/></svg></span>
-          <h3>Transparent protocols</h3>
-          <p>Every protocol is public, dated and auditable. Changes follow a defined upgrade procedure.</p>
-        </article>
-        <article class="feature">
-          <span class="icon-badge icon-badge--gold"><svg aria-hidden="true"><use href="/assets/icons-20261013.svg#i-people"/></svg></span>
-          <h3>No unchecked authority</h3>
-          <p>Power is held by the function of justice — open algorithms, public metrics and data — not by people, parties or elites.</p>
-        </article>
+      <div class="source__tile field-cobalt"><img src="/assets/art/field-20261015.svg" width="600" height="640" loading="lazy" alt="Scattered dots settle into an even grid: opinion at the top, a measured rule at the bottom." /></div>
+      <dl class="source__facts">
+        <div><dt>Release</dt><dd><time datetime="2026-10-04">2026-10-04</time></dd></div>
+        <div><dt>Protocols</dt><dd>35 in L0–L8</dd></div>
+        <div><dt>Canonical texts</dt><dd>GitHub, World</dd></div>
+        <div><dt>Complete text</dt><dd>One TXT file</dd></div>
+      </dl>
+      <div class="source__actions actions">
+        <a class="more" href="https://github.com/anahronic/World/tree/main/Dikenocracy" rel="noopener noreferrer"><svg class="icon" aria-hidden="true"><use href="/assets/icons-20261015.svg#i-github"/></svg> Canonical texts on GitHub</a>
+        <a class="more" href="https://github.com/anahronic/Dikenocracy" rel="noopener noreferrer"><svg class="icon" aria-hidden="true"><use href="/assets/icons-20261015.svg#i-github"/></svg> Website source</a>
       </div>
     </section>
 
-    <!-- ─── Protocol stack ───────────────────────────────────────────────── -->
-    <section class="block" aria-labelledby="stack-title">
-      <div class="split">
-        <figure class="split__figure split__figure--card">
-          <img src="/assets/protocol-stack-20261013.svg" width="600" height="468" loading="lazy"
-               alt="Nine protocol layers stacked from L0 Physical Truth at the base to L8 Infrastructure at the top." />
-        </figure>
-        <div>
-          <p class="eyebrow"><svg class="icon" aria-hidden="true"><use href="/assets/icons-20261013.svg#i-layers"/></svg> The protocol stack</p>
-          <h2 class="block__title" id="stack-title">Nine layers, from physical truth to infrastructure</h2>
-          <p>
-            Each protocol defines a bounded part of the system and is designed to be testable and auditable.
-            Layers build on each other: no higher-layer protocol may violate a lower-layer constraint.
-          </p>
-          <p>
-            The foundation is the Code of Planetary Synergy; above it sit the axioms, justice and identity,
-            the economy, security, stability, human infrastructure and the audit machinery.
-          </p>
-          <div class="hero-actions">
-            <a class="btn" href="/pages/protocols.html">Explore all 35 protocols</a>
-            <a class="btn btn--ghost" href="/downloads/Dikenocracy%20SYNERGY%20and%2035%20PROTOCOLS.txt" download><svg class="icon" aria-hidden="true"><use href="/assets/icons-20261013.svg#i-download"/></svg> Complete text</a>
-          </div>
+    <!-- The close, inverted -->
+    <section class="close field-night" aria-labelledby="cta-title">
+      <div class="wrap">
+        <h2 class="close__title" id="cta-title">Start with the foundation.</h2>
+      </div>
+      <div class="wrap">
+        <div class="close__row">
+          <p>The Code of Planetary Synergy explains the system in one document; every protocol builds on it.</p>
+          <a class="btn" href="/pages/protocols/code-of-planetary-synergy.html">Read the Code <svg class="icon icon--arrow" aria-hidden="true"><use href="/assets/icons-20261015.svg#i-arrow"/></svg></a>
         </div>
       </div>
-    </section>
-
-    <!-- ─── Projects ─────────────────────────────────────────────────────── -->
-    <section class="block" aria-labelledby="projects-title">
-      <div class="block__head">
-        <div>
-          <h2 class="block__title" id="projects-title">Working projects</h2>
-          <p class="block__lead">Concrete tools that put parts of the protocol stack into software you can use today.</p>
-        </div>
-        <a class="block__more" href="/pages/projects.html">All projects <svg class="icon" aria-hidden="true"><use href="/assets/icons-20261013.svg#i-arrow"/></svg></a>
-      </div>
-      <div class="project-grid">
-        <article class="project-card">
-          <a class="project-card__cover" href="/mazkira/" tabindex="-1"><img src="/assets/covers/mazkira-20261013.svg" alt="" loading="lazy" width="480" height="270" /></a>
-          <div class="project-card__body">
-            <span class="tag">Business tool</span>
-            <h3 class="project-card__title"><a href="/mazkira/">Mazkira</a></h3>
-            <p class="project-card__text">An assistant for small businesses in Israel: documents, bookkeeping support, taxes and cash flow — in Hebrew, Russian and English.</p>
-          </div>
-        </article>
-        <article class="project-card">
-          <a class="project-card__cover" href="/converter/" tabindex="-1"><img src="/assets/covers/converter-20261013.svg" alt="" loading="lazy" width="480" height="270" /></a>
-          <div class="project-card__body">
-            <span class="tag">Tool · L0</span>
-            <h3 class="project-card__title"><a href="/converter/">DTI Time Converter</a></h3>
-            <p class="project-card__text">Convert any date between the Gregorian, Hebrew and Dikenocratic (DTI) calendars, right in your browser.</p>
-          </div>
-        </article>
-        <article class="project-card">
-          <a class="project-card__cover" href="/shadoo/" tabindex="-1"><img src="/assets/covers/shadoo-20261013.svg" alt="" loading="lazy" width="480" height="270" /></a>
-          <div class="project-card__body">
-            <span class="tag">Privacy tool</span>
-            <h3 class="project-card__title"><a href="/shadoo/">Shadoo</a></h3>
-            <p class="project-card__text">Encrypt a message locally with a code phrase you agreed in person. Nothing readable is sent to the server.</p>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <!-- ─── CTA ──────────────────────────────────────────────────────────── -->
-    <section class="cta-band" aria-labelledby="cta-title">
-      <div>
-        <h2 id="cta-title">Start with the foundation</h2>
-        <p>The Code of Planetary Synergy explains the system in one document; every protocol builds on it.</p>
-      </div>
-      <a class="btn" href="/pages/protocols/code-of-planetary-synergy.html">Read the Code <svg class="icon" aria-hidden="true"><use href="/assets/icons-20261013.svg#i-arrow"/></svg></a>
     </section>
 
   </main>
 
   <footer class="site-footer">
     <div class="site-footer__inner">
-      <a class="site-footer__brand" href="/"><svg aria-hidden="true"><use href="/assets/icons-20261013.svg#i-l1"/></svg>Dikenocracy</a>
-      <ul class="site-footer__links">
-        <li><a href="/pages/about.html">About</a></li>
-        <li><a href="/pages/protocols.html">Protocols</a></li>
-        <li><a href="/pages/projects.html">Projects</a></li>
-        <li><a href="https://github.com/anahronic/World/tree/main/Dikenocracy" rel="noopener noreferrer">Canonical texts</a></li>
-        <li><a href="https://github.com/anahronic/Dikenocracy" rel="noopener noreferrer">Source code</a></li>
-      </ul>
-      <p class="site-footer__note">Dikenocracy &mdash; public framework. Built openly alongside the old world.</p>
+      <div class="site-footer__cols">
+        <div>
+          <h2 class="site-footer__title">Framework</h2>
+          <ul class="site-footer__links">
+            <li><a href="/pages/about.html">About</a></li>
+            <li><a href="/pages/protocols.html">Protocols</a></li>
+            <li><a href="/pages/protocols/code-of-planetary-synergy.html">Code of Planetary Synergy</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2 class="site-footer__title">Projects</h2>
+          <ul class="site-footer__links">
+            <li><a href="/mazkira/">Mazkira</a></li>
+            <li><a href="/converter/index.html">DTI Time Converter</a></li>
+            <li><a href="/shadoo/">Shadoo</a></li>
+            <li><a href="/survival/">Survival Manual</a></li>
+            <li><a href="/ayalon/">Ayalon Monitor</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2 class="site-footer__title">Sources</h2>
+          <ul class="site-footer__links">
+            <li><a href="https://github.com/anahronic/World/tree/main/Dikenocracy" rel="noopener noreferrer">Canonical texts</a></li>
+            <li><a href="https://github.com/anahronic/Dikenocracy" rel="noopener noreferrer">Source code</a></li>
+            <li><a href="/pages/protocols.html#download-heading">Complete text</a></li>
+          </ul>
+        </div>
+        <p class="site-footer__note">Dikenocracy &mdash; public framework. Built openly alongside the old world.</p>
+      </div>
+      <a class="site-footer__wordmark" href="/" aria-label="Dikenocracy, home page">Dikenocracy</a>
     </div>
   </footer>
 
   <script src="/script-20260923.js"></script>
   <script type="module" src="/navigation-20260923.js"></script>
+  <script src="/converter/converter.js" defer></script>
+  <script src="/site-20261015.js" defer></script>
 </body>
 </html>
