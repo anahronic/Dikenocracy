@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<!-- Dev-only stress page (tools/ is never deployed). Renders the generated components with demo and worst-case data.
+     Open via the local server: /tools/stress/break-ui.html?data=worst  (states: demo | worst | empty | one) -->
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Stress test — Dikenocracy components</title>
+  <link rel="stylesheet" href="/styles-20261015.css" />
+  <style>
+    .stress-toggle { position: fixed; bottom: 12px; left: 50%; transform: translateX(-50%); z-index: 999; display: flex; gap: 2px; padding: 3px; background: #ccc; border-radius: 999px; font: 13px system-ui; }
+    .stress-toggle a { padding: 6px 12px; border-radius: 999px; color: #222; text-decoration: none; }
+    .stress-toggle a[aria-current] { background: #fff; }
+    .stress-block { padding-block: 40px; }
+    .stress-label { font: 12px system-ui; color: #777; margin-bottom: 8px; }
+  </style>
+</head>
+<body>
+  <main id="main"></main>
+  <nav class="stress-toggle" aria-label="Data set">
+    <a href="?data=demo">Demo data</a><a href="?data=worst">Worst case</a><a href="?data=empty">Empty</a><a href="?data=one">One</a>
+  </nav>
+<script>
+const ICON = n => `<svg class="icon" aria-hidden="true"><use href="/assets/icons-20261015.svg#${n}"/></svg>`;
+const DATA = {
+  demo: {
+    layer: { key: 'L1', title: 'L1 — Core', text: 'Foundational axioms, identity attribution, impact measurement, and justice invariants that all higher layers must respect.' },
+    rows: [['DKP-1-AXIOMS-001', 'Axioms Protocol', '2026-10-04'], ['DKP-1-IDENTITY-001', 'Identity & Subject Protocol', '2026-10-04'], ['DKP-1-JUSTICE-001', 'Justice Function Protocol (δίκη)', '2026-10-04']],
+    layers: [['L8', 'Infrastructure', 3], ['L1', 'Core', 6], ['L0', 'Physical Truth', 2]],
+    projects: [['Mazkira', 'Business tool'], ['DTI Time Converter', 'Tool · L0']],
+  },
+  worst: {
+    layer: { key: 'L4', title: 'L4 — Stability', text: 'Crisis handling, error correction, and controlled protocol upgrade mechanisms.' },
+    rows: [
+      ['DKP-4-EPISTEMIC-TRANSITIONS-001', 'Epistemic State Transition Protocol', '2026-10-04'],            // longest real ID
+      ['DKP-4-CRISIS-001 (PATCH)', 'Addendum to DKP-4-CRISIS-001: Null-Output State Handling Extension', '2026-10-04'], // long real title
+      ['Appendix A', 'Design Rationale & Safeguards (Normative) — appendix to DKP-5-TRANSPORT-001', '2026-10-04'],
+      ['DKP-6-INTERJURISDICTIONAL-RECOGNITION-002', 'Interjurisdictional Recognition Protocol', '2027-01-31'], // follows DKP-<layer>-<domain>-<seq>, no length limit
+      ['DKP-5-TRANSPORT-001', 'Протокол общественного транспорта, снижения рисков и физического достоинства', '2026-10-04'], // Russian edition title
+      ['DKP-5-EDU-001', 'פרוטוקול חינוך', '2026-10-04'],                                                    // Hebrew (RTL) title
+      ['DKP-1-ID-1', 'Id', '2026-10-04'],                                                                  // very short
+    ],
+    layers: [['L5', 'Human Infrastructure', 6], ['L6', 'Interjurisdictional Recognition', 21], ['L0', 'Physical Truth', 1], ['Base', 'Code of Planetary Synergy', 'Foundation']],
+    projects: [['Post-Nuclear Survival and Recovery Manual', 'Reference · English and Russian'], ['Mazkira — Business Assistant', 'Business tool'], ['Ayalon Model', 'Monitor · L5 · live model paused']],
+  },
+  empty: { layer: { key: 'L9', title: 'L9 — Reserved', text: '' }, rows: [], layers: [], projects: [] },
+  one: { layer: { key: 'L0', title: 'L0 — Physical Truth', text: 'The foundation layer.' }, rows: [['DKP-0-ORACLE-001', 'Physical Truth Layer Protocol (PTL)', '2026-10-04']], layers: [['L0', 'Physical Truth', 1]], projects: [['Shadoo', 'Privacy tool']] },
+};
+const state = new URLSearchParams(location.search).get('data') || 'demo';
+document.querySelectorAll('.stress-toggle a').forEach(a => { if (a.getAttribute('href') === '?data=' + state) a.setAttribute('aria-current', 'true'); });
+const d = DATA[state] || DATA.demo;
+const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+const plural = n => typeof n === 'number' ? `${n} protocol${n === 1 ? '' : 's'}` : n;
+document.getElementById('main').innerHTML = `
+  <div class="wrap stress-block"><p class="stress-label">Protocol index (.layer-group / .proto-row)</p>
+    <section class="layer-group" data-layer="${d.layer.key}">
+      <header class="layer-group__head"><h2 class="layer-group__title">${esc(d.layer.title)}</h2>
+        ${d.layer.text ? `<p class="layer-group__text">${esc(d.layer.text)}</p>` : ''}<p class="layer-group__count">${plural(d.rows.length)}</p></header>
+      <ul class="proto-list" role="list">${d.rows.map(([id, t, date]) => `<li class="proto-row"><a href="#"><span class="proto-row__id">${esc(id)}</span><span class="proto-row__title">${esc(t)}</span><time class="proto-row__date">${date}</time>${ICON('i-arrow')}</a></li>`).join('')}</ul>
+    </section></div>
+  <div class="wrap stress-block"><p class="stress-label">Protocol page rail (.doc-layer), width as on the page</p>
+    <div style="max-width:21rem"><ul class="doc-layer" role="list">${d.rows.map(([id, t], i) => `<li><a href="#"${i === 0 ? ' aria-current="page"' : ''}>${esc(id)}<span>${esc(t)}</span></a></li>`).join('')}</ul></div></div>
+  <div class="wrap grid stress-block"><p class="stress-label" style="grid-column:1/-1">Home layer table (.layers__table)</p>
+    <ul class="layers__table" role="list" style="margin-top:0;grid-row:auto">${d.layers.map(([k, n, v]) => `<li><a href="#"><span class="k">${k}</span><span class="n">${esc(n)}</span><span class="v">${plural(v)}</span>${ICON('i-arrow')}</a></li>`).join('')}</ul></div>
+  <div class="wrap stress-block"><p class="stress-label">Project tile captions (.work__cap)</p>
+    <div class="work">${d.projects.map(([n, k]) => `<a class="work__item work__item--tall" href="#"><div class="work__pic"><img src="/assets/covers/shadoo-20261015.svg" width="480" height="270" alt="" /></div><p class="work__cap">${esc(n)} <span>${esc(k)}</span></p></a>`).join('')}</div></div>`;
+</script>
+</body>
+</html>

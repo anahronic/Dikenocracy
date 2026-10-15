@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Dikenocracy redesign — before and after</title>
+<style>
+  :root { --bg: #eef0f3; --ink: #0b0c0e; --muted: #555c68; --accent: #1f2de6; }
+  body { margin: 0; background: var(--bg); color: var(--ink); font: 16px/1.5 system-ui, sans-serif; }
+  header { padding: 32px 24px 8px; } h1 { margin: 0; font-size: 28px; } p { color: var(--muted); margin: 6px 0 0; }
+  section { padding: 24px; } h2 { font-size: 18px; margin: 0 0 12px; }
+  .pair { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; align-items: start; }
+  .pair figure { margin: 0; } .pair figcaption { font-size: 13px; color: var(--muted); margin-bottom: 6px; }
+  .pair img { width: 100%; height: auto; display: block; background: #fff; }
+  .phone .pair img { max-width: 390px; }
+  @media (max-width: 700px) { .pair { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<header>
+  <h1>Dikenocracy redesign — before and after</h1>
+  <p>Screenshots taken on 2026-10-14 (before) and 2026-10-15 (after) at 1440px and 390px. Open this file from disk; the images sit next to it.</p>
+</header>
+<section><h2>Home, first screen (1440)</h2><div class="pair"><figure><figcaption>Before</figcaption><img src="before/desk-index-fold.jpg" alt="Old home page, first screen"></figure><figure><figcaption>After</figcaption><img src="after/desk-index-fold.jpg" alt="New home page, first screen"></figure></div></section>
+<section><h2>Home, whole page (1440)</h2><div class="pair"><figure><figcaption>Before</figcaption><img src="before/desk-index.jpg" alt="Old home page"></figure><figure><figcaption>After</figcaption><img src="after/desk-index.jpg" alt="New home page"></figure></div></section>
+<section><h2>Protocols index (1440)</h2><div class="pair"><figure><figcaption>Before</figcaption><img src="before/desk-pages_protocols.jpg" alt="Old protocol index"></figure><figure><figcaption>After</figcaption><img src="after/desk-pages_protocols.jpg" alt="New protocol index with search and layer filter"></figure></div></section>
+<section><h2>Protocol page, first screen (1440)</h2><div class="pair"><figure><figcaption>Before</figcaption><img src="before/desk-pages_protocols_dkp-1-axioms-001-fold.jpg" alt="Old protocol page"></figure><figure><figcaption>After</figcaption><img src="after/desk-pages_protocols_dkp-1-axioms-001-fold.jpg" alt="New protocol page"></figure></div></section>
+<section><h2>About (1440)</h2><div class="pair"><figure><figcaption>Before</figcaption><img src="before/desk-pages_about.jpg" alt="Old about page"></figure><figure><figcaption>After</figcaption><img src="after/desk-pages_about.jpg" alt="New about page"></figure></div></section>
+<section><h2>Projects (1440)</h2><div class="pair"><figure><figcaption>Before</figcaption><img src="before/desk-pages_projects.jpg" alt="Old projects page"></figure><figure><figcaption>After</figcaption><img src="after/desk-pages_projects.jpg" alt="New projects page"></figure></div></section>
+<section class="phone"><h2>Phone: home (390)</h2><div class="pair"><figure><figcaption>Before</figcaption><img src="before/mob-index.jpg" alt="Old home on a phone"></figure><figure><figcaption>After</figcaption><img src="after/mob-index.jpg" alt="New home on a phone"></figure></div></section>
+<section class="phone"><h2>Phone: protocol page (390)</h2><div class="pair"><figure><figcaption>Before</figcaption><img src="before/mob-pages_protocols_dkp-1-axioms-001.jpg" alt="Old protocol page on a phone"></figure><figure><figcaption>After</figcaption><img src="after/mob-pages_protocols_dkp-1-axioms-001.jpg" alt="New protocol page on a phone"></figure></div></section>
+</body>
+</html>

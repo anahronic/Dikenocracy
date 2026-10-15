@@ -247,6 +247,8 @@ def body_html(md, slug):
         h['id'] = ID_OVERRIDES.get((slug, text)) or heading_id(text, counts)
         if h.name in ('h2', 'h3', 'h4'):
             toc.append((h.name, h['id'], text))
+    for pre in soup.find_all('pre'):
+        pre['tabindex'] = '0'  # wide code scrolls sideways: keep it reachable from the keyboard
     for t in soup.find_all('table'):
         t['class'] = 'protocol-table'
         t.wrap(soup.new_tag('div', attrs={'class': 'table-wrap'}))
@@ -440,9 +442,11 @@ def index_html(docs, n, release, txt_name):
         count = sum(1 for r in items if docs[r[0]]['kind'] == 'protocol')
         extra = len(items) - count
         if count:
-            count_html = f'{count} protocol{"s" if count != 1 else ""}' + (f' and {extra} addendum' if extra else '')
-        else:
+            count_html = f'{count} protocol{"s" if count != 1 else ""}' + (f' and {extra} {"addendum" if extra == 1 else "addenda"}' if extra else '')
+        elif items:
             count_html = 'Not counted as a protocol'
+        else:
+            count_html = 'No documents yet'
         text = f'''
             <p class="layer-group__text">{LAYER_TEXT[key]}</p>''' if key in LAYER_TEXT else ''
         short_label = full.split(' — ')[0] if ' — ' in full else full
