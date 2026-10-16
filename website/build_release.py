@@ -300,6 +300,7 @@ def page_html(slug, doc, prev, nxt, docs):
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="dkp-doc-id" content="{t}" />
   <meta name="description" content="{t} — {desc}" />
   <title>{t} — Dikenocracy</title>
   <link rel="canonical" href="{DOMAIN}/pages/protocols/{slug}.html" />
@@ -361,6 +362,7 @@ def page_html(slug, doc, prev, nxt, docs):
 
   <script src="/script-20260923.js"></script>
   <script type="module" src="/navigation-20260923.js"></script>
+  <script src="/keeper/keeper-loader.js" defer></script>
 </body>
 </html>
 '''
@@ -514,6 +516,7 @@ def index_html(docs, n, release, txt_name):
 
   <script src="/script-20260923.js"></script>
   <script type="module" src="/navigation-20260923.js"></script>
+  <script src="/keeper/keeper-loader.js" defer></script>
 </body>
 </html>
 '''
