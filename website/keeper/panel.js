@@ -190,7 +190,8 @@ function proposal(p, parent) {
       const validation = await (await api('/api/lab/v1/validate',{body:request,signal:controller.signal})).json();
       if (!validation.ok) { status('validation'); problemList(problems,validation.problems); return; }
       // Do not abort job creation: its response is needed to retain cancellation credentials.
-      const created = await (await api('/api/lab/v1/jobs',{body:request,headers:{'Idempotency-Key':crypto.randomUUID()}})).json();
+      const proof = btoa(String.fromCharCode(...crypto.getRandomValues(new Uint8Array(32)))).replace(/\+/g,'-').replace(/\//g,'_').replace(/=+$/,'');
+      const created = await (await api('/api/lab/v1/jobs',{body:request,headers:{'Idempotency-Key':crypto.randomUUID(),'X-Idempotency-Token':proof}})).json();
       job = {id:created.job_id,token:created.token}; confirm.disabled = true; lock(true); status('queued');
       await poll(job,controller.signal,parent); form.remove();
     } catch (error) { failure(error,problems); }
