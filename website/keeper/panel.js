@@ -98,7 +98,8 @@ function failure(error, parent) {
 function answer(data, parent) {
   parent.replaceChildren(node('p',data.answer || '', 'answer-text'));
   if (['no_sources','refused'].includes(data.state)) parent.append(label('p',data.state,'note'));
-  for (const c of data.citations || []) {
+  // found_sources: sections found for the question but not cited by the answer (marked ↗, never shown as support)
+  for (const c of [...(data.citations || []), ...(data.found_sources || []).map(x => ({...x, heading: '↗ ' + (x.heading || x.cite)}))]) {
     if (!c.url) { parent.append(node('span',`${c.heading || c.cite} · ${c.source_type || ''} · ${c.status || ''}`,'chip')); continue; }
     try {
       const url = new URL(c.url,base); if (!/^https?:$/.test(url.protocol)) continue;
