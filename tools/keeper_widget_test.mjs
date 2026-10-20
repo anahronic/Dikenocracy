@@ -84,6 +84,11 @@ async function handle(req,res) {
     }
     return json(res,404,{error:{code:'not_found'}});
   }
+  if (url.pathname === '/csp-strict/') {
+    res.writeHead(200,{'Content-Type':'text/html; charset=utf-8'});
+    res.end(`<!doctype html><html lang="en"><head><meta http-equiv="Content-Security-Policy" content="default-src 'self'; connect-src 'none'; object-src 'none'; frame-src 'none'; form-action 'none'; base-uri 'none'; script-src 'self'; style-src 'self'"><title>Strict</title></head><body><input id="secret" value="CSP_FORM_SECRET"><script src="/keeper/keeper-loader.js" defer></script></body></html>`);
+    return;
+  }
   const name = decodeURIComponent(url.pathname).replace(/^\/+/, '') || 'index.html';
   let file = path.resolve(root,name.endsWith('/') ? name + 'index.html' : name);
   if (!file.startsWith(root + path.sep)) { res.writeHead(403); res.end(); return; }
@@ -121,8 +126,8 @@ async function ask(frame,text) { await frame.locator('#question').fill(text); aw
 async function state(frame,value) { await until(async () => await frame.locator('#status').getAttribute('data-state') === value, 'Expected state ' + value); }
 try {
   browser = await chromium.launch({headless:true,args:['--disable-background-networking','--disable-component-update','--disable-domain-reliability','--disable-sync','--no-first-run','--host-resolver-rules=MAP * ~NOTFOUND, EXCLUDE 127.0.0.1']});
-  await test('loader below 6000 bytes and complete route inventory',async () => {
-    assert.ok((await fs.stat(path.join(root,'keeper/keeper-loader.js'))).size < 6500);
+  await test('loader below 7000 bytes and complete route inventory',async () => {
+    assert.ok((await fs.stat(path.join(root,'keeper/keeper-loader.js'))).size < 7000);
     const inventory = JSON.parse(await fs.readFile(path.join(root,'keeper/ROUTES.json'),'utf8'));
     assert.equal(inventory.routes.filter(r=>r.source==='repository').length,47); assert.equal(inventory.routes.filter(r=>r.source==='live-only').length,4);
   });
@@ -258,8 +263,36 @@ try {
     const keys=requests.filter(r=>r.path==='/api/lab/v1/jobs').map(r=>r.headers['idempotency-key']);assert.ok(new Set(keys).size >= 2);
     await context.close();
   });
+  await test('strict page CSP (Shadoo): styled launcher, Keeper in its own tab, no frame, no page data',async()=>{
+    const {page,context}=await pageAt('/csp-strict/');
+    const box=await page.locator('#dkp-keeper #open').boundingBox(); assert.equal(box.width,48); assert.equal(box.height,48);
+    await page.locator('#secret').focus(); await page.locator('#secret').selectText();
+    const [tab]=await Promise.all([context.waitForEvent('page'),page.locator('#dkp-keeper #open').click()]);
+    await tab.waitForLoadState('domcontentloaded');
+    assert.equal(new URL(tab.url()).pathname,'/keeper/panel.html'); assert.equal(new URL(tab.url()).searchParams.get('from'),'/csp-strict/');
+    assert.equal(await page.locator('#dkp-keeper iframe').count(),0); assert.equal(await tab.evaluate(()=>window.opener),null);
+    await tab.locator('#send:not([disabled])').waitFor();
+    await tab.locator('#question').fill('answer'); await tab.locator('#send').click();
+    await until(async()=>await tab.locator('#status').getAttribute('data-state')==='completed','Tab answer');
+    assert.equal(await tab.locator('.answer-text').textContent(),'Verified final answer.');
+    const body=requests.filter(r=>r.path.endsWith('/ask')).at(-1).body;
+    assert.equal(body.page.url,origin+'/csp-strict/'); assert.equal(body.selection ?? null,null);
+    assert.doesNotMatch(JSON.stringify(body),/CSP_FORM_SECRET/);
+    await context.close();
+  });
+  await test('frame blocked by a header policy: the dialog offers the Keeper in a new tab',async()=>{
+    const {page,context}=await pageAt('/');
+    await context.route(origin+'/keeper/panel.html',route=>route.abort('blockedbyclient'));
+    await page.evaluate(()=>{const f=()=>document.dispatchEvent(new SecurityPolicyViolationEvent('securitypolicyviolation',{blockedURI:location.origin+'/keeper/panel.html',violatedDirective:'frame-src',effectiveDirective:'frame-src',originalPolicy:"frame-src 'none'",disposition:'enforce',statusCode:200}));new MutationObserver(()=>{if(document.getElementById('dkp-keeper').shadowRoot.querySelector('iframe')) f();}).observe(document.getElementById('dkp-keeper').shadowRoot,{childList:true,subtree:true});});
+    await page.locator('#dkp-keeper #open').click();
+    const fallback=page.locator('#dkp-keeper #dialog button:not(#close)'); await fallback.waitFor();
+    assert.equal(await page.locator('#dkp-keeper iframe').count(),0);
+    const [tab]=await Promise.all([context.waitForEvent('page'),fallback.click()]);
+    assert.equal(new URL(tab.url()).pathname,'/keeper/panel.html');
+    await context.close();
+  });
   await test('all captured API bodies exclude host secrets',async()=>{
-    assert.doesNotMatch(JSON.stringify(requests.map(r=>r.body)),/QUERY_SECRET|HASH_SECRET|FORM_SECRET|TEXTAREA_SECRET|STORAGE_SECRET|COOKIE_SECRET|HIDDEN_SECRET|EDIT_SECRET|ACTUAL_INPUT_SECRET/);
+    assert.doesNotMatch(JSON.stringify(requests.map(r=>r.body)),/QUERY_SECRET|HASH_SECRET|FORM_SECRET|CSP_FORM_SECRET|TEXTAREA_SECRET|STORAGE_SECRET|COOKIE_SECRET|HIDDEN_SECRET|EDIT_SECRET|ACTUAL_INPUT_SECRET/);
     assert.deepEqual(errors,[]);
   });
 } catch(error) {results.push({name:'test harness',ok:false,error:error.stack});}

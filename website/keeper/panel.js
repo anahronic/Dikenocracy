@@ -274,5 +274,14 @@ function renderReport(report,j,parent) {
   }));
   card.append(actions); parent.append(card,explanation);
 }
+// Own tab (pages whose policy forbids frames, e.g. Shadoo): the address carries only the page path and language.
+if (window.parent === window) {
+  const q = new URLSearchParams(location.search), from = q.get('from') || '/';
+  base = location.origin;
+  context = {url:base + (/^\/[\w\-./]*$/.test(from) && !from.includes('..') ? from : '/'),doc_id:null,dir:'ltr',selection:null};
+  lang = dictionary[q.get('lang')] ? q.get('lang') : 'en';
+  $('protocols').href = base + '/pages/protocols.html'; $('lab').href = base + '/projects/protocol-lab/';
+  localize(); lock(false); $('question').focus();
+}
 localize(); window.parent.postMessage({type:'keeper:ready'},'*');
 })();
