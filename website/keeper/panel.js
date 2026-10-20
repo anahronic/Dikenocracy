@@ -98,6 +98,18 @@ function failure(error, parent) {
 function answer(data, parent) {
   parent.replaceChildren(node('p',data.answer || '', 'answer-text'));
   if (['no_sources','refused'].includes(data.state)) parent.append(label('p',data.state,'note'));
+  for (const notice of data.notices || []) {
+    const section = node('section', null, 'server-notice');
+    section.append(node('p', notice.text, 'note'));
+    for (const c of notice.links || []) {
+      try {
+        const url = new URL(c.url, base); if (!/^https?:$/.test(url.protocol)) continue;
+        const a = node('a', c.cite + ' \u00b7 ' + (c.heading || ''), 'notice-link');
+        a.href = url.href; a.target = '_blank'; a.rel = 'noopener noreferrer'; section.append(a);
+      } catch (_) { /* Invalid notice link. */ }
+    }
+    parent.append(section);
+  }
   // found_sources: sections found for the question but not cited by the answer (marked ↗, never shown as support)
   for (const c of [...(data.citations || []), ...(data.found_sources || []).map(x => ({...x, heading: '↗ ' + (x.heading || x.cite)}))]) {
     if (!c.url) { parent.append(node('span',`${c.heading || c.cite} · ${c.source_type || ''} · ${c.status || ''}`,'chip')); continue; }
@@ -128,7 +140,7 @@ async function stream(response, parent, signal) {
     for (const line of raw.split(/\r?\n/)) { if (line.startsWith('event:')) kind = line.slice(6).trim(); if (line.startsWith('data:')) lines.push(line.slice(5).replace(/^ /,'')); }
     if (!lines.length) return;
     const data = JSON.parse(lines.join('\n'));
-    if (kind === 'delta') { status('answering'); output.textContent += data.text || ''; }
+    if (kind === 'delta') status('answering'); // Only checked final text is displayed.
     if (kind === 'status') status(data.state === 'checking' ? 'checking' : data.state === 'retrieving' ? 'waiting' : 'answering');
     if (kind === 'final') { final = data; answer(data,parent); }
   }
@@ -156,6 +168,7 @@ $('ask-form').onsubmit = async e => {
   finally { active = null; lock(false); }
 };
 function proposal(p, parent) {
+  let pending = null; // Private retry credentials, scoped to this open panel and exact body.
   const form = node('form',null,'proposal'); form.append(label('h3','proposal')); if (p.note) form.append(node('p',p.note,'note'));
   const controls = [];
   for (const field of p.fields || []) {
@@ -191,8 +204,12 @@ function proposal(p, parent) {
       const validation = await (await api('/api/lab/v1/validate',{body:request,signal:controller.signal})).json();
       if (!validation.ok) { status('validation'); problemList(problems,validation.problems); return; }
       // Do not abort job creation: its response is needed to retain cancellation credentials.
-      const proof = btoa(String.fromCharCode(...crypto.getRandomValues(new Uint8Array(32)))).replace(/\+/g,'-').replace(/\//g,'_').replace(/=+$/,'');
-      const created = await (await api('/api/lab/v1/jobs',{body:request,headers:{'Idempotency-Key':crypto.randomUUID(),'X-Idempotency-Token':proof}})).json();
+      const serialized = JSON.stringify(request);
+      if (!pending || pending.serialized !== serialized) {
+        const proof = btoa(String.fromCharCode(...crypto.getRandomValues(new Uint8Array(32)))).replace(/\+/g,'-').replace(/\//g,'_').replace(/=+$/,'');
+        pending = {serialized, body:structuredClone(request), key:crypto.randomUUID(), proof};
+      }
+      const created = await (await api('/api/lab/v1/jobs',{body:pending.body,headers:{'Idempotency-Key':pending.key,'X-Idempotency-Token':pending.proof}})).json();
       job = {id:created.job_id,token:created.token}; confirm.disabled = true; lock(true); status('queued');
       await poll(job,controller.signal,parent); form.remove();
     } catch (error) { failure(error,problems); }

@@ -21,7 +21,7 @@ catch (error) {
   }
 }
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)),'../website');
-const requests = [], jobs = new Map(), results = [], errors = [];
+const requests = [], jobs = new Map(), retries = new Map(), preflights = [], results = [], errors = [];
 let origin, jobNumber = 0;
 const provenance = {model:'fixture-model',corpus_version:'fixture-corpus',instructions_version:'fixture-v1'};
 const answer = {state:'answer',answer:'Verified final answer.',citations:[{heading:'Recovery invariant',source_type:'protocol',status:'normative',url:'/pages/protocols/dkp-5-work-cycle-001.html#7'}],flags:[{code:'unverified_quote'}],provenance};
@@ -33,9 +33,9 @@ async function handle(req,res) {
   if (url.pathname.startsWith('/api/')) {
     res.setHeader('Access-Control-Allow-Origin','null');
     res.setHeader('Access-Control-Allow-Methods','GET, POST, OPTIONS');
-    res.setHeader('Access-Control-Allow-Headers','Content-Type, Authorization, Idempotency-Key');
+    res.setHeader('Access-Control-Allow-Headers','Content-Type, Authorization, Idempotency-Key, X-Idempotency-Token');
     res.setHeader('Access-Control-Expose-Headers','Retry-After');
-    if (req.method === 'OPTIONS') { res.writeHead(204); res.end(); return; }
+    if (req.method === 'OPTIONS') { preflights.push(req.headers); res.writeHead(204); res.end(); return; }
     const chunks = []; for await (const part of req) chunks.push(part);
     const raw = Buffer.concat(chunks).toString(); const body = raw ? JSON.parse(raw) : null;
     requests.push({path:url.pathname,method:req.method,body,headers:req.headers});
@@ -47,7 +47,8 @@ async function handle(req,res) {
       res.write('event: status\r\ndata: {"state":"retrieving"}\r\n\r\n');
       res.write('event: delta\r\ndata: {"text":"Unverified draft"}\r\n\r\n');
       if (body.question === 'slow stream') return;
-      const final = body.question.includes('proposal') ? proposal(body.question.includes('slow')) : body.question === 'missing' ? {state:'needs_parameters',answer:'Please specify staffing.',missing:['workers','demand'],provenance} : answer;
+      let final = body.question.includes('proposal') ? proposal(body.question.includes('slow')) : body.question === 'missing' ? {state:'needs_parameters',answer:'Please specify staffing.',missing:['workers','demand'],provenance} : answer;
+      if (body.question === 'notice') final = {state:'no_answer',answer:'The Keeper could not compose an answer.',citations:[],found_sources:[answer.citations[0]],notices:[{code:'open_author_question',text:'The author decides.',links:[{cite:'Q-065',heading:'Open question',url:'/api/keeper/v1/sources/Q-065%230',origin:'server_notice'}]}],flags:[{code:'empty_model_answer'}],provenance};
       // Deliberately split a frame and a multibyte UTF-8 sequence across writes.
       const bytes = Buffer.from('event: delta\ndata: {"text":" — draft"}\n\nevent: final\ndata: ' + JSON.stringify(final) + '\n\n');
       const cut = bytes.indexOf(Buffer.from('—')) + 1;
@@ -59,8 +60,18 @@ async function handle(req,res) {
       return json(res,200,{ok:true,problems:[],resolved:{}});
     }
     if (url.pathname === '/api/lab/v1/jobs') {
+      const key = req.headers['idempotency-key'], proof = req.headers['x-idempotency-token'];
+      if (!key || !proof) return json(res,422,{error:{code:'invalid_input'}});
+      if (retries.has(key)) {
+        const old = retries.get(key);
+        if (old.body !== raw || old.proof !== proof) return json(res,409,{error:{code:'conflict'}});
+        return json(res,202,old.response);
+      }
       const id = 'job-' + (++jobNumber); jobs.set(id,{token:'token-' + id,polls:0,cancelled:false,slow:body.variants[0].name === 'slow'});
-      return json(res,202,{job_id:id,token:'token-' + id,state:'queued'});
+      const response = {job_id:id,token:'token-' + id,state:'queued'};
+      retries.set(key,{body:raw,proof,response});
+      if ([17,18].includes(body.variants[0].input.workers)) return json(res,503,{error:{code:'proxy_lost_response'}});
+      return json(res,202,response);
     }
     const match = /^\/api\/lab\/v1\/jobs\/([^/]+)(?:\/(.*))?$/.exec(url.pathname);
     if (match) {
@@ -190,6 +201,49 @@ try {
     const downloadPromise=page.waitForEvent('download'); await frame.getByRole('button',{name:'Download package'}).click(); const download=await downloadPromise; assert.match(download.suggestedFilename(),/^lab-job-\d+\.zip$/);
     await context.close();
   });
+  await test('KT10 empty answer keeps service notice links separate from found sections',async()=>{
+    const {page,context}=await pageAt(); const frame=await open(page); await ask(frame,'notice'); await state(frame,'completed');
+    assert.equal(await frame.locator('.answer-text').textContent(),'The Keeper could not compose an answer.');
+    assert.equal(await frame.locator('.server-notice').count(),1);
+    assert.match(await frame.locator('.notice-link').textContent(),/Q-065/);
+    assert.equal(await frame.locator('.chip').count(),1);
+    assert.match(await frame.locator('.chip').textContent(),/\u2197/);
+    assert.doesNotMatch(await frame.locator('article').textContent(),/Unverified draft/);
+    await context.close();
+  });
+  await test('KT10 retry after accepted POST loses response; same job and token',async()=>{
+    const {page,context}=await pageAt(); const frame=await open(page);
+    await ask(frame,'proposal'); await state(frame,'completed');
+    const beforeJobs=jobs.size, before=requests.length;
+    await frame.locator('[data-key=workers]').fill('17');
+    await frame.locator('.proposal button[type=submit]').click(); await state(frame,'unavailable');
+    assert.equal(jobs.size,beforeJobs+1);
+    await frame.locator('.proposal button[type=submit]').click();
+    await frame.locator('.result').waitFor({timeout:10000});
+    const posts=requests.slice(before).filter(r=>r.path==='/api/lab/v1/jobs');
+    assert.equal(posts.length,2); assert.equal(jobs.size,beforeJobs+1);
+    for(const h of ['idempotency-key','x-idempotency-token']) assert.equal(posts[0].headers[h],posts[1].headers[h]);
+    const saved=retries.get(posts[0].headers['idempotency-key']).response;
+    assert.ok(requests.slice(before).some(r=>r.path.endsWith('/'+saved.job_id+'/report') && r.headers.authorization==='Bearer '+saved.token));
+    assert.deepEqual(posts[0].body,posts[1].body);
+    assert.equal(posts[0].headers.origin,'null'); assert.ok(posts[0].headers['x-idempotency-token']);
+    await context.close();
+  });
+  await test('KT10 changed body after lost response creates independent credentials',async()=>{
+    const {page,context}=await pageAt(); const frame=await open(page);
+    await ask(frame,'proposal'); await state(frame,'completed'); const before=requests.length;
+    for(const workers of ['17','18']) {
+      await frame.locator('[data-key=workers]').fill(workers);
+      await frame.locator('.proposal button[type=submit]').click(); await state(frame,'unavailable');
+    }
+    const posts=requests.slice(before).filter(r=>r.path==='/api/lab/v1/jobs');
+    assert.equal(posts.length,2);
+    for(const h of ['idempotency-key','x-idempotency-token']) assert.notEqual(posts[0].headers[h],posts[1].headers[h]);
+    assert.notDeepEqual(posts[0].body,posts[1].body);
+    const response=await fetch(origin+'/api/lab/v1/jobs',{method:'OPTIONS',headers:{Origin:'null','Access-Control-Request-Method':'POST','Access-Control-Request-Headers':'content-type,idempotency-key,x-idempotency-token'}});
+    assert.equal(response.status,204); assert.match(response.headers.get('access-control-allow-headers'),/X-Idempotency-Token/i);
+    await context.close();
+  });
   await test('busy Retry-After, unavailable, network failure, missing parameters',async()=>{
     const {page,context}=await pageAt(); const frame=await open(page);
     await ask(frame,'busy'); await state(frame,'busy'); assert.match(await frame.locator('#status').textContent(),/Retry after 5/);
@@ -201,7 +255,7 @@ try {
     const {page,context}=await pageAt();const frame=await open(page);await ask(frame,'slow stream');await state(frame,'answering');await frame.locator('#cancel').click();await state(frame,'cancelled');
     await ask(frame,'slow proposal');await state(frame,'completed');await frame.locator('.proposal button[type=submit]').click();await state(frame,'queued');await frame.locator('#cancel').click();await state(frame,'cancelled');
     assert.ok(requests.some(r=>r.path.endsWith('/cancel')&&r.method==='POST'&&r.headers.authorization.startsWith('Bearer ')));
-    const keys=requests.filter(r=>r.path==='/api/lab/v1/jobs').map(r=>r.headers['idempotency-key']);assert.equal(new Set(keys).size,keys.length);
+    const keys=requests.filter(r=>r.path==='/api/lab/v1/jobs').map(r=>r.headers['idempotency-key']);assert.ok(new Set(keys).size >= 2);
     await context.close();
   });
   await test('all captured API bodies exclude host secrets',async()=>{
