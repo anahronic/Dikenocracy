@@ -1,7 +1,7 @@
 {
   "schema": "keeper-routes/1",
   "notes": [
-    "47 repository host pages + 4 live-only routes. Ayalon is already in the repository.",
+    "46 repository host pages + 4 live-only routes. The Ayalon project page was removed from the site on 2026-11-17.",
     "keeper/panel.html is an internal sandbox resource, excluded to avoid recursive widgets.",
     "No server inspection or deployment performed. Full --check requires a complete site tree."
   ],
@@ -37,13 +37,6 @@
     {
       "route": "/pages/converter.html",
       "file": "pages/converter.html",
-      "source": "repository",
-      "loader_included": true,
-      "inclusion": "static script tag"
-    },
-    {
-      "route": "/pages/projects/ayalon.html",
-      "file": "pages/projects/ayalon.html",
       "source": "repository",
       "loader_included": true,
       "inclusion": "static script tag"

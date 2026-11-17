@@ -1,6 +1,6 @@
 # Keeper widget
 
-The 47 host HTML pages include `/keeper/keeper-loader.js` once, with `defer`.
+The 46 host HTML pages include `/keeper/keeper-loader.js` once, with `defer`.
 Both HTML templates in `website/build_release.py` retain it. Protocol document
 IDs come from the existing manifest and the template's canonical document ID.
 `panel.html` is an internal iframe resource and deliberately has no launcher.
@@ -38,8 +38,8 @@ fetches to a loopback fake API, including preflight and opaque-origin headers.
 
 ## Route checks and live-only injection
 
-`ROUTES.json` inventories 51 host routes: 47 in the repository and four available
-only on the live server. Ayalon is already included in the 47. No server was
+`ROUTES.json` inventories 50 host routes: 46 in the repository and four available
+only on the live server (the Ayalon page was removed from the site on 2026-11-17). No server was
 contacted and the live-only entries remain marked not included/unverified.
 
 ```powershell
