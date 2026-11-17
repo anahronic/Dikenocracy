@@ -1,0 +1,360 @@
+{
+  "schema": "keeper-routes/1",
+  "notes": [
+    "46 repository host pages + 4 live-only routes. The Ayalon project page was removed from the site on 2026-11-17.",
+    "keeper/panel.html is an internal sandbox resource, excluded to avoid recursive widgets.",
+    "No server inspection or deployment performed. Full --check requires a complete site tree."
+  ],
+  "routes": [
+    {
+      "route": "/404.html",
+      "file": "404.html",
+      "source": "repository",
+      "loader_included": true,
+      "inclusion": "static script tag"
+    },
+    {
+      "route": "/converter/",
+      "file": "converter/index.html",
+      "source": "repository",
+      "loader_included": true,
+      "inclusion": "static script tag"
+    },
+    {
+      "route": "/",
+      "file": "index.html",
+      "source": "repository",
+      "loader_included": true,
+      "inclusion": "static script tag"
+    },
+    {
+      "route": "/pages/about.html",
+      "file": "pages/about.html",
+      "source": "repository",
+      "loader_included": true,
+      "inclusion": "static script tag"
+    },
+    {
+      "route": "/pages/converter.html",
+      "file": "pages/converter.html",
+      "source": "repository",
+      "loader_included": true,
+      "inclusion": "static script tag"
+    },
+    {
+      "route": "/pages/projects.html",
+      "file": "pages/projects.html",
+      "source": "repository",
+      "loader_included": true,
+      "inclusion": "static script tag"
+    },
+    {
+      "route": "/pages/protocols/appendix-a-design-rationale-safeguards-normative.html",
+      "file": "pages/protocols/appendix-a-design-rationale-safeguards-normative.html",
+      "source": "repository",
+      "loader_included": true,
+      "inclusion": "static script tag; build_release.py template"
+    },
+    {
+      "route": "/pages/protocols/code-of-planetary-synergy.html",
+      "file": "pages/protocols/code-of-planetary-synergy.html",
+      "source": "repository",
+      "loader_included": true,
+      "inclusion": "static script tag; build_release.py template"
+    },
+    {
+      "route": "/pages/protocols/dkp-0-oracle-001.html",
+      "file": "pages/protocols/dkp-0-oracle-001.html",
+      "source": "repository",
+      "loader_included": true,
+      "inclusion": "static script tag; build_release.py template"
+    },
+    {
+      "route": "/pages/protocols/dkp-0-time-001.html",
+      "file": "pages/protocols/dkp-0-time-001.html",
+      "source": "repository",
+      "loader_included": true,
+      "inclusion": "static script tag; build_release.py template"
+    },
+    {
+      "route": "/pages/protocols/dkp-1-axioms-001.html",
+      "file": "pages/protocols/dkp-1-axioms-001.html",
+      "source": "repository",
+      "loader_included": true,
+      "inclusion": "static script tag; build_release.py template"
+    },
+    {
+      "route": "/pages/protocols/dkp-1-epistemic-boundaries-001.html",
+      "file": "pages/protocols/dkp-1-epistemic-boundaries-001.html",
+      "source": "repository",
+      "loader_included": true,
+      "inclusion": "static script tag; build_release.py template"
+    },
+    {
+      "route": "/pages/protocols/dkp-1-identity-001.html",
+      "file": "pages/protocols/dkp-1-identity-001.html",
+      "source": "repository",
+      "loader_included": true,
+      "inclusion": "static script tag; build_release.py template"
+    },
+    {
+      "route": "/pages/protocols/dkp-1-impact-001.html",
+      "file": "pages/protocols/dkp-1-impact-001.html",
+      "source": "repository",
+      "loader_included": true,
+      "inclusion": "static script tag; build_release.py template"
+    },
+    {
+      "route": "/pages/protocols/dkp-1-justice-001.html",
+      "file": "pages/protocols/dkp-1-justice-001.html",
+      "source": "repository",
+      "loader_included": true,
+      "inclusion": "static script tag; build_release.py template"
+    },
+    {
+      "route": "/pages/protocols/dkp-1-prevention-001.html",
+      "file": "pages/protocols/dkp-1-prevention-001.html",
+      "source": "repository",
+      "loader_included": true,
+      "inclusion": "static script tag; build_release.py template"
+    },
+    {
+      "route": "/pages/protocols/dkp-2-assets-001.html",
+      "file": "pages/protocols/dkp-2-assets-001.html",
+      "source": "repository",
+      "loader_included": true,
+      "inclusion": "static script tag; build_release.py template"
+    },
+    {
+      "route": "/pages/protocols/dkp-2-finance-001.html",
+      "file": "pages/protocols/dkp-2-finance-001.html",
+      "source": "repository",
+      "loader_included": true,
+      "inclusion": "static script tag; build_release.py template"
+    },
+    {
+      "route": "/pages/protocols/dkp-2-labor-001.html",
+      "file": "pages/protocols/dkp-2-labor-001.html",
+      "source": "repository",
+      "loader_included": true,
+      "inclusion": "static script tag; build_release.py template"
+    },
+    {
+      "route": "/pages/protocols/dkp-3-antiterror-001.html",
+      "file": "pages/protocols/dkp-3-antiterror-001.html",
+      "source": "repository",
+      "loader_included": true,
+      "inclusion": "static script tag; build_release.py template"
+    },
+    {
+      "route": "/pages/protocols/dkp-3-defense-001.html",
+      "file": "pages/protocols/dkp-3-defense-001.html",
+      "source": "repository",
+      "loader_included": true,
+      "inclusion": "static script tag; build_release.py template"
+    },
+    {
+      "route": "/pages/protocols/dkp-3-internal-sec-001.html",
+      "file": "pages/protocols/dkp-3-internal-sec-001.html",
+      "source": "repository",
+      "loader_included": true,
+      "inclusion": "static script tag; build_release.py template"
+    },
+    {
+      "route": "/pages/protocols/dkp-3-police-001.html",
+      "file": "pages/protocols/dkp-3-police-001.html",
+      "source": "repository",
+      "loader_included": true,
+      "inclusion": "static script tag; build_release.py template"
+    },
+    {
+      "route": "/pages/protocols/dkp-4-crisis-001-patch.html",
+      "file": "pages/protocols/dkp-4-crisis-001-patch.html",
+      "source": "repository",
+      "loader_included": true,
+      "inclusion": "static script tag; build_release.py template"
+    },
+    {
+      "route": "/pages/protocols/dkp-4-crisis-001.html",
+      "file": "pages/protocols/dkp-4-crisis-001.html",
+      "source": "repository",
+      "loader_included": true,
+      "inclusion": "static script tag; build_release.py template"
+    },
+    {
+      "route": "/pages/protocols/dkp-4-epistemic-transitions-001.html",
+      "file": "pages/protocols/dkp-4-epistemic-transitions-001.html",
+      "source": "repository",
+      "loader_included": true,
+      "inclusion": "static script tag; build_release.py template"
+    },
+    {
+      "route": "/pages/protocols/dkp-4-error-001.html",
+      "file": "pages/protocols/dkp-4-error-001.html",
+      "source": "repository",
+      "loader_included": true,
+      "inclusion": "static script tag; build_release.py template"
+    },
+    {
+      "route": "/pages/protocols/dkp-4-upgrade-001.html",
+      "file": "pages/protocols/dkp-4-upgrade-001.html",
+      "source": "repository",
+      "loader_included": true,
+      "inclusion": "static script tag; build_release.py template"
+    },
+    {
+      "route": "/pages/protocols/dkp-5-culture-001.html",
+      "file": "pages/protocols/dkp-5-culture-001.html",
+      "source": "repository",
+      "loader_included": true,
+      "inclusion": "static script tag; build_release.py template"
+    },
+    {
+      "route": "/pages/protocols/dkp-5-edu-001.html",
+      "file": "pages/protocols/dkp-5-edu-001.html",
+      "source": "repository",
+      "loader_included": true,
+      "inclusion": "static script tag; build_release.py template"
+    },
+    {
+      "route": "/pages/protocols/dkp-5-habitat-001.html",
+      "file": "pages/protocols/dkp-5-habitat-001.html",
+      "source": "repository",
+      "loader_included": true,
+      "inclusion": "static script tag; build_release.py template"
+    },
+    {
+      "route": "/pages/protocols/dkp-5-info-001.html",
+      "file": "pages/protocols/dkp-5-info-001.html",
+      "source": "repository",
+      "loader_included": true,
+      "inclusion": "static script tag; build_release.py template"
+    },
+    {
+      "route": "/pages/protocols/dkp-5-transport-001.html",
+      "file": "pages/protocols/dkp-5-transport-001.html",
+      "source": "repository",
+      "loader_included": true,
+      "inclusion": "static script tag; build_release.py template"
+    },
+    {
+      "route": "/pages/protocols/dkp-5-work-cycle-001.html",
+      "file": "pages/protocols/dkp-5-work-cycle-001.html",
+      "source": "repository",
+      "loader_included": true,
+      "inclusion": "static script tag; build_release.py template"
+    },
+    {
+      "route": "/pages/protocols/dkp-6-exit-001.html",
+      "file": "pages/protocols/dkp-6-exit-001.html",
+      "source": "repository",
+      "loader_included": true,
+      "inclusion": "static script tag; build_release.py template"
+    },
+    {
+      "route": "/pages/protocols/dkp-6-integration-001.html",
+      "file": "pages/protocols/dkp-6-integration-001.html",
+      "source": "repository",
+      "loader_included": true,
+      "inclusion": "static script tag; build_release.py template"
+    },
+    {
+      "route": "/pages/protocols/dkp-6-resilience-001.html",
+      "file": "pages/protocols/dkp-6-resilience-001.html",
+      "source": "repository",
+      "loader_included": true,
+      "inclusion": "static script tag; build_release.py template"
+    },
+    {
+      "route": "/pages/protocols/dkp-7-ai-subject-001.html",
+      "file": "pages/protocols/dkp-7-ai-subject-001.html",
+      "source": "repository",
+      "loader_included": true,
+      "inclusion": "static script tag; build_release.py template"
+    },
+    {
+      "route": "/pages/protocols/dkp-7-privacy-001.html",
+      "file": "pages/protocols/dkp-7-privacy-001.html",
+      "source": "repository",
+      "loader_included": true,
+      "inclusion": "static script tag; build_release.py template"
+    },
+    {
+      "route": "/pages/protocols/dkp-7-scope-001.html",
+      "file": "pages/protocols/dkp-7-scope-001.html",
+      "source": "repository",
+      "loader_included": true,
+      "inclusion": "static script tag; build_release.py template"
+    },
+    {
+      "route": "/pages/protocols/dkp-7-transparency-001.html",
+      "file": "pages/protocols/dkp-7-transparency-001.html",
+      "source": "repository",
+      "loader_included": true,
+      "inclusion": "static script tag; build_release.py template"
+    },
+    {
+      "route": "/pages/protocols/dkp-8-audit-001.html",
+      "file": "pages/protocols/dkp-8-audit-001.html",
+      "source": "repository",
+      "loader_included": true,
+      "inclusion": "static script tag; build_release.py template"
+    },
+    {
+      "route": "/pages/protocols/dkp-8-interop-001.html",
+      "file": "pages/protocols/dkp-8-interop-001.html",
+      "source": "repository",
+      "loader_included": true,
+      "inclusion": "static script tag; build_release.py template"
+    },
+    {
+      "route": "/pages/protocols/dkp-8-simulation-001.html",
+      "file": "pages/protocols/dkp-8-simulation-001.html",
+      "source": "repository",
+      "loader_included": true,
+      "inclusion": "static script tag; build_release.py template"
+    },
+    {
+      "route": "/pages/protocols.html",
+      "file": "pages/protocols.html",
+      "source": "repository",
+      "loader_included": true,
+      "inclusion": "static script tag; build_release.py template"
+    },
+    {
+      "route": "/projects/protocol-lab/",
+      "file": "projects/protocol-lab/index.html",
+      "source": "repository",
+      "loader_included": true,
+      "inclusion": "static script tag"
+    },
+    {
+      "route": "/shadoo/",
+      "file": "shadoo/index.html",
+      "source": "live-only",
+      "loader_included": false,
+      "inclusion": "tools/keeper_inject.py at deployment; not modified or verified here"
+    },
+    {
+      "route": "/survival/",
+      "file": "survival/index.html",
+      "source": "live-only",
+      "loader_included": false,
+      "inclusion": "tools/keeper_inject.py at deployment; not modified or verified here"
+    },
+    {
+      "route": "/survival/ru.html",
+      "file": "survival/ru.html",
+      "source": "live-only",
+      "loader_included": false,
+      "inclusion": "tools/keeper_inject.py at deployment; not modified or verified here"
+    },
+    {
+      "route": "/AA/Alienclimber/",
+      "file": "AA/Alienclimber/index.html",
+      "source": "live-only",
+      "loader_included": false,
+      "inclusion": "tools/keeper_inject.py at deployment; not modified or verified here"
+    }
+  ]
+}

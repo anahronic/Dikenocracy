@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="referrer" content="no-referrer">
+  <title>Keeper of Knowledge</title>
+  <link rel="stylesheet" href="/keeper/panel.css">
+  <script src="/keeper/panel.js" defer></script>
+</head>
+<body>
+  <main>
+    <p data-t="purpose"></p>
+    <nav><a id="protocols" target="_blank" rel="noopener noreferrer" data-t="protocols"></a> · <a id="lab" target="_blank" rel="noopener noreferrer" data-t="lab"></a></nav>
+    <div id="examples"></div>
+    <p id="selection" hidden></p>
+    <form id="ask-form">
+      <label for="question" data-t="question"></label>
+      <textarea id="question" rows="3" maxlength="1000" required></textarea>
+      <div class="actions"><button id="send" type="submit" data-t="send" disabled></button><button id="cancel" type="button" data-t="cancel" hidden></button></div>
+    </form>
+    <p id="status" role="status" aria-live="polite"></p>
+    <progress id="progress" max="1" hidden></progress>
+    <section id="conversation"></section>
+  </main>
+</body>
+</html>
