@@ -1,0 +1,7 @@
+[Unit]
+Description=Dikenocracy backup restore test
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/sbin/dkp-backup.sh restore-test
+Nice=10

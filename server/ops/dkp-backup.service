@@ -1,0 +1,8 @@
+[Unit]
+Description=Dikenocracy backup
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/sbin/dkp-backup.sh
+Nice=10
+IOSchedulingClass=idle
