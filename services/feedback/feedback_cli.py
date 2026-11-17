@@ -41,8 +41,8 @@ if a.cmd == "send-test":
     msg["Subject"] = "[Dikenocracy feedback] delivery test"
     msg["Date"] = formatdate(usegmt=True)
     msg["Message-ID"] = make_msgid("feedback-test", domain=feedback.sender_domain())
-    msg.set_content("This is a delivery test of the dikenocracy.com protocol feedback service. No visitor wrote it.
-")
+    msg.set_content("This is a delivery test of the dikenocracy.com protocol feedback service. "
+                    "No visitor wrote it." + chr(10))
     try:
         host = feedback.send(msg)
     except Exception as exc:                                   # noqa: BLE001 - report the outcome, never secrets
