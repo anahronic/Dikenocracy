@@ -12,7 +12,7 @@ OUT = Path(sys.argv[2])
 OUT.mkdir(parents=True, exist_ok=True)
 PAGES = sys.argv[3:] or ["/", "/pages/about.html", "/pages/protocols.html", "/pages/projects.html",
                          "/pages/protocols/dkp-1-axioms-001.html", "/pages/converter.html", "/converter/",
-                         "/pages/projects/ayalon.html", "/404.html"]
+                         "/404.html"]
 with sync_playwright() as p:
     b = None
     for ch in ("msedge", "chrome", None):

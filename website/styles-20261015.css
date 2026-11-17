@@ -65,7 +65,7 @@
   --t-fast: 140ms;
   --t-ui: 200ms;
 
-  /* Legacy names, still used by inline styles of the converter and the Ayalon page */
+  /* Legacy names, still used by inline styles of the converter */
   --bg-deep: var(--bg);
   --bg-panel: var(--surface);
   --bg-card: #f7f8fa;
@@ -816,7 +816,7 @@ hr { border: 0; height: 2px; background: var(--surface-2); margin: 3rem 0; }
 .protocol-toolbar { margin-bottom: 1.5rem; font: 500 var(--step-small) var(--display); }
 .protocol-toolbar a { color: var(--ink); text-decoration-color: var(--accent); }
 
-/* ─── Inner pages (about, projects, converter info, Ayalon, 404) ───────────── */
+/* ─── Inner pages (about, projects, converter info, 404) ───────────── */
 .statement { padding-block: clamp(64px, 8vw, 128px); }
 .statement p { grid-column: 1 / -1; font: 700 clamp(1.9rem, 1rem + 3.4vw, 4.4rem)/1.04 var(--display); letter-spacing: -0.03em; max-width: 24ch; }
 .statement span { display: block; grid-column: 6 / -1; margin-top: 1.5rem; font: 500 var(--step-small) var(--display); }

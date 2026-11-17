@@ -13,7 +13,7 @@ const ok = (name, pass, detail) => results.push({ name, pass: !!pass, detail });
 
 const slugs = fs.readFileSync(path.join(SITE, 'pages/protocols/manifest.txt'), 'utf8').trim().split('\n').map(l => l.split('\t'));
 const PAGES = ['/', '/pages/about.html', '/pages/projects.html', '/pages/protocols.html', '/pages/converter.html',
-  '/pages/projects/ayalon.html', '/converter/index.html', '/404.html',
+  '/converter/index.html', '/404.html',
   '/pages/protocols/code-of-planetary-synergy.html', '/pages/protocols/dkp-1-axioms-001.html', '/pages/protocols/dkp-0-time-001.html',
   '/pages/protocols/dkp-1-prevention-001.html', '/pages/protocols/appendix-a-design-rationale-safeguards-normative.html'];
 

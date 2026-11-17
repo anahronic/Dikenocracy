@@ -1,7 +1,7 @@
 """Checks every local href/src of the site pages against a running server.
 
     python website/tools/check_links.py http://127.0.0.1:8765 [extra_dir_with_pages]
-External apps (/ayalon/, /shadoo/, /mazkira/, /AA/, /survival/ when not staged) are only checked for existence of the link.
+External apps (/shadoo/, /AA/, /survival/ when not staged) are only checked for existence of the link.
 """
 import pathlib
 import re
@@ -12,7 +12,7 @@ import urllib.request
 
 BASE = sys.argv[1].rstrip('/')
 SITE = pathlib.Path(__file__).resolve().parent.parent
-SKIP = ('/ayalon/', '/shadoo/', '/mazkira/', '/AA/', '/survival/')
+SKIP = ('/shadoo/', '/AA/', '/survival/')
 pages = [p for p in SITE.rglob('*.html') if 'tools' not in p.parts]
 seen, bad = set(), []
 for page in pages:

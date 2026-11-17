@@ -76,29 +76,6 @@ svg('shadoo', 'Shadoo: a message encrypted with a shared code phrase', f'''
     <text x="356" y="44">a91f·2b</text>
   </g>''')
 
-# ── Ayalon: highway in perspective with a gauge ────────────────────────────────
-cars = ''.join(f'<rect x="{x}" y="{y}" width="{w}" height="{h}" rx="{h / 3:.1f}" fill="{c}"/>'
-               for x, y, w, h, c in [(206, 196, 30, 16, GOLD), (250, 214, 34, 18, INK), (180, 228, 38, 20, '#555c68'),
-                                     (232, 168, 22, 12, '#555c68'), (262, 178, 24, 13, GOLD), (214, 150, 18, 10, INK),
-                                     (244, 140, 16, 9, '#8a919d')])
-svg('ayalon', 'Ayalon Model: congestion on Highway 20 measured as a physical cost', f'''
-  <path d="M0 196 C120 180 180 120 240 112 C300 120 360 180 480 196 V270 H0Z" fill="#c9ced6"/>
-  <path d="M150 270 L228 112 L252 112 L330 270Z" fill="#b9bfca"/>
-  <path d="M240 118 V140 M240 156 V182 M240 200 V232 M240 248 V270" stroke="{WHITE}" stroke-width="3"/>
-  {cars}
-  <g transform="translate(330 46)">
-    <rect x="0" y="0" width="130" height="92" rx="12" fill="{WHITE}" stroke="{LAV2}"/>
-    <path d="M22 70 A44 44 0 0 1 108 70" fill="none" stroke="{LAV}" stroke-width="10" stroke-linecap="round"/>
-    <path d="M22 70 A44 44 0 0 1 94 40" fill="none" stroke="{GOLD}" stroke-width="10" stroke-linecap="round"/>
-    <path d="M65 70 L92 44" stroke="{INK}" stroke-width="3" stroke-linecap="round"/>
-    <circle cx="65" cy="70" r="5" fill="{INK}"/>
-    <text x="65" y="88" font-family="Segoe UI, Arial" font-size="10" fill="#555c68" text-anchor="middle">vehicle-hours</text>
-  </g>
-  <g transform="translate(26 40)" font-family="Segoe UI, Arial">
-    <path d="M18 34 a16 16 0 0 1 28 -12 a18 18 0 0 1 34 6 a14 14 0 0 1 -2 28 H22 a14 14 0 0 1 -4 -22z" fill="{WHITE}" stroke="{LAV2}" stroke-width="2"/>
-    <text x="50" y="47" font-size="14" font-weight="700" fill="{INK}" text-anchor="middle">CO₂</text>
-  </g>''')
-
 # ── Survival manual: open book with shelter and checklist ──────────────────────
 svg('survival', 'Post-Nuclear Survival Manual: shelter, water, health and recovery', f'''
   <g transform="translate(96 54)">
@@ -115,22 +92,6 @@ svg('survival', 'Post-Nuclear Survival Manual: shelter, water, health and recove
       <path d="M176 88 l7 7 12-13"/><path d="M204 90 h44" stroke="{LAV2}"/>
       <path d="M176 124 l7 7 12-13"/><path d="M204 126 h52" stroke="{LAV2}"/>
     </g>
-  </g>''')
-
-# ── Mazkira: receipts, a chart and a shield ────────────────────────────────────
-bars = ''.join(f'<rect x="{300 + i * 26}" y="{200 - h}" width="16" height="{h}" rx="4" fill="{c}"/>'
-               for i, (h, c) in enumerate([(40, LAV2), (62, LAV2), (52, LAV2), (88, GOLD), (74, INK)]))
-svg('mazkira', 'Mazkira: documents, bookkeeping support and taxes for a small business', f'''
-  <g transform="translate(70 46)">
-    <path d="M20 0 H140 V172 l-15 -10 -15 10 -15 -10 -15 10 -15 -10 -15 10 -15 -10 -15 10 -15 -10 -15 10Z" fill="{WHITE}" stroke="{INK}" stroke-width="3" stroke-linejoin="round"/>
-    <g stroke="{LAV2}" stroke-width="5" stroke-linecap="round"><path d="M44 34 H116"/><path d="M44 58 H100"/><path d="M44 82 H110"/></g>
-    <text x="80" y="134" font-family="Segoe UI, Arial" font-size="26" font-weight="700" fill="{GOLD}" text-anchor="middle">₪ 295</text>
-  </g>
-  <path d="M290 200 H440" stroke="{INK}" stroke-width="2" stroke-linecap="round"/>
-  {bars}
-  <g transform="translate(392 40)">
-    <path d="M30 0 L0 11 v22 c0 19 13 32 30 37 c17 -5 30 -18 30 -37 v-22z" fill="{GOLD_SOFT}" stroke="{GOLD}" stroke-width="3" stroke-linejoin="round"/>
-    <path d="M17 35 l9 9 17 -19" fill="none" stroke="{INK}" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
   </g>''')
 
 # ── Planned: dashboards / simulations ───────────────────────────────────────────

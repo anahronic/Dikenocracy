@@ -32,7 +32,7 @@ from bs4 import BeautifulSoup
 SITE = pathlib.Path(__file__).resolve().parent
 TOOLS = SITE / 'tools'
 DOMAIN = 'https://dikenocracy.com'
-CSS_MAIN = '/styles-20261015.css'   # built by tools/build_site_css.py; design decisions in DIRECTION.md
+CSS_MAIN = '/styles-20261117.css'   # built by tools/build_site_css.py; design decisions in DIRECTION.md
 ICONS = '/assets/icons-20261015.svg'
 OG_IMAGE = '/assets/og-20261013.jpg'
 SCRIPTS_HTML = '''  <script src="/script-20260923.js"></script>
@@ -42,9 +42,8 @@ SCRIPTS_HTML = '''  <script src="/script-20260923.js"></script>
 # Shared page chrome (also applied to the hand-written pages by tools/apply_chrome.py)
 BRAND_HTML = (f'<a class="site-nav__brand" href="/"><svg class="site-nav__logo" aria-hidden="true">'
               f'<use href="{ICONS}#i-mark"/></svg>Dikenocracy</a>')
-PROJECT_LINKS = [('/mazkira/', 'Mazkira — Business Assistant', 'Mazkira'), ('/converter/index.html', 'Converter', 'DTI Time Converter'),
-                 ('/shadoo/', 'Shadoo', 'Shadoo'), ('/survival/', 'Survival Manual', 'Survival Manual'),
-                 ('/ayalon/', 'Ayalon Monitor', 'Ayalon Monitor')]
+PROJECT_LINKS = [('/converter/index.html', 'Converter', 'DTI Time Converter'),
+                 ('/shadoo/', 'Shadoo', 'Shadoo'), ('/survival/', 'Survival Manual', 'Survival Manual')]
 FOOTER_HTML = f'''<footer class="site-footer" dir="ltr">
     <div class="site-footer__inner">
       <div class="site-footer__cols">

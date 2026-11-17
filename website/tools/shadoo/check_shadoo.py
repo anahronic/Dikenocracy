@@ -30,14 +30,15 @@ with sync_playwright() as p:
     page.goto(BASE + '/shadoo/', wait_until='networkidle')
     if SWAP:
         page.wait_for_function('navigator.serviceWorker && navigator.serviceWorker.controller !== null', timeout=15000)
-        check(page.locator(".site-nav__submenu a[href='/mazkira/']").count() == 0, 'old build served first (no Mazkira)')
+        check(page.locator(".site-nav__submenu a[href='/ayalon/']").count() == 1, 'old build served first (still lists Ayalon)')
         subprocess.run(SWAP, shell=True, check=True)
         page.reload(wait_until='networkidle')
         page.wait_for_timeout(2500)
         page.reload(wait_until='networkidle')
         page.wait_for_timeout(1000)
-    check(page.locator(".site-nav__submenu a[href='/mazkira/']").count() == 1, 'Projects menu has Mazkira')
-    for name in ('Converter', 'Shadoo', 'Ayalon Monitor', 'Survival Manual'):
+    for href in ('/mazkira/', '/ayalon/'):   # withdrawn from the public site 2026-11-17
+        check(page.locator(f".site-nav__submenu a[href='{href}']").count() == 0, f'menu has no {href}')
+    for name in ('Converter', 'Shadoo', 'Survival Manual'):
         check(page.locator('.site-nav__submenu a', has_text=name).count() == 1, f'menu still has {name}')
     bg = page.evaluate("getComputedStyle(document.querySelector('.app')).backgroundColor")
     check(bg in ('rgb(255, 255, 255)',), f'light app card ({bg})')

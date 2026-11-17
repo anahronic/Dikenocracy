@@ -49,7 +49,7 @@
   --t-fast: 140ms;
   --t-ui: 200ms;
 
-  /* Legacy names, still used by inline styles of the converter and the Ayalon page */
+  /* Legacy names, still used by inline styles of the converter */
   --bg-deep: var(--bg);
   --bg-panel: var(--surface);
   --bg-card: #f7f8fa;
@@ -467,7 +467,7 @@ hr { border: 0; height: 2px; background: var(--surface-2); margin: 3rem 0; }
 
 /* Projects: staggered tiles with empty cells */
 .work { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 48px 16px; align-items: start; }
-.work__head { grid-column: 3; grid-row: 1; align-self: center; }
+.work__head { grid-column: 1 / 3; grid-row: 1; align-self: center; }
 .work__head h2 { font-size: var(--step-head); line-height: 0.98; letter-spacing: -0.03em; }
 .work__head p { margin-top: 1rem; font-size: var(--step-ui); font-family: var(--display); max-width: 26ch; }
 .work__item { display: block; color: var(--ink); text-decoration: none; }
@@ -481,11 +481,10 @@ hr { border: 0; height: 2px; background: var(--surface-2); margin: 3rem 0; }
 .work__cap { display: flex; justify-content: space-between; gap: 1rem; margin-top: 0.75rem; font: 600 var(--step-ui)/1.35 var(--display); overflow-wrap: anywhere; }
 .work__cap span { color: var(--muted); font-weight: 500; text-align: right; }
 .work__item p { margin-top: 0.35rem; font-size: var(--step-ui); line-height: 1.5; color: var(--ink-2); max-width: 46ch; }
-.work__item:nth-of-type(1) { grid-column: 1 / 3; grid-row: 1; }
-.work__item:nth-of-type(2) { grid-column: 4; grid-row: 1; }
-.work__item:nth-of-type(3) { grid-column: 2; grid-row: 2; }
-.work__item:nth-of-type(4) { grid-column: 3; grid-row: 2; }
-.work__item:nth-of-type(5) { grid-column: 3 / 5; grid-row: 3; }
+/* Three tall tiles keep the cells they had before the two wide tiles were removed (2026-11-17) */
+.work__item:nth-of-type(1) { grid-column: 4; grid-row: 1; }
+.work__item:nth-of-type(2) { grid-column: 2; grid-row: 2; }
+.work__item:nth-of-type(3) { grid-column: 3; grid-row: 2; }
 @media (max-width: 900px) {
   .work { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 40px 10px; }
   .work__cap { flex-direction: column; gap: 0.1rem; }
@@ -493,7 +492,6 @@ hr { border: 0; height: 2px; background: var(--surface-2); margin: 3rem 0; }
   .work__head { grid-column: 1 / -1; grid-row: auto; }
   .work__item:nth-of-type(n) { grid-column: auto; grid-row: auto; }
   .work__item--wide { grid-column: 1 / -1 !important; }
-  .work__item--tall:nth-of-type(4) { grid-column: 2 !important; }
 }
 
 /* Open-source facts: wide picture, colour tile, facts */
@@ -800,7 +798,7 @@ hr { border: 0; height: 2px; background: var(--surface-2); margin: 3rem 0; }
 .protocol-toolbar { margin-bottom: 1.5rem; font: 500 var(--step-small) var(--display); }
 .protocol-toolbar a { color: var(--ink); text-decoration-color: var(--accent); }
 
-/* ─── Inner pages (about, projects, converter info, Ayalon, 404) ───────────── */
+/* ─── Inner pages (about, projects, converter info, 404) ───────────── */
 .statement { padding-block: clamp(64px, 8vw, 128px); }
 .statement p { grid-column: 1 / -1; font: 700 clamp(1.9rem, 1rem + 3.4vw, 4.4rem)/1.04 var(--display); letter-spacing: -0.03em; max-width: 24ch; }
 .statement span { display: block; grid-column: 6 / -1; margin-top: 1.5rem; font: 500 var(--step-small) var(--display); }

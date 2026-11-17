@@ -4,7 +4,8 @@ The web build on dikenocracy.com/shadoo/ is the site version of Shadoo (newest);
 repository, so the change is a small, reviewable patch of the built files:
 
   * assets/site-light-<hash>.css (tools/shadoo/shadoo-light.css) is linked after the bundle CSS;
-  * the Projects submenu in the bundle gets "Mazkira — Business Assistant", and the Shadoo item is marked current;
+  * the Projects submenu in the bundle loses "Ayalon Monitor" (withdrawn 2026-11-17; Mazkira is no longer added),
+    and the Shadoo item is marked current;
   * changed chunks get new file names, references between chunks, index.html and the Workbox precache list in
     sw.js are rewritten, and index.html's revision is recomputed — so returning visitors' service worker updates.
 
@@ -29,7 +30,7 @@ sw = (root / 'sw.js').read_text(encoding='utf-8')
 main_name = re.search(r'/shadoo/assets/(index-[\w-]+\.js)', index).group(1)
 main = (assets / main_name).read_text(encoding='utf-8')
 
-if 'href:`/mazkira/`' in main:
+if '"aria-current":`page`,children:`Shadoo`' in main:
     # Already patched: only swap the light stylesheet for the current shadoo-light.css (new hashed name),
     # and update index.html, its precache revision and the precache entry so returning visitors get it.
     old_css = re.search(r'/shadoo/assets/(site-light-[0-9a-f]{8}\.css)', index).group(1)
@@ -50,11 +51,11 @@ if 'href:`/mazkira/`' in main:
     print(f'stylesheet updated: {old_css} -> {css_name}')
     sys.exit(0)
 
-# 1) menu: Mazkira after Survival Manual; Shadoo marked as the current page
-survival = '(0,O.jsx)(`li`,{children:(0,O.jsx)(`a`,{href:`/survival/`,children:`Survival Manual`})})'
-assert main.count(survival) == 1, 'menu markup not found'
-mazkira = '(0,O.jsx)(`li`,{children:(0,O.jsx)(`a`,{href:`/mazkira/`,children:`Mazkira — Business Assistant`})})'
-main = main.replace(survival, survival + ',' + mazkira)
+# 1) menu: no Ayalon item (Mazkira and Ayalon were withdrawn from the public site 2026-11-17);
+#    Shadoo marked as the current page. Older already-patched builds: tools/shadoo/remove_projects.py
+ayalon = '(0,O.jsx)(`li`,{children:(0,O.jsx)(`a`,{href:`/ayalon/`,children:`Ayalon Monitor`})})'
+main = main.replace(',' + ayalon, '').replace(ayalon + ',', '')
+assert 'href:`/ayalon/`' not in main and 'href:`/mazkira/`' not in main, 'menu markup not found'
 shadoo_item = '(0,O.jsx)(`a`,{href:`/shadoo/`,children:`Shadoo`})'
 assert main.count(shadoo_item) == 1
 main = main.replace(shadoo_item, '(0,O.jsx)(`a`,{href:`/shadoo/`,"aria-current":`page`,children:`Shadoo`})')
