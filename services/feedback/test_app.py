@@ -113,3 +113,57 @@ def test_control_characters_are_removed_and_markup_kept_as_text(make):
 def test_health_reports_configuration(make):
     client, _, _ = make()
     assert client.get(feedback.PREFIX + "/health").json() == {"ok": True, "delivery_configured": False}
+
+
+class FakeSMTP:
+    """Records the SMTP dialogue; hosts listed in `down` refuse the connection."""
+    down, log = set(), []
+
+    def __init__(self, host, port, timeout):
+        if host in self.down:
+            raise ConnectionRefusedError(host)
+        self.host = host
+        FakeSMTP.log.append(("connect", host, port))
+
+    def __enter__(self):
+        return self
+
+    def __exit__(self, *exc):
+        return False
+
+    def ehlo(self, name):
+        FakeSMTP.log.append(("ehlo", name))
+
+    def starttls(self):
+        FakeSMTP.log.append(("starttls",))
+
+    def login(self, user, password):
+        FakeSMTP.log.append(("login", user))
+
+    def send_message(self, msg):
+        FakeSMTP.log.append(("send", msg["To"], msg["Message-ID"], msg["Date"]))
+
+
+def test_send_tries_mx_hosts_in_order_without_login(monkeypatch):
+    monkeypatch.setenv("FEEDBACK_TO", "support@dikenocracy.com")
+    monkeypatch.setenv("FEEDBACK_FROM", "Dikenocracy feedback <feedback@dikenocracy.com>")
+    monkeypatch.setenv("FEEDBACK_SMTP_HOST", "route3.mx.example, route1.mx.example ,route2.mx.example")
+    monkeypatch.setenv("FEEDBACK_SMTP_PORT", "25")
+    monkeypatch.delenv("FEEDBACK_SMTP_USER", raising=False)
+    FakeSMTP.down, FakeSMTP.log = {"route3.mx.example"}, []
+    row = {"protocol_id": "DKP-1-JUSTICE-001", "protocol_version": "2026-10-04", "source_hash": "a" * 64,
+           "section": "1-purpose", "section_title": "Purpose", "page_url": "https://dikenocracy.com/p", "id": "x",
+           "created_utc": "2026-11-17T00:00:00Z", "selection": "s", "message": "m"}
+    msg = feedback.compose(row)
+    assert msg["Message-ID"].endswith("@dikenocracy.com>") and msg["Date"]
+    assert feedback.send(msg, smtp_class=FakeSMTP) == "route1.mx.example"
+    assert FakeSMTP.log[0] == ("connect", "route1.mx.example", 25)
+    assert ("starttls",) in FakeSMTP.log and not any(e[0] == "login" for e in FakeSMTP.log)
+    assert FakeSMTP.log[-1][:2] == ("send", "support@dikenocracy.com")
+
+
+def test_send_raises_when_no_host_is_reachable(monkeypatch):
+    monkeypatch.setenv("FEEDBACK_SMTP_HOST", "a.example,b.example")
+    FakeSMTP.down, FakeSMTP.log = {"a.example", "b.example"}, []
+    with pytest.raises(ConnectionRefusedError):
+        feedback.send(feedback.EmailMessage(), smtp_class=FakeSMTP)

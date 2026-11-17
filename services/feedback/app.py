@@ -28,6 +28,7 @@ import unicodedata
 import uuid
 from contextlib import asynccontextmanager
 from email.message import EmailMessage
+from email.utils import formatdate, make_msgid
 from pathlib import Path
 
 from fastapi import FastAPI, Request
@@ -146,6 +147,8 @@ def compose(row):
     msg = EmailMessage()
     msg["From"], msg["To"] = env("FEEDBACK_FROM"), env("FEEDBACK_TO")
     msg["Subject"] = f"[Dikenocracy feedback] {row['protocol_id']} {row['section'] or ''}".strip()
+    msg["Date"] = formatdate(usegmt=True)
+    msg["Message-ID"] = make_msgid("feedback", domain=sender_domain())
     msg.set_content(
         f"Protocol: {row['protocol_id']} (edition {row['protocol_version']}, source sha256 {row['source_hash']})\n"
         f"Section: {row['section'] or '-'} {row['section_title'] or ''}\nPage: {row['page_url']}#{row['section'] or ''}\n"
@@ -153,14 +156,35 @@ def compose(row):
     return msg
 
 
-def send(msg):
+def sender_domain():
+    address = env("FEEDBACK_FROM", "")
+    return address.rsplit("@", 1)[-1].strip(" >") if "@" in address else "localhost"
+
+
+def smtp_hosts():
+    """FEEDBACK_SMTP_HOST may list several hosts (e.g. the recipient domain's MX hosts in preference order)."""
+    return [h.strip() for h in env("FEEDBACK_SMTP_HOST", "").split(",") if h.strip()]
+
+
+def send(msg, smtp_class=smtplib.SMTP):
+    """Submit through the first reachable host; the next host is tried only when one cannot be reached or drops
+    the connection (a refusal by a reachable server is final for this attempt and is retried later)."""
     port = int(env("FEEDBACK_SMTP_PORT", "587"))
-    with smtplib.SMTP(env("FEEDBACK_SMTP_HOST"), port, timeout=30) as smtp:
-        if env("FEEDBACK_SMTP_STARTTLS", "1") == "1":
-            smtp.starttls()
-        if env("FEEDBACK_SMTP_USER"):
-            smtp.login(env("FEEDBACK_SMTP_USER"), env("FEEDBACK_SMTP_PASSWORD"))
-        smtp.send_message(msg)
+    last = None
+    for host in smtp_hosts():
+        try:
+            with smtp_class(host, port, timeout=30) as smtp:
+                smtp.ehlo(sender_domain())
+                if env("FEEDBACK_SMTP_STARTTLS", "1") == "1":
+                    smtp.starttls()
+                    smtp.ehlo(sender_domain())
+                if env("FEEDBACK_SMTP_USER"):
+                    smtp.login(env("FEEDBACK_SMTP_USER"), env("FEEDBACK_SMTP_PASSWORD"))
+                smtp.send_message(msg)
+                return host
+        except (OSError, smtplib.SMTPConnectError, smtplib.SMTPServerDisconnected) as exc:
+            last = exc
+    raise last or smtplib.SMTPException("No SMTP host configured")
 
 
 def deliver_pending(db, sender=send):
