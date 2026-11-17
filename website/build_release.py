@@ -38,6 +38,8 @@ OG_IMAGE = '/assets/og-20261013.jpg'
 SCRIPTS_HTML = '''  <script src="/script-20260923.js"></script>
   <script type="module" src="/navigation-20260923.js"></script>
   <script src="/site-20261015.js" defer></script>'''
+# Protocol feedback (select a passage -> message to the author); protocol pages only.
+FEEDBACK_HTML = '  <script src="/feedback/feedback-20261117.js" defer></script>'
 
 # Shared page chrome (also applied to the hand-written pages by tools/apply_chrome.py)
 BRAND_HTML = (f'<a class="site-nav__brand" href="/"><svg class="site-nav__logo" aria-hidden="true">'
@@ -417,6 +419,7 @@ def page_html(slug, doc, prev, nxt, docs):
   {FOOTER_HTML}
 
 {SCRIPTS_HTML}
+{FEEDBACK_HTML}
 </body>
 </html>
 '''

@@ -56,7 +56,7 @@ for p in published:
     if p.suffix == ".html":
         if re.search(r'<(?:html|body)[^>]*(?:translate="no"|class="[^"]*notranslate)', text):
             fail(f"page-wide translate=no/notranslate in {rel}")
-        if 'lang="en"' not in text.split("<head", 1)[0] and not rel.startswith("keeper/"):
+        if 'lang="en"' not in text.split("<head", 1)[0]:
             fail(f"missing lang=\"en\" in {rel}")
         if not re.search(r'<meta charset="utf-8"', text, re.I):
             fail(f"missing UTF-8 charset in {rel}")

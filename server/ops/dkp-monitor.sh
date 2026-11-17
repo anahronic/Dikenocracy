@@ -7,12 +7,15 @@ add() { checks+=("{\"check\":\"$1\",\"ok\":$2,\"detail\":\"${3//\"/\'}\"}"); if 
 http() { local code; code=$(curl -sk -o /dev/null -w '%{http_code}' --max-time 20 --resolve dikenocracy.com:443:127.0.0.1 "https://dikenocracy.com$2"); [[ $code == "$3" ]] && add "$1" true "$code" || add "$1" false "HTTP $code"; }
 http site_home / 200
 http site_protocols /pages/protocols.html 200
-http keeper_health /api/keeper/v1/health 200
 http lab_health /api/lab/v1/health 200
 http feedback_health /api/feedback/v1/health 200
-http market_lens_health /api/health 200
+http feedback_script /feedback/feedback-20261117.js 200
 http removed_mazkira /mazkira/ 410
-for u in nginx dkp-keeper dkp-lab-api dkp-lab-worker dkp-feedback ollama market-lens-api market-lens-worker postgresql pm2-admin; do
+# Retired 2026-11-17 (owner): Keeper of Knowledge and Market Lens must stay gone (410).
+http retired_keeper_api /api/keeper/v1/health 410
+http retired_keeper_widget /keeper/keeper-loader.js 410
+http retired_market_lens /api/health 410
+for u in nginx dkp-lab-api dkp-lab-worker dkp-feedback postgresql pm2-admin; do
   s=$(systemctl is-active "$u" 2>/dev/null); [[ $s == active ]] && add "unit_$u" true active || add "unit_$u" false "$s"; done
 failed=$(systemctl --failed --no-legend --plain | awk '{print $1}' | tr '\n' ' '); [[ -z $failed ]] && add units_failed true none || add units_failed false "$failed"
 pg_isready -q -h 127.0.0.1 && add postgresql_ready true ok || add postgresql_ready false "not ready"
@@ -25,7 +28,6 @@ for c in dikenocracy.com mazkira.dikenocracy.com; do f=/etc/letsencrypt/live/$c/
   end=$(date -d "$(openssl x509 -enddate -noout -in "$f" | cut -d= -f2)" +%s); days=$(( (end - $(date +%s)) / 86400 ))
   (( days > 21 )) && add "tls_$c" true "${days} days" || add "tls_$c" false "expires in ${days} days"; done
 last=$(ls -1t /var/backups/dkp/*.enc 2>/dev/null | head -1); if [[ -n $last ]]; then age=$(( ($(date +%s) - $(stat -c %Y "$last")) / 3600 )); (( age < 27 )) && add backup_fresh true "${age} h" || add backup_fresh false "last backup ${age} h old"; else add backup_fresh false "no backup"; fi
-q=$(ls /home/admin/projects/market-lens/var/queue 2>/dev/null | wc -l); (( q < 5000 )) && add market_lens_queue true "$q files" || add market_lens_queue false "$q files"
 printf '{"time":"%s","failures":%d,"checks":[%s]}\n' "$(date -u +%FT%TZ)" "$fail" "$(IFS=,; echo "${checks[*]}")" > "$out/status.json.tmp" && mv "$out/status.json.tmp" "$out/status.json"
 (( fail == 0 )) && logger -p user.info -t dkp-monitor "all ${#checks[@]} checks passed"
 exit 0

@@ -1,7 +1,7 @@
 # Protocol feedback service
 
 Visitors select a passage on a protocol page (`/pages/protocols/<slug>.html`), press **Leave feedback** (added by
-`website/keeper/keeper-loader.js` in the `keeper-widget` branch) and send a message of at most 5,000 characters.
+`website/feedback/feedback-20261117.js`, loaded by every protocol page) and send a message of at most 5,000 characters.
 `app.py` validates it, attaches the protocol ID, edition date and canonical SHA-256 from `registry.json`
 (built from World by `build_registry.py`), stores it in SQLite and e-mails it when a recipient is configured.
 

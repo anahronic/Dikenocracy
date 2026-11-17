@@ -1,6 +1,6 @@
 """Writes the deployable-site manifest: commit, and SHA-256 of every file that is copied to /var/www/html.
 Usage: python ci/release_manifest.py > release-manifest.json
-Production adds one Keeper loader line to each routed HTML page at deploy time; compare HTML without that line."""
+Production serves these files unchanged (the Keeper loader injection ended with its retirement on 2026-11-17)."""
 import hashlib
 import json
 import pathlib
