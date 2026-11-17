@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="DTI Time Converter — translate between Gregorian, Hebrew, and Dikenocratic dates in 10 languages." />
+  <meta name="description" content="DTI Time Converter — convert dates between the Gregorian, Hebrew and Dikenocratic (DTI) calendars." />
   <title>DTI Time Converter — Dikenocracy</title>
   <link rel="canonical" href="https://dikenocracy.com/converter/" />
   <link rel="icon" href="../assets/favicon.ico" />
@@ -41,30 +41,6 @@
     .conv-header p a { color: var(--accent); }
 
     /* Language selector */
-    .lang-bar {
-      display: flex;
-      align-items: center;
-      gap: var(--gap-xs);
-      margin-bottom: var(--gap-md);
-      flex-wrap: wrap;
-    }
-    .lang-bar label {
-      font-size: 0.8rem;
-      color: var(--text-muted);
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-    }
-    .lang-select {
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      color: var(--text-primary);
-      padding: 0.4rem 0.8rem;
-      border-radius: 4px;
-      font-family: var(--font-ui);
-      font-size: 0.85rem;
-      cursor: pointer;
-    }
-    .lang-select:focus { outline: none; border-color: var(--accent); }
 
     /* Tabs */
     .conv-tabs {
@@ -224,7 +200,6 @@
 
     /* RTL support */
     [dir="rtl"] .conv-tabs { direction: rtl; }
-    [dir="rtl"] .lang-bar { direction: rtl; }
     [dir="rtl"] .result-grid dd { direction: ltr; text-align: right; }
 
     @media (max-width: 500px) {
@@ -267,76 +242,61 @@
     </header>
 
     <!-- Language selector -->
-    <div class="lang-bar">
-      <label for="lang-select">Language</label>
-      <select class="lang-select" id="lang-select">
-        <option value="EN" selected>English</option>
-        <option value="RU">Русский</option>
-        <option value="HE">עברית</option>
-        <option value="AR">العربية</option>
-        <option value="ZH">中文</option>
-        <option value="ES">Español</option>
-        <option value="FR">Français</option>
-        <option value="DE">Deutsch</option>
-        <option value="IT">Italiano</option>
-        <option value="PT">Português</option>
-      </select>
-    </div>
 
     <!-- Tabs -->
     <div class="conv-tabs" role="tablist">
-      <button class="conv-tab active" role="tab" aria-selected="true" aria-controls="panel-g2d" id="tab-g2d" data-i18n="tab1"></button>
-      <button class="conv-tab" role="tab" aria-selected="false" aria-controls="panel-d2g" id="tab-d2g" data-i18n="tab2"></button>
-      <button class="conv-tab" role="tab" aria-selected="false" aria-controls="panel-h2g" id="tab-h2g" data-i18n="tab3"></button>
+      <button class="conv-tab active" role="tab" aria-selected="true" aria-controls="panel-g2d" id="tab-g2d">Greg → DTI/Heb</button>
+      <button class="conv-tab" role="tab" aria-selected="false" aria-controls="panel-d2g" id="tab-d2g">DTI → Greg/Heb</button>
+      <button class="conv-tab" role="tab" aria-selected="false" aria-controls="panel-h2g" id="tab-h2g">Heb → Greg/DTI</button>
     </div>
 
     <!-- ── Panel 1: Gregorian → DTI/Hebrew ───────────────── -->
     <div class="conv-panel active" id="panel-g2d" role="tabpanel" aria-labelledby="tab-g2d">
       <div class="field">
-        <label for="g-date" data-i18n="gregDateLabel"></label>
+        <label for="g-date">Gregorian date</label>
         <input type="date" id="g-date" />
       </div>
-      <p class="hint" data-i18n="or"></p>
+      <p class="hint">or enter manually:</p>
       <div class="row">
         <div class="field">
-          <label for="g-year" data-i18n="year"></label>
+          <label for="g-year">Year</label>
           <input type="number" id="g-year" placeholder="2026" />
         </div>
         <div class="field">
-          <label for="g-month" data-i18n="month"></label>
+          <label for="g-month">Month</label>
           <input type="number" id="g-month" placeholder="3" min="1" max="12" />
         </div>
         <div class="field">
-          <label for="g-day" data-i18n="day"></label>
+          <label for="g-day">Day</label>
           <input type="number" id="g-day" placeholder="25" min="1" max="31" />
         </div>
       </div>
-      <button class="btn-convert" id="btn-g2d" data-i18n-text="convert"></button>
+      <button class="btn-convert" id="btn-g2d">Convert</button>
     </div>
 
     <!-- ── Panel 2: DTI → Gregorian/Hebrew ───────────────── -->
     <div class="conv-panel" id="panel-d2g" role="tabpanel" aria-labelledby="tab-d2g">
       <div class="row">
         <div class="field">
-          <label for="d-dy" data-i18n="dyLabel"></label>
+          <label for="d-dy">DY (Dikenocratic Year)</label>
           <input type="number" id="d-dy" placeholder="6818" />
         </div>
         <div class="field">
-          <label for="d-doy" data-i18n="doyLabel"></label>
+          <label for="d-doy">DOY (Day of Year, 1–360)</label>
           <input type="number" id="d-doy" placeholder="196" min="1" max="360" />
         </div>
       </div>
-      <button class="btn-convert" id="btn-d2g" data-i18n-text="convert"></button>
+      <button class="btn-convert" id="btn-d2g">Convert</button>
     </div>
 
     <!-- ── Panel 3: Hebrew → Gregorian/DTI ───────────────── -->
     <div class="conv-panel" id="panel-h2g" role="tabpanel" aria-labelledby="tab-h2g">
       <!-- Input type toggle -->
       <div class="input-type-row">
-        <span data-i18n="inputType"></span>
+        <span>Input Type</span>
         <div class="radio-group">
-          <button class="radio-btn active" id="heb-numeric-btn" data-i18n-text="numeric"></button>
-          <button class="radio-btn" id="heb-letter-btn" data-i18n-text="letter"></button>
+          <button class="radio-btn active" id="heb-numeric-btn">Numeric</button>
+          <button class="radio-btn" id="heb-letter-btn">Letter</button>
         </div>
       </div>
 
@@ -344,15 +304,15 @@
       <div id="heb-numeric-fields">
         <div class="row">
           <div class="field">
-            <label for="h-year" data-i18n="year"></label>
+            <label for="h-year">Year</label>
             <input type="number" id="h-year" placeholder="5786" min="1" max="9999" />
           </div>
           <div class="field">
-            <label for="h-month" data-i18n="month"></label>
+            <label for="h-month">Month</label>
             <input type="number" id="h-month" placeholder="7" min="1" max="13" />
           </div>
           <div class="field">
-            <label for="h-day" data-i18n="day"></label>
+            <label for="h-day">Day</label>
             <input type="number" id="h-day" placeholder="25" min="1" max="30" />
           </div>
         </div>
@@ -362,26 +322,26 @@
       <div id="heb-letter-fields" style="display:none">
         <div class="row">
           <div class="field">
-            <label for="h-year-let" data-i18n="yearLetters"></label>
+            <label for="h-year-let">Year (letters)</label>
             <input type="text" id="h-year-let" placeholder="תשפ״ו" dir="rtl" />
           </div>
           <div class="field">
-            <label for="h-month-sel" data-i18n="monthSelect"></label>
+            <label for="h-month-sel">Month (Hebrew)</label>
             <select id="h-month-sel" dir="rtl"></select>
           </div>
           <div class="field">
-            <label for="h-day-let" data-i18n="dayLetters"></label>
+            <label for="h-day-let">Day (letters)</label>
             <input type="text" id="h-day-let" placeholder="כ״ה" dir="rtl" />
           </div>
         </div>
       </div>
 
-      <button class="btn-convert" id="btn-h2g" data-i18n-text="convert"></button>
+      <button class="btn-convert" id="btn-h2g">Convert</button>
     </div>
 
     <!-- Result & Error -->
     <div class="conv-result" id="result" aria-live="polite">
-      <h2 data-i18n="result"></h2>
+      <h2>Result</h2>
       <dl class="result-grid" id="result-grid"></dl>
     </div>
     <p class="conv-error" id="error" aria-live="assertive"></p>
@@ -444,7 +404,7 @@
     </div>
   </footer>
 
-  <script src="converter-i18n.js?v=20261013"></script>
+  <script src="converter-labels-20261117.js"></script>
   <script src="converter.js?v=20261013"></script>
   <script>
   /* ═══════════════════════════════════════════════════════
@@ -458,32 +418,6 @@
   const resultEl = $('#result');
   const gridEl   = $('#result-grid');
   const errEl    = $('#error');
-
-  /* ── i18n ─────────────────────────────────────────────── */
-  function applyI18n(lang) {
-    currentLang = lang;
-    const L = I18N[lang];
-    if (!L) return;
-
-    // Text direction
-    const dir = RTL_LANGS.has(lang) ? 'rtl' : 'ltr';
-    document.documentElement.setAttribute('dir', dir);
-    document.documentElement.setAttribute('lang', lang.toLowerCase());
-
-    // data-i18n → textContent (labels, headings)
-    $$('[data-i18n]').forEach(el => {
-      const key = el.getAttribute('data-i18n');
-      if (L[key] !== undefined) el.textContent = L[key];
-    });
-    // data-i18n-text → textContent (buttons)
-    $$('[data-i18n-text]').forEach(el => {
-      const key = el.getAttribute('data-i18n-text');
-      if (L[key] !== undefined) el.textContent = L[key];
-    });
-
-    // Hebrew month dropdown
-    populateHebrewMonths();
-  }
 
   function populateHebrewMonths() {
     const sel = $('#h-month-sel');
@@ -550,7 +484,7 @@
 
   /* ── Panel 1: Gregorian → DTI/Hebrew ──────────────────── */
   $('#btn-g2d').addEventListener('click', () => {
-    const L = I18N[currentLang];
+    const L = LABELS;
     try {
       let year, month, day;
       const yInput = $('#g-year').value;
@@ -592,7 +526,7 @@
 
   /* ── Panel 2: DTI → Gregorian/Hebrew ──────────────────── */
   $('#btn-d2g').addEventListener('click', () => {
-    const L = I18N[currentLang];
+    const L = LABELS;
     try {
       const dy = parseInt($('#d-dy').value, 10);
       const doy = parseInt($('#d-doy').value, 10);
@@ -618,7 +552,7 @@
 
   /* ── Panel 3: Hebrew → Gregorian/DTI ──────────────────── */
   $('#btn-h2g').addEventListener('click', () => {
-    const L = I18N[currentLang];
+    const L = LABELS;
     try {
       let y, m, d;
       const isNumeric = hebNumBtn.classList.contains('active');
@@ -653,13 +587,6 @@
         [L.doy, String(dti.doy)],
       ]);
     } catch (e) { showError(e.message); }
-  });
-
-  /* ── Language change ──────────────────────────────────── */
-  $('#lang-select').addEventListener('change', (e) => {
-    applyI18n(e.target.value);
-    resultEl.classList.remove('visible');
-    errEl.classList.remove('visible');
   });
 
   /* ── Enter key support ────────────────────────────────── */
@@ -707,7 +634,7 @@
       $('#h-day').value = heb.day;
     } catch (e) {}
 
-    applyI18n('EN');
+    populateHebrewMonths();
   })();
   </script>
   <script type="module" src="/navigation-20260923.js"></script>
