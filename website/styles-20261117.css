@@ -950,3 +950,11 @@ hr { border: 0; height: 2px; background: var(--surface-2); margin: 3rem 0; }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: 1ms !important; animation-iteration-count: 1 !important; transition-duration: 1ms !important; scroll-behavior: auto !important; }
 }
+
+/* ─── Browser-translation resilience (2026-11-17) ──────────────────────────
+   The site relies on the browser's own page translation; translated text is longer. These rules keep the
+   wordmarks, the home equation and wide protocol tables from widening the page (measured with a simulated
+   translation on 1366 px and 390 px viewports). */
+.site-footer__wordmark, .site-nav__brand { overflow-wrap: anywhere; white-space: normal; max-width: 100%; }
+.equation__formula { max-width: 100%; overflow-x: auto; overflow-wrap: anywhere; }
+.protocol-article table, table.protocol-table { display: block; max-width: 100%; overflow-x: auto; }
