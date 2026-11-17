@@ -1,0 +1,37 @@
+[Unit]
+Description=Dikenocracy protocol feedback API
+After=network-online.target
+
+[Service]
+Type=simple
+User=dkpfeedback
+Group=dkpfeedback
+WorkingDirectory=/opt/dkp-feedback/current
+EnvironmentFile=-/etc/dkp-feedback/feedback.env
+Environment=FEEDBACK_DB=/var/lib/dkp-feedback/feedback.sqlite3
+Environment=FEEDBACK_REGISTRY=/opt/dkp-feedback/current/registry.json
+Environment=PYTHONDONTWRITEBYTECODE=1
+ExecStart=/opt/dkp-feedback/current/venv/bin/python -m uvicorn app:create_app --factory --host 127.0.0.1 --port 8722 --workers 1 --no-server-header --proxy-headers --forwarded-allow-ips 127.0.0.1
+Restart=on-failure
+RestartSec=5
+UMask=0077
+NoNewPrivileges=true
+PrivateTmp=true
+PrivateDevices=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/var/lib/dkp-feedback
+ReadOnlyPaths=/opt/dkp-feedback
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectControlGroups=true
+RestrictSUIDSGID=true
+LockPersonality=true
+CapabilityBoundingSet=
+SystemCallArchitectures=native
+RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6
+MemoryMax=200M
+CPUQuota=30%
+
+[Install]
+WantedBy=multi-user.target
