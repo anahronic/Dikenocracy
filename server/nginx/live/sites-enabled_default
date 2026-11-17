@@ -118,7 +118,7 @@ server {
     include /etc/nginx/snippets/cloudflare-realip.conf;
     include /etc/nginx/snippets/dkp-security-headers.conf;
     include /etc/nginx/snippets/dkp-site-errors.conf;
-    include /etc/nginx/snippets/dkp-market-lens.conf;
+    include /etc/nginx/snippets/dkp-retired.conf;  # retired APIs (Market Lens 2026-11-17): unowned /api/ -> 410
     include /etc/nginx/snippets/dkp-feedback.conf;
 
 
@@ -161,14 +161,14 @@ location /AA/Alienclimber/api/ {
     proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
     proxy_set_header X-Forwarded-Proto $scheme;
 }
-# Market Lens /api/ (127.0.0.1:8000): snippets/dkp-market-lens.conf (2026-11-17)
+# Market Lens retired 2026-11-17: unowned /api/ paths answer 410 (snippets/dkp-retired.conf)
 
 # Ayalon and Mazkira withdrawn from the public site 2026-11-17: 410 Gone (snippets/removed-projects.conf, snippets/mazkira.conf)
 include /etc/nginx/snippets/removed-projects.conf;
 
     include /etc/nginx/snippets/shadoo-pwa-nocache.conf;  # Shadoo PWA files never cached (2026-10-14)
     include /etc/nginx/snippets/mazkira.conf;  # Mazkira (added 2026-10-01)
-    include /etc/nginx/snippets/dkp-lab-keeper.conf;  # DKP lab + Keeper (added 2026-10-20)
+    include /etc/nginx/snippets/dkp-lab.conf;  # DKP Protocol Lab; retired Keeper prefixes 410 (2026-11-17)
 
     listen [::]:443 ssl ipv6only=on; # managed by Certbot
     listen 443 ssl; # managed by Certbot
