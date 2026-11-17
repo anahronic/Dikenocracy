@@ -1,7 +1,7 @@
 {
   "schema": "keeper-routes/1",
   "notes": [
-    "46 repository host pages + 4 live-only routes. The Ayalon project page was removed from the site on 2026-11-17.",
+    "46 repository host pages + 4 live-only routes. One withdrawn project page was removed from the site on 2026-11-17.",
     "keeper/panel.html is an internal sandbox resource, excluded to avoid recursive widgets.",
     "No server inspection or deployment performed. Full --check requires a complete site tree."
   ],

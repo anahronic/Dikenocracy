@@ -6,8 +6,6 @@
   display: flex; flex-wrap: wrap; gap: var(--gap-sm); align-items: center;
   justify-content: center; margin-top: var(--gap-sm);
 }
-.lab-lang { display: flex; gap: 0.4rem; }
-.lab-lang__btn[aria-pressed="true"] { border-color: var(--accent); color: var(--accent); }
 .lab-status { font-family: var(--font-ui); font-size: 0.9rem; color: var(--text-secondary); margin: 0; }
 
 .lab-props { font-family: var(--font-ui); color: var(--text-primary); line-height: 1.6; padding-left: 1.2rem; }

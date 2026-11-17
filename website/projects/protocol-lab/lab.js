@@ -63,9 +63,9 @@ const T = {
   },
 };
 
-let lang = "en";
-try { lang = localStorage.getItem("lab.lang") || (navigator.language || "en").slice(0, 2); } catch (_) {}
-if (!T[lang]) lang = "en";
+// English only (2026-11-17): the custom EN/RU switcher was removed; visitors use the browser's own translation.
+const lang = "en";
+try { localStorage.removeItem("lab.lang"); } catch (_) {}
 const t = (k, ...a) => { const v = T[lang][k] ?? T.en[k] ?? k; return typeof v === "function" ? v(...a) : v; };
 const L = (o) => (o && typeof o === "object" ? (o[lang] ?? o.en ?? "") : String(o ?? ""));
 const $ = (id) => document.getElementById(id);
@@ -106,7 +106,6 @@ let catalog = null, module = null, variants = [], lastResult = null, lastPackage
 function applyI18n() {
   document.documentElement.lang = lang;
   for (const n of document.querySelectorAll("[data-i18n]")) n.textContent = t(n.dataset.i18n);
-  for (const b of document.querySelectorAll(".lab-lang__btn")) b.setAttribute("aria-pressed", String(b.dataset.lang === lang));
   if (bundle) $("engine-status").textContent = t("status.ready", bundle);
   if (catalog) { renderModules(); renderCoverage(); }
   if (module) renderSetup();
@@ -307,7 +306,6 @@ async function showRequirement(id) {
 }
 
 /* wiring ------------------------------------------------------------------- */
-for (const b of document.querySelectorAll(".lab-lang__btn")) b.onclick = () => { lang = b.dataset.lang; try { localStorage.setItem("lab.lang", lang); } catch (_) {} applyI18n(); };
 $("add-variant").onclick = () => { const last = variants[variants.length - 1]; variants.push({ name: `v${variants.length + 1}`, input: JSON.parse(JSON.stringify(last.input)) }); renderSetup(); };
 $("validate").onclick = validate;
 $("run").onclick = run;
