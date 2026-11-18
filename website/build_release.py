@@ -23,7 +23,7 @@ Usage:
   python build_release.py --world ../../World --release-date 2026-10-04 [--docx] [--txt-copy PATH ...]
 Requires: pandoc (pypandoc-binary), beautifulsoup4.
 """
-import argparse, hashlib, html, pathlib, re, shutil, sys
+import argparse, hashlib, html, json, pathlib, re, shutil, sys
 from datetime import date
 
 import pypandoc
@@ -32,12 +32,17 @@ from bs4 import BeautifulSoup
 SITE = pathlib.Path(__file__).resolve().parent
 TOOLS = SITE / 'tools'
 DOMAIN = 'https://dikenocracy.com'
-CSS_MAIN = '/styles-20261117.css'   # built by tools/build_site_css.py; design decisions in DIRECTION.md
+CSS_MAIN = '/styles-20261118.css'   # built by tools/build_site_css.py; design decisions in DIRECTION.md
 ICONS = '/assets/icons-20261015.svg'
 OG_IMAGE = '/assets/og-20261013.jpg'
 SCRIPTS_HTML = '''  <script src="/script-20260923.js"></script>
-  <script type="module" src="/navigation-20260923.js"></script>
+  <script type="module" src="/navigation-20261118.js"></script>
   <script src="/site-20261015.js" defer></script>'''
+# Protocol archive: current and classic presentation of the same catalog (2026-11-18).
+ARCHIVE_CSS = '/archive-classic-20261118.css'
+ARCHIVE_JS = '/archive-view-20261118.js'
+CLASSIC_ICONS = '/assets/icons-20261013.svg'
+CLASSIC_ICON = {'foundation': 'i-foundation', 'appendix': 'i-appendix', **{f'L{i}': f'i-l{i}' for i in range(9)}}
 # Protocol feedback (select a passage -> message to the author); protocol pages only.
 FEEDBACK_HTML = '  <script src="/feedback/feedback-20261117.js" defer></script>'
 
@@ -425,6 +430,166 @@ def page_html(slug, doc, prev, nxt, docs):
 '''
 
 
+def catalog(docs, release):
+    """The canonical manifest of the published archive (pages/protocols/catalog.json): identities, kinds, layers and
+    the counts every view and the home page must state. Protocols = distinct DKP identifiers of kind 'protocol'."""
+    items = []
+    for slug, layer, short, sub in REGISTRY:
+        d = docs[slug]
+        items.append({'slug': slug, 'id': d['id'], 'kind': d['kind'], 'layer': layer, 'label': doc_label(slug, docs),
+                      'short': short, 'title': sub, 'last_updated': d['last_updated'],
+                      'href': f'/pages/protocols/{slug}.html'})
+    protocols = sorted({i['id'] for i in items if i['kind'] == 'protocol'})
+    layers = {key: sum(1 for i in items if i['layer'] == key and i['kind'] == 'protocol') for key, *_ in LAYERS
+              if key.startswith('L')}
+    return {'schema': 'dkp-archive-catalog/1', 'release': release,
+            'counts': {'protocols': len(protocols), 'documents': len(items), 'layers': layers,
+                       'protocol_layers': sum(1 for v in layers.values() if v),
+                       'addenda': sum(1 for i in items if i['kind'] == 'addendum'),
+                       'appendices': sum(1 for i in items if i['kind'] == 'appendix'),
+                       'foundation': sum(1 for i in items if i['kind'] == 'code')},
+            'protocol_ids': protocols, 'documents': items}
+
+
+def classic_icon(key):
+    return f'<svg class="c-icon" aria-hidden="true"><use href="{CLASSIC_ICONS}#{CLASSIC_ICON[key]}"/></svg>'
+
+
+def classic_html(docs, n, release, txt_url, txt_name):
+    """Classic view: the archive presentation that was in production 2026-10-14..16 (git 6d9497c), generated from the
+    same registry. Hidden until chosen; carries no ids (data-anchor), so it never duplicates the current view's ids."""
+    def ci(name):
+        return f'<svg class="c-icon" aria-hidden="true"><use href="{CLASSIC_ICONS}#{name}"/></svg>'
+    map_html, chips, blocks, options = [], [], [], ['<option value="">All layers</option>']
+    for key, label, full in LAYERS:
+        items = [r for r in REGISTRY if r[1] == key]
+        if not items:
+            continue
+        hid = layer_anchor(key)
+        links = '\n'.join(f'              <li><a href="protocols/{slug}.html">{html.escape(short)}</a></li>'
+                          for slug, _, short, _ in items)
+        map_html.append(f'''          <div class="c-protocol-map__layer">
+            <span class="c-protocol-map__layer-label">{html.escape(label)}</span>
+            <ul class="c-protocol-map__links">
+{links}
+            </ul>
+          </div>''')
+        chip_label = full.split(' — ')[0] if ' — ' in full else full
+        chips.append(f'<a href="#{hid}" data-classic-jump="{key}">{classic_icon(key)}{html.escape(chip_label)}</a>')
+        options.append(f'<option value="{key}">{html.escape(full)}</option>')
+        count = sum(1 for r in items if docs[r[0]]['kind'] == 'protocol')
+        count_tag = (f'\n          <span class="c-tag c-tag--indigo c-layer-block__count">{count} protocol{"s" if count != 1 else ""}</span>'
+                     if count else '')
+        text = (f'\n            <p class="c-layer-block__text">{LAYER_TEXT[key]}</p>' if key in LAYER_TEXT else '')
+        cards = '\n'.join(f'''          <a class="c-protocol-layer" href="protocols/{slug}.html" data-search="{html.escape(' '.join((doc_label(slug, docs), short, sub, slug.replace('-', ' '))).lower())}">
+            <div class="c-protocol-layer__id">{html.escape(doc_label(slug, docs))}</div>
+            <div class="c-protocol-layer__name">{html.escape(sub)}</div>
+          </a>''' for slug, _, short, sub in items)
+        blocks.append(f'''      <section class="c-layer-block" data-anchor="{hid}" data-layer="{key}" aria-labelledby="classic-{hid}-title">
+        <header class="c-layer-block__head">
+          <span class="c-icon-badge">{classic_icon(key)}</span>
+          <div>
+            <h2 class="c-layer-block__title" id="classic-{hid}-title">{html.escape(full)}</h2>{text}
+          </div>{count_tag}
+        </header>
+        <div class="c-layer-block__list">
+{cards}
+        </div>
+      </section>''')
+    mp, ch, bl, op = '\n'.join(map_html), '\n        '.join(chips), '\n\n'.join(blocks), ''.join(options)
+    return f'''    <div class="archive-classic" data-archive-view="classic" hidden>
+    <div class="c-protocol-shell">
+        <aside class="c-protocol-map" aria-label="Protocol map">
+          <div class="c-protocol-map__heading">Protocol Map</div>
+{mp}
+        </aside>
+      <div class="c-protocol-content">
+
+      <header class="c-page-hero">
+        <div>
+          <p class="c-eyebrow">{ci('i-layers')} Layered &middot; Dated &middot; Auditable</p>
+          <p class="c-page-hero__title" role="heading" aria-level="1">Protocols</p>
+          <p class="c-page-hero__lead">
+            The Dikenocracy framework is built through layered protocols. Each protocol
+            defines a bounded part of the system and is designed to be testable and
+            auditable. No higher-layer protocol may violate a lower-layer constraint.
+          </p>
+          <div class="c-hero-actions">
+            <a class="c-btn" href="#foundation-heading">Browse the layers {ci('i-arrow')}</a>
+            <a class="c-btn c-btn--ghost" href="{txt_url}" download>{ci('i-download')} Complete text</a>
+          </div>
+        </div>
+        <figure class="c-page-hero__figure c-page-hero__figure--card">
+          <img src="/assets/protocol-stack-20261013.svg" width="600" height="468"
+               alt="Nine protocol layers stacked from L0 Physical Truth at the base to L8 Infrastructure at the top." />
+        </figure>
+      </header>
+
+      <nav class="c-layer-nav" aria-label="Jump to a layer">
+        {ch}
+      </nav>
+
+      <div class="c-classic-search" role="search">
+        <label class="visually-hidden" for="classic-search">Search the protocols</label>
+        <input id="classic-search" type="search" placeholder="Search by name or identifier, e.g. justice, DKP-4" autocomplete="off" spellcheck="false" data-classic-search />
+        <label class="visually-hidden" for="classic-layer">Show one layer</label>
+        <select id="classic-layer" data-classic-layer>{op}</select>
+        <output aria-live="polite" data-classic-count>{len(REGISTRY)} documents</output>
+      </div>
+
+      <details class="c-info-card">
+        <summary>How protocols are named, dated and changed</summary>
+        <p>
+          Protocols are identified by their layer prefix (DKP-0 … DKP-8) and a
+          functional code. Each document shows the date of its last edition
+          (“Last updated”). Changes to normative content follow DKP-4-UPGRADE-001
+          (proposal, simulation, audit, acceptance, activation window and rollback);
+          the date identifies an edition and does not by itself certify a change.
+        </p>
+        <p class="c-release-line">
+          Current release: <time datetime="{release}">{release}</time> &middot;
+          {n} protocols across 9 layers (L0–L8), plus the Code of Planetary Synergy,
+          one addendum and one appendix.
+        </p>
+      </details>
+
+{bl}
+
+      <p class="c-classic-empty" data-classic-empty hidden>No document matches this search. Try a shorter word or another layer.</p>
+
+      <section class="c-cta-band" aria-labelledby="classic-download-heading">
+        <div>
+          <h2 id="classic-download-heading">Complete text</h2>
+          <p>
+            The full Code of Planetary Synergy, all {n} protocols, the CRISIS addendum, Appendix A and the glossary in one
+            plain-text file (release <time datetime="{release}">{release}</time>).
+          </p>
+        </div>
+        <a class="c-btn" href="{txt_url}" download>{ci('i-download')} Download “{html.escape(txt_name)}”</a>
+      </section>
+
+      <section class="c-info-card" aria-labelledby="classic-source-heading">
+        <h2 id="classic-source-heading">Official source</h2>
+        <p>
+          All protocol specifications are maintained openly. The canonical texts are
+          published in the World repository; the code of this website is in the
+          Dikenocracy repository.
+        </p>
+        <div class="c-hero-actions">
+          <a class="c-btn c-btn--ghost" href="https://github.com/anahronic/World/tree/main/Dikenocracy" target="_blank" rel="noopener noreferrer">{ci('i-github')} Canonical texts on GitHub</a>
+          <a class="c-btn c-btn--ghost" href="https://github.com/anahronic/Dikenocracy" target="_blank" rel="noopener noreferrer">{ci('i-github')} Website source</a>
+        </div>
+        <div class="c-info-note">
+          Protocol files follow the naming convention
+          <code>DKP-&lt;layer&gt;-&lt;domain&gt;-&lt;seq&gt;</code>.
+          {n} protocols across 9 layers (L0–L8).
+        </div>
+      </section>
+      </div>
+    </div>
+    </div>'''
+
+
 def index_html(docs, n, release, txt_name):
     sections, buttons = [], ['<button type="button" data-layer-filter="all" aria-pressed="true">All</button>']
     total = 0
@@ -453,7 +618,7 @@ def index_html(docs, n, release, txt_name):
             <p class="layer-group__text">{LAYER_TEXT[key]}</p>''' if key in LAYER_TEXT else ''
         short_label = full.split(' — ')[0] if ' — ' in full else full
         buttons.append(f'<button type="button" data-layer-filter="{key}" aria-pressed="false">{html.escape(short_label)}</button>')
-        sections.append(f'''      <section class="layer-group" id="{hid}" data-layer="{key}" aria-labelledby="{hid}-title">
+        sections.append(f'''      <section class="layer-group" id="{hid}" data-anchor="{hid}" data-layer="{key}" aria-labelledby="{hid}-title">
         <header class="layer-group__head">
           <h2 class="layer-group__title" id="{hid}-title">{html.escape(full)}</h2>{text}
           <p class="layer-group__count">{count_html}</p>
@@ -482,6 +647,8 @@ def index_html(docs, n, release, txt_name):
   <meta property="og:url" content="{DOMAIN}/pages/protocols.html" />
   <meta name="twitter:card" content="summary_large_image" />
   <link rel="stylesheet" href="{CSS_MAIN}" />
+  <link rel="stylesheet" href="{ARCHIVE_CSS}" />
+  <script>try{{if(localStorage.getItem('dkp-archive-view')==='classic')document.documentElement.setAttribute('data-archive-mode','classic')}}catch(e){{}}</script>
 </head>
 <body>
 
@@ -491,6 +658,15 @@ def index_html(docs, n, release, txt_name):
 
   <main id="main">
 
+    <div class="archive-switch wrap" data-archive-switch hidden>
+      <span class="archive-switch__label" id="archive-switch-label">View</span>
+      <div class="archive-switch__options" role="group" aria-labelledby="archive-switch-label">
+        <button type="button" data-archive-choose="current" aria-pressed="true">Current view</button>
+        <button type="button" data-archive-choose="classic" aria-pressed="false">Classic view</button>
+      </div>
+    </div>
+
+    <div class="archive-current" data-archive-view="current">
     <header class="page-head wrap grid">
       <h1 class="page-head__title">Protocols</h1>
       <p class="page-head__lead">
@@ -561,12 +737,16 @@ def index_html(docs, n, release, txt_name):
         </div>
       </div>
     </section>
+    </div>
+
+{classic_html(docs, n, release, txt_url, txt_name)}
 
   </main>
 
   {FOOTER_HTML}
 
 {SCRIPTS_HTML}
+  <script src="{ARCHIVE_JS}" defer></script>
 </body>
 </html>
 '''
@@ -696,6 +876,8 @@ def main():
         (out / f'{slug}.html').write_text(page_html(slug, docs[slug], prev, nxt, docs), encoding='utf-8', newline='\n')
     (SITE / 'pages' / 'protocols.html').write_text(index_html(docs, n, a.release_date, txt_name), encoding='utf-8', newline='\n')
     (out / 'manifest.txt').write_text(''.join(f'{s}\t{docs[s]["id"]}\n' for s in slugs), encoding='utf-8', newline='\n')
+    (out / 'catalog.json').write_text(json.dumps(catalog(docs, a.release_date), ensure_ascii=False, indent=1) + '\n',
+                                      encoding='utf-8', newline='\n')
     update_sitemap(SITE / 'sitemap.xml', docs, a.release_date)
     if a.pages_only:
         print(f'pages only: protocols={n} documents={len(docs)}')

@@ -43,6 +43,12 @@ jobs:
           python -m http.server 8765 --bind 127.0.0.1 -d website >/dev/null 2>&1 &
           sleep 2
           python website/tools/check_links.py http://127.0.0.1:8765
+      - name: Browser tests (archive views, Projects menu, button labels, counts, feedback button)
+        run: |
+          mkdir -p /tmp/pw && (cd /tmp/pw && npm install --no-save --no-audit --no-fund playwright-core@1.63.0 >/dev/null)
+          export PW_DIR=/tmp/pw CHROME="$(command -v google-chrome || command -v chromium)"
+          node tools/site_ui_test.mjs
+          node tools/feedback_widget_test.mjs
       - name: Release manifest
         run: python ci/release_manifest.py > release-manifest.json
       - uses: actions/upload-artifact@v4

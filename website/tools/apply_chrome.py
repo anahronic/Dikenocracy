@@ -17,6 +17,8 @@ NAV_RE = re.compile(r'<nav class="site-nav".*?</nav>', re.S)
 FOOTER_RE = re.compile(r'<footer class="site-footer"[^>]*>.*?</footer>', re.S)
 CSS_RE = re.compile(r'<link rel="stylesheet" href="/(?:styles|protocols)-\d{8}\.css" />\n?')
 SITE_JS = '<script src="/site-20261015.js" defer></script>'
+NAV_JS_RE = re.compile(r'/navigation-\d{8}\.js')
+NAV_JS = '/navigation-20261118.js'   # Shadoo keeps its own copy of the older file
 
 
 def section(rel: str):
@@ -38,6 +40,7 @@ def apply(html: str, rel: str) -> str:
             return f'<link rel="stylesheet" href="{CSS_MAIN}" />\n'
         return ''
     html = CSS_RE.sub(css, html)
+    html = NAV_JS_RE.sub(NAV_JS, html)
     html = re.sub(r'https://dikenocracy\.com/assets/(?:main_screen\.webp|og-\d{8}\.jpg)', 'https://dikenocracy.com' + OG_IMAGE, html)
     if SITE_JS not in html:
         html = html.replace('</body>', f'  {SITE_JS}\n</body>', 1)

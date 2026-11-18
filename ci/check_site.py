@@ -2,6 +2,7 @@
 
 - protocol registry: build_release.py REGISTRY == pages/protocols/manifest.txt == page files == sitemap protocol URLs
   == links on the protocol index; the index states the number of canonical protocols (35 + supporting documents)
+- counts are data-driven from pages/protocols/catalog.json (tools/catalog_counts.py); classic-view CSS reproducible
 - removed projects (Mazkira, Ayalon) appear on no published page, script or stylesheet
 - no custom translation UI (language switchers, data-i18n, i18n loaders) and nothing blocks browser translation
   (translate="no" / notranslate on the page as a whole)
@@ -60,6 +61,16 @@ for p in published:
             fail(f"missing lang=\"en\" in {rel}")
         if not re.search(r'<meta charset="utf-8"', text, re.I):
             fail(f"missing UTF-8 charset in {rel}")
+# Data-driven counts (2026-11-18): catalog.json = manifest; marked counts, both archive views, entries and links agree.
+sys.path.insert(0, str(SITE / "tools"))
+import catalog_counts  # noqa: E402
+for e in catalog_counts.run():
+    fail("counts: " + e)
+# Classic archive view: its stylesheet must be exactly what tools/make_classic_css.py makes from the authentic source.
+import make_classic_css  # noqa: E402
+classic_css = SITE / make_classic_css.OUT_NAME
+if not classic_css.is_file() or classic_css.read_text(encoding="utf-8") != make_classic_css.build():
+    fail(f"{make_classic_css.OUT_NAME} differs from tools/make_classic_css.py output")
 print(f"registry: {len(manifest)} documents ({len(protocols)} protocols); {len(published)} published files checked")
 for e in errors:
     print("FAIL", e)

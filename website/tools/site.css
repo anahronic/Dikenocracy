@@ -237,6 +237,9 @@ hr { border: 0; height: 2px; background: var(--surface-2); margin: 3rem 0; }
   animation: menu-in 160ms var(--ease-out);
 }
 .site-nav__submenu[hidden] { display: none; }
+/* Hover corridor (2026-11-18): the menu sits 6px below its item; this transparent part of the menu covers the gap
+   (and a little more), so a pointer moving slowly from the item into the menu never leaves the item's subtree. */
+.site-nav__submenu::before { content: ''; position: absolute; left: 0; right: 0; bottom: 100%; height: 14px; }
 .site-nav__submenu a { display: flex; width: 100%; padding: 0.7rem 0.85rem; min-height: 44px; }
 .site-nav__submenu a:hover { background: var(--surface); color: var(--ink); }
 @keyframes menu-in { from { opacity: 0; transform: scale(0.96) translateY(-4px); } }
@@ -907,9 +910,14 @@ hr { border: 0; height: 2px; background: var(--surface-2); margin: 3rem 0; }
 .conv-wrapper .conv-tab, .conv-wrapper .radio-btn { min-height: 44px; font-family: var(--display); font-weight: 600; }
 .conv-wrapper .btn-convert {
   min-height: 48px; padding: 0 1.6rem; text-transform: none; letter-spacing: 0; font: 600 var(--step-ui) var(--display);
-  background: var(--accent); transition: background-color var(--t-fast) var(--ease-ui), transform 120ms var(--ease-ui);
+  /* Filled button: the label colour must come with the fill. The converter's legacy inline style is an outline button
+     (color: var(--accent); background: transparent); overriding only the background made the label accent-on-accent,
+     i.e. invisible until :hover (2026-11-18). */
+  background: var(--accent); color: var(--accent-ink); border-color: var(--accent);
+  transition: background-color var(--t-fast) var(--ease-ui), transform 120ms var(--ease-ui);
 }
-.conv-wrapper .btn-convert:hover { background: var(--accent-hover); }
+.conv-wrapper .btn-convert:hover { background: var(--accent-hover); color: var(--accent-ink); }
+.conv-wrapper .btn-convert:focus-visible { outline: 3px solid var(--ink); outline-offset: 3px; }
 .conv-wrapper .btn-convert:active { transform: scale(0.97); }
 .conv-wrapper .conv-result { background: var(--surface); border: 0; }
 .conv-wrapper .conv-result h2, .conv-wrapper .conv-result h3 { font: 700 1.25rem var(--display); letter-spacing: -0.01em; color: var(--ink); }
@@ -942,3 +950,21 @@ hr { border: 0; height: 2px; background: var(--surface-2); margin: 3rem 0; }
 .site-footer__wordmark, .site-nav__brand { overflow-wrap: anywhere; white-space: normal; max-width: 100%; }
 .equation__formula { max-width: 100%; overflow-x: auto; overflow-wrap: anywhere; }
 .protocol-article table, table.protocol-table { display: block; max-width: 100%; overflow-x: auto; }
+
+/* ─── Protocol archive view switcher (2026-11-18) ───────────────────────────── */
+.archive-switch { display: flex; flex-wrap: wrap; align-items: center; justify-content: flex-end; gap: 0.6rem; padding-top: 1.25rem; }
+.archive-switch[hidden] { display: none; }
+.archive-switch__label { font: 600 var(--step-small) var(--display); color: var(--muted); }
+.archive-switch__options { display: inline-flex; border: 1.5px solid var(--ink); }
+.archive-switch__options button {
+  min-height: 44px; padding: 0 1rem; border: 0; background: transparent; color: var(--ink); cursor: pointer;
+  font: 600 var(--step-small) var(--display);
+}
+.archive-switch__options button + button { border-left: 1.5px solid var(--ink); }
+.archive-switch__options button[aria-pressed='true'] { background: var(--ink); color: var(--on-night); }
+.archive-switch__options button:hover { color: var(--accent); }
+.archive-switch__options button[aria-pressed='true']:hover { color: var(--on-night); }
+.archive-switch__options button:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; position: relative; }
+/* Chosen classic view before the script runs: no flash of the current view. */
+html[data-archive-mode='classic'] [data-archive-view='current'] { display: none; }
+html[data-archive-mode='classic'] .archive-classic[hidden] { display: block; }
