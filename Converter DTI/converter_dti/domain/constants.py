@@ -1,6 +1,7 @@
 """Deterministic domain constants for DKP-0-TIME-001 and client mapping."""
 
 DTI_YEAR_DAYS = 360
+DTI_EPOCH_JDN = 0  # epoch anchor (not a dated day); JDN 1 = DY1-001 (author clarification 2026-11-18)
 DTI_DOY_MIN = 1
 DTI_DOY_MAX = 360
 

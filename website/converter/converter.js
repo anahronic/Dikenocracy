@@ -61,19 +61,35 @@ function isValidGregorian(y, m, d) {
  *  JDN ↔ DTI
  * ═══════════════════════════════════════════════════════════════════════════ */
 
+/* DTI convention as clarified by the author (2026-11-18): JDN 0 is the epoch anchor of the count, not a date;
+ * JDN 1 is Year 1, Day 1; every DTI year has 360 days, numbered from 1.
+ *   DY = floor((JDN - 1) / 360) + 1,  DOY = ((JDN - 1) mod 360) + 1,  JDN = (DY - 1) * 360 + DOY.
+ * JDN 0 is reported as the epoch (no Year 0); days before the epoch are not defined by the clarification.
+ * The published DKP-0-TIME-001 text (sections 5.1, 6.2, 9, 10) still states the earlier zero-based form; an erratum
+ * awaits the author's approval (DKP8_INTEGRATION_AND_CALIBRATION_STATUS_2026-11-18.md, DTI section). */
+const DTI_EPOCH_JDN = 0;
+
 function jdnToDti(jdn) {
-  const dy = Math.floor(jdn / DTI_YEAR_DAYS);
-  const doy = (jdn % DTI_YEAR_DAYS) + 1;
-  return { dy, doy };
+  if (!Number.isInteger(jdn)) throw new Error('JDN must be an integer day number');
+  if (jdn === DTI_EPOCH_JDN) return { epoch: true, dy: null, doy: null };
+  if (jdn < DTI_EPOCH_JDN) throw new RangeError('This day is before the DTI epoch (JDN 0); DTI does not define it');
+  const k = jdn - 1;
+  return { epoch: false, dy: Math.floor(k / DTI_YEAR_DAYS) + 1, doy: (k % DTI_YEAR_DAYS) + 1 };
 }
 
 function dtiToJdn(dy, doy) {
-  if (doy < 1 || doy > 360) throw new Error('DOY must be 1–360');
-  return dy * DTI_YEAR_DAYS + (doy - 1);
+  if (!Number.isInteger(dy) || dy < 1) throw new Error('DY must be 1 or greater (Year 1 starts at JDN 1)');
+  if (!Number.isInteger(doy) || doy < 1 || doy > 360) throw new Error('DOY must be 1–360');
+  return (dy - 1) * DTI_YEAR_DAYS + doy;
 }
 
 function fmtDti(d) {
+  if (d.epoch) return 'DTI epoch (JDN 0)';
   return `DY${d.dy}-${String(d.doy).padStart(3, '0')}`;
+}
+
+function fmtDtiPart(d, key) {
+  return d.epoch ? '— (epoch anchor)' : String(d[key]);
 }
 
 function fmtGreg(g, lang) {

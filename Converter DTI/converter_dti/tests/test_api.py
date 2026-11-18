@@ -23,13 +23,14 @@ def test_gregorian_to_dti_endpoint():
     assert response.status_code == 200
     body = response.json()
     assert body["jdn"] == 2461043
-    assert body["dti"]["dy"] == 6836
-    assert body["dti"]["doy"] == 84
-    assert body["dti"]["canonical"] == "DY6836-084"
+    assert body["dti"]["dy"] == 6837
+    assert body["dti"]["doy"] == 83
+    assert body["dti"]["canonical"] == "DY6837-083"
+    assert body["dti"]["epoch"] is False
 
 
 def test_dti_to_gregorian_endpoint():
-    response = client.post("/convert/dti-to-gregorian", json={"dy": 6836, "doy": 84})
+    response = client.post("/convert/dti-to-gregorian", json={"dy": 6837, "doy": 83})
     assert response.status_code == 200
     body = response.json()
     assert body["jdn"] == 2461043
@@ -37,7 +38,7 @@ def test_dti_to_gregorian_endpoint():
 
 
 def test_invalid_dti_rejected():
-    response = client.post("/convert/dti-to-gregorian", json={"dy": 6836, "doy": 361})
+    response = client.post("/convert/dti-to-gregorian", json={"dy": 6837, "doy": 361})
     assert response.status_code == 422
 
 

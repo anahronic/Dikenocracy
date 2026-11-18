@@ -63,7 +63,7 @@ def main() -> None:
     with t2:
         st.header(l["tab2"])
         c1, c2 = st.columns(2)
-        dy = c1.number_input("DY", -100000, 100000, 6836)
+        dy = c1.number_input("DY", 1, 100000, 6838)
         doy = c2.number_input("DOY", 1, 360, 84)
         try:
             result = convert_dti_full(int(dy), int(doy))

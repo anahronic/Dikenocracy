@@ -14,7 +14,7 @@
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://dikenocracy.com/pages/converter.html" />
   <meta name="twitter:card" content="summary_large_image" />
-  <link rel="stylesheet" href="/styles-20261117.css" />
+  <link rel="stylesheet" href="/styles-20261118.css" />
 </head>
 <body>
 
@@ -70,10 +70,12 @@
             representation.
           </p>
           <p>
-            The canonical rules are: <code>DTI-Day&nbsp;=&nbsp;JDN</code>,
-            <code>DY&nbsp;=&nbsp;floor(JDN&nbsp;/&nbsp;360)</code>,
-            <code>DOY&nbsp;=&nbsp;(JDN&nbsp;mod&nbsp;360)&nbsp;+&nbsp;1</code>.
-            Every conversion is fully reversible and machine-auditable.
+            The count starts at the epoch anchor <code>JDN&nbsp;0</code> (not a dated day); <code>JDN&nbsp;1</code> is
+            Year&nbsp;1, Day&nbsp;1: <code>DY&nbsp;=&nbsp;floor((JDN&nbsp;−&nbsp;1)&nbsp;/&nbsp;360)&nbsp;+&nbsp;1</code>,
+            <code>DOY&nbsp;=&nbsp;((JDN&nbsp;−&nbsp;1)&nbsp;mod&nbsp;360)&nbsp;+&nbsp;1</code>.
+            Every conversion is fully reversible and machine-auditable. This is the author's clarified convention
+            (2026-11-18); the published text of DKP-0-TIME-001 still states an earlier zero-based form, and its
+            correction awaits the author's approval.
           </p>
         </div>
       </div>
@@ -128,7 +130,7 @@
         </p>
         <ul class="index-list" role="list" data-reveal>
           <li><span class="is-plain"><b>Three conversion paths</b><span>Gregorian → DTI / Hebrew<br />DTI → Gregorian / Hebrew<br />Hebrew → Gregorian / DTI</span><em>Modes</em></span></li>
-          <li><span class="is-plain"><b>DKP-0-TIME-001</b><span>Implements all normative test vectors. The 2000-01-01 vector follows canonical formula output (DY6809-306). See PROTOCOL_NOTES.md for the rationale.</span><em>Protocol</em></span></li>
+          <li><span class="is-plain"><b>DKP-0-TIME-001</b><span>Implements the author's clarified epoch and day numbering (JDN&nbsp;0 anchor, JDN&nbsp;1&nbsp;=&nbsp;DY1-001). The protocol's test-vector table was computed with the earlier zero-based form; corrected values await the author's approval (see PROTOCOL_NOTES.md).</span><em>Protocol</em></span></li>
           <li><a href="https://github.com/anahronic/Dikenocracy/tree/main/Converter%20DTI" target="_blank" rel="noopener noreferrer"><b>GitHub</b><span>anahronic/Dikenocracy &rarr; Converter DTI</span><svg class="icon" aria-hidden="true"><use href="/assets/icons-20261015.svg#i-arrow"/></svg></a></li>
         </ul>
       </div>
@@ -186,7 +188,7 @@
   </footer>
 
   <script src="/script-20260923.js"></script>
-  <script type="module" src="/navigation-20260923.js"></script>
+  <script type="module" src="/navigation-20261118.js"></script>
   <script src="/site-20261015.js" defer></script>
 </body>
 </html>

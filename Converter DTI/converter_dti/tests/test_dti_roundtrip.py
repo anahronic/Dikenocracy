@@ -9,6 +9,7 @@ def test_roundtrip_gregorian_jdn_gregorian():
 
 
 def test_roundtrip_dti_jdn_dti():
-    jdn = dti_to_jdn(6836, 84)
+    jdn = dti_to_jdn(6837, 83)
+    assert jdn == 2461043
     dti = jdn_to_dti(jdn)
-    assert (dti.dy, dti.doy) == (6836, 84)
+    assert (dti.dy, dti.doy) == (6837, 83)

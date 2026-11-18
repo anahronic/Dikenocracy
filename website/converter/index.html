@@ -14,7 +14,7 @@
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://dikenocracy.com/converter/" />
   <meta name="twitter:card" content="summary_large_image" />
-  <link rel="stylesheet" href="/styles-20261117.css" />
+  <link rel="stylesheet" href="/styles-20261118.css" />
   <style>
     /* ── Converter-specific styles (extends site design system) ─── */
     .conv-wrapper {
@@ -279,7 +279,7 @@
       <div class="row">
         <div class="field">
           <label for="d-dy">DY (Dikenocratic Year)</label>
-          <input type="number" id="d-dy" placeholder="6818" />
+          <input type="number" id="d-dy" min="1" placeholder="6838" />
         </div>
         <div class="field">
           <label for="d-doy">DOY (Day of Year, 1–360)</label>
@@ -355,13 +355,21 @@
         360-day derived representation:
       </p>
       <p>
-        <code>DTI‑Day = JDN</code> ·
-        <code>DY = floor(JDN / 360)</code> ·
-        <code>DOY = (JDN mod 360) + 1</code>
+        The count starts at the epoch anchor <code>JDN 0</code>, which is not itself a dated day. <code>JDN 1</code> is
+        Year 1, Day 1 (<code>DY1-001</code>); every DTI year has exactly 360 days numbered from 1:
       </p>
       <p>
-        This conversion is fully reversible: <code>JDN = DY × 360 + (DOY − 1)</code>.
-        All operations are integer-only and machine-auditable per DKP-0-TIME-001.
+        <code>DY = floor((JDN − 1) / 360) + 1</code> ·
+        <code>DOY = ((JDN − 1) mod 360) + 1</code>
+      </p>
+      <p>
+        This conversion is fully reversible: <code>JDN = (DY − 1) × 360 + DOY</code>. All operations are integer-only
+        and machine-auditable. Days before the epoch are not defined.
+      </p>
+      <p class="conv-note">
+        This is the author's clarified convention (2026-11-18). The published text of DKP-0-TIME-001 (sections 5–6 and
+        the test-vector table) still states an earlier zero-based form; a correction of that text awaits the author's
+        approval and has not been published yet.
       </p>
       <p>
         Hebrew dates are computed via a full calendar algorithm (Gauss/Reingold–Dershowitz)
@@ -405,7 +413,7 @@
   </footer>
 
   <script src="converter-labels-20261117.js"></script>
-  <script src="converter.js?v=20261013"></script>
+  <script src="converter.js?v=20261118"></script>
   <script>
   /* ═══════════════════════════════════════════════════════
    *  UI Controller
@@ -509,8 +517,8 @@
         [L.gregDate, fmtGreg({ year, month, day }, currentLang)],
         [L.jdn, String(jdn)],
         [L.dtiId, fmtDti(dti)],
-        [L.dtiYear, String(dti.dy)],
-        [L.doy, String(dti.doy)],
+        [L.dtiYear, fmtDtiPart(dti, 'dy')],
+        [L.doy, fmtDtiPart(dti, 'doy')],
       ];
 
       // Hebrew date
@@ -583,8 +591,8 @@
         [L.gregDate, fmtGreg(greg, currentLang)],
         [L.jdn, String(jdn)],
         [L.dtiId, fmtDti(dti)],
-        [L.dtiYear, String(dti.dy)],
-        [L.doy, String(dti.doy)],
+        [L.dtiYear, fmtDtiPart(dti, 'dy')],
+        [L.doy, fmtDtiPart(dti, 'doy')],
       ]);
     } catch (e) { showError(e.message); }
   });
@@ -637,7 +645,7 @@
     populateHebrewMonths();
   })();
   </script>
-  <script type="module" src="/navigation-20260923.js"></script>
+  <script type="module" src="/navigation-20261118.js"></script>
   <script src="/site-20261015.js" defer></script>
 </body>
 </html>

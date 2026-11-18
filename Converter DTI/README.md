@@ -6,24 +6,20 @@ Deterministic converter service for DKP-0-TIME-001.
 
 This package isolates all DTI conversion logic from UI code and exposes it through a reusable domain layer and FastAPI server.
 
-Core protocol rules implemented:
-- DTI-Day = JDN (authoritative)
-- DTI year = exactly 360 days
-- `DY = floor(JDN / 360)`
-- `DOY = (JDN mod 360) + 1`
-- Canonical: `DY<dy>-<doy:03d>`
-- DOY outside `1..360` is rejected
+Rules implemented (author's clarified DTI convention, 2026-11-18):
+- DTI-Day = JDN (authoritative); JDN 0 is the epoch anchor of the count, not a dated day
+- JDN 1 is Year 1, Day 1 (`DY1-001`); a DTI year has exactly 360 days numbered from 1
+- `DY = floor((JDN - 1) / 360) + 1`, `DOY = ((JDN - 1) mod 360) + 1`; inverse `JDN = (DY - 1) * 360 + DOY`
+- Canonical: `DY<dy>-<doy:03d>`; DY below 1 and DOY outside `1..360` are rejected; days before the epoch are not defined
 - No leap/religious anchoring in DTI logic
 
-## Protocol inconsistency note
+## Conflict with the published protocol text
 
-For `2000-01-01`, canonical formula output is:
-- `JDN = 2451545`
-- `DY = floor(2451545 / 360) = 6809`
-- `DOY = (2451545 mod 360) + 1 = 306`
-- Canonical DTI: `DY6809-306`
-
-An older table value `DY6815-026` conflicts with the canonical formula above and is not adopted by this implementation.
+The published DKP-0-TIME-001 (sections 5.1, 6.2, 9, 10) states the earlier zero-based form `DY = floor(JDN / 360)`,
+`DOY = (JDN mod 360) + 1`, under which JDN 1 would be `DY0-002`. The author clarified on 2026-11-18 that JDN 0 is the
+anchor and JDN 1 is Year 1 Day 1; this implementation follows the clarification. Example: 2000-01-01 (JDN 2451545) is
+`DY6810-305` (published formula: `DY6809-306`; published table: `DY6815-026`, matching neither). The protocol text is
+unchanged until the author approves an erratum.
 
 See `PROTOCOL_NOTES.md` for the same clarification in short form.
 
@@ -90,7 +86,7 @@ Response:
 {
   "input": {"year": 2026, "month": 1, "day": 2},
   "jdn": 2461043,
-  "dti": {"dy": 6836, "doy": 84, "canonical": "DY6836-084"}
+  "dti": {"epoch": false, "dy": 6837, "doy": 83, "canonical": "DY6837-083"}
 }
 ```
 
